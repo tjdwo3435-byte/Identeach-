@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>IDenTeach - 경험을 설계하여 나다움을 찾다</title>
+  <title>IDenTeach - 경험 교육 콘텐츠 제작소</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet" />
   <style>
@@ -24,7 +24,7 @@
     /* ── NAV ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(243,236,255,0.85); backdrop-filter: blur(16px);
+      background: rgba(243,236,255,0.88); backdrop-filter: blur(16px);
       padding: 0 48px; height: 64px;
       display: flex; justify-content: space-between; align-items: center;
       border-bottom: 1px solid rgba(105,26,250,0.08);
@@ -40,6 +40,7 @@
       background: var(--main) !important; color: #fff !important;
       padding: 9px 22px !important; border-radius: 22px !important;
       font-weight: 700 !important; box-shadow: 0 4px 16px rgba(105,26,250,0.3);
+      cursor: pointer;
     }
     .nav-cta:hover { background: var(--accent) !important; transform: translateY(-1px); }
 
@@ -56,16 +57,22 @@
       top: 50%; left: 50%; transform: translate(-50%, -60%);
       pointer-events: none;
     }
-    .hero-inner { position: relative; z-index: 1; max-width: 760px; }
+    .hero-inner { position: relative; z-index: 1; max-width: 800px; }
     .hero-badge {
       display: inline-flex; align-items: center; gap: 8px;
       background: var(--white); border: 1px solid rgba(105,26,250,0.15);
       color: var(--main); font-size: 13px; font-weight: 700;
-      padding: 7px 18px; border-radius: 24px; margin-bottom: 32px;
+      padding: 7px 18px; border-radius: 24px; margin-bottom: 20px;
       box-shadow: 0 2px 12px rgba(105,26,250,0.1);
     }
+    .hero-sub-badge {
+      display: inline-block;
+      background: rgba(105,26,250,0.08); border: 1px solid rgba(105,26,250,0.12);
+      color: var(--main); font-size: 12px; font-weight: 700;
+      padding: 5px 16px; border-radius: 20px; margin-bottom: 28px; letter-spacing: 1px;
+    }
     .hero h1 {
-      font-size: clamp(38px, 6.5vw, 72px); font-weight: 900; line-height: 1.12;
+      font-size: clamp(36px, 6vw, 68px); font-weight: 900; line-height: 1.12;
       letter-spacing: -1.5px; margin-bottom: 24px; color: var(--text);
     }
     .hero h1 span { color: var(--main); }
@@ -78,7 +85,7 @@
       display: inline-flex; align-items: center; gap: 8px;
       background: var(--main); color: #fff;
       padding: 16px 36px; border-radius: 50px; font-size: 16px; font-weight: 800;
-      text-decoration: none; transition: all 0.25s;
+      text-decoration: none; transition: all 0.25s; cursor: pointer; border: none;
       box-shadow: 0 8px 32px rgba(105,26,250,0.35);
     }
     .btn-main:hover { background: var(--accent); transform: translateY(-3px); box-shadow: 0 14px 40px rgba(105,26,250,0.45); }
@@ -90,124 +97,179 @@
       box-shadow: 0 2px 16px rgba(105,26,250,0.1);
       border: 1.5px solid rgba(105,26,250,0.15);
     }
-    .btn-ghost:hover { border-color: var(--main); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(105,26,250,0.15); }
-
-    /* ── 히어로 플로팅 카드 ── */
+    .btn-ghost:hover { border-color: var(--main); transform: translateY(-2px); }
     .hero-cards {
       display: flex; gap: 16px; justify-content: center; margin-top: 64px; flex-wrap: wrap;
     }
     .hero-card {
       background: var(--white); border-radius: 20px; padding: 20px 24px;
-      box-shadow: 0 8px 32px rgba(105,26,250,0.1); min-width: 180px;
+      box-shadow: 0 8px 32px rgba(105,26,250,0.1); min-width: 170px;
       border: 1px solid rgba(105,26,250,0.06); text-align: left;
       animation: float 4s ease-in-out infinite;
     }
     .hero-card:nth-child(2) { animation-delay: 1.3s; }
     .hero-card:nth-child(3) { animation-delay: 2.6s; }
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-    }
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
     .hero-card .card-icon { font-size: 24px; margin-bottom: 10px; }
-    .hero-card .card-label { font-size: 11px; color: var(--gray); font-weight: 600; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
-    .hero-card .card-val { font-size: 15px; font-weight: 800; color: var(--text); }
+    .hero-card .card-label { font-size: 11px; color: var(--gray); font-weight: 600; margin-bottom: 4px; text-transform: uppercase; }
+    .hero-card .card-val { font-size: 14px; font-weight: 800; color: var(--text); }
 
-    /* ── 섹션 공통 ── */
+    /* ── 공통 ── */
     section { padding: 100px 40px; }
     .container { max-width: 1080px; margin: 0 auto; }
-    .sec-label {
-      font-size: 12px; font-weight: 800; color: var(--main); letter-spacing: 2.5px;
-      text-transform: uppercase; margin-bottom: 16px;
-    }
-    .sec-title {
-      font-size: clamp(28px, 4vw, 46px); font-weight: 900;
-      letter-spacing: -0.5px; line-height: 1.2; margin-bottom: 16px;
-    }
+    .sec-label { font-size: 12px; font-weight: 800; color: var(--main); letter-spacing: 2.5px; text-transform: uppercase; margin-bottom: 16px; }
+    .sec-title { font-size: clamp(26px, 4vw, 44px); font-weight: 900; letter-spacing: -0.5px; line-height: 1.25; margin-bottom: 16px; }
     .sec-sub { font-size: 17px; color: var(--gray); line-height: 1.7; margin-bottom: 56px; }
 
-    /* ── PAIN ── */
-    .pain { background: var(--white); }
-    .pain-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
-    .pain-card {
-      background: var(--bg); border-radius: 20px; padding: 36px 32px;
-      border: 1px solid rgba(105,26,250,0.08);
-      transition: transform 0.25s, box-shadow 0.25s;
+    /* ── 이미지 플레이스홀더 ── */
+    .img-placeholder {
+      background: linear-gradient(135deg, var(--bg2), #e0d0ff);
+      border-radius: 16px; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; color: var(--main);
+      font-size: 13px; font-weight: 600; gap: 8px;
+      border: 2px dashed rgba(105,26,250,0.2);
     }
-    .pain-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(105,26,250,0.1); }
-    .pain-card .icon { font-size: 36px; margin-bottom: 16px; }
-    .pain-card h3 { font-size: 17px; font-weight: 800; margin-bottom: 10px; }
-    .pain-card p { font-size: 14px; color: var(--gray); line-height: 1.7; }
+    .img-placeholder .ph-icon { font-size: 32px; opacity: 0.5; }
+    .img-placeholder span { opacity: 0.6; }
 
-    /* ── DIFF ── */
-    .diff { background: var(--bg); }
-    .diff-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
-    .diff-visual {
-      background: linear-gradient(135deg, #1a0040 0%, #3d00a0 100%);
-      border-radius: 28px; padding: 52px 44px; color: #fff; text-align: center;
-      box-shadow: 0 24px 64px rgba(105,26,250,0.3);
-      position: relative; overflow: hidden;
+    /* ── NEED 섹션 ── */
+    .need { background: var(--white); }
+    .need-intro { text-align: center; margin-bottom: 56px; }
+    .need-intro .big-q {
+      font-size: clamp(22px, 3.5vw, 36px); font-weight: 900; line-height: 1.4;
+      margin-bottom: 16px;
     }
-    .diff-visual::before {
-      content: ''; position: absolute;
-      width: 300px; height: 300px;
-      background: radial-gradient(circle, rgba(198,141,255,0.2) 0%, transparent 70%);
-      top: -80px; right: -80px; border-radius: 50%;
+    .need-intro .big-q em { color: var(--main); font-style: normal; }
+    .need-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px; }
+    .need-card {
+      background: var(--bg); border-radius: 20px; padding: 32px 28px;
+      border: 1px solid rgba(105,26,250,0.08);
+      transition: transform 0.25s, box-shadow 0.25s; text-align: center;
     }
-    .diff-visual .big { font-size: 72px; margin-bottom: 20px; position: relative; }
-    .diff-visual h3 { font-size: 20px; font-weight: 800; margin-bottom: 12px; line-height: 1.4; }
-    .diff-visual p { font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.7; margin-bottom: 28px; }
-    .platform-badges { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+    .need-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(105,26,250,0.1); }
+    .need-card .n-icon { font-size: 36px; margin-bottom: 14px; }
+    .need-card h3 { font-size: 16px; font-weight: 800; margin-bottom: 8px; color: var(--main); }
+    .need-card p { font-size: 13px; color: var(--gray); line-height: 1.65; }
+
+    /* ── RESULT 섹션 ── */
+    .result { background: var(--bg); }
+    .result-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .result-left .sec-sub { margin-bottom: 32px; }
+    .result-examples { display: flex; flex-direction: column; gap: 16px; }
+    .result-ex {
+      background: var(--white); border-radius: 16px; padding: 20px 24px;
+      display: flex; align-items: center; gap: 16px;
+      border: 1px solid rgba(105,26,250,0.08);
+      box-shadow: 0 4px 16px rgba(105,26,250,0.06);
+    }
+    .result-ex .ex-icon { font-size: 28px; flex-shrink: 0; }
+    .result-ex h4 { font-size: 14px; font-weight: 800; margin-bottom: 4px; }
+    .result-ex p { font-size: 13px; color: var(--gray); }
+    .result-ex .ex-tag {
+      margin-left: auto; flex-shrink: 0;
+      background: rgba(105,26,250,0.08); color: var(--main);
+      font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 8px;
+    }
+    .result-visual {
+      background: linear-gradient(135deg, #1a0040, #3d00a0);
+      border-radius: 28px; padding: 0; overflow: hidden;
+      box-shadow: 0 24px 64px rgba(105,26,250,0.3); position: relative;
+    }
+    .result-img-placeholder { height: 400px; }
+    .result-visual-overlay {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(10,0,30,0.95) 0%, transparent 100%);
+      padding: 32px 28px;
+    }
+    .result-visual-overlay p { color: rgba(255,255,255,0.7); font-size: 13px; margin-bottom: 12px; }
+    .result-visual-overlay h3 { color: #fff; font-size: 17px; font-weight: 800; margin-bottom: 16px; }
+    .platform-badges { display: flex; gap: 8px; flex-wrap: wrap; }
     .badge {
       background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.18);
-      color: #fff; font-size: 12px; font-weight: 600; padding: 6px 14px; border-radius: 20px;
+      color: #fff; font-size: 11px; font-weight: 600; padding: 5px 12px; border-radius: 16px;
     }
-    .diff-points { display: flex; flex-direction: column; gap: 28px; }
-    .diff-point { display: flex; gap: 18px; align-items: flex-start; }
-    .diff-point .num {
-      min-width: 40px; height: 40px; background: var(--main); color: #fff;
-      border-radius: 12px; display: flex; align-items: center; justify-content: center;
-      font-size: 15px; font-weight: 900;
+    .result-cta {
+      margin-top: 40px; display: inline-flex; align-items: center; gap: 8px;
+      background: var(--white); color: var(--main);
+      padding: 14px 28px; border-radius: 50px; font-size: 15px; font-weight: 700;
+      border: 1.5px solid rgba(105,26,250,0.2); cursor: pointer; transition: all 0.2s;
+      text-decoration: none;
     }
-    .diff-point h4 { font-size: 16px; font-weight: 800; margin-bottom: 6px; }
-    .diff-point p { font-size: 14px; color: var(--gray); line-height: 1.65; }
+    .result-cta:hover { border-color: var(--main); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(105,26,250,0.15); }
 
     /* ── PROGRAMS ── */
     .programs { background: var(--white); }
+    .prog-tabs { display: flex; gap: 12px; margin-bottom: 48px; flex-wrap: wrap; }
+    .prog-tab {
+      padding: 10px 24px; border-radius: 24px; font-size: 14px; font-weight: 700;
+      cursor: pointer; transition: all 0.2s; border: 1.5px solid rgba(105,26,250,0.15);
+      background: transparent; color: var(--gray);
+    }
+    .prog-tab.active { background: var(--main); color: #fff; border-color: var(--main); box-shadow: 0 4px 16px rgba(105,26,250,0.3); }
     .prog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
     .prog-card {
-      background: var(--bg); border-radius: 24px; padding: 36px 32px;
+      background: var(--bg); border-radius: 24px; overflow: hidden;
       border: 1px solid rgba(105,26,250,0.08);
-      transition: transform 0.25s, box-shadow 0.25s; position: relative; overflow: hidden;
+      transition: transform 0.25s, box-shadow 0.25s; cursor: pointer; position: relative;
     }
     .prog-card::after {
       content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
       background: linear-gradient(90deg, var(--main), var(--sub));
     }
     .prog-card:hover { transform: translateY(-6px); box-shadow: 0 20px 56px rgba(105,26,250,0.12); }
+    .prog-img { height: 200px; }
+    .prog-body { padding: 28px; }
     .prog-tag {
       font-size: 11px; font-weight: 800; color: var(--main); background: var(--white);
-      padding: 5px 12px; border-radius: 10px; display: inline-block; margin-bottom: 18px;
+      padding: 5px 12px; border-radius: 10px; display: inline-block; margin-bottom: 14px;
       border: 1px solid rgba(105,26,250,0.15);
     }
-    .prog-card h3 { font-size: 19px; font-weight: 900; margin-bottom: 8px; line-height: 1.35; }
-    .prog-card .sub { font-size: 13px; color: var(--gray); margin-bottom: 22px; }
-    .prog-detail { display: flex; flex-direction: column; gap: 9px; margin-bottom: 24px; }
+    .prog-card h3 { font-size: 18px; font-weight: 900; margin-bottom: 8px; line-height: 1.35; }
+    .prog-card .sub { font-size: 13px; color: var(--gray); margin-bottom: 18px; line-height: 1.5; }
+    .prog-detail { display: flex; flex-direction: column; gap: 8px; }
     .prog-detail li {
       list-style: none; font-size: 13px; color: #444;
       display: flex; align-items: center; gap: 10px;
     }
     .prog-detail li::before {
-      content: '✓'; color: var(--main); font-weight: 900; font-size: 12px;
-      background: rgba(105,26,250,0.1); width: 20px; height: 20px;
-      border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      content: '✓'; color: var(--main); font-weight: 900; font-size: 11px;
+      background: rgba(105,26,250,0.1); min-width: 20px; height: 20px;
+      border-radius: 6px; display: flex; align-items: center; justify-content: center;
     }
-    .prog-highlight {
-      background: var(--white); border-radius: 12px; padding: 14px 18px;
-      font-size: 13px; font-weight: 700; color: var(--main);
-      border: 1px solid rgba(105,26,250,0.12);
+    .prog-more {
+      margin-top: 18px; font-size: 13px; color: var(--main); font-weight: 700;
+      display: flex; align-items: center; gap: 4px;
     }
 
-    /* ── LEAD MAGNET ── */
+    /* 커스텀 카드 */
+    .prog-card.custom {
+      background: linear-gradient(135deg, #1a0040, #3d00a0);
+      border: none; color: #fff;
+    }
+    .prog-card.custom::after { display: none; }
+    .prog-card.custom .prog-body { padding: 40px 32px; }
+    .prog-card.custom .prog-tag { background: rgba(255,255,255,0.15); color: #fff; border-color: rgba(255,255,255,0.2); }
+    .prog-card.custom h3 { color: #fff; font-size: 20px; }
+    .prog-card.custom .sub { color: rgba(255,255,255,0.65); }
+    .prog-card.custom .step-list { display: flex; flex-direction: column; gap: 12px; margin: 20px 0; }
+    .prog-card.custom .step {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 13px; color: rgba(255,255,255,0.85);
+    }
+    .prog-card.custom .step .snum {
+      min-width: 26px; height: 26px; background: rgba(255,255,255,0.15);
+      border-radius: 8px; display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 800; color: var(--sub);
+    }
+    .btn-custom {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--sub); color: var(--text);
+      padding: 12px 24px; border-radius: 50px; font-size: 14px; font-weight: 800;
+      border: none; cursor: pointer; transition: all 0.2s; margin-top: 24px;
+    }
+    .btn-custom:hover { background: #fff; transform: translateY(-2px); }
+
+    /* ── LEAD ── */
     .lead {
       background: linear-gradient(135deg, var(--main) 0%, var(--accent) 100%);
       text-align: center; padding: 100px 40px;
@@ -218,7 +280,7 @@
       color: #fff; font-size: 12px; font-weight: 700; padding: 6px 16px;
       border-radius: 20px; margin-bottom: 24px; letter-spacing: 1px;
     }
-    .lead h2 { font-size: clamp(26px, 4vw, 42px); font-weight: 900; color: #fff; margin-bottom: 16px; line-height: 1.3; }
+    .lead h2 { font-size: clamp(24px, 4vw, 40px); font-weight: 900; color: #fff; margin-bottom: 16px; line-height: 1.35; }
     .lead p { font-size: 16px; color: rgba(255,255,255,0.8); margin-bottom: 44px; line-height: 1.7; }
     .lead-form {
       background: rgba(255,255,255,0.15); backdrop-filter: blur(10px);
@@ -229,22 +291,35 @@
       flex: 1; background: transparent; border: none; color: #fff;
       font-size: 15px; outline: none; min-width: 0;
     }
-    .lead-form input::placeholder { color: rgba(255,255,255,0.6); }
+    .lead-form input::placeholder { color: rgba(255,255,255,0.55); }
     .lead-form button {
       background: #fff; color: var(--main); padding: 12px 24px; border: none;
       border-radius: 50px; font-size: 14px; font-weight: 800; cursor: pointer;
       transition: all 0.2s; white-space: nowrap;
     }
     .lead-form button:hover { background: var(--sub); color: #fff; }
-    .lead-note { font-size: 12px; color: rgba(255,255,255,0.55); margin-top: 16px; }
+    .lead-note { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 16px; }
 
     /* ── PHILOSOPHY ── */
     .philosophy { background: var(--bg); }
-    .phil-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; margin-bottom: 64px; }
-    .phil-intro-text blockquote {
-      font-size: 20px; font-weight: 700; color: var(--text); line-height: 1.7;
-      border-left: 4px solid var(--main); padding-left: 24px; margin-top: 32px;
+    .phil-hero {
+      background: linear-gradient(135deg, #0d001f, #2a0070);
+      border-radius: 28px; padding: 64px 56px; color: #fff;
+      text-align: center; margin-bottom: 56px; position: relative; overflow: hidden;
     }
+    .phil-hero::before {
+      content: ''; position: absolute;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(198,141,255,0.15) 0%, transparent 70%);
+      top: -100px; right: -100px; border-radius: 50%;
+    }
+    .phil-hero .ph-label {
+      font-size: 12px; font-weight: 800; color: var(--sub);
+      letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px;
+    }
+    .phil-hero h2 { font-size: clamp(24px, 4vw, 42px); font-weight: 900; line-height: 1.35; margin-bottom: 20px; }
+    .phil-hero h2 em { color: var(--sub); font-style: normal; }
+    .phil-hero p { font-size: 16px; color: rgba(255,255,255,0.65); line-height: 1.8; max-width: 580px; margin: 0 auto; }
     .phil-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
     .phil-card {
       background: var(--white); border-radius: 20px; padding: 36px 28px;
@@ -262,19 +337,19 @@
 
     /* ── CONTACT ── */
     .contact { background: #0d001f; color: #fff; }
-    .contact-top { text-align: center; margin-bottom: 64px; }
-    .contact-top h2 { font-size: clamp(28px, 4vw, 46px); font-weight: 900; margin-bottom: 16px; }
-    .contact-top p { font-size: 17px; color: rgba(255,255,255,0.55); line-height: 1.7; max-width: 480px; margin: 0 auto; }
-    .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 48px; }
+    .contact-top { text-align: center; margin-bottom: 56px; }
+    .contact-top h2 { font-size: clamp(26px, 4vw, 44px); font-weight: 900; margin-bottom: 16px; }
+    .contact-top p { font-size: 17px; color: rgba(255,255,255,0.5); line-height: 1.7; max-width: 440px; margin: 0 auto; }
+    .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; margin-bottom: 48px; }
     .contact-card {
       background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);
       border-radius: 20px; padding: 28px 24px; text-decoration: none; color: #fff;
       transition: all 0.25s; display: block;
     }
     .contact-card:hover { background: rgba(105,26,250,0.2); border-color: rgba(105,26,250,0.4); transform: translateY(-4px); }
-    .contact-card .icon { font-size: 28px; margin-bottom: 14px; }
-    .contact-card .clabel { font-size: 11px; color: rgba(255,255,255,0.45); margin-bottom: 6px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
-    .contact-card .cval { font-size: 15px; font-weight: 700; }
+    .contact-card .icon { font-size: 26px; margin-bottom: 14px; }
+    .contact-card .clabel { font-size: 11px; color: rgba(255,255,255,0.4); margin-bottom: 6px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+    .contact-card .cval { font-size: 14px; font-weight: 700; }
     .contact-bottom { text-align: center; color: rgba(255,255,255,0.3); font-size: 13px; line-height: 1.8; }
 
     /* ── FOOTER ── */
@@ -291,16 +366,99 @@
       border-radius: 50px; font-size: 15px; font-weight: 800;
       text-decoration: none; box-shadow: 0 8px 32px rgba(105,26,250,0.45);
       transition: all 0.25s; display: flex; align-items: center; gap: 8px;
+      cursor: pointer; border: none;
     }
     .floating-cta:hover { background: var(--accent); transform: translateY(-3px); }
+
+    /* ══════════════════════════
+       MODAL 공통
+    ══════════════════════════ */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0; z-index: 500;
+      background: rgba(10,0,20,0.7); backdrop-filter: blur(6px);
+      align-items: center; justify-content: center; padding: 20px;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: var(--white); border-radius: 28px; padding: 48px;
+      width: 100%; max-width: 560px; max-height: 90vh; overflow-y: auto;
+      position: relative; animation: modalIn 0.3s ease;
+    }
+    @keyframes modalIn { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+    .modal-close {
+      position: absolute; top: 20px; right: 20px;
+      width: 36px; height: 36px; border-radius: 50%; border: none;
+      background: var(--bg); color: var(--gray); font-size: 18px;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s;
+    }
+    .modal-close:hover { background: var(--bg2); color: var(--text); }
+    .modal h2 { font-size: 22px; font-weight: 900; margin-bottom: 8px; }
+    .modal .modal-sub { font-size: 14px; color: var(--gray); margin-bottom: 32px; line-height: 1.6; }
+
+    /* 문의 폼 */
+    .form-group { margin-bottom: 18px; }
+    .form-group label { font-size: 13px; font-weight: 700; color: var(--text); display: block; margin-bottom: 7px; }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; padding: 12px 16px; border: 1.5px solid rgba(105,26,250,0.15);
+      border-radius: 12px; font-size: 14px; font-family: inherit;
+      background: var(--bg); color: var(--text); outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: var(--main); background: #fff;
+    }
+    .form-group textarea { resize: vertical; min-height: 90px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .btn-submit {
+      width: 100%; background: var(--main); color: #fff; border: none;
+      padding: 16px; border-radius: 50px; font-size: 16px; font-weight: 800;
+      cursor: pointer; transition: all 0.2s; margin-top: 8px;
+    }
+    .btn-submit:hover { background: var(--accent); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(105,26,250,0.35); }
+
+    /* 프로그램 팝업 */
+    .prog-modal .prog-modal-img { height: 200px; border-radius: 16px; margin-bottom: 24px; }
+    .prog-modal .prog-modal-tag {
+      font-size: 11px; font-weight: 800; color: var(--main); background: rgba(105,26,250,0.08);
+      padding: 5px 12px; border-radius: 10px; display: inline-block; margin-bottom: 14px;
+    }
+    .prog-modal h2 { font-size: 22px; font-weight: 900; margin-bottom: 10px; }
+    .prog-modal .pm-sub { font-size: 14px; color: var(--gray); margin-bottom: 24px; }
+    .prog-modal .pm-details { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
+    .prog-modal .pm-detail {
+      background: var(--bg); border-radius: 12px; padding: 14px 16px;
+    }
+    .prog-modal .pm-detail .dl { font-size: 11px; color: var(--gray); font-weight: 600; margin-bottom: 4px; }
+    .prog-modal .pm-detail .dv { font-size: 14px; font-weight: 700; }
+    .prog-modal .pm-features { display: flex; flex-direction: column; gap: 9px; margin-bottom: 28px; }
+    .prog-modal .pm-features li {
+      list-style: none; font-size: 14px; color: #444;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .prog-modal .pm-features li::before {
+      content: '✓'; color: var(--main); font-weight: 900; font-size: 11px;
+      background: rgba(105,26,250,0.1); min-width: 22px; height: 22px;
+      border-radius: 7px; display: flex; align-items: center; justify-content: center;
+    }
+    .prog-modal .pm-result {
+      background: linear-gradient(135deg, rgba(105,26,250,0.08), rgba(198,141,255,0.1));
+      border: 1px solid rgba(105,26,250,0.12); border-radius: 14px;
+      padding: 16px 20px; margin-bottom: 28px;
+      font-size: 14px; font-weight: 700; color: var(--main);
+    }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       nav { padding: 0 20px; }
       .nav-links a:not(.nav-cta) { display: none; }
       section { padding: 70px 20px; }
-      .diff-wrap, .phil-intro, .phil-grid { grid-template-columns: 1fr; }
+      .result-wrap, .phil-grid { grid-template-columns: 1fr; }
       .hero-cards { display: none; }
+      .modal { padding: 32px 24px; }
+      .form-row { grid-template-columns: 1fr; }
+      .phil-hero { padding: 44px 28px; }
+      .prog-modal .pm-details { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -315,7 +473,7 @@
     <a href="#programs">프로그램</a>
     <a href="#philosophy">교육 철학</a>
     <a href="#contact">문의</a>
-    <a href="tel:01040848962" class="nav-cta">📞 교육 문의하기</a>
+    <a href="#" class="nav-cta" onclick="openInquiry(); return false;">✉️ 교육 문의하기</a>
   </div>
 </nav>
 
@@ -323,97 +481,122 @@
 <section class="hero">
   <div class="hero-glow"></div>
   <div class="hero-inner">
-    <div class="hero-badge">🎵 AI 음원 제작 · 팀빌딩 · 진로 교육 전문</div>
+    <div class="hero-badge">팀빌딩 · 문화 · 진로 교육 전문</div>
+    <div class="hero-sub-badge">경험 교육 콘텐츠 제작소</div>
     <h1>경험을 설계하여<br /><span>나다움</span>을 찾다</h1>
     <p>억지로 앉아 듣는 수업이 아닌,<br />직접 만들고 경험하는 교육을 설계합니다.</p>
     <div class="hero-btns">
-      <a href="tel:01040848962" class="btn-main">📞 지금 교육 문의하기</a>
+      <button class="btn-main" onclick="openInquiry()">✉️ 교육 문의하기</button>
       <a href="#programs" class="btn-ghost">프로그램 보기 →</a>
     </div>
     <div class="hero-cards">
       <div class="hero-card">
-        <div class="card-icon">🎵</div>
-        <div class="card-label">결과물</div>
-        <div class="card-val">AI 음원 Spotify 등록</div>
+        <div class="card-icon">🎯</div>
+        <div class="card-label">특징</div>
+        <div class="card-val">차별화된 프로그램</div>
       </div>
       <div class="hero-card">
-        <div class="card-icon">👥</div>
+        <div class="card-icon">🏫</div>
         <div class="card-label">대상</div>
-        <div class="card-val">초·중·고 최대 100명</div>
+        <div class="card-val">초·중·고 맞춤 설계</div>
       </div>
       <div class="hero-card">
-        <div class="card-icon">📋</div>
-        <div class="card-label">생기부</div>
-        <div class="card-val">기재 가능한 실적</div>
+        <div class="card-icon">✨</div>
+        <div class="card-label">결과</div>
+        <div class="card-val">손에 남는 결과물</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PAIN -->
-<section class="pain">
+<!-- NEED -->
+<section class="need">
   <div class="container">
-    <div class="sec-label">문제 인식</div>
-    <h2 class="sec-title">이런 고민, 있으신가요?</h2>
-    <p class="sec-sub">교육 담당자라면 누구나 겪는 고민에 IDenTeach가 답합니다.</p>
-    <div class="pain-grid">
-      <div class="pain-card">
-        <div class="icon">😴</div>
-        <h3>학생들이 참여를 안 해요</h3>
-        <p>일방향 강의식 수업에 학생들은 잠들고, 프로그램이 끝나도 기억에 남는 것이 없습니다.</p>
+    <div class="need-intro">
+      <p class="sec-label">왜 IDenTeach인가</p>
+      <p class="big-q">매번 똑같은 교육 프로그램 말고<br /><em>새로운 프로그램</em>을 원하시나요?</p>
+      <p style="font-size:16px; color:var(--gray); max-width:500px; margin:0 auto; line-height:1.7;">
+        IDenTeach는 학교와 학생의 필요에 맞는<br />새로운 경험 중심 교육 콘텐츠를 설계합니다.
+      </p>
+    </div>
+    <!-- 이미지 자리 -->
+    <div class="img-placeholder" style="height:260px; margin-bottom:48px;">
+      <span class="ph-icon">🖼️</span>
+      <span>활동 현장 이미지 (추후 추가)</span>
+    </div>
+    <div class="need-grid">
+      <div class="need-card">
+        <div class="n-icon">🚀</div>
+        <h3>차별화된 프로그램</h3>
+        <p>다른 학교에서 쉽게 볼 수 없는 새로운 형식의 교육 콘텐츠를 제공합니다.</p>
       </div>
-      <div class="pain-card">
-        <div class="icon">📋</div>
-        <h3>생기부에 쓸 내용이 없어요</h3>
-        <p>활동은 했는데 결과물이 없어 생활기록부에 의미 있는 내용을 작성하기 어렵습니다.</p>
+      <div class="need-card">
+        <div class="n-icon">🎯</div>
+        <h3>우리 학생들에게 맞춘 프로그램</h3>
+        <p>학교의 상황, 학년, 인원에 맞게 설계된 맞춤형 프로그램을 운영합니다.</p>
       </div>
-      <div class="pain-card">
-        <div class="icon">🔍</div>
-        <h3>차별화된 프로그램이 없어요</h3>
-        <p>매년 비슷한 특강, 비슷한 체험. 학교와 학생 모두 새로운 경험을 원하고 있습니다.</p>
+      <div class="need-card">
+        <div class="n-icon">🙌</div>
+        <h3>모두 즐겁게 참여하는 프로그램</h3>
+        <p>소수가 아닌 전체가 함께 참여하고 즐길 수 있는 구조로 설계됩니다.</p>
+      </div>
+      <div class="need-card">
+        <div class="n-icon">✨</div>
+        <h3>결과값이 남는 프로그램</h3>
+        <p>활동으로 끝나지 않고, 학생 손에 실제로 남는 창작물과 경험이 있습니다.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- DIFF -->
-<section class="diff">
+<!-- RESULT -->
+<section class="result">
   <div class="container">
-    <div class="diff-wrap">
-      <div class="diff-visual">
-        <div class="big">🎵</div>
-        <h3>학생이 만든 AI 음원이<br />실제 플랫폼에 등록됩니다</h3>
-        <p>팀빌딩 게임 결과가 AI 프롬프트가 되고,<br />그 프롬프트가 진짜 음악이 됩니다.</p>
-        <div class="platform-badges">
-          <span class="badge">🎧 Spotify</span>
-          <span class="badge">▶ YouTube Music</span>
-          <span class="badge">🍎 Apple Music</span>
-        </div>
-      </div>
-      <div>
-        <div class="sec-label">핵심 차별점</div>
+    <div class="result-wrap">
+      <div class="result-left">
+        <div class="sec-label">결과물이 남는 프로그램</div>
         <h2 class="sec-title">활동으로 끝나지 않는 교육</h2>
-        <div class="diff-points">
-          <div class="diff-point">
-            <div class="num">1</div>
+        <p class="sec-sub">IDenTeach의 모든 프로그램은 학생의 손에 실제로 남는 결과물을 만들어냅니다.</p>
+        <div class="result-examples">
+          <div class="result-ex">
+            <div class="ex-icon">🎵</div>
             <div>
-              <h4>손에 남는 결과물</h4>
-              <p>수업 후에도 Spotify에서 내가 만든 음악을 들을 수 있습니다. 생기부 기재 가능한 실질적 결과물.</p>
+              <h4>AI 음원 제작 · Spotify 등록</h4>
+              <p>팀이 함께 만든 음악이 실제 스트리밍 플랫폼에 올라갑니다</p>
             </div>
+            <span class="ex-tag">예시</span>
           </div>
-          <div class="diff-point">
-            <div class="num">2</div>
+          <div class="result-ex">
+            <div class="ex-icon">📋</div>
             <div>
-              <h4>AI 저작권 법적 안전</h4>
-              <p>그레이프스 ODO 플랫폼 기반 — 학교 현장에서 안전하게 AI 창작 교육을 진행합니다.</p>
+              <h4>생활기록부 기재 가능한 활동</h4>
+              <p>단순 참여가 아닌, 실제 기록으로 남길 수 있는 경험</p>
             </div>
+            <span class="ex-tag">예시</span>
           </div>
-          <div class="diff-point">
-            <div class="num">3</div>
+          <div class="result-ex">
+            <div class="ex-icon">🤝</div>
             <div>
-              <h4>게임이 곧 학습</h4>
-              <p>팀빌딩 게임의 결과가 그대로 AI 음악 프롬프트로 연결 — 노는 것이 배우는 것.</p>
+              <h4>팀빌딩 결과물</h4>
+              <p>협력의 과정과 결과가 함께 남는 팀 단위 창작 활동</p>
             </div>
+            <span class="ex-tag">예시</span>
+          </div>
+        </div>
+        <a href="#" class="result-cta" onclick="openResultModal(); return false;">🎵 결과물 예시 확인하기 →</a>
+      </div>
+      <div class="result-visual">
+        <div class="img-placeholder result-img-placeholder">
+          <span class="ph-icon">🖼️</span>
+          <span>결과물 이미지 (추후 추가)</span>
+        </div>
+        <div class="result-visual-overlay">
+          <p>실제 제작 결과물 예시</p>
+          <h3>학생들이 직접 만든 AI 음원</h3>
+          <div class="platform-badges">
+            <span class="badge">🎧 Spotify</span>
+            <span class="badge">▶ YouTube Music</span>
+            <span class="badge">🍎 Apple Music</span>
           </div>
         </div>
       </div>
@@ -426,44 +609,84 @@
   <div class="container">
     <div class="sec-label">프로그램</div>
     <h2 class="sec-title">경험 중심 교육 프로그램</h2>
-    <p class="sec-sub">학교와 학생에게 꼭 맞는 3가지 프로그램을 운영합니다.</p>
+    <p class="sec-sub">현재 운영 중인 프로그램과 학교 맞춤 커스텀 프로그램을 함께 제공합니다.</p>
+    <div class="prog-tabs">
+      <button class="prog-tab active">전체 보기</button>
+      <button class="prog-tab">현재 운영 중</button>
+      <button class="prog-tab">커스텀</button>
+    </div>
     <div class="prog-grid">
-      <div class="prog-card">
-        <div class="prog-tag">문화형 × 참여형</div>
-        <h3>EnterAIment Quest</h3>
-        <p class="sub">AI 엔터테인먼트 × 팀빌딩</p>
-        <ul class="prog-detail">
-          <li>초·중·고등학교 대상</li>
-          <li>최대 100명 (10명 × 10조)</li>
-          <li>2교시 약 100분 진행</li>
-          <li>VAT 포함 250만원</li>
-        </ul>
-        <div class="prog-highlight">🎵 팀별 AI 음원 + 학년 합동 앨범 Spotify 등록</div>
+
+      <!-- 프로그램 1 -->
+      <div class="prog-card" onclick="openProgModal('enterai')">
+        <div class="img-placeholder prog-img">
+          <span class="ph-icon">🖼️</span>
+          <span>프로그램 이미지</span>
+        </div>
+        <div class="prog-body">
+          <div class="prog-tag">문화형 × 참여형</div>
+          <h3>EnterAIment Quest</h3>
+          <p class="sub">AI 엔터테인먼트 × 팀빌딩 — 찾아가는 AI 리터러시</p>
+          <ul class="prog-detail">
+            <li>초·중·고등학교 / 최대 100명</li>
+            <li>2교시 약 100분 / 250만원(VAT포함)</li>
+          </ul>
+          <p class="prog-more">자세히 보기 →</p>
+        </div>
       </div>
-      <div class="prog-card">
-        <div class="prog-tag">화합형 × 참여형</div>
-        <h3>관계형성 · 학교폭력예방<br />팀빌딩</h3>
-        <p class="sub">함께 만드는 관계, 서로를 이해하는 경험</p>
-        <ul class="prog-detail">
-          <li>초·중·고등학교 대상</li>
-          <li>경쟁이 아닌 협력 중심 구성</li>
-          <li>학교폭력예방 정책 연계 가능</li>
-          <li>7차 청소년정책 기본계획 연계</li>
-        </ul>
-        <div class="prog-highlight">💬 일정·비용 문의 시 맞춤 안내</div>
+
+      <!-- 프로그램 2 -->
+      <div class="prog-card" onclick="openProgModal('relation')">
+        <div class="img-placeholder prog-img">
+          <span class="ph-icon">🖼️</span>
+          <span>프로그램 이미지</span>
+        </div>
+        <div class="prog-body">
+          <div class="prog-tag">화합형 × 참여형</div>
+          <h3>관계형성 · 학교폭력예방 팀빌딩</h3>
+          <p class="sub">함께 만드는 관계, 서로를 이해하는 경험</p>
+          <ul class="prog-detail">
+            <li>초·중·고등학교 대상</li>
+            <li>학교폭력예방 정책 연계 가능</li>
+          </ul>
+          <p class="prog-more">자세히 보기 →</p>
+        </div>
       </div>
-      <div class="prog-card">
-        <div class="prog-tag">참여형 × 문화형</div>
-        <h3>진로 레크리에이션 강연</h3>
-        <p class="sub">나를 알아가는 진로 탐색 경험</p>
-        <ul class="prog-detail">
-          <li>초·중·고등학교 대상</li>
-          <li>레크리에이션으로 적성 발견</li>
-          <li>단순 강의가 아닌 체험형 구조</li>
-          <li>'나다움' 탐구 중심 설계</li>
-        </ul>
-        <div class="prog-highlight">🔍 일정·비용 문의 시 맞춤 안내</div>
+
+      <!-- 프로그램 3 -->
+      <div class="prog-card" onclick="openProgModal('career')">
+        <div class="img-placeholder prog-img">
+          <span class="ph-icon">🖼️</span>
+          <span>프로그램 이미지</span>
+        </div>
+        <div class="prog-body">
+          <div class="prog-tag">참여형 × 문화형</div>
+          <h3>진로 레크리에이션 강연</h3>
+          <p class="sub">나를 알아가는 진로 탐색 경험</p>
+          <ul class="prog-detail">
+            <li>초·중·고등학교 대상</li>
+            <li>체험형 진로 탐색 구조</li>
+          </ul>
+          <p class="prog-more">자세히 보기 →</p>
+        </div>
       </div>
+
+      <!-- 커스텀 카드 -->
+      <div class="prog-card custom" onclick="openInquiry()">
+        <div class="prog-body">
+          <div class="prog-tag">커스텀</div>
+          <h3>우리 학교만의<br />맞춤 프로그램</h3>
+          <p class="sub">학교의 니즈에 맞는 새로운 교육 콘텐츠를 기획부터 컨설팅까지 함께 만들어갑니다.</p>
+          <div class="step-list">
+            <div class="step"><div class="snum">1</div> 학교 니즈 파악 · 목표 설정</div>
+            <div class="step"><div class="snum">2</div> 경험 콘텐츠 기획 · 설계</div>
+            <div class="step"><div class="snum">3</div> 프로그램 제작 · 운영 지원</div>
+            <div class="step"><div class="snum">4</div> 결과물 및 피드백 정리</div>
+          </div>
+          <button class="btn-custom">커스텀 문의하기 →</button>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -472,11 +695,11 @@
 <section class="lead">
   <div class="lead-inner">
     <div class="lead-badge">FREE DOWNLOAD</div>
-    <h2>생기부 문구 정리본 PDF<br />무료로 받아가세요 📄</h2>
-    <p>IDenTeach 교육 참여 후 생활기록부에 바로 쓸 수 있는<br />문구 예시집을 무료로 드립니다.</p>
+    <h2>교육 프로그램 제작 원리<br />제안서를 받아가세요 📄</h2>
+    <p>IDenTeach가 교육 환경 프로그램을 설계하는 원리와<br />경험 콘텐츠 제작 과정을 담은 제안서를 무료로 드립니다.</p>
     <div class="lead-form">
       <input type="tel" placeholder="연락처 입력 (010-0000-0000)" />
-      <button onclick="requestPDF()">무료 받기 →</button>
+      <button onclick="requestProposal()">무료 받기 →</button>
     </div>
     <p class="lead-note">* 입력하신 연락처로 카카오톡 또는 문자로 전달드립니다.</p>
   </div>
@@ -485,20 +708,19 @@
 <!-- PHILOSOPHY -->
 <section class="philosophy" id="philosophy">
   <div class="container">
-    <div class="phil-intro">
-      <div class="phil-intro-text">
-        <div class="sec-label">교육 철학</div>
-        <h2 class="sec-title">모든 교육은 경험이 되고,<br />경험은 나다움이 됩니다</h2>
-        <blockquote>
-          "가르치지 않고, 직접 경험하게 한다"
-        </blockquote>
-      </div>
-      <div>
-        <p style="font-size:16px; color:var(--gray); line-height:1.8; padding-top:48px;">
-          IDenTeach는 학생이 교육의 주인공이 되는 환경을 설계합니다.<br /><br />
-          단순히 활동을 제공하는 것이 아닌, 학생 스스로 '나는 무엇을 표현하고 싶은가'를 자연스럽게 발견하도록 돕습니다.
-        </p>
-      </div>
+    <div class="phil-hero">
+      <div class="ph-label">교육 철학</div>
+      <h2>이 모든 것은<br /><em>정체성 탐구</em>를 위함입니다</h2>
+      <p>
+        모든 교육은 경험이 되고, 경험은 나다움이 됩니다.<br />
+        IDenTeach의 모든 프로그램은 학생이 스스로<br />
+        '나는 무엇을 표현하고 싶은가'를 발견하도록 설계됩니다.
+      </p>
+    </div>
+    <!-- 이미지 자리 -->
+    <div class="img-placeholder" style="height:200px; margin-bottom:48px;">
+      <span class="ph-icon">🖼️</span>
+      <span>팀 / 교육 현장 이미지 (추후 추가)</span>
     </div>
     <div class="phil-grid">
       <div class="phil-card">
@@ -525,7 +747,7 @@
   <div class="container">
     <div class="contact-top">
       <h2>지금 바로 문의해 주세요</h2>
-      <p>억지로 앉아 듣는 수업이 아닌,<br />직접 만들고 경험하는 활동을 원한다면 편히 연락 주세요.</p>
+      <p>직접 만들고 경험하는 활동을 원한다면 편히 연락 주세요.</p>
     </div>
     <div class="contact-grid">
       <a href="tel:01040848962" class="contact-card">
@@ -562,19 +784,222 @@
 </footer>
 
 <!-- FLOATING CTA -->
-<a href="tel:01040848962" class="floating-cta">📞 교육 문의하기</a>
+<button class="floating-cta" onclick="openInquiry()">✉️ 교육 문의하기</button>
+
+
+<!-- ══ 교육 문의 모달 ══ -->
+<div class="modal-overlay" id="inquiryModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('inquiryModal')">✕</button>
+    <h2>교육 문의하기</h2>
+    <p class="modal-sub">아래 내용을 작성해 주시면 빠르게 연락드리겠습니다.<br />대표 진성재 · 010-4084-8962</p>
+    <form id="inquiryForm" onsubmit="submitInquiry(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label>학교 / 기관명 *</label>
+          <input type="text" name="school" placeholder="예) ○○중학교" required />
+        </div>
+        <div class="form-group">
+          <label>담당자 이름 *</label>
+          <input type="text" name="name" placeholder="홍길동" required />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>연락처 *</label>
+          <input type="tel" name="phone" placeholder="010-0000-0000" required />
+        </div>
+        <div class="form-group">
+          <label>학생 인원</label>
+          <input type="text" name="students" placeholder="예) 100명" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label>희망 프로그램</label>
+        <select name="program">
+          <option value="">선택해 주세요</option>
+          <option>EnterAIment Quest (AI 음원 × 팀빌딩)</option>
+          <option>관계형성 · 학교폭력예방 팀빌딩</option>
+          <option>진로 레크리에이션 강연</option>
+          <option>커스텀 프로그램 (맞춤 기획)</option>
+          <option>아직 미정 / 상담 원함</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>프로그램 목적</label>
+        <input type="text" name="purpose" placeholder="예) 신학기 팀빌딩, 학교폭력예방 주간 행사 등" />
+      </div>
+      <div class="form-group">
+        <label>고민이나 요청 사항</label>
+        <textarea name="message" placeholder="학교 상황이나 원하시는 내용을 자유롭게 적어주세요."></textarea>
+      </div>
+      <button type="submit" class="btn-submit">문의 이메일 보내기 →</button>
+    </form>
+  </div>
+</div>
+
+<!-- ══ 결과물 예시 모달 ══ -->
+<div class="modal-overlay" id="resultModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('resultModal')">✕</button>
+    <h2>🎵 결과물 예시</h2>
+    <p class="modal-sub">IDenTeach 프로그램을 통해 학생들이 직접 만든 결과물 예시입니다.</p>
+    <div class="img-placeholder" style="height:200px; border-radius:16px; margin-bottom:24px;">
+      <span class="ph-icon">🎵</span>
+      <span>AI 음원 앨범 커버 이미지 (추후 추가)</span>
+    </div>
+    <div style="background:var(--bg); border-radius:16px; padding:20px; margin-bottom:20px;">
+      <p style="font-size:12px; color:var(--gray); font-weight:700; margin-bottom:8px;">SPOTIFY · YOUTUBE MUSIC · APPLE MUSIC</p>
+      <p style="font-size:15px; font-weight:800; margin-bottom:4px;">○○중학교 2학년 합동 앨범</p>
+      <p style="font-size:13px; color:var(--gray);">10개 팀 × 각 1트랙 = 학년 전체 앨범 등록</p>
+    </div>
+    <p style="font-size:14px; color:var(--gray); line-height:1.7; margin-bottom:28px;">
+      실제 Spotify 링크는 준비 중입니다.<br />
+      문의 시 현재까지 제작된 샘플을 직접 들려드립니다.
+    </p>
+    <button class="btn-submit" onclick="closeModal('resultModal'); openInquiry()">결과물 샘플 받아보기 →</button>
+  </div>
+</div>
+
+<!-- ══ 프로그램 팝업들 ══ -->
+<div class="modal-overlay" id="progModal-enterai">
+  <div class="modal prog-modal">
+    <button class="modal-close" onclick="closeModal('progModal-enterai')">✕</button>
+    <div class="img-placeholder prog-modal-img">
+      <span class="ph-icon">🖼️</span><span>프로그램 이미지</span>
+    </div>
+    <div class="prog-modal-tag">문화형 × 참여형</div>
+    <h2>EnterAIment Quest</h2>
+    <p class="pm-sub">찾아가는 AI 리터러시 × 팀빌딩 — 게임이 곧 음악이 되는 수업</p>
+    <div class="pm-details">
+      <div class="pm-detail"><div class="dl">대상</div><div class="dv">초·중·고등학교</div></div>
+      <div class="pm-detail"><div class="dl">인원</div><div class="dv">최대 100명 (10명×10조)</div></div>
+      <div class="pm-detail"><div class="dl">시간</div><div class="dv">2교시 (약 100분)</div></div>
+      <div class="pm-detail"><div class="dl">비용</div><div class="dv">250만원 (VAT포함)</div></div>
+    </div>
+    <ul class="pm-features">
+      <li>팀빌딩 게임 결과가 AI 프롬프트로 연결</li>
+      <li>AI 저작권 안전 — ODO 플랫폼 기반 (그레이프스)</li>
+      <li>Spotify · YouTube Music 실제 등록</li>
+      <li>생활기록부 기재 가능한 실질적 결과물</li>
+    </ul>
+    <div class="pm-result">🎵 결과물: 팀별 AI 음원 + 학년 합동 앨범 스트리밍 플랫폼 등록</div>
+    <button class="btn-submit" onclick="closeModal('progModal-enterai'); openInquiry()">이 프로그램 문의하기 →</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="progModal-relation">
+  <div class="modal prog-modal">
+    <button class="modal-close" onclick="closeModal('progModal-relation')">✕</button>
+    <div class="img-placeholder prog-modal-img">
+      <span class="ph-icon">🖼️</span><span>프로그램 이미지</span>
+    </div>
+    <div class="prog-modal-tag">화합형 × 참여형</div>
+    <h2>관계형성 · 학교폭력예방 팀빌딩</h2>
+    <p class="pm-sub">함께 만드는 관계, 서로를 이해하는 경험</p>
+    <div class="pm-details">
+      <div class="pm-detail"><div class="dl">대상</div><div class="dv">초·중·고등학교</div></div>
+      <div class="pm-detail"><div class="dl">인원/시간/비용</div><div class="dv">문의 시 맞춤 안내</div></div>
+    </div>
+    <ul class="pm-features">
+      <li>경쟁이 아닌 협력 중심의 팀빌딩 구성</li>
+      <li>학생 간 심리적 안전감과 유대감 형성</li>
+      <li>학교폭력예방 정책 연계 가능</li>
+      <li>7차 청소년정책 기본계획 연계</li>
+    </ul>
+    <div class="pm-result">💬 프로그램 내용·비용은 학교 상황에 맞춰 제안드립니다</div>
+    <button class="btn-submit" onclick="closeModal('progModal-relation'); openInquiry()">이 프로그램 문의하기 →</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="progModal-career">
+  <div class="modal prog-modal">
+    <button class="modal-close" onclick="closeModal('progModal-career')">✕</button>
+    <div class="img-placeholder prog-modal-img">
+      <span class="ph-icon">🖼️</span><span>프로그램 이미지</span>
+    </div>
+    <div class="prog-modal-tag">참여형 × 문화형</div>
+    <h2>진로 레크리에이션 강연</h2>
+    <p class="pm-sub">나를 알아가는 진로 탐색 경험</p>
+    <div class="pm-details">
+      <div class="pm-detail"><div class="dl">대상</div><div class="dv">초·중·고등학교</div></div>
+      <div class="pm-detail"><div class="dl">인원/시간/비용</div><div class="dv">문의 시 맞춤 안내</div></div>
+    </div>
+    <ul class="pm-features">
+      <li>레크리에이션 활동으로 자연스럽게 적성 발견</li>
+      <li>단순 강의가 아닌 체험형 진로 탐색 구조</li>
+      <li>'나다움'을 찾는 IDenTeach 철학과 직결</li>
+      <li>진로 담당 교사와 협력 설계 가능</li>
+    </ul>
+    <div class="pm-result">🔍 프로그램 내용·비용은 학교 상황에 맞춰 제안드립니다</div>
+    <button class="btn-submit" onclick="closeModal('progModal-career'); openInquiry()">이 프로그램 문의하기 →</button>
+  </div>
+</div>
+
 
 <script>
-  function requestPDF() {
+  /* ── 모달 열기/닫기 ── */
+  function openModal(id) {
+    document.getElementById(id).classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(id) {
+    document.getElementById(id).classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function openInquiry() { openModal('inquiryModal'); }
+  function openResultModal() { openModal('resultModal'); }
+  function openProgModal(key) { openModal('progModal-' + key); }
+
+  // 오버레이 클릭 시 닫기
+  document.querySelectorAll('.modal-overlay').forEach(overlay => {
+    overlay.addEventListener('click', e => {
+      if (e.target === overlay) {
+        overlay.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    });
+  });
+
+  // ESC 키
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal-overlay.open').forEach(m => {
+        m.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    }
+  });
+
+  /* ── 문의 폼 제출 ── */
+  function submitInquiry(e) {
+    e.preventDefault();
+    const f = e.target;
+    const body = `안녕하세요, IDenTeach 교육 문의드립니다.
+
+■ 학교/기관명: ${f.school.value}
+■ 담당자: ${f.name.value}
+■ 연락처: ${f.phone.value}
+■ 학생 인원: ${f.students.value || '미정'}
+■ 희망 프로그램: ${f.program.value || '미정'}
+■ 프로그램 목적: ${f.purpose.value || '미기재'}
+■ 고민/요청사항:
+${f.message.value || '미기재'}`;
+
+    const mailtoLink = `mailto:ybtjdwo@naver.com?subject=[IDenTeach 교육문의] ${f.school.value} ${f.name.value}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoLink;
+  }
+
+  /* ── 제안서 신청 ── */
+  function requestProposal() {
     const input = document.querySelector('.lead-form input');
-    const phone = input.value.trim();
-    if (!phone) { alert('연락처를 입력해 주세요.'); return; }
-    alert('신청 완료! 빠른 시일 내에 PDF를 전달드리겠습니다 😊');
+    if (!input.value.trim()) { alert('연락처를 입력해 주세요.'); return; }
+    alert('신청 완료! 빠른 시일 내에 제안서를 전달드리겠습니다 😊');
     input.value = '';
   }
 
-  // 카드 등장 애니메이션
-  const observer = new IntersectionObserver((entries) => {
+  /* ── 등장 애니메이션 ── */
+  const observer = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) {
         e.target.style.opacity = '1';
@@ -583,7 +1008,7 @@
     });
   }, { threshold: 0.1 });
 
-  document.querySelectorAll('.pain-card, .prog-card, .phil-card, .diff-point, .contact-card').forEach(el => {
+  document.querySelectorAll('.need-card, .prog-card, .phil-card, .result-ex, .contact-card').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(20px)';
     el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
