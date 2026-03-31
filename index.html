@@ -3,462 +3,438 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>IDenTeach - 경험 교육 콘텐츠 제작소</title>
+  <title>IDenTeach - 경험하는 교육을 설계하여 나다움을 찾다</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --main: #691afa;
-      --sub: #c68dff;
-      --accent: #6a00ff;
-      --bg: #f3ecff;
-      --bg2: #ede4ff;
-      --white: #ffffff;
-      --text: #1a1a1a;
-      --gray: #6b7280;
+      --main: #691afa; --sub: #c68dff; --accent: #6a00ff;
+      --pink: #ff6b9d; --teal: #00d4aa; --yellow: #ffd93d;
+      --bg: #f3ecff; --bg2: #ede4ff; --white: #fff;
+      --text: #1a1a1a; --gray: #6b7280;
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Noto Sans KR', sans-serif; color: var(--text); background: var(--bg); }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { font-family:'Noto Sans KR',sans-serif; color:var(--text); background:var(--bg); overflow-x:hidden; }
 
     /* ── NAV ── */
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(243,236,255,0.88); backdrop-filter: blur(16px);
-      padding: 0 48px; height: 64px;
-      display: flex; justify-content: space-between; align-items: center;
-      border-bottom: 1px solid rgba(105,26,250,0.08);
+      position:fixed; top:0; left:0; right:0; z-index:100;
+      background:rgba(243,236,255,0.92); backdrop-filter:blur(16px);
+      padding:0 48px; height:64px;
+      display:flex; justify-content:space-between; align-items:center;
+      border-bottom:1px solid rgba(105,26,250,0.08);
     }
-    .logo img { height: 36px; display: block; }
-    .nav-links { display: flex; align-items: center; gap: 8px; }
+    .logo { display:flex; align-items:center; gap:10px; text-decoration:none; }
+    .logo img { height:36px; display:block; object-fit:contain; }
+    .logo-text { font-size:20px; font-weight:900; color:var(--main); }
+    .nav-links { display:flex; align-items:center; gap:4px; }
     .nav-links a {
-      text-decoration: none; color: var(--gray); font-size: 14px; font-weight: 500;
-      padding: 8px 14px; border-radius: 20px; transition: all 0.2s;
+      text-decoration:none; color:var(--gray); font-size:14px; font-weight:500;
+      padding:8px 14px; border-radius:20px; transition:all 0.2s;
     }
-    .nav-links a:hover { color: var(--main); background: rgba(105,26,250,0.06); }
+    .nav-links a:hover { color:var(--main); background:rgba(105,26,250,0.06); }
     .nav-cta {
-      background: var(--main) !important; color: #fff !important;
-      padding: 9px 22px !important; border-radius: 22px !important;
-      font-weight: 700 !important; box-shadow: 0 4px 16px rgba(105,26,250,0.3);
-      cursor: pointer;
+      background:var(--main) !important; color:#fff !important;
+      padding:9px 22px !important; border-radius:22px !important;
+      font-weight:700 !important; box-shadow:0 4px 16px rgba(105,26,250,0.3); cursor:pointer;
     }
-    .nav-cta:hover { background: var(--accent) !important; transform: translateY(-1px); }
+    .nav-cta:hover { background:var(--accent) !important; }
+
+    /* ── GEO SHAPES ── */
+    .geo { position:absolute; pointer-events:none; }
+    @keyframes floatA { 0%,100%{transform:translateY(0) rotate(0deg)} 50%{transform:translateY(-12px) rotate(5deg)} }
+    @keyframes floatB { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px) rotate(-4deg)} }
+    @keyframes floatC { 0%,100%{transform:translateY(0) scale(1)} 50%{transform:translateY(-16px) scale(1.05)} }
 
     /* ── HERO ── */
     .hero {
-      min-height: 100vh; display: flex; align-items: center; justify-content: center;
-      text-align: center; padding: 120px 40px 80px;
-      background: linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
-      position: relative; overflow: hidden;
+      min-height:100vh; display:flex; align-items:center; justify-content:center;
+      text-align:center; padding:120px 40px 80px;
+      position:relative; overflow:hidden;
+      background:linear-gradient(160deg,#f0e8ff 0%,#e0ccff 40%,#cdb0ff 100%);
     }
-    .hero-glow {
-      position: absolute; width: 700px; height: 700px;
-      background: radial-gradient(circle, rgba(105,26,250,0.12) 0%, transparent 65%);
-      top: 50%; left: 50%; transform: translate(-50%, -60%);
-      pointer-events: none;
+    .hero-blueprint {
+      position:absolute; inset:0; z-index:0;
+      background-image:
+        linear-gradient(rgba(105,26,250,0.06) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(105,26,250,0.06) 1px,transparent 1px);
+      background-size:56px 56px;
     }
-    .hero-inner { position: relative; z-index: 1; max-width: 800px; }
+    .hero-media { position:absolute; inset:0; z-index:1; opacity:0; transition:opacity 1.5s ease; }
+    .hero-media.loaded { opacity:0.15; }
+    .hero-media video, .hero-media img { width:100%; height:100%; object-fit:cover; }
+    .hero-overlay {
+      position:absolute; inset:0; z-index:2;
+      background:linear-gradient(160deg,rgba(240,232,255,0.6) 0%,rgba(205,176,255,0.4) 100%);
+    }
+    .hero-shapes { position:absolute; inset:0; z-index:3; }
+    .hero-inner { position:relative; z-index:4; max-width:780px; }
     .hero-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--white); border: 1px solid rgba(105,26,250,0.15);
-      color: var(--main); font-size: 13px; font-weight: 700;
-      padding: 7px 18px; border-radius: 24px; margin-bottom: 20px;
-      box-shadow: 0 2px 12px rgba(105,26,250,0.1);
-    }
-    .hero-sub-badge {
-      display: inline-block;
-      background: rgba(105,26,250,0.08); border: 1px solid rgba(105,26,250,0.12);
-      color: var(--main); font-size: 12px; font-weight: 700;
-      padding: 5px 16px; border-radius: 20px; margin-bottom: 28px; letter-spacing: 1px;
+      display:inline-flex; align-items:center; gap:8px;
+      background:var(--white); border:1px solid rgba(105,26,250,0.15);
+      color:var(--main); font-size:13px; font-weight:700;
+      padding:7px 20px; border-radius:24px; margin-bottom:32px;
+      box-shadow:0 2px 16px rgba(105,26,250,0.12);
     }
     .hero h1 {
-      font-size: clamp(36px, 6vw, 68px); font-weight: 900; line-height: 1.12;
-      letter-spacing: -1.5px; margin-bottom: 24px; color: var(--text);
+      font-size:clamp(32px,5.5vw,64px); font-weight:900; line-height:1.1;
+      letter-spacing:-2px; margin-bottom:28px; color:var(--text);
     }
-    .hero h1 span { color: var(--main); }
-    .hero p {
-      font-size: clamp(16px, 2vw, 19px); color: var(--gray);
-      line-height: 1.75; margin-bottom: 48px; max-width: 520px; margin-left: auto; margin-right: auto;
+    .hero h1 .hl { color:var(--main); }
+    .hero-desc {
+      font-size:clamp(15px,1.8vw,18px); color:#4a3a6b;
+      line-height:1.85; margin-bottom:48px; max-width:540px; margin-left:auto; margin-right:auto;
     }
-    .hero-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .hero-btns { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
     .btn-main {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--main); color: #fff;
-      padding: 16px 36px; border-radius: 50px; font-size: 16px; font-weight: 800;
-      text-decoration: none; transition: all 0.25s; cursor: pointer; border: none;
-      box-shadow: 0 8px 32px rgba(105,26,250,0.35);
+      display:inline-flex; align-items:center; gap:8px;
+      background:var(--main); color:#fff;
+      padding:16px 36px; border-radius:50px; font-size:16px; font-weight:800;
+      text-decoration:none; transition:all 0.25s; cursor:pointer; border:none;
+      box-shadow:0 8px 32px rgba(105,26,250,0.35); font-family:inherit;
     }
-    .btn-main:hover { background: var(--accent); transform: translateY(-3px); box-shadow: 0 14px 40px rgba(105,26,250,0.45); }
+    .btn-main:hover { background:var(--accent); transform:translateY(-3px); box-shadow:0 14px 40px rgba(105,26,250,0.45); }
     .btn-ghost {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--white); color: var(--main);
-      padding: 15px 32px; border-radius: 50px; font-size: 16px; font-weight: 700;
-      text-decoration: none; transition: all 0.25s;
-      box-shadow: 0 2px 16px rgba(105,26,250,0.1);
-      border: 1.5px solid rgba(105,26,250,0.15);
+      display:inline-flex; align-items:center; gap:8px;
+      background:var(--white); color:var(--main);
+      padding:15px 32px; border-radius:50px; font-size:16px; font-weight:700;
+      text-decoration:none; transition:all 0.25s;
+      box-shadow:0 2px 16px rgba(105,26,250,0.1); border:1.5px solid rgba(105,26,250,0.15);
     }
-    .btn-ghost:hover { border-color: var(--main); transform: translateY(-2px); }
-    .hero-cards {
-      display: flex; gap: 16px; justify-content: center; margin-top: 64px; flex-wrap: wrap;
-    }
-    .hero-card {
-      background: var(--white); border-radius: 20px; padding: 20px 24px;
-      box-shadow: 0 8px 32px rgba(105,26,250,0.1); min-width: 170px;
-      border: 1px solid rgba(105,26,250,0.06); text-align: left;
-      animation: float 4s ease-in-out infinite;
-    }
-    .hero-card:nth-child(2) { animation-delay: 1.3s; }
-    .hero-card:nth-child(3) { animation-delay: 2.6s; }
-    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
-    .hero-card .card-icon { font-size: 24px; margin-bottom: 10px; }
-    .hero-card .card-label { font-size: 11px; color: var(--gray); font-weight: 600; margin-bottom: 4px; text-transform: uppercase; }
-    .hero-card .card-val { font-size: 14px; font-weight: 800; color: var(--text); }
+    .btn-ghost:hover { border-color:var(--main); transform:translateY(-2px); }
 
-    /* ── 공통 ── */
-    section { padding: 100px 40px; }
-    .container { max-width: 1080px; margin: 0 auto; }
-    .sec-label { font-size: 12px; font-weight: 800; color: var(--main); letter-spacing: 2.5px; text-transform: uppercase; margin-bottom: 16px; }
-    .sec-title { font-size: clamp(26px, 4vw, 44px); font-weight: 900; letter-spacing: -0.5px; line-height: 1.25; margin-bottom: 16px; }
-    .sec-sub { font-size: 17px; color: var(--gray); line-height: 1.7; margin-bottom: 56px; }
-
-    /* ── 이미지 플레이스홀더 ── */
-    .img-placeholder {
-      background: linear-gradient(135deg, var(--bg2), #e0d0ff);
-      border-radius: 16px; display: flex; flex-direction: column;
-      align-items: center; justify-content: center; color: var(--main);
-      font-size: 13px; font-weight: 600; gap: 8px;
-      border: 2px dashed rgba(105,26,250,0.2);
+    /* ── COMMON ── */
+    section { padding:100px 40px; position:relative; overflow:hidden; }
+    .container { max-width:1080px; margin:0 auto; position:relative; z-index:1; }
+    .sec-label { font-size:12px; font-weight:800; color:var(--main); letter-spacing:2.5px; text-transform:uppercase; margin-bottom:16px; }
+    .sec-title { font-size:clamp(26px,4vw,44px); font-weight:900; letter-spacing:-0.5px; line-height:1.25; margin-bottom:16px; }
+    .sec-sub { font-size:17px; color:var(--gray); line-height:1.7; margin-bottom:56px; }
+    .img-ph {
+      background:linear-gradient(135deg,var(--bg2),#e0d0ff);
+      border-radius:16px; display:flex; flex-direction:column;
+      align-items:center; justify-content:center; color:var(--main);
+      font-size:13px; font-weight:600; gap:8px;
+      border:2px dashed rgba(105,26,250,0.2);
     }
-    .img-placeholder .ph-icon { font-size: 32px; opacity: 0.5; }
-    .img-placeholder span { opacity: 0.6; }
+    .img-ph .phi { font-size:32px; opacity:0.5; }
+    .img-ph span { opacity:0.6; }
 
-    /* ── NEED 섹션 ── */
-    .need { background: var(--white); }
-    .need-intro { text-align: center; margin-bottom: 56px; }
-    .need-intro .big-q {
-      font-size: clamp(22px, 3.5vw, 36px); font-weight: 900; line-height: 1.4;
-      margin-bottom: 16px;
+    /* ── NEED ── */
+    .need { background:var(--white); }
+    .need-intro { text-align:center; margin-bottom:44px; }
+    .big-q { font-size:clamp(22px,3.5vw,38px); font-weight:900; line-height:1.3; margin-bottom:14px; }
+    .big-q em { color:var(--main); font-style:normal; }
+    .need-sub-txt { font-size:17px; color:var(--gray); max-width:480px; margin:0 auto; line-height:1.7; }
+    /* Carousel */
+    .carousel { overflow:hidden; border-radius:20px; margin-bottom:52px; height:260px; position:relative; }
+    .c-track { display:flex; height:100%; transition:transform 0.6s ease; }
+    .c-slide { min-width:100%; height:100%; flex-shrink:0; }
+    .c-dots { position:absolute; bottom:12px; left:50%; transform:translateX(-50%); display:flex; gap:6px; }
+    .c-dot {
+      width:8px; height:8px; border-radius:50%; background:rgba(105,26,250,0.3);
+      cursor:pointer; transition:all 0.2s; border:none;
     }
-    .need-intro .big-q em { color: var(--main); font-style: normal; }
-    .need-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px; }
+    .c-dot.active { background:var(--main); width:20px; border-radius:4px; }
+    /* Need grid */
+    .need-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:20px; }
     .need-card {
-      background: var(--bg); border-radius: 20px; padding: 32px 28px;
-      border: 1px solid rgba(105,26,250,0.08);
-      transition: transform 0.25s, box-shadow 0.25s; text-align: center;
+      background:var(--bg); border-radius:20px; padding:32px 28px;
+      border:1px solid rgba(105,26,250,0.08);
+      transition:transform 0.25s,box-shadow 0.25s; position:relative; overflow:hidden;
     }
-    .need-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(105,26,250,0.1); }
-    .need-card .n-icon { font-size: 36px; margin-bottom: 14px; }
-    .need-card h3 { font-size: 16px; font-weight: 800; margin-bottom: 8px; color: var(--main); }
-    .need-card p { font-size: 13px; color: var(--gray); line-height: 1.65; }
+    .need-card:hover { transform:translateY(-4px); box-shadow:0 12px 40px rgba(105,26,250,0.1); }
+    .need-card .ni { font-size:36px; margin-bottom:14px; }
+    .need-card h3 { font-size:17px; font-weight:800; margin-bottom:8px; color:var(--main); }
+    .need-card p { font-size:14px; color:var(--gray); line-height:1.65; position:relative; z-index:1; }
+    /* Diff hover */
+    .need-card.diff { cursor:pointer; }
+    .diff-hover {
+      position:absolute; inset:0; border-radius:20px;
+      opacity:0; transition:opacity 0.3s; z-index:2;
+      display:flex; align-items:flex-end;
+      background:linear-gradient(135deg,rgba(105,26,250,0.93),rgba(106,0,255,0.88));
+    }
+    .diff-hover-bg {
+      position:absolute; inset:0; border-radius:20px;
+      background:url('activity-diff.jpg') center/cover;
+      mix-blend-mode:overlay; opacity:0.3;
+    }
+    .diff-hover-content { padding:26px; color:#fff; position:relative; z-index:1; }
+    .diff-hover-content h4 { font-size:16px; font-weight:800; margin-bottom:10px; }
+    .diff-hover-content ul { list-style:none; display:flex; flex-direction:column; gap:7px; }
+    .diff-hover-content li { font-size:13px; color:rgba(255,255,255,0.88); display:flex; align-items:center; gap:8px; }
+    .diff-hover-content li::before { content:'✓'; font-weight:900; }
+    .need-card.diff:hover .diff-hover { opacity:1; }
 
-    /* ── RESULT 섹션 ── */
-    .result { background: var(--bg); }
-    .result-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
-    .result-left .sec-sub { margin-bottom: 32px; }
-    .result-examples { display: flex; flex-direction: column; gap: 16px; }
+    /* ── RESULT ── */
+    .result { background:var(--bg); }
+    .result-wrap { display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center; }
+    .result-left .sec-title { text-align:left; }
+    .result-left .sec-sub { text-align:left; margin-bottom:32px; }
+    .result-examples { display:flex; flex-direction:column; gap:14px; }
     .result-ex {
-      background: var(--white); border-radius: 16px; padding: 20px 24px;
-      display: flex; align-items: center; gap: 16px;
-      border: 1px solid rgba(105,26,250,0.08);
-      box-shadow: 0 4px 16px rgba(105,26,250,0.06);
+      background:var(--white); border-radius:14px; padding:16px 20px;
+      display:flex; align-items:center; gap:14px;
+      border:1px solid rgba(105,26,250,0.08); box-shadow:0 4px 14px rgba(105,26,250,0.06);
     }
-    .result-ex .ex-icon { font-size: 28px; flex-shrink: 0; }
-    .result-ex h4 { font-size: 14px; font-weight: 800; margin-bottom: 4px; }
-    .result-ex p { font-size: 13px; color: var(--gray); }
-    .result-ex .ex-tag {
-      margin-left: auto; flex-shrink: 0;
-      background: rgba(105,26,250,0.08); color: var(--main);
-      font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 8px;
+    .result-ex .ei { font-size:26px; flex-shrink:0; }
+    .result-ex h4 { font-size:14px; font-weight:800; margin-bottom:3px; }
+    .result-ex p { font-size:13px; color:var(--gray); }
+    .result-ex .etag {
+      margin-left:auto; flex-shrink:0;
+      background:rgba(105,26,250,0.08); color:var(--main);
+      font-size:11px; font-weight:700; padding:4px 10px; border-radius:8px;
     }
     .result-visual {
-      background: linear-gradient(135deg, #1a0040, #3d00a0);
-      border-radius: 28px; padding: 0; overflow: hidden;
-      box-shadow: 0 24px 64px rgba(105,26,250,0.3); position: relative;
+      background:linear-gradient(135deg,#1a0040,#3d00a0);
+      border-radius:28px; overflow:hidden;
+      box-shadow:0 24px 64px rgba(105,26,250,0.3); position:relative;
     }
-    .result-img-placeholder { height: 400px; }
-    .result-visual-overlay {
-      position: absolute; bottom: 0; left: 0; right: 0;
-      background: linear-gradient(to top, rgba(10,0,30,0.95) 0%, transparent 100%);
-      padding: 32px 28px;
+    .result-img { height:400px; }
+    .result-overlay {
+      position:absolute; bottom:0; left:0; right:0;
+      background:linear-gradient(to top,rgba(10,0,30,0.95) 0%,transparent 100%);
+      padding:28px;
     }
-    .result-visual-overlay p { color: rgba(255,255,255,0.7); font-size: 13px; margin-bottom: 12px; }
-    .result-visual-overlay h3 { color: #fff; font-size: 17px; font-weight: 800; margin-bottom: 16px; }
-    .platform-badges { display: flex; gap: 8px; flex-wrap: wrap; }
-    .badge {
-      background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.18);
-      color: #fff; font-size: 11px; font-weight: 600; padding: 5px 12px; border-radius: 16px;
-    }
+    .result-overlay p { color:rgba(255,255,255,0.6); font-size:13px; margin-bottom:7px; }
+    .result-overlay h3 { color:#fff; font-size:16px; font-weight:800; margin-bottom:12px; }
+    .plat-badges { display:flex; gap:7px; flex-wrap:wrap; }
+    .pbadge { background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.18); color:#fff; font-size:11px; font-weight:600; padding:5px 11px; border-radius:14px; }
     .result-cta {
-      margin-top: 40px; display: inline-flex; align-items: center; gap: 8px;
-      background: var(--white); color: var(--main);
-      padding: 14px 28px; border-radius: 50px; font-size: 15px; font-weight: 700;
-      border: 1.5px solid rgba(105,26,250,0.2); cursor: pointer; transition: all 0.2s;
-      text-decoration: none;
+      margin-top:32px; display:inline-flex; align-items:center; gap:8px;
+      background:var(--white); color:var(--main);
+      padding:13px 24px; border-radius:50px; font-size:14px; font-weight:700;
+      border:1.5px solid rgba(105,26,250,0.2); cursor:pointer; transition:all 0.2s; text-decoration:none;
     }
-    .result-cta:hover { border-color: var(--main); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(105,26,250,0.15); }
+    .result-cta:hover { border-color:var(--main); transform:translateY(-2px); box-shadow:0 8px 24px rgba(105,26,250,0.15); }
 
     /* ── PROGRAMS ── */
-    .programs { background: var(--white); }
-    .prog-tabs { display: flex; gap: 12px; margin-bottom: 48px; flex-wrap: wrap; }
+    .programs { background:var(--white); }
+    .prog-tabs {
+      display:flex; gap:0; margin-bottom:48px;
+      border-bottom:2px solid rgba(105,26,250,0.1);
+    }
     .prog-tab {
-      padding: 10px 24px; border-radius: 24px; font-size: 14px; font-weight: 700;
-      cursor: pointer; transition: all 0.2s; border: 1.5px solid rgba(105,26,250,0.15);
-      background: transparent; color: var(--gray);
+      padding:12px 28px; font-size:14px; font-weight:700;
+      cursor:pointer; transition:all 0.2s; background:transparent;
+      color:var(--gray); font-family:inherit; border:none;
+      border-bottom:2px solid transparent; margin-bottom:-2px;
     }
-    .prog-tab.active { background: var(--main); color: #fff; border-color: var(--main); box-shadow: 0 4px 16px rgba(105,26,250,0.3); }
-    .prog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+    .prog-tab.active { color:var(--main); border-bottom-color:var(--main); }
+    .prog-tab:hover:not(.active) { color:var(--text); background:rgba(105,26,250,0.03); }
+    .prog-section { display:none; }
+    .prog-section.active { display:block; }
+    .prog-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:24px; }
     .prog-card {
-      background: var(--bg); border-radius: 24px; overflow: hidden;
-      border: 1px solid rgba(105,26,250,0.08);
-      transition: transform 0.25s, box-shadow 0.25s; cursor: pointer; position: relative;
+      background:var(--bg); border-radius:24px; overflow:hidden;
+      border:1px solid rgba(105,26,250,0.08);
+      transition:transform 0.25s,box-shadow 0.25s; cursor:pointer; position:relative;
     }
-    .prog-card::after {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-      background: linear-gradient(90deg, var(--main), var(--sub));
-    }
-    .prog-card:hover { transform: translateY(-6px); box-shadow: 0 20px 56px rgba(105,26,250,0.12); }
-    .prog-img { height: 200px; }
-    .prog-body { padding: 28px; }
+    .prog-card::after { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--main),var(--sub)); }
+    .prog-card:hover { transform:translateY(-6px); box-shadow:0 20px 56px rgba(105,26,250,0.12); }
+    .prog-img { height:180px; }
+    .prog-body { padding:22px; }
     .prog-tag {
-      font-size: 11px; font-weight: 800; color: var(--main); background: var(--white);
-      padding: 5px 12px; border-radius: 10px; display: inline-block; margin-bottom: 14px;
-      border: 1px solid rgba(105,26,250,0.15);
+      font-size:11px; font-weight:800; color:var(--main); background:var(--white);
+      padding:4px 11px; border-radius:8px; display:inline-block; margin-bottom:11px;
+      border:1px solid rgba(105,26,250,0.15);
     }
-    .prog-card h3 { font-size: 18px; font-weight: 900; margin-bottom: 8px; line-height: 1.35; }
-    .prog-card .sub { font-size: 13px; color: var(--gray); margin-bottom: 18px; line-height: 1.5; }
-    .prog-detail { display: flex; flex-direction: column; gap: 8px; }
-    .prog-detail li {
-      list-style: none; font-size: 13px; color: #444;
-      display: flex; align-items: center; gap: 10px;
+    .prog-card h3 { font-size:16px; font-weight:900; margin-bottom:7px; line-height:1.35; }
+    .prog-card .psub { font-size:13px; color:var(--gray); margin-bottom:14px; line-height:1.5; }
+    .prog-meta { display:flex; gap:7px; flex-wrap:wrap; margin-bottom:12px; }
+    .prog-meta span {
+      font-size:12px; font-weight:600; color:#555;
+      background:var(--white); border:1px solid rgba(105,26,250,0.1); padding:3px 9px; border-radius:7px;
     }
-    .prog-detail li::before {
-      content: '✓'; color: var(--main); font-weight: 900; font-size: 11px;
-      background: rgba(105,26,250,0.1); min-width: 20px; height: 20px;
-      border-radius: 6px; display: flex; align-items: center; justify-content: center;
-    }
-    .prog-more {
-      margin-top: 18px; font-size: 13px; color: var(--main); font-weight: 700;
-      display: flex; align-items: center; gap: 4px;
-    }
-
-    /* 커스텀 카드 */
-    .prog-card.custom {
-      background: linear-gradient(135deg, #1a0040, #3d00a0);
-      border: none; color: #fff;
-    }
-    .prog-card.custom::after { display: none; }
-    .prog-card.custom .prog-body { padding: 40px 32px; }
-    .prog-card.custom .prog-tag { background: rgba(255,255,255,0.15); color: #fff; border-color: rgba(255,255,255,0.2); }
-    .prog-card.custom h3 { color: #fff; font-size: 20px; }
-    .prog-card.custom .sub { color: rgba(255,255,255,0.65); }
-    .prog-card.custom .step-list { display: flex; flex-direction: column; gap: 12px; margin: 20px 0; }
-    .prog-card.custom .step {
-      display: flex; align-items: center; gap: 12px;
-      font-size: 13px; color: rgba(255,255,255,0.85);
-    }
-    .prog-card.custom .step .snum {
-      min-width: 26px; height: 26px; background: rgba(255,255,255,0.15);
-      border-radius: 8px; display: flex; align-items: center; justify-content: center;
-      font-size: 12px; font-weight: 800; color: var(--sub);
-    }
+    .prog-more { font-size:13px; color:var(--main); font-weight:700; display:flex; align-items:center; gap:4px; }
+    /* Custom card */
+    .prog-card.custom { background:linear-gradient(135deg,#1a0040,#3d00a0); border:none; }
+    .prog-card.custom::after { display:none; }
+    .prog-card.custom .prog-body { padding:36px 28px; }
+    .prog-card.custom .prog-tag { background:rgba(255,255,255,0.15); color:#fff; border-color:rgba(255,255,255,0.2); }
+    .prog-card.custom h3 { color:#fff; font-size:18px; }
+    .prog-card.custom .psub { color:rgba(255,255,255,0.6); }
+    .step-list { display:flex; flex-direction:column; gap:10px; margin:16px 0; }
+    .step { display:flex; align-items:center; gap:10px; font-size:13px; color:rgba(255,255,255,0.85); }
+    .snum { min-width:24px; height:24px; background:rgba(255,255,255,0.15); border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; color:var(--sub); }
     .btn-custom {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--sub); color: var(--text);
-      padding: 12px 24px; border-radius: 50px; font-size: 14px; font-weight: 800;
-      border: none; cursor: pointer; transition: all 0.2s; margin-top: 24px;
+      display:inline-flex; align-items:center; gap:8px;
+      background:var(--sub); color:var(--text);
+      padding:11px 22px; border-radius:50px; font-size:14px; font-weight:800;
+      border:none; cursor:pointer; transition:all 0.2s; margin-top:18px; font-family:inherit;
     }
-    .btn-custom:hover { background: #fff; transform: translateY(-2px); }
-
-    /* ── LEAD ── */
-    .lead {
-      background: linear-gradient(135deg, var(--main) 0%, var(--accent) 100%);
-      text-align: center; padding: 100px 40px;
-    }
-    .lead-inner { max-width: 600px; margin: 0 auto; }
-    .lead-badge {
-      display: inline-block; background: rgba(255,255,255,0.2);
-      color: #fff; font-size: 12px; font-weight: 700; padding: 6px 16px;
-      border-radius: 20px; margin-bottom: 24px; letter-spacing: 1px;
-    }
-    .lead h2 { font-size: clamp(24px, 4vw, 40px); font-weight: 900; color: #fff; margin-bottom: 16px; line-height: 1.35; }
-    .lead p { font-size: 16px; color: rgba(255,255,255,0.8); margin-bottom: 44px; line-height: 1.7; }
-    .lead-form {
-      background: rgba(255,255,255,0.15); backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.25); border-radius: 60px;
-      display: flex; padding: 6px 6px 6px 24px; gap: 8px; max-width: 460px; margin: 0 auto;
-    }
-    .lead-form input {
-      flex: 1; background: transparent; border: none; color: #fff;
-      font-size: 15px; outline: none; min-width: 0;
-    }
-    .lead-form input::placeholder { color: rgba(255,255,255,0.55); }
-    .lead-form button {
-      background: #fff; color: var(--main); padding: 12px 24px; border: none;
-      border-radius: 50px; font-size: 14px; font-weight: 800; cursor: pointer;
-      transition: all 0.2s; white-space: nowrap;
-    }
-    .lead-form button:hover { background: var(--sub); color: #fff; }
-    .lead-note { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 16px; }
+    .btn-custom:hover { background:#fff; transform:translateY(-2px); }
 
     /* ── PHILOSOPHY ── */
-    .philosophy { background: var(--bg); }
-    .phil-hero {
-      background: linear-gradient(135deg, #0d001f, #2a0070);
-      border-radius: 28px; padding: 64px 56px; color: #fff;
-      text-align: center; margin-bottom: 56px; position: relative; overflow: hidden;
+    .philosophy { padding:0; position:relative; min-height:700px; }
+    .phil-media { position:absolute; inset:0; z-index:0; background:linear-gradient(135deg,#0d001f,#2a0070); }
+    .phil-media img, .phil-media video { width:100%; height:100%; object-fit:cover; opacity:0.2; }
+    .phil-overlay { position:absolute; inset:0; z-index:1; background:rgba(10,0,28,0.78); }
+    .phil-inner { position:relative; z-index:2; padding:100px 40px; max-width:1080px; margin:0 auto; }
+    .phil-top { text-align:center; margin-bottom:60px; }
+    .phil-top .sec-label { color:var(--sub); }
+    .phil-top .sec-title { color:#fff; }
+    .phil-top .sec-title em { color:var(--sub); font-style:normal; }
+    .phil-top p { color:rgba(255,255,255,0.55); font-size:16px; line-height:1.85; max-width:540px; margin:0 auto; }
+    .phil-shapes { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-bottom:48px; }
+    .phil-shape {
+      position:relative; text-align:center; padding:44px 24px 36px;
+      border-radius:28px; overflow:hidden;
+      background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1);
+      backdrop-filter:blur(8px);
     }
-    .phil-hero::before {
-      content: ''; position: absolute;
-      width: 400px; height: 400px;
-      background: radial-gradient(circle, rgba(198,141,255,0.15) 0%, transparent 70%);
-      top: -100px; right: -100px; border-radius: 50%;
+    .phil-shape-bg {
+      position:absolute; inset:0; border-radius:28px;
+      opacity:0.12; background-size:cover;
     }
-    .phil-hero .ph-label {
-      font-size: 12px; font-weight: 800; color: var(--sub);
-      letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px;
+    .phil-shape:nth-child(1) .phil-shape-bg { background:radial-gradient(circle at 30% 30%,var(--main),transparent 70%); }
+    .phil-shape:nth-child(2) .phil-shape-bg { background:radial-gradient(circle at 70% 30%,var(--pink),transparent 70%); }
+    .phil-shape:nth-child(3) .phil-shape-bg { background:radial-gradient(circle at 50% 70%,var(--teal),transparent 70%); }
+    .phil-icon-wrap { margin:0 auto 18px; }
+    .phil-shape h3 { font-size:18px; font-weight:800; color:#fff; margin-bottom:10px; position:relative; z-index:1; }
+    .phil-shape p { font-size:14px; color:rgba(255,255,255,0.62); line-height:1.7; position:relative; z-index:1; }
+    .phil-final {
+      text-align:center; padding:44px 32px;
+      background:rgba(255,255,255,0.05); border:1px solid rgba(105,26,250,0.3);
+      border-radius:24px; backdrop-filter:blur(8px);
     }
-    .phil-hero h2 { font-size: clamp(24px, 4vw, 42px); font-weight: 900; line-height: 1.35; margin-bottom: 20px; }
-    .phil-hero h2 em { color: var(--sub); font-style: normal; }
-    .phil-hero p { font-size: 16px; color: rgba(255,255,255,0.65); line-height: 1.8; max-width: 580px; margin: 0 auto; }
-    .phil-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .phil-card {
-      background: var(--white); border-radius: 20px; padding: 36px 28px;
-      box-shadow: 0 4px 24px rgba(105,26,250,0.07); text-align: center;
-      border: 1px solid rgba(105,26,250,0.06);
-    }
-    .phil-num {
-      width: 52px; height: 52px;
-      background: linear-gradient(135deg, var(--main), var(--sub));
-      border-radius: 16px; display: flex; align-items: center; justify-content: center;
-      font-size: 20px; font-weight: 900; color: #fff; margin: 0 auto 20px;
-    }
-    .phil-card h3 { font-size: 17px; font-weight: 800; margin-bottom: 10px; }
-    .phil-card p { font-size: 14px; color: var(--gray); line-height: 1.7; }
+    .phil-final p { font-size:14px; color:rgba(255,255,255,0.45); margin-bottom:14px; letter-spacing:1px; text-transform:uppercase; font-weight:700; }
+    .phil-final h3 { font-size:clamp(18px,2.5vw,26px); font-weight:900; color:#fff; line-height:1.5; }
+    .phil-final h3 em { color:var(--sub); font-style:normal; }
 
     /* ── CONTACT ── */
-    .contact { background: #0d001f; color: #fff; }
-    .contact-top { text-align: center; margin-bottom: 56px; }
-    .contact-top h2 { font-size: clamp(26px, 4vw, 44px); font-weight: 900; margin-bottom: 16px; }
-    .contact-top p { font-size: 17px; color: rgba(255,255,255,0.5); line-height: 1.7; max-width: 440px; margin: 0 auto; }
-    .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; margin-bottom: 48px; }
+    .contact { background:#0d001f; color:#fff; }
+    .contact-top { text-align:center; margin-bottom:52px; }
+    .contact-top h2 { font-size:clamp(26px,4vw,44px); font-weight:900; margin-bottom:14px; }
+    .contact-top p { font-size:17px; color:rgba(255,255,255,0.48); line-height:1.7; max-width:420px; margin:0 auto; }
+    .contact-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; margin-bottom:28px; }
     .contact-card {
-      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 20px; padding: 28px 24px; text-decoration: none; color: #fff;
-      transition: all 0.25s; display: block;
+      background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08);
+      border-radius:20px; padding:26px 22px; text-decoration:none; color:#fff;
+      transition:all 0.25s; display:block;
     }
-    .contact-card:hover { background: rgba(105,26,250,0.2); border-color: rgba(105,26,250,0.4); transform: translateY(-4px); }
-    .contact-card .icon { font-size: 26px; margin-bottom: 14px; }
-    .contact-card .clabel { font-size: 11px; color: rgba(255,255,255,0.4); margin-bottom: 6px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
-    .contact-card .cval { font-size: 14px; font-weight: 700; }
-    .contact-bottom { text-align: center; color: rgba(255,255,255,0.3); font-size: 13px; line-height: 1.8; }
+    .contact-card:hover { background:rgba(105,26,250,0.2); border-color:rgba(105,26,250,0.4); transform:translateY(-4px); }
+    .contact-card .icon { font-size:24px; margin-bottom:12px; }
+    .contact-card .clabel { font-size:11px; color:rgba(255,255,255,0.38); margin-bottom:5px; font-weight:700; letter-spacing:1px; text-transform:uppercase; }
+    .contact-card .cval { font-size:14px; font-weight:700; }
+    /* Proposal banner */
+    .proposal-banner {
+      background:rgba(105,26,250,0.15); border:1px solid rgba(105,26,250,0.3);
+      border-radius:20px; padding:26px 30px; margin-bottom:36px;
+      display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap;
+    }
+    .pb-text h3 { font-size:17px; font-weight:800; margin-bottom:5px; }
+    .pb-text p { font-size:13px; color:rgba(255,255,255,0.52); }
+    .btn-proposal {
+      display:inline-flex; align-items:center; gap:8px;
+      background:var(--sub); color:var(--text); padding:12px 24px;
+      border-radius:50px; font-size:14px; font-weight:800;
+      border:none; cursor:pointer; transition:all 0.2s; white-space:nowrap; font-family:inherit;
+    }
+    .btn-proposal:hover { background:var(--main); color:#fff; transform:translateY(-2px); }
+    .contact-bottom { text-align:center; color:rgba(255,255,255,0.28); font-size:13px; line-height:1.9; }
 
     /* ── FOOTER ── */
     footer {
-      background: #07000f; color: rgba(255,255,255,0.25);
-      padding: 28px 40px; text-align: center; font-size: 13px;
-      border-top: 1px solid rgba(255,255,255,0.05);
+      background:#07000f; color:rgba(255,255,255,0.22);
+      padding:26px 40px; text-align:center; font-size:13px;
+      border-top:1px solid rgba(255,255,255,0.05);
     }
 
-    /* ── FLOATING CTA ── */
+    /* ── FLOAT CTA ── */
     .floating-cta {
-      position: fixed; bottom: 28px; right: 28px; z-index: 200;
-      background: var(--main); color: #fff; padding: 14px 26px;
-      border-radius: 50px; font-size: 15px; font-weight: 800;
-      text-decoration: none; box-shadow: 0 8px 32px rgba(105,26,250,0.45);
-      transition: all 0.25s; display: flex; align-items: center; gap: 8px;
-      cursor: pointer; border: none;
+      position:fixed; bottom:28px; right:28px; z-index:200;
+      background:var(--main); color:#fff; padding:14px 26px;
+      border-radius:50px; font-size:15px; font-weight:800;
+      box-shadow:0 8px 32px rgba(105,26,250,0.45);
+      transition:all 0.25s; display:flex; align-items:center; gap:8px;
+      cursor:pointer; border:none; font-family:inherit;
     }
-    .floating-cta:hover { background: var(--accent); transform: translateY(-3px); }
+    .floating-cta:hover { background:var(--accent); transform:translateY(-3px); }
 
-    /* ══════════════════════════
-       MODAL 공통
-    ══════════════════════════ */
+    /* ══ MODAL ══ */
     .modal-overlay {
-      display: none; position: fixed; inset: 0; z-index: 500;
-      background: rgba(10,0,20,0.7); backdrop-filter: blur(6px);
-      align-items: center; justify-content: center; padding: 20px;
+      display:none; position:fixed; inset:0; z-index:500;
+      background:rgba(10,0,20,0.72); backdrop-filter:blur(8px);
+      align-items:center; justify-content:center; padding:20px;
     }
-    .modal-overlay.open { display: flex; }
+    .modal-overlay.open { display:flex; }
     .modal {
-      background: var(--white); border-radius: 28px; padding: 48px;
-      width: 100%; max-width: 560px; max-height: 90vh; overflow-y: auto;
-      position: relative; animation: modalIn 0.3s ease;
+      background:var(--white); border-radius:28px; padding:44px;
+      width:100%; max-width:540px; max-height:90vh; overflow-y:auto;
+      position:relative; animation:modalIn 0.3s ease;
     }
     @keyframes modalIn { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
     .modal-close {
-      position: absolute; top: 20px; right: 20px;
-      width: 36px; height: 36px; border-radius: 50%; border: none;
-      background: var(--bg); color: var(--gray); font-size: 18px;
-      cursor: pointer; display: flex; align-items: center; justify-content: center;
-      transition: all 0.2s;
+      position:absolute; top:18px; right:18px; width:34px; height:34px;
+      border-radius:50%; border:none; background:var(--bg); color:var(--gray);
+      font-size:17px; cursor:pointer; display:flex; align-items:center; justify-content:center;
+      transition:all 0.2s; font-family:inherit;
     }
-    .modal-close:hover { background: var(--bg2); color: var(--text); }
-    .modal h2 { font-size: 22px; font-weight: 900; margin-bottom: 8px; }
-    .modal .modal-sub { font-size: 14px; color: var(--gray); margin-bottom: 32px; line-height: 1.6; }
-
-    /* 문의 폼 */
-    .form-group { margin-bottom: 18px; }
-    .form-group label { font-size: 13px; font-weight: 700; color: var(--text); display: block; margin-bottom: 7px; }
-    .form-group input, .form-group select, .form-group textarea {
-      width: 100%; padding: 12px 16px; border: 1.5px solid rgba(105,26,250,0.15);
-      border-radius: 12px; font-size: 14px; font-family: inherit;
-      background: var(--bg); color: var(--text); outline: none;
-      transition: border-color 0.2s;
+    .modal-close:hover { background:var(--bg2); }
+    .modal h2 { font-size:21px; font-weight:900; margin-bottom:8px; }
+    .modal-sub { font-size:14px; color:var(--gray); margin-bottom:28px; line-height:1.6; }
+    .fg { margin-bottom:15px; }
+    .fg label { font-size:13px; font-weight:700; display:block; margin-bottom:6px; }
+    .fg input, .fg select, .fg textarea {
+      width:100%; padding:11px 15px; border:1.5px solid rgba(105,26,250,0.15);
+      border-radius:11px; font-size:14px; font-family:inherit;
+      background:var(--bg); color:var(--text); outline:none; transition:border-color 0.2s;
     }
-    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-      border-color: var(--main); background: #fff;
-    }
-    .form-group textarea { resize: vertical; min-height: 90px; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .fg input:focus, .fg select:focus, .fg textarea:focus { border-color:var(--main); background:#fff; }
+    .fg textarea { resize:vertical; min-height:76px; }
+    .fg-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
     .btn-submit {
-      width: 100%; background: var(--main); color: #fff; border: none;
-      padding: 16px; border-radius: 50px; font-size: 16px; font-weight: 800;
-      cursor: pointer; transition: all 0.2s; margin-top: 8px;
+      width:100%; background:var(--main); color:#fff; border:none;
+      padding:15px; border-radius:50px; font-size:15px; font-weight:800;
+      cursor:pointer; transition:all 0.2s; margin-top:8px; font-family:inherit;
     }
-    .btn-submit:hover { background: var(--accent); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(105,26,250,0.35); }
-
-    /* 프로그램 팝업 */
-    .prog-modal .prog-modal-img { height: 200px; border-radius: 16px; margin-bottom: 24px; }
-    .prog-modal .prog-modal-tag {
-      font-size: 11px; font-weight: 800; color: var(--main); background: rgba(105,26,250,0.08);
-      padding: 5px 12px; border-radius: 10px; display: inline-block; margin-bottom: 14px;
+    .btn-submit:hover { background:var(--accent); transform:translateY(-2px); box-shadow:0 8px 28px rgba(105,26,250,0.35); }
+    /* Prog modal */
+    .pm-img { height:170px; border-radius:14px; margin-bottom:18px; }
+    .pm-tag { font-size:11px; font-weight:800; color:var(--main); background:rgba(105,26,250,0.08); padding:4px 11px; border-radius:8px; display:inline-block; margin-bottom:11px; }
+    .pm-details { display:grid; grid-template-columns:1fr 1fr; gap:9px; margin-bottom:18px; }
+    .pm-detail { background:var(--bg); border-radius:11px; padding:11px 14px; }
+    .pm-detail .dl { font-size:11px; color:var(--gray); font-weight:600; margin-bottom:3px; }
+    .pm-detail .dv { font-size:14px; font-weight:700; }
+    .pm-features { display:flex; flex-direction:column; gap:8px; margin-bottom:18px; list-style:none; }
+    .pm-features li { font-size:14px; color:#444; display:flex; align-items:center; gap:10px; }
+    .pm-features li::before { content:'✓'; color:var(--main); font-weight:900; font-size:11px; background:rgba(105,26,250,0.1); min-width:21px; height:21px; border-radius:6px; display:flex; align-items:center; justify-content:center; }
+    .pm-result { background:rgba(105,26,250,0.08); border:1px solid rgba(105,26,250,0.12); border-radius:13px; padding:13px 16px; margin-bottom:22px; font-size:14px; font-weight:700; color:var(--main); }
+    /* Proposal modal */
+    .prop-msg {
+      background:var(--bg); border-radius:13px; padding:16px; margin:14px 0;
+      font-size:13px; color:#333; line-height:1.7; white-space:pre-wrap;
+      border:1px solid rgba(105,26,250,0.1); max-height:180px; overflow-y:auto;
     }
-    .prog-modal h2 { font-size: 22px; font-weight: 900; margin-bottom: 10px; }
-    .prog-modal .pm-sub { font-size: 14px; color: var(--gray); margin-bottom: 24px; }
-    .prog-modal .pm-details { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
-    .prog-modal .pm-detail {
-      background: var(--bg); border-radius: 12px; padding: 14px 16px;
+    .kakao-btn {
+      display:flex; align-items:center; justify-content:center; gap:8px;
+      background:#FEE500; color:#3C1E1E; border:none;
+      padding:13px; border-radius:13px; font-size:15px; font-weight:800;
+      cursor:pointer; width:100%; margin-bottom:9px; font-family:inherit; transition:all 0.2s;
     }
-    .prog-modal .pm-detail .dl { font-size: 11px; color: var(--gray); font-weight: 600; margin-bottom: 4px; }
-    .prog-modal .pm-detail .dv { font-size: 14px; font-weight: 700; }
-    .prog-modal .pm-features { display: flex; flex-direction: column; gap: 9px; margin-bottom: 28px; }
-    .prog-modal .pm-features li {
-      list-style: none; font-size: 14px; color: #444;
-      display: flex; align-items: center; gap: 10px;
+    .kakao-btn:hover { background:#f0d800; }
+    .copy-btn {
+      display:flex; align-items:center; justify-content:center; gap:8px;
+      background:var(--bg2); color:var(--main); border:1.5px solid rgba(105,26,250,0.2);
+      padding:11px; border-radius:13px; font-size:14px; font-weight:700;
+      cursor:pointer; width:100%; font-family:inherit; transition:all 0.2s;
     }
-    .prog-modal .pm-features li::before {
-      content: '✓'; color: var(--main); font-weight: 900; font-size: 11px;
-      background: rgba(105,26,250,0.1); min-width: 22px; height: 22px;
-      border-radius: 7px; display: flex; align-items: center; justify-content: center;
-    }
-    .prog-modal .pm-result {
-      background: linear-gradient(135deg, rgba(105,26,250,0.08), rgba(198,141,255,0.1));
-      border: 1px solid rgba(105,26,250,0.12); border-radius: 14px;
-      padding: 16px 20px; margin-bottom: 28px;
-      font-size: 14px; font-weight: 700; color: var(--main);
-    }
+    .copy-btn:hover { border-color:var(--main); }
 
     /* ── RESPONSIVE ── */
-    @media (max-width: 768px) {
-      nav { padding: 0 20px; }
-      .nav-links a:not(.nav-cta) { display: none; }
-      section { padding: 70px 20px; }
-      .result-wrap, .phil-grid { grid-template-columns: 1fr; }
-      .hero-cards { display: none; }
-      .modal { padding: 32px 24px; }
-      .form-row { grid-template-columns: 1fr; }
-      .phil-hero { padding: 44px 28px; }
-      .prog-modal .pm-details { grid-template-columns: 1fr; }
+    @media(max-width:768px) {
+      nav { padding:0 20px; }
+      .nav-links a:not(.nav-cta) { display:none; }
+      section { padding:70px 20px; }
+      .result-wrap { grid-template-columns:1fr; }
+      .phil-shapes { grid-template-columns:1fr; }
+      .need-grid { grid-template-columns:1fr; }
+      .modal { padding:28px 20px; }
+      .fg-row { grid-template-columns:1fr; }
+      .pm-details { grid-template-columns:1fr; }
+      .proposal-banner { flex-direction:column; }
     }
   </style>
 </head>
@@ -466,84 +442,135 @@
 
 <!-- NAV -->
 <nav>
-  <div class="logo">
-    <img src="Logo.jpg" alt="IDenTeach" />
-  </div>
+  <a class="logo" href="index.html">
+    <img src="Logo.jpg" alt="IDenTeach" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" />
+    <span class="logo-text" style="display:none">IDenTeach</span>
+  </a>
   <div class="nav-links">
+    <a href="about.html">회사소개</a>
     <a href="#programs">프로그램</a>
     <a href="#philosophy">교육 철학</a>
     <a href="#contact">문의</a>
-    <a href="#" class="nav-cta" onclick="openInquiry(); return false;">✉️ 교육 문의하기</a>
+    <a href="#" class="nav-cta" onclick="openInquiry();return false;">✉️ 교육 문의하기</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-glow"></div>
+  <div class="hero-blueprint"></div>
+  <div class="hero-media" id="heroMedia">
+    <video src="hero-video.mp4" autoplay muted loop playsinline></video>
+  </div>
+  <div class="hero-overlay"></div>
+  <!-- Geometric shapes -->
+  <div class="hero-shapes">
+    <!-- 벤다이어그램 (두 원 합체) 좌상단 -->
+    <svg class="geo" style="top:12%;left:4%;animation:floatA 7s ease-in-out infinite;" width="200" height="120" viewBox="0 0 200 120">
+      <circle cx="72" cy="60" r="54" fill="#691afa" opacity="0.12"/>
+      <circle cx="128" cy="60" r="54" fill="#c68dff" opacity="0.12"/>
+      <circle cx="72" cy="60" r="54" fill="none" stroke="#691afa" stroke-width="1" opacity="0.3"/>
+      <circle cx="128" cy="60" r="54" fill="none" stroke="#c68dff" stroke-width="1" opacity="0.3"/>
+    </svg>
+    <!-- 헥사곤 우상단 -->
+    <svg class="geo" style="top:14%;right:6%;animation:floatB 8s ease-in-out infinite;" width="100" height="116" viewBox="0 0 100 116">
+      <polygon points="50,3 97,27 97,89 50,113 3,89 3,27" fill="#ff6b9d" opacity="0.1" stroke="#ff6b9d" stroke-width="1.5" opacity="0.25"/>
+    </svg>
+    <!-- 삼각형 좌하단 -->
+    <svg class="geo" style="bottom:18%;left:8%;animation:floatC 9s ease-in-out infinite;" width="88" height="76" viewBox="0 0 88 76">
+      <polygon points="44,4 84,72 4,72" fill="#00d4aa" opacity="0.1" stroke="#00d4aa" stroke-width="1.5" opacity="0.25"/>
+    </svg>
+    <!-- 작은 벤다이어그램 우하단 -->
+    <svg class="geo" style="bottom:22%;right:4%;animation:floatA 6s ease-in-out infinite 2s;" width="130" height="78" viewBox="0 0 130 78">
+      <circle cx="47" cy="39" r="35" fill="#ffd93d" opacity="0.1"/>
+      <circle cx="83" cy="39" r="35" fill="#6a00ff" opacity="0.1"/>
+      <circle cx="47" cy="39" r="35" fill="none" stroke="#ffd93d" stroke-width="1" opacity="0.2"/>
+      <circle cx="83" cy="39" r="35" fill="none" stroke="#6a00ff" stroke-width="1" opacity="0.2"/>
+    </svg>
+    <!-- 도면 십자선 -->
+    <svg class="geo" style="top:38%;left:0;opacity:0.12;" width="110" height="110" viewBox="0 0 110 110">
+      <line x1="0" y1="55" x2="110" y2="55" stroke="#691afa" stroke-width="0.5" stroke-dasharray="4 4"/>
+      <line x1="55" y1="0" x2="55" y2="110" stroke="#691afa" stroke-width="0.5" stroke-dasharray="4 4"/>
+      <circle cx="55" cy="55" r="36" fill="none" stroke="#691afa" stroke-width="0.5"/>
+      <circle cx="55" cy="55" r="4" fill="#691afa" opacity="0.5"/>
+    </svg>
+    <!-- 우측 중단 원 하나 -->
+    <svg class="geo" style="top:45%;right:2%;opacity:0.1;animation:floatB 11s ease-in-out infinite 1s;" width="80" height="80" viewBox="0 0 80 80">
+      <circle cx="40" cy="40" r="36" fill="none" stroke="#c68dff" stroke-width="2"/>
+      <circle cx="40" cy="40" r="22" fill="none" stroke="#c68dff" stroke-width="1"/>
+    </svg>
+  </div>
   <div class="hero-inner">
-    <div class="hero-badge">팀빌딩 · 문화 · 진로 교육 전문</div>
-    <div class="hero-sub-badge">경험 교육 콘텐츠 제작소</div>
-    <h1>경험을 설계하여<br /><span>나다움</span>을 찾다</h1>
-    <p>억지로 앉아 듣는 수업이 아닌,<br />직접 만들고 경험하는 교육을 설계합니다.</p>
+    <div class="hero-badge">🏫 학교 · 공공기관 프로그램 전문</div>
+    <h1>경험하는 교육을 설계하여<br /><span class="hl">나다움</span>을 찾다</h1>
+    <p class="hero-desc">
+      듣고 쓰는 수업이 아닌,<br />
+      학교·기관에 맞춰 차별화된 프로그램으로<br />
+      손에 남는 결과물을 전달드립니다.
+    </p>
     <div class="hero-btns">
       <button class="btn-main" onclick="openInquiry()">✉️ 교육 문의하기</button>
       <a href="#programs" class="btn-ghost">프로그램 보기 →</a>
-    </div>
-    <div class="hero-cards">
-      <div class="hero-card">
-        <div class="card-icon">🎯</div>
-        <div class="card-label">특징</div>
-        <div class="card-val">차별화된 프로그램</div>
-      </div>
-      <div class="hero-card">
-        <div class="card-icon">🏫</div>
-        <div class="card-label">대상</div>
-        <div class="card-val">초·중·고 맞춤 설계</div>
-      </div>
-      <div class="hero-card">
-        <div class="card-icon">✨</div>
-        <div class="card-label">결과</div>
-        <div class="card-val">손에 남는 결과물</div>
-      </div>
     </div>
   </div>
 </section>
 
 <!-- NEED -->
 <section class="need">
+  <!-- Section geo -->
+  <svg class="geo" style="top:-50px;right:-50px;opacity:0.05;z-index:0;" width="220" height="220" viewBox="0 0 220 220">
+    <polygon points="110,8 212,62 212,158 110,212 8,158 8,62" fill="#691afa"/>
+  </svg>
+  <svg class="geo" style="bottom:-40px;left:-40px;opacity:0.05;z-index:0;" width="160" height="96" viewBox="0 0 160 96">
+    <circle cx="58" cy="48" r="44" fill="#ff6b9d"/>
+    <circle cx="102" cy="48" r="44" fill="#ffd93d"/>
+  </svg>
   <div class="container">
     <div class="need-intro">
       <p class="sec-label">왜 IDenTeach인가</p>
-      <p class="big-q">매번 똑같은 교육 프로그램 말고<br /><em>새로운 프로그램</em>을 원하시나요?</p>
-      <p style="font-size:16px; color:var(--gray); max-width:500px; margin:0 auto; line-height:1.7;">
-        IDenTeach는 학교와 학생의 필요에 맞는<br />새로운 경험 중심 교육 콘텐츠를 설계합니다.
-      </p>
+      <p class="big-q">새로운 프로그램을 <em>원하시나요?</em></p>
+      <p class="need-sub-txt">IDenTeach는 대상에 맞는 새로운 경험 중심 교육 콘텐츠를 설계합니다.</p>
     </div>
-    <!-- 이미지 자리 -->
-    <div class="img-placeholder" style="height:260px; margin-bottom:48px;">
-      <span class="ph-icon">🖼️</span>
-      <span>활동 현장 이미지 (추후 추가)</span>
+    <!-- Carousel -->
+    <div class="carousel" id="carousel">
+      <div class="c-track" id="cTrack">
+        <div class="c-slide img-ph"><span class="phi">📸</span><span>활동 현장 이미지 1</span></div>
+        <div class="c-slide img-ph"><span class="phi">📸</span><span>활동 현장 이미지 2</span></div>
+        <div class="c-slide img-ph"><span class="phi">📸</span><span>활동 현장 이미지 3</span></div>
+      </div>
+      <div class="c-dots" id="cDots"></div>
     </div>
     <div class="need-grid">
-      <div class="need-card">
-        <div class="n-icon">🚀</div>
+      <!-- 차별화 (hover overlay) -->
+      <div class="need-card diff">
+        <div class="ni">🚀</div>
         <h3>차별화된 프로그램</h3>
-        <p>다른 학교에서 쉽게 볼 수 없는 새로운 형식의 교육 콘텐츠를 제공합니다.</p>
+        <p>다른 기관에서 쉽게 볼 수 없는 새로운 형식의 교육 콘텐츠를 제공합니다.</p>
+        <div class="diff-hover">
+          <div class="diff-hover-bg"></div>
+          <div class="diff-hover-content">
+            <h4>차별화된 프로그램</h4>
+            <ul>
+              <li>기존에 없던 새로운 형식의 경험 교육</li>
+              <li>AI · 문화 · 예술 융합 콘텐츠</li>
+              <li>결과물이 실제로 남는 교육 설계</li>
+            </ul>
+          </div>
+        </div>
       </div>
       <div class="need-card">
-        <div class="n-icon">🎯</div>
-        <h3>우리 학생들에게 맞춘 프로그램</h3>
-        <p>학교의 상황, 학년, 인원에 맞게 설계된 맞춤형 프로그램을 운영합니다.</p>
+        <div class="ni">🎯</div>
+        <h3>대상에게 맞춘 프로그램</h3>
+        <p>대상의 상황, 연령, 인원에 맞게 설계된 맞춤형 프로그램을 운영합니다.</p>
       </div>
       <div class="need-card">
-        <div class="n-icon">🙌</div>
+        <div class="ni">🙌</div>
         <h3>모두 즐겁게 참여하는 프로그램</h3>
         <p>소수가 아닌 전체가 함께 참여하고 즐길 수 있는 구조로 설계됩니다.</p>
       </div>
       <div class="need-card">
-        <div class="n-icon">✨</div>
+        <div class="ni">✨</div>
         <h3>결과값이 남는 프로그램</h3>
-        <p>활동으로 끝나지 않고, 학생 손에 실제로 남는 창작물과 경험이 있습니다.</p>
+        <p>활동으로 끝나지 않고, 대상의 손에 실제로 남는 창작물과 경험이 있습니다.</p>
       </div>
     </div>
   </div>
@@ -551,52 +578,57 @@
 
 <!-- RESULT -->
 <section class="result">
+  <!-- Geo bg -->
+  <svg class="geo" style="right:-100px;top:50%;transform:translateY(-50%);opacity:0.07;z-index:0;" width="500" height="500" viewBox="0 0 500 500">
+    <circle cx="190" cy="250" r="180" fill="#691afa"/>
+    <circle cx="310" cy="250" r="180" fill="#c68dff"/>
+  </svg>
+  <svg class="geo" style="left:-60px;bottom:-60px;opacity:0.05;z-index:0;" width="180" height="156" viewBox="0 0 180 156">
+    <polygon points="90,4 174,50 174,106 90,152 6,106 6,50" fill="#00d4aa"/>
+  </svg>
   <div class="container">
     <div class="result-wrap">
       <div class="result-left">
         <div class="sec-label">결과물이 남는 프로그램</div>
         <h2 class="sec-title">활동으로 끝나지 않는 교육</h2>
-        <p class="sec-sub">IDenTeach의 모든 프로그램은 학생의 손에 실제로 남는 결과물을 만들어냅니다.</p>
+        <p class="sec-sub">IDenTeach의 모든 프로그램은<br />대상의 손에 실제로 남는 결과물을 만들어냅니다.</p>
         <div class="result-examples">
           <div class="result-ex">
-            <div class="ex-icon">🎵</div>
+            <div class="ei">🎵</div>
             <div>
               <h4>AI 음원 제작 · Spotify 등록</h4>
               <p>팀이 함께 만든 음악이 실제 스트리밍 플랫폼에 올라갑니다</p>
             </div>
-            <span class="ex-tag">예시</span>
+            <span class="etag">예시</span>
           </div>
           <div class="result-ex">
-            <div class="ex-icon">📋</div>
+            <div class="ei">📖</div>
             <div>
-              <h4>생활기록부 기재 가능한 활동</h4>
-              <p>단순 참여가 아닌, 실제 기록으로 남길 수 있는 경험</p>
+              <h4>AI 자서전 · 회고 결과물</h4>
+              <p>나의 이야기를 AI와 함께 기록으로 남기는 경험</p>
             </div>
-            <span class="ex-tag">예시</span>
+            <span class="etag">예시</span>
           </div>
           <div class="result-ex">
-            <div class="ex-icon">🤝</div>
+            <div class="ei">🤝</div>
             <div>
-              <h4>팀빌딩 결과물</h4>
-              <p>협력의 과정과 결과가 함께 남는 팀 단위 창작 활동</p>
+              <h4>팀빌딩 · 관계 형성 결과물</h4>
+              <p>협력의 과정과 결과가 함께 남는 창작 활동</p>
             </div>
-            <span class="ex-tag">예시</span>
+            <span class="etag">예시</span>
           </div>
         </div>
-        <a href="#" class="result-cta" onclick="openResultModal(); return false;">🎵 결과물 예시 확인하기 →</a>
+        <a href="#" class="result-cta" onclick="openResultModal();return false;">🎵 결과물 예시 확인하기 →</a>
       </div>
       <div class="result-visual">
-        <div class="img-placeholder result-img-placeholder">
-          <span class="ph-icon">🖼️</span>
-          <span>결과물 이미지 (추후 추가)</span>
-        </div>
-        <div class="result-visual-overlay">
+        <div class="img-ph result-img"><span class="phi">🖼️</span><span>결과물 이미지 (추후 추가)</span></div>
+        <div class="result-overlay">
           <p>실제 제작 결과물 예시</p>
-          <h3>학생들이 직접 만든 AI 음원</h3>
-          <div class="platform-badges">
-            <span class="badge">🎧 Spotify</span>
-            <span class="badge">▶ YouTube Music</span>
-            <span class="badge">🍎 Apple Music</span>
+          <h3>대상이 직접 만든 결과물</h3>
+          <div class="plat-badges">
+            <span class="pbadge">🎧 Spotify</span>
+            <span class="pbadge">▶ YouTube Music</span>
+            <span class="pbadge">📖 AI 자서전</span>
           </div>
         </div>
       </div>
@@ -606,148 +638,198 @@
 
 <!-- PROGRAMS -->
 <section class="programs" id="programs">
+  <svg class="geo" style="bottom:-40px;left:-40px;opacity:0.05;z-index:0;" width="200" height="173" viewBox="0 0 200 173">
+    <polygon points="100,4 196,54 196,119 100,169 4,119 4,54" fill="#ff6b9d"/>
+  </svg>
   <div class="container">
     <div class="sec-label">프로그램</div>
     <h2 class="sec-title">경험 중심 교육 프로그램</h2>
-    <p class="sec-sub">현재 운영 중인 프로그램과 학교 맞춤 커스텀 프로그램을 함께 제공합니다.</p>
+    <p class="sec-sub">학교와 공공기관을 위한 다양한 경험 콘텐츠를 운영합니다.</p>
     <div class="prog-tabs">
-      <button class="prog-tab active">전체 보기</button>
-      <button class="prog-tab">현재 운영 중</button>
-      <button class="prog-tab">커스텀</button>
+      <button class="prog-tab active" onclick="switchTab('school',this)">🏫 학교 프로그램</button>
+      <button class="prog-tab" onclick="switchTab('public',this)">🏛 공공기관 프로그램</button>
+      <button class="prog-tab" onclick="switchTab('custom',this)">⚙️ 커스텀</button>
     </div>
-    <div class="prog-grid">
 
-      <!-- 프로그램 1 -->
-      <div class="prog-card" onclick="openProgModal('enterai')">
-        <div class="img-placeholder prog-img">
-          <span class="ph-icon">🖼️</span>
-          <span>프로그램 이미지</span>
-        </div>
-        <div class="prog-body">
-          <div class="prog-tag">문화형 × 참여형</div>
-          <h3>EnterAIment Quest</h3>
-          <p class="sub">AI 엔터테인먼트 × 팀빌딩 — 찾아가는 AI 리터러시</p>
-          <ul class="prog-detail">
-            <li>초·중·고등학교 / 최대 100명</li>
-            <li>2교시 약 100분 / 250만원(VAT포함)</li>
-          </ul>
-          <p class="prog-more">자세히 보기 →</p>
-        </div>
-      </div>
-
-      <!-- 프로그램 2 -->
-      <div class="prog-card" onclick="openProgModal('relation')">
-        <div class="img-placeholder prog-img">
-          <span class="ph-icon">🖼️</span>
-          <span>프로그램 이미지</span>
-        </div>
-        <div class="prog-body">
-          <div class="prog-tag">화합형 × 참여형</div>
-          <h3>관계형성 · 학교폭력예방 팀빌딩</h3>
-          <p class="sub">함께 만드는 관계, 서로를 이해하는 경험</p>
-          <ul class="prog-detail">
-            <li>초·중·고등학교 대상</li>
-            <li>학교폭력예방 정책 연계 가능</li>
-          </ul>
-          <p class="prog-more">자세히 보기 →</p>
-        </div>
-      </div>
-
-      <!-- 프로그램 3 -->
-      <div class="prog-card" onclick="openProgModal('career')">
-        <div class="img-placeholder prog-img">
-          <span class="ph-icon">🖼️</span>
-          <span>프로그램 이미지</span>
-        </div>
-        <div class="prog-body">
-          <div class="prog-tag">참여형 × 문화형</div>
-          <h3>진로 레크리에이션 강연</h3>
-          <p class="sub">나를 알아가는 진로 탐색 경험</p>
-          <ul class="prog-detail">
-            <li>초·중·고등학교 대상</li>
-            <li>체험형 진로 탐색 구조</li>
-          </ul>
-          <p class="prog-more">자세히 보기 →</p>
-        </div>
-      </div>
-
-      <!-- 커스텀 카드 -->
-      <div class="prog-card custom" onclick="openInquiry()">
-        <div class="prog-body">
-          <div class="prog-tag">커스텀</div>
-          <h3>우리 학교만의<br />맞춤 프로그램</h3>
-          <p class="sub">학교의 니즈에 맞는 새로운 교육 콘텐츠를 기획부터 컨설팅까지 함께 만들어갑니다.</p>
-          <div class="step-list">
-            <div class="step"><div class="snum">1</div> 학교 니즈 파악 · 목표 설정</div>
-            <div class="step"><div class="snum">2</div> 경험 콘텐츠 기획 · 설계</div>
-            <div class="step"><div class="snum">3</div> 프로그램 제작 · 운영 지원</div>
-            <div class="step"><div class="snum">4</div> 결과물 및 피드백 정리</div>
+    <!-- 학교 -->
+    <div class="prog-section active" id="tab-school">
+      <div class="prog-grid">
+        <div class="prog-card" onclick="openProgModal('enterai')">
+          <div class="img-ph prog-img"><span class="phi">🖼️</span><span>프로그램 이미지</span></div>
+          <div class="prog-body">
+            <div class="prog-tag">문화형 × 참여형</div>
+            <h3>EnterAIment Quest</h3>
+            <p class="psub">AI 엔터테인먼트 × 팀빌딩</p>
+            <div class="prog-meta"><span>초·중·고</span><span>최대 100명</span><span>비용 문의</span></div>
+            <p class="prog-more">자세히 보기 →</p>
           </div>
-          <button class="btn-custom">커스텀 문의하기 →</button>
+        </div>
+        <div class="prog-card" onclick="openProgModal('relation')">
+          <div class="img-ph prog-img"><span class="phi">🖼️</span><span>프로그램 이미지</span></div>
+          <div class="prog-body">
+            <div class="prog-tag">화합형 × 참여형</div>
+            <h3>관계형성 · 학교폭력예방 팀빌딩</h3>
+            <p class="psub">함께 만드는 관계, 서로를 이해하는 경험</p>
+            <div class="prog-meta"><span>초·중·고</span><span>비용 문의</span></div>
+            <p class="prog-more">자세히 보기 →</p>
+          </div>
+        </div>
+        <div class="prog-card" onclick="openProgModal('career')">
+          <div class="img-ph prog-img"><span class="phi">🖼️</span><span>프로그램 이미지</span></div>
+          <div class="prog-body">
+            <div class="prog-tag">참여형 × 문화형</div>
+            <h3>진로 레크리에이션 강연</h3>
+            <p class="psub">나를 알아가는 진로 탐색 경험</p>
+            <div class="prog-meta"><span>초·중·고</span><span>비용 문의</span></div>
+            <p class="prog-more">자세히 보기 →</p>
+          </div>
+        </div>
+        <div class="prog-card" onclick="openProgModal('reclec')">
+          <div class="img-ph prog-img"><span class="phi">🖼️</span><span>프로그램 이미지</span></div>
+          <div class="prog-body">
+            <div class="prog-tag">화합형 × 참여형</div>
+            <h3>관계 교육 레크리에이션</h3>
+            <p class="psub">함께하는 즐거움으로 관계를 배우는 시간</p>
+            <div class="prog-meta"><span>초·중·고</span><span>비용 문의</span></div>
+            <p class="prog-more">자세히 보기 →</p>
+          </div>
         </div>
       </div>
-
     </div>
-  </div>
-</section>
 
-<!-- LEAD MAGNET -->
-<section class="lead">
-  <div class="lead-inner">
-    <div class="lead-badge">FREE DOWNLOAD</div>
-    <h2>교육 프로그램 제작 원리<br />제안서를 받아가세요 📄</h2>
-    <p>IDenTeach가 교육 환경 프로그램을 설계하는 원리와<br />경험 콘텐츠 제작 과정을 담은 제안서를 무료로 드립니다.</p>
-    <div class="lead-form">
-      <input type="tel" placeholder="연락처 입력 (010-0000-0000)" />
-      <button onclick="requestProposal()">무료 받기 →</button>
+    <!-- 공공기관 -->
+    <div class="prog-section" id="tab-public">
+      <div class="prog-grid">
+        <div class="prog-card" onclick="openProgModal('ailife')">
+          <div class="img-ph prog-img"><span class="phi">🖼️</span><span>프로그램 이미지</span></div>
+          <div class="prog-body">
+            <div class="prog-tag">문화형 × 참여형</div>
+            <h3>AI로 나의 삶 회고하기</h3>
+            <p class="psub">AI와 함께 나의 이야기를 돌아보는 경험</p>
+            <div class="prog-meta"><span>성인 대상</span><span>비용 문의</span></div>
+            <p class="prog-more">자세히 보기 →</p>
+          </div>
+        </div>
+        <div class="prog-card" onclick="openProgModal('orgrec')">
+          <div class="img-ph prog-img"><span class="phi">🖼️</span><span>프로그램 이미지</span></div>
+          <div class="prog-body">
+            <div class="prog-tag">화합형 × 참여형</div>
+            <h3>조직 관계형성 레크리에이션</h3>
+            <p class="psub">구성원이 함께 즐기며 관계를 만들어가는 프로그램</p>
+            <div class="prog-meta"><span>성인 대상</span><span>비용 문의</span></div>
+            <p class="prog-more">자세히 보기 →</p>
+          </div>
+        </div>
+        <div class="prog-card" onclick="openProgModal('aibio')">
+          <div class="img-ph prog-img"><span class="phi">🖼️</span><span>프로그램 이미지</span></div>
+          <div class="prog-body">
+            <div class="prog-tag">문화형 × 창작형</div>
+            <h3>AI를 활용하여 자서전 만들기</h3>
+            <p class="psub">나의 삶을 AI와 함께 기록하고 책으로 남기는 경험</p>
+            <div class="prog-meta"><span>성인 대상</span><span>비용 문의</span></div>
+            <p class="prog-more">자세히 보기 →</p>
+          </div>
+        </div>
+      </div>
     </div>
-    <p class="lead-note">* 입력하신 연락처로 카카오톡 또는 문자로 전달드립니다.</p>
+
+    <!-- 커스텀 -->
+    <div class="prog-section" id="tab-custom">
+      <div style="max-width:420px;">
+        <div class="prog-card custom" onclick="openInquiry()">
+          <div class="prog-body">
+            <div class="prog-tag">커스텀</div>
+            <h3>우리 기관만의 맞춤 프로그램</h3>
+            <p class="psub">대상의 니즈에 맞는 새로운 교육 콘텐츠를 기획부터 컨설팅까지 함께 만들어갑니다.</p>
+            <div class="step-list">
+              <div class="step"><div class="snum">1</div>니즈 파악 · 목표 설정</div>
+              <div class="step"><div class="snum">2</div>경험 콘텐츠 기획 · 설계</div>
+              <div class="step"><div class="snum">3</div>프로그램 제작</div>
+              <div class="step"><div class="snum">4</div>결과물 · 피드백 정리</div>
+            </div>
+            <button class="btn-custom">커스텀 문의하기 →</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- PHILOSOPHY -->
 <section class="philosophy" id="philosophy">
-  <div class="container">
-    <div class="phil-hero">
-      <div class="ph-label">교육 철학</div>
-      <h2>이 모든 것은<br /><em>정체성 탐구</em>를 위함입니다</h2>
-      <p>
-        모든 교육은 경험이 되고, 경험은 나다움이 됩니다.<br />
-        IDenTeach의 모든 프로그램은 학생이 스스로<br />
-        '나는 무엇을 표현하고 싶은가'를 발견하도록 설계됩니다.
-      </p>
+  <div class="phil-media"><img src="philosophy-bg.jpg" alt="" /></div>
+  <div class="phil-overlay"></div>
+  <!-- Geo on dark -->
+  <svg class="geo" style="top:8%;right:3%;opacity:0.18;animation:floatA 9s ease-in-out infinite;" width="170" height="102" viewBox="0 0 170 102">
+    <circle cx="61" cy="51" r="47" fill="none" stroke="#c68dff" stroke-width="1.5"/>
+    <circle cx="109" cy="51" r="47" fill="none" stroke="#ff6b9d" stroke-width="1.5"/>
+  </svg>
+  <svg class="geo" style="bottom:8%;left:2%;opacity:0.14;animation:floatB 11s ease-in-out infinite;" width="110" height="126" viewBox="0 0 110 126">
+    <polygon points="55,4 106,30 106,96 55,122 4,96 4,30" fill="none" stroke="#00d4aa" stroke-width="1.5"/>
+  </svg>
+  <div class="phil-inner">
+    <div class="phil-top">
+      <p class="sec-label">교육 철학</p>
+      <h2 class="sec-title">이 모든 것은<br /><em>정체성 탐구</em>를 위함입니다</h2>
+      <p>모든 교육은 경험이 되고, 경험은 나다움이 됩니다.<br />IDenTeach의 모든 프로그램은 대상 스스로<br />'나는 무엇을 표현하고 싶은가'를 발견하도록 설계됩니다.</p>
     </div>
-    <!-- 이미지 자리 -->
-    <div class="img-placeholder" style="height:200px; margin-bottom:48px;">
-      <span class="ph-icon">🖼️</span>
-      <span>팀 / 교육 현장 이미지 (추후 추가)</span>
-    </div>
-    <div class="phil-grid">
-      <div class="phil-card">
-        <div class="phil-num">1</div>
+    <div class="phil-shapes">
+      <!-- 경험 중심: 벤다이어그램 -->
+      <div class="phil-shape">
+        <div class="phil-shape-bg"></div>
+        <div class="phil-icon-wrap">
+          <svg width="72" height="44" viewBox="0 0 72 44">
+            <circle cx="26" cy="22" r="20" fill="#691afa" opacity="0.45"/>
+            <circle cx="46" cy="22" r="20" fill="#c68dff" opacity="0.45"/>
+            <circle cx="26" cy="22" r="20" fill="none" stroke="#691afa" stroke-width="1.5"/>
+            <circle cx="46" cy="22" r="20" fill="none" stroke="#c68dff" stroke-width="1.5"/>
+          </svg>
+        </div>
         <h3>경험 중심</h3>
-        <p>가르치지 않고, 직접 경험하게 합니다. 학생이 주체가 되는 수업을 설계합니다.</p>
+        <p>가르치지 않고, 직접 경험하게 합니다. 대상이 주체가 되는 수업을 설계합니다.</p>
       </div>
-      <div class="phil-card">
-        <div class="phil-num">2</div>
+      <!-- 결과물: 헥사곤 -->
+      <div class="phil-shape">
+        <div class="phil-shape-bg"></div>
+        <div class="phil-icon-wrap">
+          <svg width="56" height="64" viewBox="0 0 56 64">
+            <polygon points="28,3 53,17 53,47 28,61 3,47 3,17" fill="#ff6b9d" opacity="0.45" stroke="#ff6b9d" stroke-width="1.5"/>
+            <text x="28" y="37" text-anchor="middle" fill="#fff" font-size="18" font-weight="900">✦</text>
+          </svg>
+        </div>
         <h3>결과물이 남는 교육</h3>
         <p>활동으로 끝나지 않고, 손에 남는 창작물이 있습니다. 기억이 아닌 증거로 남습니다.</p>
       </div>
-      <div class="phil-card">
-        <div class="phil-num">3</div>
+      <!-- 정체성 탐구: 삼각형+원 -->
+      <div class="phil-shape">
+        <div class="phil-shape-bg"></div>
+        <div class="phil-icon-wrap">
+          <svg width="64" height="56" viewBox="0 0 64 56">
+            <polygon points="32,4 60,52 4,52" fill="#00d4aa" opacity="0.4" stroke="#00d4aa" stroke-width="1.5"/>
+            <circle cx="32" cy="34" r="9" fill="#00d4aa" opacity="0.7"/>
+          </svg>
+        </div>
         <h3>정체성 탐구</h3>
         <p>'나는 무엇을 표현하고 싶은가'를 자연스럽게 발견하게 합니다. 나다움을 찾는 교육.</p>
       </div>
+    </div>
+    <div class="phil-final">
+      <p>결국 모든 프로그램이 향하는 곳</p>
+      <h3>대상 스스로 느끼는 <em>나</em>에 대한 탐구의 기회를 제공하는 것,<br />그것이 IDenTeach의 유일한 목적입니다.</h3>
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
 <section class="contact" id="contact">
+  <svg class="geo" style="top:-30px;right:-30px;opacity:0.07;z-index:0;" width="320" height="320" viewBox="0 0 320 320">
+    <circle cx="160" cy="100" r="110" fill="#691afa"/>
+    <circle cx="210" cy="160" r="110" fill="#c68dff"/>
+  </svg>
   <div class="container">
     <div class="contact-top">
       <h2>지금 바로 문의해 주세요</h2>
-      <p>직접 만들고 경험하는 활동을 원한다면 편히 연락 주세요.</p>
+      <p>듣고 쓰는 것이 아닌, 직접 경험하는 활동을 원한다면 편히 연락 주세요.</p>
     </div>
     <div class="contact-grid">
       <a href="tel:01040848962" class="contact-card">
@@ -771,6 +853,14 @@
         <div class="cval">IDenTeach 블로그</div>
       </a>
     </div>
+    <!-- 제안서 요청 -->
+    <div class="proposal-banner">
+      <div class="pb-text">
+        <h3>📄 프로그램 제안서 요청하기</h3>
+        <p>원하는 프로그램을 선택하면 카카오톡으로 제안서를 바로 요청할 수 있습니다.</p>
+      </div>
+      <button class="btn-proposal" onclick="openProposalModal()">제안서 요청하기 →</button>
+    </div>
     <div class="contact-bottom">
       대표 진성재 &nbsp;·&nbsp; 010-4084-8962 &nbsp;·&nbsp; ybtjdwo@naver.com<br />
       협력사: 그레이프스 (Grape-s)
@@ -778,241 +868,322 @@
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
-  <p>© 2026 IDenTeach (아이덴티치). All rights reserved. &nbsp;·&nbsp; 경험을 설계하여 나다움을 찾다</p>
+  <p>© 2026 IDenTeach (아이덴티치). All rights reserved. &nbsp;·&nbsp; 경험하는 교육을 설계하여 나다움을 찾다</p>
 </footer>
 
-<!-- FLOATING CTA -->
 <button class="floating-cta" onclick="openInquiry()">✉️ 교육 문의하기</button>
 
-
-<!-- ══ 교육 문의 모달 ══ -->
+<!-- ══ INQUIRY MODAL ══ -->
 <div class="modal-overlay" id="inquiryModal">
   <div class="modal">
     <button class="modal-close" onclick="closeModal('inquiryModal')">✕</button>
     <h2>교육 문의하기</h2>
     <p class="modal-sub">아래 내용을 작성해 주시면 빠르게 연락드리겠습니다.<br />대표 진성재 · 010-4084-8962</p>
-    <form id="inquiryForm" onsubmit="submitInquiry(event)">
-      <div class="form-row">
-        <div class="form-group">
-          <label>학교 / 기관명 *</label>
-          <input type="text" name="school" placeholder="예) ○○중학교" required />
-        </div>
-        <div class="form-group">
-          <label>담당자 이름 *</label>
-          <input type="text" name="name" placeholder="홍길동" required />
-        </div>
+    <form onsubmit="submitInquiry(event)">
+      <div class="fg-row">
+        <div class="fg"><label>학교 / 기관명 *</label><input name="school" placeholder="예) ○○중학교" required /></div>
+        <div class="fg"><label>담당자 이름 *</label><input name="name" placeholder="홍길동" required /></div>
       </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label>연락처 *</label>
-          <input type="tel" name="phone" placeholder="010-0000-0000" required />
-        </div>
-        <div class="form-group">
-          <label>학생 인원</label>
-          <input type="text" name="students" placeholder="예) 100명" />
-        </div>
+      <div class="fg-row">
+        <div class="fg"><label>연락처 *</label><input type="tel" name="phone" placeholder="010-0000-0000" required /></div>
+        <div class="fg"><label>대상 인원</label><input name="students" placeholder="예) 100명" /></div>
       </div>
-      <div class="form-group">
-        <label>희망 프로그램</label>
+      <div class="fg"><label>희망 프로그램</label>
         <select name="program">
           <option value="">선택해 주세요</option>
-          <option>EnterAIment Quest (AI 음원 × 팀빌딩)</option>
-          <option>관계형성 · 학교폭력예방 팀빌딩</option>
-          <option>진로 레크리에이션 강연</option>
+          <optgroup label="학교 프로그램">
+            <option>EnterAIment Quest</option>
+            <option>관계형성 · 학교폭력예방 팀빌딩</option>
+            <option>진로 레크리에이션 강연</option>
+            <option>관계 교육 레크리에이션</option>
+          </optgroup>
+          <optgroup label="공공기관 프로그램">
+            <option>AI로 나의 삶 회고하기</option>
+            <option>조직 관계형성 레크리에이션</option>
+            <option>AI를 활용하여 자서전 만들기</option>
+          </optgroup>
           <option>커스텀 프로그램 (맞춤 기획)</option>
           <option>아직 미정 / 상담 원함</option>
         </select>
       </div>
-      <div class="form-group">
-        <label>프로그램 목적</label>
-        <input type="text" name="purpose" placeholder="예) 신학기 팀빌딩, 학교폭력예방 주간 행사 등" />
-      </div>
-      <div class="form-group">
-        <label>고민이나 요청 사항</label>
-        <textarea name="message" placeholder="학교 상황이나 원하시는 내용을 자유롭게 적어주세요."></textarea>
-      </div>
+      <div class="fg"><label>프로그램 목적</label><input name="purpose" placeholder="예) 신학기 팀빌딩, 학교폭력예방 행사 등" /></div>
+      <div class="fg"><label>고민이나 요청 사항</label><textarea name="message" placeholder="기관 상황이나 원하시는 내용을 자유롭게 적어주세요."></textarea></div>
       <button type="submit" class="btn-submit">문의 이메일 보내기 →</button>
     </form>
   </div>
 </div>
 
-<!-- ══ 결과물 예시 모달 ══ -->
+<!-- ══ RESULT MODAL ══ -->
 <div class="modal-overlay" id="resultModal">
   <div class="modal">
     <button class="modal-close" onclick="closeModal('resultModal')">✕</button>
     <h2>🎵 결과물 예시</h2>
-    <p class="modal-sub">IDenTeach 프로그램을 통해 학생들이 직접 만든 결과물 예시입니다.</p>
-    <div class="img-placeholder" style="height:200px; border-radius:16px; margin-bottom:24px;">
-      <span class="ph-icon">🎵</span>
-      <span>AI 음원 앨범 커버 이미지 (추후 추가)</span>
+    <p class="modal-sub">IDenTeach 프로그램을 통해 직접 만든 결과물 예시입니다.</p>
+    <div class="img-ph" style="height:160px;border-radius:14px;margin-bottom:18px;"><span class="phi">🎵</span><span>AI 음원 앨범 커버 (추후 추가)</span></div>
+    <div style="background:var(--bg);border-radius:14px;padding:16px;margin-bottom:18px;">
+      <p style="font-size:12px;color:var(--gray);font-weight:700;margin-bottom:5px;">SPOTIFY · YOUTUBE MUSIC · APPLE MUSIC</p>
+      <p style="font-size:15px;font-weight:800;margin-bottom:3px;">○○중학교 2학년 합동 앨범</p>
+      <p style="font-size:13px;color:var(--gray);">10개 팀 × 각 1트랙 = 학년 전체 앨범 등록</p>
     </div>
-    <div style="background:var(--bg); border-radius:16px; padding:20px; margin-bottom:20px;">
-      <p style="font-size:12px; color:var(--gray); font-weight:700; margin-bottom:8px;">SPOTIFY · YOUTUBE MUSIC · APPLE MUSIC</p>
-      <p style="font-size:15px; font-weight:800; margin-bottom:4px;">○○중학교 2학년 합동 앨범</p>
-      <p style="font-size:13px; color:var(--gray);">10개 팀 × 각 1트랙 = 학년 전체 앨범 등록</p>
-    </div>
-    <p style="font-size:14px; color:var(--gray); line-height:1.7; margin-bottom:28px;">
-      실제 Spotify 링크는 준비 중입니다.<br />
-      문의 시 현재까지 제작된 샘플을 직접 들려드립니다.
-    </p>
-    <button class="btn-submit" onclick="closeModal('resultModal'); openInquiry()">결과물 샘플 받아보기 →</button>
+    <p style="font-size:14px;color:var(--gray);line-height:1.7;margin-bottom:22px;">실제 Spotify 링크 준비 중입니다.<br />문의 시 현재까지 제작된 샘플을 직접 들려드립니다.</p>
+    <button class="btn-submit" onclick="closeModal('resultModal');openInquiry()">결과물 샘플 받아보기 →</button>
   </div>
 </div>
 
-<!-- ══ 프로그램 팝업들 ══ -->
-<div class="modal-overlay" id="progModal-enterai">
-  <div class="modal prog-modal">
-    <button class="modal-close" onclick="closeModal('progModal-enterai')">✕</button>
-    <div class="img-placeholder prog-modal-img">
-      <span class="ph-icon">🖼️</span><span>프로그램 이미지</span>
+<!-- ══ PROPOSAL MODAL ══ -->
+<div class="modal-overlay" id="proposalModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('proposalModal')">✕</button>
+    <h2>📄 제안서 요청하기</h2>
+    <p class="modal-sub">희망 프로그램을 선택하시면 카카오톡으로 바로 제안서를 요청할 수 있습니다.</p>
+    <div class="fg"><label>기관명 / 담당자</label><input id="propOrg" placeholder="예) ○○중학교 홍길동 선생님" /></div>
+    <div class="fg"><label>희망 프로그램</label>
+      <select id="propProg">
+        <option value="">선택해 주세요</option>
+        <optgroup label="학교 프로그램">
+          <option>EnterAIment Quest</option>
+          <option>관계형성 · 학교폭력예방 팀빌딩</option>
+          <option>진로 레크리에이션 강연</option>
+          <option>관계 교육 레크리에이션</option>
+        </optgroup>
+        <optgroup label="공공기관 프로그램">
+          <option>AI로 나의 삶 회고하기</option>
+          <option>조직 관계형성 레크리에이션</option>
+          <option>AI를 활용하여 자서전 만들기</option>
+        </optgroup>
+        <option>커스텀 프로그램</option>
+      </select>
     </div>
-    <div class="prog-modal-tag">문화형 × 참여형</div>
-    <h2>EnterAIment Quest</h2>
-    <p class="pm-sub">찾아가는 AI 리터러시 × 팀빌딩 — 게임이 곧 음악이 되는 수업</p>
-    <div class="pm-details">
-      <div class="pm-detail"><div class="dl">대상</div><div class="dv">초·중·고등학교</div></div>
-      <div class="pm-detail"><div class="dl">인원</div><div class="dv">최대 100명 (10명×10조)</div></div>
-      <div class="pm-detail"><div class="dl">시간</div><div class="dv">2교시 (약 100분)</div></div>
-      <div class="pm-detail"><div class="dl">비용</div><div class="dv">250만원 (VAT포함)</div></div>
+    <div id="propMsgBox" style="display:none;">
+      <p style="font-size:13px;font-weight:700;margin-bottom:7px;">📋 카카오톡 메시지 미리보기</p>
+      <div class="prop-msg" id="propMsg"></div>
+      <button class="kakao-btn" onclick="sendKakao()">💬 카카오톡으로 보내기</button>
+      <button class="copy-btn" onclick="copyMsg()">📋 메시지 복사하기</button>
     </div>
-    <ul class="pm-features">
-      <li>팀빌딩 게임 결과가 AI 프롬프트로 연결</li>
-      <li>AI 저작권 안전 — ODO 플랫폼 기반 (그레이프스)</li>
-      <li>Spotify · YouTube Music 실제 등록</li>
-      <li>생활기록부 기재 가능한 실질적 결과물</li>
-    </ul>
-    <div class="pm-result">🎵 결과물: 팀별 AI 음원 + 학년 합동 앨범 스트리밍 플랫폼 등록</div>
-    <button class="btn-submit" onclick="closeModal('progModal-enterai'); openInquiry()">이 프로그램 문의하기 →</button>
+    <button class="btn-submit" style="margin-top:14px;" onclick="generateProposal()">메시지 생성하기 →</button>
   </div>
 </div>
 
-<div class="modal-overlay" id="progModal-relation">
-  <div class="modal prog-modal">
-    <button class="modal-close" onclick="closeModal('progModal-relation')">✕</button>
-    <div class="img-placeholder prog-modal-img">
-      <span class="ph-icon">🖼️</span><span>프로그램 이미지</span>
-    </div>
-    <div class="prog-modal-tag">화합형 × 참여형</div>
-    <h2>관계형성 · 학교폭력예방 팀빌딩</h2>
-    <p class="pm-sub">함께 만드는 관계, 서로를 이해하는 경험</p>
-    <div class="pm-details">
-      <div class="pm-detail"><div class="dl">대상</div><div class="dv">초·중·고등학교</div></div>
-      <div class="pm-detail"><div class="dl">인원/시간/비용</div><div class="dv">문의 시 맞춤 안내</div></div>
-    </div>
-    <ul class="pm-features">
-      <li>경쟁이 아닌 협력 중심의 팀빌딩 구성</li>
-      <li>학생 간 심리적 안전감과 유대감 형성</li>
-      <li>학교폭력예방 정책 연계 가능</li>
-      <li>7차 청소년정책 기본계획 연계</li>
-    </ul>
-    <div class="pm-result">💬 프로그램 내용·비용은 학교 상황에 맞춰 제안드립니다</div>
-    <button class="btn-submit" onclick="closeModal('progModal-relation'); openInquiry()">이 프로그램 문의하기 →</button>
+<!-- ══ PROGRAM MODALS ══ -->
+<div class="modal-overlay" id="progModal-enterai"><div class="modal">
+  <button class="modal-close" onclick="closeModal('progModal-enterai')">✕</button>
+  <div class="img-ph pm-img"><span class="phi">🖼️</span><span>프로그램 이미지</span></div>
+  <div class="pm-tag">문화형 × 참여형 · 학교</div>
+  <h2>EnterAIment Quest</h2>
+  <p class="modal-sub">찾아가는 AI 리터러시 × 팀빌딩 — 게임이 곧 음악이 되는 수업</p>
+  <div class="pm-details">
+    <div class="pm-detail"><div class="dl">대상</div><div class="dv">초·중·고등학교</div></div>
+    <div class="pm-detail"><div class="dl">인원</div><div class="dv">최대 100명 (10명×10조)</div></div>
+    <div class="pm-detail"><div class="dl">시간</div><div class="dv">2교시 (약 100분)</div></div>
+    <div class="pm-detail"><div class="dl">비용</div><div class="dv">문의</div></div>
   </div>
-</div>
+  <ul class="pm-features">
+    <li>팀빌딩 게임 결과가 AI 프롬프트로 연결</li>
+    <li>AI 저작권 안전 — ODO 플랫폼 기반 (그레이프스)</li>
+    <li>Spotify · YouTube Music 실제 등록</li>
+    <li>생활기록부 기재 가능한 실질적 결과물</li>
+  </ul>
+  <div class="pm-result">🎵 결과물: 팀별 AI 음원 + 학년 합동 앨범 스트리밍 등록</div>
+  <button class="btn-submit" onclick="closeModal('progModal-enterai');openInquiry()">이 프로그램 문의하기 →</button>
+</div></div>
 
-<div class="modal-overlay" id="progModal-career">
-  <div class="modal prog-modal">
-    <button class="modal-close" onclick="closeModal('progModal-career')">✕</button>
-    <div class="img-placeholder prog-modal-img">
-      <span class="ph-icon">🖼️</span><span>프로그램 이미지</span>
-    </div>
-    <div class="prog-modal-tag">참여형 × 문화형</div>
-    <h2>진로 레크리에이션 강연</h2>
-    <p class="pm-sub">나를 알아가는 진로 탐색 경험</p>
-    <div class="pm-details">
-      <div class="pm-detail"><div class="dl">대상</div><div class="dv">초·중·고등학교</div></div>
-      <div class="pm-detail"><div class="dl">인원/시간/비용</div><div class="dv">문의 시 맞춤 안내</div></div>
-    </div>
-    <ul class="pm-features">
-      <li>레크리에이션 활동으로 자연스럽게 적성 발견</li>
-      <li>단순 강의가 아닌 체험형 진로 탐색 구조</li>
-      <li>'나다움'을 찾는 IDenTeach 철학과 직결</li>
-      <li>진로 담당 교사와 협력 설계 가능</li>
-    </ul>
-    <div class="pm-result">🔍 프로그램 내용·비용은 학교 상황에 맞춰 제안드립니다</div>
-    <button class="btn-submit" onclick="closeModal('progModal-career'); openInquiry()">이 프로그램 문의하기 →</button>
+<div class="modal-overlay" id="progModal-relation"><div class="modal">
+  <button class="modal-close" onclick="closeModal('progModal-relation')">✕</button>
+  <div class="img-ph pm-img"><span class="phi">🖼️</span><span>프로그램 이미지</span></div>
+  <div class="pm-tag">화합형 × 참여형 · 학교</div>
+  <h2>관계형성 · 학교폭력예방 팀빌딩</h2>
+  <p class="modal-sub">함께 만드는 관계, 서로를 이해하는 경험</p>
+  <div class="pm-details">
+    <div class="pm-detail"><div class="dl">대상</div><div class="dv">초·중·고등학교</div></div>
+    <div class="pm-detail"><div class="dl">비용</div><div class="dv">문의</div></div>
   </div>
-</div>
+  <ul class="pm-features">
+    <li>경쟁이 아닌 협력 중심의 팀빌딩 구성</li>
+    <li>심리적 안전감과 유대감 형성</li>
+    <li>학교폭력예방 정책 연계 가능</li>
+    <li>7차 청소년정책 기본계획 연계</li>
+  </ul>
+  <div class="pm-result">💬 인원·시간·비용은 학교 상황에 맞춰 제안드립니다</div>
+  <button class="btn-submit" onclick="closeModal('progModal-relation');openInquiry()">이 프로그램 문의하기 →</button>
+</div></div>
 
+<div class="modal-overlay" id="progModal-career"><div class="modal">
+  <button class="modal-close" onclick="closeModal('progModal-career')">✕</button>
+  <div class="img-ph pm-img"><span class="phi">🖼️</span><span>프로그램 이미지</span></div>
+  <div class="pm-tag">참여형 × 문화형 · 학교</div>
+  <h2>진로 레크리에이션 강연</h2>
+  <p class="modal-sub">나를 알아가는 진로 탐색 경험</p>
+  <div class="pm-details">
+    <div class="pm-detail"><div class="dl">대상</div><div class="dv">초·중·고등학교</div></div>
+    <div class="pm-detail"><div class="dl">비용</div><div class="dv">문의</div></div>
+  </div>
+  <ul class="pm-features">
+    <li>레크리에이션으로 자연스럽게 적성 발견</li>
+    <li>단순 강의가 아닌 체험형 진로 탐색 구조</li>
+    <li>'나다움'을 찾는 IDenTeach 철학과 직결</li>
+    <li>진로 담당 교사와 협력 설계 가능</li>
+  </ul>
+  <div class="pm-result">🔍 인원·시간·비용은 학교 상황에 맞춰 제안드립니다</div>
+  <button class="btn-submit" onclick="closeModal('progModal-career');openInquiry()">이 프로그램 문의하기 →</button>
+</div></div>
+
+<div class="modal-overlay" id="progModal-reclec"><div class="modal">
+  <button class="modal-close" onclick="closeModal('progModal-reclec')">✕</button>
+  <div class="img-ph pm-img"><span class="phi">🖼️</span><span>프로그램 이미지</span></div>
+  <div class="pm-tag">화합형 × 참여형 · 학교</div>
+  <h2>관계 교육 레크리에이션</h2>
+  <p class="modal-sub">함께하는 즐거움으로 관계를 배우는 시간</p>
+  <div class="pm-details">
+    <div class="pm-detail"><div class="dl">대상</div><div class="dv">초·중·고등학교</div></div>
+    <div class="pm-detail"><div class="dl">비용</div><div class="dv">문의</div></div>
+  </div>
+  <ul class="pm-features">
+    <li>레크리에이션을 통한 자연스러운 관계 형성</li>
+    <li>모두가 참여하는 활동 중심 구성</li>
+    <li>신학기·학교 행사 등 다양한 상황에 적용</li>
+    <li>전문 레크리에이션 강사 진행</li>
+  </ul>
+  <div class="pm-result">🙌 인원·시간·비용은 학교 상황에 맞춰 제안드립니다</div>
+  <button class="btn-submit" onclick="closeModal('progModal-reclec');openInquiry()">이 프로그램 문의하기 →</button>
+</div></div>
+
+<div class="modal-overlay" id="progModal-ailife"><div class="modal">
+  <button class="modal-close" onclick="closeModal('progModal-ailife')">✕</button>
+  <div class="img-ph pm-img"><span class="phi">🖼️</span><span>프로그램 이미지</span></div>
+  <div class="pm-tag">문화형 × 참여형 · 공공기관</div>
+  <h2>AI로 나의 삶 회고하기</h2>
+  <p class="modal-sub">AI와 함께 나의 이야기를 돌아보는 경험</p>
+  <div class="pm-details">
+    <div class="pm-detail"><div class="dl">대상</div><div class="dv">성인 / 공공기관</div></div>
+    <div class="pm-detail"><div class="dl">비용</div><div class="dv">문의</div></div>
+  </div>
+  <ul class="pm-features">
+    <li>AI 도구를 활용한 삶의 회고 작업</li>
+    <li>나의 경험과 기억을 구조화하는 과정</li>
+    <li>자기 탐구 · 정체성 발견의 시간</li>
+    <li>복지관, 평생교육원 등 연계 가능</li>
+  </ul>
+  <div class="pm-result">📖 인원·시간·비용은 기관 상황에 맞춰 제안드립니다</div>
+  <button class="btn-submit" onclick="closeModal('progModal-ailife');openInquiry()">이 프로그램 문의하기 →</button>
+</div></div>
+
+<div class="modal-overlay" id="progModal-orgrec"><div class="modal">
+  <button class="modal-close" onclick="closeModal('progModal-orgrec')">✕</button>
+  <div class="img-ph pm-img"><span class="phi">🖼️</span><span>프로그램 이미지</span></div>
+  <div class="pm-tag">화합형 × 참여형 · 공공기관</div>
+  <h2>조직 관계형성 레크리에이션</h2>
+  <p class="modal-sub">구성원이 함께 즐기며 관계를 만들어가는 프로그램</p>
+  <div class="pm-details">
+    <div class="pm-detail"><div class="dl">대상</div><div class="dv">성인 / 공공기관</div></div>
+    <div class="pm-detail"><div class="dl">비용</div><div class="dv">문의</div></div>
+  </div>
+  <ul class="pm-features">
+    <li>조직 내 심리적 안전감 형성</li>
+    <li>레크리에이션 기반 협력·소통 활동</li>
+    <li>워크숍, 단합 행사, 연수 연계 가능</li>
+    <li>전문 강사 진행 · 맞춤 구성</li>
+  </ul>
+  <div class="pm-result">🤝 인원·시간·비용은 기관 상황에 맞춰 제안드립니다</div>
+  <button class="btn-submit" onclick="closeModal('progModal-orgrec');openInquiry()">이 프로그램 문의하기 →</button>
+</div></div>
+
+<div class="modal-overlay" id="progModal-aibio"><div class="modal">
+  <button class="modal-close" onclick="closeModal('progModal-aibio')">✕</button>
+  <div class="img-ph pm-img"><span class="phi">🖼️</span><span>프로그램 이미지</span></div>
+  <div class="pm-tag">문화형 × 창작형 · 공공기관</div>
+  <h2>AI를 활용하여 자서전 만들기</h2>
+  <p class="modal-sub">나의 삶을 AI와 함께 기록하고 책으로 남기는 경험</p>
+  <div class="pm-details">
+    <div class="pm-detail"><div class="dl">대상</div><div class="dv">성인 / 공공기관</div></div>
+    <div class="pm-detail"><div class="dl">비용</div><div class="dv">문의</div></div>
+  </div>
+  <ul class="pm-features">
+    <li>AI 도구를 활용한 자서전 집필 과정</li>
+    <li>나의 삶을 구조화하고 기록으로 남기기</li>
+    <li>결과물: 자서전 초안 (디지털/인쇄 가능)</li>
+    <li>시니어, 평생교육 기관 특화 가능</li>
+  </ul>
+  <div class="pm-result">📚 인원·시간·비용은 기관 상황에 맞춰 제안드립니다</div>
+  <button class="btn-submit" onclick="closeModal('progModal-aibio');openInquiry()">이 프로그램 문의하기 →</button>
+</div></div>
 
 <script>
-  /* ── 모달 열기/닫기 ── */
-  function openModal(id) {
-    document.getElementById(id).classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeModal(id) {
-    document.getElementById(id).classList.remove('open');
-    document.body.style.overflow = '';
-  }
-  function openInquiry() { openModal('inquiryModal'); }
-  function openResultModal() { openModal('resultModal'); }
-  function openProgModal(key) { openModal('progModal-' + key); }
-
-  // 오버레이 클릭 시 닫기
-  document.querySelectorAll('.modal-overlay').forEach(overlay => {
-    overlay.addEventListener('click', e => {
-      if (e.target === overlay) {
-        overlay.classList.remove('open');
-        document.body.style.overflow = '';
-      }
-    });
+  /* Modal */
+  function openModal(id){document.getElementById(id).classList.add('open');document.body.style.overflow='hidden';}
+  function closeModal(id){document.getElementById(id).classList.remove('open');document.body.style.overflow='';}
+  function openInquiry(){openModal('inquiryModal');}
+  function openResultModal(){openModal('resultModal');}
+  function openProgModal(k){openModal('progModal-'+k);}
+  function openProposalModal(){openModal('proposalModal');}
+  document.querySelectorAll('.modal-overlay').forEach(o=>{
+    o.addEventListener('click',e=>{if(e.target===o){o.classList.remove('open');document.body.style.overflow='';}});
+  });
+  document.addEventListener('keydown',e=>{
+    if(e.key==='Escape') document.querySelectorAll('.modal-overlay.open').forEach(m=>{m.classList.remove('open');document.body.style.overflow='';});
   });
 
-  // ESC 키
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') {
-      document.querySelectorAll('.modal-overlay.open').forEach(m => {
-        m.classList.remove('open');
-        document.body.style.overflow = '';
-      });
+  /* Tab */
+  function switchTab(key,btn){
+    document.querySelectorAll('.prog-tab').forEach(t=>t.classList.remove('active'));
+    document.querySelectorAll('.prog-section').forEach(s=>s.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-'+key).classList.add('active');
+  }
+
+  /* Carousel */
+  (function(){
+    const track=document.getElementById('cTrack');
+    const slides=track?track.children.length:0;
+    if(!slides) return;
+    const dotsEl=document.getElementById('cDots');
+    let cur=0;
+    for(let i=0;i<slides;i++){
+      const d=document.createElement('button');
+      d.className='c-dot'+(i===0?' active':'');
+      d.onclick=()=>goTo(i);
+      dotsEl.appendChild(d);
     }
-  });
+    function goTo(n){
+      cur=n; track.style.transform=`translateX(-${cur*100}%)`;
+      document.querySelectorAll('.c-dot').forEach((d,i)=>d.classList.toggle('active',i===cur));
+    }
+    setInterval(()=>goTo((cur+1)%slides),3500);
+  })();
 
-  /* ── 문의 폼 제출 ── */
-  function submitInquiry(e) {
+  /* Inquiry form */
+  function submitInquiry(e){
     e.preventDefault();
-    const f = e.target;
-    const body = `안녕하세요, IDenTeach 교육 문의드립니다.
-
-■ 학교/기관명: ${f.school.value}
-■ 담당자: ${f.name.value}
-■ 연락처: ${f.phone.value}
-■ 학생 인원: ${f.students.value || '미정'}
-■ 희망 프로그램: ${f.program.value || '미정'}
-■ 프로그램 목적: ${f.purpose.value || '미기재'}
-■ 고민/요청사항:
-${f.message.value || '미기재'}`;
-
-    const mailtoLink = `mailto:ybtjdwo@naver.com?subject=[IDenTeach 교육문의] ${f.school.value} ${f.name.value}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailtoLink;
+    const f=e.target;
+    const body=`안녕하세요, IDenTeach 교육 문의드립니다.\n\n■ 학교/기관명: ${f.school.value}\n■ 담당자: ${f.name.value}\n■ 연락처: ${f.phone.value}\n■ 대상 인원: ${f.students.value||'미정'}\n■ 희망 프로그램: ${f.program.value||'미정'}\n■ 프로그램 목적: ${f.purpose.value||'미기재'}\n■ 고민/요청사항:\n${f.message.value||'미기재'}`;
+    window.location.href=`mailto:ybtjdwo@naver.com?subject=[IDenTeach 교육문의] ${f.school.value} ${f.name.value}&body=${encodeURIComponent(body)}`;
   }
 
-  /* ── 제안서 신청 ── */
-  function requestProposal() {
-    const input = document.querySelector('.lead-form input');
-    if (!input.value.trim()) { alert('연락처를 입력해 주세요.'); return; }
-    alert('신청 완료! 빠른 시일 내에 제안서를 전달드리겠습니다 😊');
-    input.value = '';
+  /* Proposal */
+  function generateProposal(){
+    const prog=document.getElementById('propProg').value;
+    if(!prog){alert('프로그램을 선택해 주세요.');return;}
+    const org=document.getElementById('propOrg').value.trim();
+    const msg=`안녕하세요 😊\nIDenTeach 프로그램 제안서를 요청드립니다.\n\n• 기관/담당자: ${org||'(미입력)'}\n• 희망 프로그램: ${prog}\n\n빠른 시일 내 맞춤 제안서 부탁드립니다!\n감사합니다.`;
+    document.getElementById('propMsg').textContent=msg;
+    document.getElementById('propMsgBox').style.display='block';
+  }
+  function sendKakao(){
+    alert('카카오톡 채널 개설 후 연결 예정입니다.\n지금은 메시지를 복사하여 카카오톡으로 보내주세요!\n📞 010-4084-8962');
+  }
+  function copyMsg(){
+    navigator.clipboard.writeText(document.getElementById('propMsg').textContent)
+      .then(()=>alert('복사 완료! 카카오톡에 붙여넣기 해주세요 😊'));
   }
 
-  /* ── 등장 애니메이션 ── */
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.style.opacity = '1';
-        e.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.need-card, .prog-card, .phil-card, .result-ex, .contact-card').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(20px)';
-    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-    observer.observe(el);
+  /* Scroll animation */
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}});
+  },{threshold:0.1});
+  document.querySelectorAll('.need-card,.prog-card,.phil-shape,.result-ex,.contact-card').forEach(el=>{
+    el.style.opacity='0';el.style.transform='translateY(20px)';
+    el.style.transition='opacity 0.5s ease,transform 0.5s ease';
+    obs.observe(el);
   });
 </script>
 </body>

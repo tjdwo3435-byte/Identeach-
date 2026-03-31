@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IDenTeach - 회사소개</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --main:#691afa; --sub:#c68dff; --accent:#6a00ff;
+      --pink:#ff6b9d; --teal:#00d4aa; --yellow:#ffd93d;
+      --bg:#f3ecff; --bg2:#ede4ff; --white:#fff;
+      --text:#1a1a1a; --gray:#6b7280;
+    }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Noto Sans KR',sans-serif;color:var(--text);background:var(--bg);overflow-x:hidden;}
+
+    /* ── NAV (same as main) ── */
+    nav{
+      position:fixed;top:0;left:0;right:0;z-index:100;
+      background:rgba(243,236,255,0.92);backdrop-filter:blur(16px);
+      padding:0 48px;height:64px;
+      display:flex;justify-content:space-between;align-items:center;
+      border-bottom:1px solid rgba(105,26,250,0.08);
+    }
+    .logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+    .logo img{height:36px;display:block;object-fit:contain;}
+    .logo-text{font-size:20px;font-weight:900;color:var(--main);}
+    .nav-links{display:flex;align-items:center;gap:4px;}
+    .nav-links a{text-decoration:none;color:var(--gray);font-size:14px;font-weight:500;padding:8px 14px;border-radius:20px;transition:all 0.2s;}
+    .nav-links a:hover{color:var(--main);background:rgba(105,26,250,0.06);}
+    .nav-links a.active{color:var(--main);font-weight:700;}
+    .nav-cta{background:var(--main)!important;color:#fff!important;padding:9px 22px!important;border-radius:22px!important;font-weight:700!important;box-shadow:0 4px 16px rgba(105,26,250,0.3);}
+    .nav-cta:hover{background:var(--accent)!important;}
+
+    /* ── GEO ── */
+    .geo{position:absolute;pointer-events:none;}
+    @keyframes floatA{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-12px) rotate(5deg)}}
+    @keyframes floatB{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px) rotate(-4deg)}}
+
+    /* ── HERO ── */
+    .hero{
+      min-height:60vh;display:flex;align-items:center;
+      padding:120px 40px 80px;position:relative;overflow:hidden;
+      background:linear-gradient(160deg,#f0e8ff 0%,#e0ccff 50%,#cdb0ff 100%);
+    }
+    .hero-bp{
+      position:absolute;inset:0;
+      background-image:linear-gradient(rgba(105,26,250,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(105,26,250,0.05) 1px,transparent 1px);
+      background-size:56px 56px;
+    }
+    .hero-inner{position:relative;z-index:2;max-width:680px;}
+    .hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--white);border:1px solid rgba(105,26,250,0.15);color:var(--main);font-size:13px;font-weight:700;padding:7px 18px;border-radius:24px;margin-bottom:24px;box-shadow:0 2px 16px rgba(105,26,250,0.1);}
+    .hero h1{font-size:clamp(28px,5vw,56px);font-weight:900;line-height:1.15;letter-spacing:-1.5px;margin-bottom:20px;}
+    .hero h1 em{color:var(--main);font-style:normal;}
+    .hero p{font-size:17px;color:#4a3a6b;line-height:1.8;max-width:520px;}
+
+    /* ── COMMON ── */
+    section{padding:100px 40px;position:relative;overflow:hidden;}
+    .container{max-width:1080px;margin:0 auto;position:relative;z-index:1;}
+    .sec-label{font-size:12px;font-weight:800;color:var(--main);letter-spacing:2.5px;text-transform:uppercase;margin-bottom:14px;}
+    .sec-title{font-size:clamp(26px,4vw,42px);font-weight:900;letter-spacing:-0.5px;line-height:1.25;margin-bottom:16px;}
+    .sec-sub{font-size:17px;color:var(--gray);line-height:1.75;margin-bottom:48px;}
+    .img-ph{background:linear-gradient(135deg,var(--bg2),#e0d0ff);border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--main);font-size:13px;font-weight:600;gap:8px;border:2px dashed rgba(105,26,250,0.2);}
+    .img-ph .phi{font-size:32px;opacity:0.5;}
+    .img-ph span{opacity:0.6;}
+
+    /* ── CEO 소개 ── */
+    .ceo-section{background:var(--white);}
+    .ceo-wrap{display:grid;grid-template-columns:340px 1fr;gap:64px;align-items:center;}
+    .ceo-photo{border-radius:28px;overflow:hidden;box-shadow:0 24px 64px rgba(105,26,250,0.15);position:relative;}
+    .ceo-photo-img{height:420px;}
+    .ceo-photo-badge{
+      position:absolute;bottom:20px;left:50%;transform:translateX(-50%);
+      background:var(--main);color:#fff;font-size:12px;font-weight:700;
+      padding:8px 20px;border-radius:20px;white-space:nowrap;
+      box-shadow:0 4px 16px rgba(105,26,250,0.4);
+    }
+    .ceo-content .name-wrap{display:flex;align-items:baseline;gap:12px;margin-bottom:24px;}
+    .ceo-content .name{font-size:28px;font-weight:900;letter-spacing:-0.5px;}
+    .ceo-content .title{font-size:14px;color:var(--gray);font-weight:600;}
+    .ceo-quote{
+      background:var(--bg);border-radius:16px;padding:24px;margin-bottom:28px;
+      border-left:4px solid var(--main);
+    }
+    .ceo-quote p{font-size:16px;color:var(--text);line-height:1.85;font-weight:500;}
+    .ceo-desc p{font-size:15px;color:var(--gray);line-height:1.85;margin-bottom:16px;}
+    .ceo-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;}
+    .ceo-tag{background:rgba(105,26,250,0.08);color:var(--main);font-size:12px;font-weight:700;padding:5px 14px;border-radius:12px;}
+
+    /* ── 교육 본질 (모방→도전→창조→인정) ── */
+    .essence{background:var(--bg);}
+    .essence-intro{text-align:center;margin-bottom:60px;}
+    .essence-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;}
+    .essence-flow::before{
+      content:'';position:absolute;top:52px;left:calc(12.5%);right:calc(12.5%);
+      height:2px;background:linear-gradient(90deg,var(--main),var(--sub),var(--pink),var(--teal));
+      z-index:0;
+    }
+    .essence-step{text-align:center;padding:0 16px;position:relative;z-index:1;}
+    .essence-num{
+      width:64px;height:64px;border-radius:20px;
+      display:flex;align-items:center;justify-content:center;
+      font-size:20px;font-weight:900;color:#fff;
+      margin:0 auto 20px;position:relative;z-index:1;
+    }
+    .essence-step:nth-child(1) .essence-num{background:linear-gradient(135deg,var(--main),#8b3fff);}
+    .essence-step:nth-child(2) .essence-num{background:linear-gradient(135deg,var(--pink),#ff4d8d);}
+    .essence-step:nth-child(3) .essence-num{background:linear-gradient(135deg,var(--teal),#00b894);}
+    .essence-step:nth-child(4) .essence-num{background:linear-gradient(135deg,var(--yellow),#f0a500);}
+    .essence-step h3{font-size:20px;font-weight:900;margin-bottom:12px;}
+    .essence-step p{font-size:14px;color:var(--gray);line-height:1.7;}
+    .essence-arrow{
+      position:absolute;top:24px;right:-12px;z-index:2;
+      font-size:20px;color:var(--sub);
+    }
+    .essence-desc{
+      margin-top:56px;background:var(--white);border-radius:24px;padding:40px;
+      border:1px solid rgba(105,26,250,0.08);text-align:center;
+    }
+    .essence-desc p{font-size:16px;color:var(--gray);line-height:1.9;max-width:600px;margin:0 auto;}
+    .essence-desc strong{color:var(--main);font-weight:800;}
+
+    /* ── 아이덴플레너 ── */
+    .planner{background:var(--white);}
+    .planner-intro{margin-bottom:48px;}
+    .planner-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-bottom:48px;}
+    .planner-card{
+      background:var(--bg);border-radius:20px;padding:32px 28px;
+      border:1px solid rgba(105,26,250,0.08);
+      transition:transform 0.25s,box-shadow 0.25s;
+    }
+    .planner-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(105,26,250,0.1);}
+    .planner-icon{font-size:36px;margin-bottom:16px;}
+    .planner-card h3{font-size:18px;font-weight:800;margin-bottom:8px;color:var(--main);}
+    .planner-card p{font-size:14px;color:var(--gray);line-height:1.7;}
+    .planner-range{
+      background:linear-gradient(135deg,#1a0040,#3d00a0);
+      border-radius:24px;padding:40px;color:#fff;
+      position:relative;overflow:hidden;
+    }
+    .planner-range::before{content:'';position:absolute;width:300px;height:300px;background:radial-gradient(circle,rgba(198,141,255,0.2) 0%,transparent 70%);top:-100px;right:-50px;border-radius:50%;}
+    .planner-range h3{font-size:20px;font-weight:900;margin-bottom:14px;position:relative;z-index:1;}
+    .planner-range p{font-size:15px;color:rgba(255,255,255,0.65);line-height:1.8;margin-bottom:24px;position:relative;z-index:1;}
+    .range-tags{display:flex;gap:8px;flex-wrap:wrap;position:relative;z-index:1;}
+    .range-tag{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);color:#fff;font-size:13px;font-weight:600;padding:6px 14px;border-radius:20px;}
+
+    /* ── 커스텀 프로그램 프로세스 ── */
+    .process{
+      background:linear-gradient(160deg,#0d001f,#2a0070);
+      position:relative;overflow:hidden;
+    }
+    .process::before{content:'';position:absolute;width:500px;height:500px;background:radial-gradient(circle,rgba(105,26,250,0.2) 0%,transparent 70%);top:-200px;right:-200px;border-radius:50%;}
+    /* Geo shapes */
+    .process-inner{position:relative;z-index:1;}
+    .process .sec-label{color:var(--sub);}
+    .process .sec-title{color:#fff;}
+    .process .sec-sub{color:rgba(255,255,255,0.5);}
+    .process-steps{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
+    .proc-step{
+      background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);
+      border-radius:20px;padding:32px;backdrop-filter:blur(8px);
+      position:relative;overflow:hidden;
+    }
+    .proc-step::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+    .proc-step:nth-child(1)::before{background:linear-gradient(90deg,var(--main),var(--sub));}
+    .proc-step:nth-child(2)::before{background:linear-gradient(90deg,var(--pink),#ff8cc8);}
+    .proc-step:nth-child(3)::before{background:linear-gradient(90deg,var(--teal),#00f0c0);}
+    .proc-step:nth-child(4)::before{background:linear-gradient(90deg,var(--yellow),#ffb800);}
+    .proc-num{font-size:40px;font-weight:900;color:rgba(255,255,255,0.1);position:absolute;top:20px;right:24px;line-height:1;}
+    .proc-step h3{font-size:17px;font-weight:800;color:#fff;margin-bottom:10px;position:relative;z-index:1;}
+    .proc-step p{font-size:14px;color:rgba(255,255,255,0.6);line-height:1.7;position:relative;z-index:1;}
+    .proc-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:14px;position:relative;z-index:1;}
+    .proc-tag{background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8);font-size:11px;font-weight:600;padding:4px 10px;border-radius:8px;}
+
+    /* ── CTA ── */
+    .cta-section{background:var(--bg);text-align:center;}
+    .cta-box{
+      background:linear-gradient(135deg,var(--main),var(--accent));
+      border-radius:32px;padding:64px 48px;position:relative;overflow:hidden;
+    }
+    .cta-box::before{content:'';position:absolute;width:400px;height:400px;background:radial-gradient(circle,rgba(255,255,255,0.1) 0%,transparent 70%);top:-150px;right:-100px;border-radius:50%;}
+    .cta-box h2{font-size:clamp(24px,4vw,40px);font-weight:900;color:#fff;margin-bottom:16px;position:relative;z-index:1;}
+    .cta-box p{font-size:17px;color:rgba(255,255,255,0.75);margin-bottom:40px;line-height:1.7;position:relative;z-index:1;}
+    .cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1;}
+    .btn-white{display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--main);padding:15px 32px;border-radius:50px;font-size:15px;font-weight:800;text-decoration:none;transition:all 0.2s;border:none;cursor:pointer;font-family:inherit;}
+    .btn-white:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,0.2);}
+    .btn-outline-w{display:inline-flex;align-items:center;gap:8px;background:transparent;color:#fff;border:2px solid rgba(255,255,255,0.4);padding:14px 30px;border-radius:50px;font-size:15px;font-weight:700;text-decoration:none;transition:all 0.2s;}
+    .btn-outline-w:hover{border-color:#fff;transform:translateY(-2px);}
+
+    /* ── FOOTER ── */
+    footer{background:#07000f;color:rgba(255,255,255,0.22);padding:26px 40px;text-align:center;font-size:13px;border-top:1px solid rgba(255,255,255,0.05);}
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:768px){
+      nav{padding:0 20px;}
+      .nav-links a:not(.nav-cta){display:none;}
+      section{padding:70px 20px;}
+      .ceo-wrap{grid-template-columns:1fr;}
+      .essence-flow{grid-template-columns:1fr 1fr;}
+      .essence-flow::before{display:none;}
+      .process-steps{grid-template-columns:1fr;}
+      .cta-box{padding:44px 24px;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="index.html">
+    <img src="Logo.jpg" alt="IDenTeach" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" />
+    <span class="logo-text" style="display:none">IDenTeach</span>
+  </a>
+  <div class="nav-links">
+    <a href="about.html" class="active">회사소개</a>
+    <a href="index.html#programs">프로그램</a>
+    <a href="index.html#philosophy">교육 철학</a>
+    <a href="index.html#contact">문의</a>
+    <a href="tel:01040848962" class="nav-cta">📞 교육 문의</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bp"></div>
+  <!-- Geo -->
+  <svg class="geo" style="top:15%;right:5%;animation:floatA 7s ease-in-out infinite;opacity:0.15;" width="180" height="108" viewBox="0 0 180 108">
+    <circle cx="65" cy="54" r="50" fill="none" stroke="#691afa" stroke-width="1.5"/>
+    <circle cx="115" cy="54" r="50" fill="none" stroke="#c68dff" stroke-width="1.5"/>
+  </svg>
+  <svg class="geo" style="bottom:10%;right:10%;animation:floatB 9s ease-in-out infinite;opacity:0.12;" width="90" height="104" viewBox="0 0 90 104">
+    <polygon points="45,3 87,27 87,77 45,101 3,77 3,27" fill="none" stroke="#ff6b9d" stroke-width="1.5"/>
+  </svg>
+  <div class="hero-inner">
+    <div class="hero-badge">🏢 IDenTeach 회사소개</div>
+    <h1>경험이 <em>나다움</em>이 되는<br />교육 환경을 설계합니다</h1>
+    <p>IDenTeach는 학교와 공공기관을 위한<br />경험 중심 교육 콘텐츠를 기획하고 제작하는 팀입니다.</p>
+  </div>
+</section>
+
+<!-- CEO 소개 -->
+<section class="ceo-section">
+  <svg class="geo" style="top:-40px;right:-40px;opacity:0.05;z-index:0;" width="240" height="240" viewBox="0 0 240 240">
+    <circle cx="120" cy="80" r="100" fill="#691afa"/>
+    <circle cx="160" cy="140" r="100" fill="#c68dff"/>
+  </svg>
+  <div class="container">
+    <div class="ceo-wrap">
+      <div class="ceo-photo">
+        <div class="img-ph ceo-photo-img"><span class="phi">👤</span><span>대표 사진 (추후 추가)</span></div>
+        <div class="ceo-photo-badge">대표 진성재</div>
+      </div>
+      <div class="ceo-content">
+        <p class="sec-label">대표 소개</p>
+        <div class="name-wrap">
+          <span class="name">진성재</span>
+          <span class="title">IDenTeach 대표 · 한양대학원 조직심리 및 HRD 전공</span>
+        </div>
+        <div class="ceo-quote">
+          <p>
+            "듣고 쓰는 것보다 경험할 수 있는 환경을 설계하여<br />
+            스스로 만들어가는 나다움만이 유일한 목적입니다."
+          </p>
+        </div>
+        <div class="ceo-desc">
+          <p>
+            AI 시대, 정보는 넘쳐나지만 '나다움'을 잃어가고 있습니다.<br />
+            수많은 콘텐츠를 소비하면서도 정작 '나는 무엇을 표현하고 싶은가'라는 질문에는 답하지 못하는 시대입니다.
+          </p>
+          <p>
+            IDenTeach는 이 질문에 답할 수 있는 환경을 설계합니다.<br />
+            AI와 문화·예술·레크리에이션을 통해, 대상 스스로 자신의 정체성을 탐구할 수 있는 경험 교육 콘텐츠를 만듭니다.
+          </p>
+          <p>
+            교육은 가르치는 것이 아닙니다.<br />
+            경험하게 하는 것입니다.
+          </p>
+        </div>
+        <div class="ceo-tags">
+          <span class="ceo-tag">조직심리 및 HRD</span>
+          <span class="ceo-tag">경험 교육 설계</span>
+          <span class="ceo-tag">정체성 탐구 교육</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 교육의 본질: 모방 → 도전 → 창조 → 인정 -->
+<section class="essence">
+  <svg class="geo" style="top:-30px;left:-30px;opacity:0.05;z-index:0;" width="200" height="120" viewBox="0 0 200 120">
+    <circle cx="72" cy="60" r="54" fill="#00d4aa"/>
+    <circle cx="128" cy="60" r="54" fill="#ffd93d"/>
+  </svg>
+  <div class="container">
+    <div class="essence-intro">
+      <p class="sec-label">교육의 본질</p>
+      <h2 class="sec-title" style="text-align:center;">모든 프로그램이 담고 있는<br />교육의 4가지 환경</h2>
+      <p class="sec-sub" style="text-align:center;max-width:520px;margin-left:auto;margin-right:auto;">
+        IDenTeach의 교육 콘텐츠는 이 4가지 본질을 바탕으로 설계됩니다.
+      </p>
+    </div>
+    <div class="essence-flow">
+      <div class="essence-step">
+        <div class="essence-num">모방</div>
+        <h3>모방</h3>
+        <p>먼저 따라해보고 경험하는 것부터 시작합니다. 모방은 창조의 시작입니다.</p>
+      </div>
+      <div class="essence-step">
+        <div class="essence-num">도전</div>
+        <h3>도전</h3>
+        <p>익숙해진 것을 넘어 새로운 것을 시도하는 환경을 만듭니다. 실패해도 괜찮은 구조.</p>
+      </div>
+      <div class="essence-step">
+        <div class="essence-num">창조</div>
+        <h3>창조</h3>
+        <p>자신만의 것을 만들어냅니다. 결과물이 남는 교육의 핵심이 바로 이 단계입니다.</p>
+      </div>
+      <div class="essence-step">
+        <div class="essence-num">인정</div>
+        <h3>인정</h3>
+        <p>내가 만든 것이 세상에 존재한다는 것을 경험합니다. 이것이 진짜 자존감입니다.</p>
+      </div>
+    </div>
+    <div class="essence-desc">
+      <p>
+        IDenTeach의 모든 프로그램은 이 4단계가 자연스럽게 흐르도록 설계됩니다.<br />
+        <strong>모방에서 시작해 인정으로 끝나는 경험</strong> — 그것이 나다움을 찾는 여정입니다.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- 아이덴플레너 -->
+<section class="planner">
+  <svg class="geo" style="bottom:-40px;right:-40px;opacity:0.05;z-index:0;" width="200" height="200" viewBox="0 0 200 200">
+    <polygon points="100,8 192,54 192,146 100,192 8,146 8,54" fill="#691afa"/>
+  </svg>
+  <div class="container">
+    <div class="planner-intro">
+      <p class="sec-label">아이덴플레너</p>
+      <h2 class="sec-title">다양한 분야의 전문가들이<br />함께 프로그램을 만듭니다</h2>
+      <p class="sec-sub">아이덴플레너(IDen Planner)는 IDenTeach와 함께<br />새로운 경험 교육 콘텐츠를 기획하는 전문가 그룹입니다.</p>
+    </div>
+    <div class="planner-grid">
+      <div class="planner-card">
+        <div class="planner-icon">🎮</div>
+        <h3>레크리에이션 전문가</h3>
+        <p>현장에서 모두가 즐길 수 있는 활동을 설계합니다. 참여 구조와 에너지 흐름을 설계하는 전문가.</p>
+      </div>
+      <div class="planner-card">
+        <div class="planner-icon">🎤</div>
+        <h3>강사 / 퍼실리테이터</h3>
+        <p>프로그램을 현장에서 이끌어가는 진행 전문가. 대상과의 소통을 통해 경험을 극대화합니다.</p>
+      </div>
+      <div class="planner-card">
+        <div class="planner-icon">🎨</div>
+        <h3>분야 전문가</h3>
+        <p>문화·예술·AI·심리 등 다양한 분야의 전문가가 프로그램 기획에 참여합니다.</p>
+      </div>
+    </div>
+    <div class="planner-range">
+      <h3>다양한 범위의 콘텐츠로 접근 가능</h3>
+      <p>아이덴플레너들은 한 가지 분야에 머물지 않습니다.<br />문화와 예술, AI와 기술, 심리와 레크리에이션을 넘나들며 새로운 경험 교육을 만들어냅니다.</p>
+      <div class="range-tags">
+        <span class="range-tag">🎵 음악 · AI 창작</span>
+        <span class="range-tag">🎨 문화 · 예술</span>
+        <span class="range-tag">🤝 팀빌딩 · 관계</span>
+        <span class="range-tag">🔍 진로 · 정체성</span>
+        <span class="range-tag">📖 자서전 · 회고</span>
+        <span class="range-tag">🧠 조직 심리</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 커스텀 프로그램 기획 프로세스 -->
+<section class="process">
+  <svg class="geo" style="bottom:0;left:0;opacity:0.12;animation:floatB 10s ease-in-out infinite;" width="150" height="130" viewBox="0 0 150 130">
+    <polygon points="75,4 146,40 146,90 75,126 4,90 4,40" fill="none" stroke="#c68dff" stroke-width="1.5"/>
+  </svg>
+  <div class="container process-inner">
+    <p class="sec-label">커스텀 프로그램</p>
+    <h2 class="sec-title">우리 기관만의 프로그램,<br />함께 만들어갑니다</h2>
+    <p class="sec-sub">기획부터 운영까지 — IDenTeach의 커스텀 프로그램 제작 과정</p>
+    <div class="process-steps">
+      <div class="proc-step">
+        <div class="proc-num">01</div>
+        <h3>니즈 파악 · 목표 설정</h3>
+        <p>기관의 상황, 대상의 특성, 원하는 결과를 깊이 이해합니다. 좋은 프로그램은 좋은 질문에서 시작됩니다.</p>
+        <div class="proc-tags"><span class="proc-tag">인터뷰</span><span class="proc-tag">현장 이해</span><span class="proc-tag">목표 정의</span></div>
+      </div>
+      <div class="proc-step">
+        <div class="proc-num">02</div>
+        <h3>경험 콘텐츠 기획 · 설계</h3>
+        <p>아이덴플레너들이 모여 대상에게 맞는 경험 구조를 설계합니다. 모방→도전→창조→인정의 흐름으로.</p>
+        <div class="proc-tags"><span class="proc-tag">기획서 작성</span><span class="proc-tag">플로우 설계</span><span class="proc-tag">콘텐츠 개발</span></div>
+      </div>
+      <div class="proc-step">
+        <div class="proc-num">03</div>
+        <h3>프로그램 제작 · 준비</h3>
+        <p>설계된 콘텐츠를 실제 현장에서 구현할 수 있도록 제작합니다. 필요한 모든 준비를 함께합니다.</p>
+        <div class="proc-tags"><span class="proc-tag">콘텐츠 제작</span><span class="proc-tag">리허설</span><span class="proc-tag">현장 준비</span></div>
+      </div>
+      <div class="proc-step">
+        <div class="proc-num">04</div>
+        <h3>운영 · 결과물 · 피드백</h3>
+        <p>현장 운영 후 참여자들의 손에 실제 결과물이 남도록 합니다. 이후 피드백으로 더 발전합니다.</p>
+        <div class="proc-tags"><span class="proc-tag">현장 운영</span><span class="proc-tag">결과물 제공</span><span class="proc-tag">피드백 정리</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-box">
+      <svg class="geo" style="bottom:-30px;left:-30px;opacity:0.15;" width="160" height="96" viewBox="0 0 160 96">
+        <circle cx="58" cy="48" r="44" fill="#fff"/>
+        <circle cx="102" cy="48" r="44" fill="#fff"/>
+      </svg>
+      <h2>지금 바로 문의하세요</h2>
+      <p>학교와 기관에 맞는 프로그램을 함께 만들어드립니다.<br />어떤 고민이든 먼저 이야기 나눠보세요.</p>
+      <div class="cta-btns">
+        <a href="tel:01040848962" class="btn-white">📞 010-4084-8962</a>
+        <a href="index.html#contact" class="btn-outline-w">✉️ 교육 문의하기</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 IDenTeach (아이덴티치). All rights reserved. &nbsp;·&nbsp; 경험하는 교육을 설계하여 나다움을 찾다</p>
+</footer>
+
+<script>
+  /* Scroll animation */
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}});
+  },{threshold:0.1});
+  document.querySelectorAll('.essence-step,.planner-card,.proc-step').forEach(el=>{
+    el.style.opacity='0';el.style.transform='translateY(20px)';
+    el.style.transition='opacity 0.5s ease,transform 0.5s ease';
+    obs.observe(el);
+  });
+</script>
+</body>
+</html>
