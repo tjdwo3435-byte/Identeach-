@@ -47,27 +47,41 @@
     @keyframes floatB { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px) rotate(-4deg)} }
     @keyframes floatC { 0%,100%{transform:translateY(0) scale(1)} 50%{transform:translateY(-16px) scale(1.05)} }
 
+    /* ── HERO INTRO ANIMATIONS ── */
+    @keyframes drawLine { from{stroke-dashoffset:2000} to{stroke-dashoffset:0} }
+    @keyframes fadeInShape { from{opacity:0;transform:scale(0.7) translateY(10px)} to{opacity:1;transform:scale(1) translateY(0)} }
+    @keyframes fadeInContent { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+    .blueprint-svg line { stroke-dasharray:2000; stroke-dashoffset:2000; }
+    .blueprint-svg line.h1 { animation:drawLine 1.2s ease forwards 0.2s; }
+    .blueprint-svg line.h2 { animation:drawLine 1.0s ease forwards 0.5s; }
+    .blueprint-svg line.h3 { animation:drawLine 0.9s ease forwards 0.7s; }
+    .blueprint-svg line.v1 { animation:drawLine 1.1s ease forwards 0.3s; }
+    .blueprint-svg line.v2 { animation:drawLine 1.0s ease forwards 0.6s; }
+    .blueprint-svg line.v3 { animation:drawLine 0.8s ease forwards 0.9s; }
+    .blueprint-svg circle.c1 { stroke-dasharray:400; stroke-dashoffset:400; animation:drawLine 1s ease forwards 1.0s; }
+    .blueprint-svg circle.c2 { stroke-dasharray:280; stroke-dashoffset:280; animation:drawLine 0.9s ease forwards 1.2s; }
+    .hero-shapes .geo-s1 { animation:fadeInShape 0.7s ease forwards 1.3s; opacity:0; }
+    .hero-shapes .geo-s2 { animation:fadeInShape 0.7s ease forwards 1.5s; opacity:0; }
+    .hero-shapes .geo-s3 { animation:fadeInShape 0.7s ease forwards 1.7s; opacity:0; }
+    .hero-shapes .geo-s4 { animation:fadeInShape 0.7s ease forwards 1.9s; opacity:0; }
+    .hero-inner { animation:fadeInContent 0.8s ease forwards 1.6s; opacity:0; }
+
     /* ── HERO ── */
     .hero {
-      min-height:100vh; display:flex; align-items:center; justify-content:center;
-      text-align:center; padding:120px 40px 80px;
+      min-height:85vh; display:flex; align-items:center; justify-content:center;
+      text-align:center; padding:100px 40px 70px;
       position:relative; overflow:hidden;
-      background:linear-gradient(160deg,#f0e8ff 0%,#e0ccff 40%,#cdb0ff 100%);
+      background:#f0e8ff;
     }
     .hero-blueprint {
       position:absolute; inset:0; z-index:0;
-      background-image:
-        linear-gradient(rgba(105,26,250,0.06) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(105,26,250,0.06) 1px,transparent 1px);
-      background-size:56px 56px;
+      overflow:hidden;
     }
+    .blueprint-svg { width:100%; height:100%; position:absolute; inset:0; }
     .hero-media { position:absolute; inset:0; z-index:1; opacity:0; transition:opacity 1.5s ease; }
     .hero-media.loaded { opacity:0.15; }
     .hero-media video, .hero-media img { width:100%; height:100%; object-fit:cover; }
-    .hero-overlay {
-      position:absolute; inset:0; z-index:2;
-      background:linear-gradient(160deg,rgba(240,232,255,0.6) 0%,rgba(205,176,255,0.4) 100%);
-    }
+    .hero-overlay { position:absolute; inset:0; z-index:2; background:rgba(240,232,255,0.35); }
     .hero-shapes { position:absolute; inset:0; z-index:3; }
     .hero-inner { position:relative; z-index:4; max-width:780px; }
     .hero-badge {
@@ -147,25 +161,20 @@
     .need-card .ni { font-size:36px; margin-bottom:14px; }
     .need-card h3 { font-size:17px; font-weight:800; margin-bottom:8px; color:var(--main); }
     .need-card p { font-size:14px; color:var(--gray); line-height:1.65; position:relative; z-index:1; }
-    /* Diff hover */
-    .need-card.diff { cursor:pointer; }
+    /* Hover overlay for all need cards */
+    .need-card { cursor:pointer; }
     .diff-hover {
       position:absolute; inset:0; border-radius:20px;
       opacity:0; transition:opacity 0.3s; z-index:2;
       display:flex; align-items:flex-end;
       background:linear-gradient(135deg,rgba(105,26,250,0.93),rgba(106,0,255,0.88));
     }
-    .diff-hover-bg {
-      position:absolute; inset:0; border-radius:20px;
-      background:url('activity-diff.jpg') center/cover;
-      mix-blend-mode:overlay; opacity:0.3;
-    }
     .diff-hover-content { padding:26px; color:#fff; position:relative; z-index:1; }
     .diff-hover-content h4 { font-size:16px; font-weight:800; margin-bottom:10px; }
     .diff-hover-content ul { list-style:none; display:flex; flex-direction:column; gap:7px; }
     .diff-hover-content li { font-size:13px; color:rgba(255,255,255,0.88); display:flex; align-items:center; gap:8px; }
     .diff-hover-content li::before { content:'✓'; font-weight:900; }
-    .need-card.diff:hover .diff-hover { opacity:1; }
+    .need-card:hover .diff-hover { opacity:1; }
 
     /* ── RESULT ── */
     .result { background:var(--bg); }
@@ -443,7 +452,7 @@
 <!-- NAV -->
 <nav>
   <a class="logo" href="index.html">
-    <img src="Logo.jpg" alt="IDenTeach" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" />
+    <img src="LOgo.png" alt="IDenTeach" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" />
     <span class="logo-text" style="display:none">IDenTeach</span>
   </a>
   <div class="nav-links">
@@ -457,46 +466,51 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-blueprint"></div>
+  <div class="hero-blueprint">
+    <svg class="blueprint-svg" viewBox="0 0 1440 720" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <!-- 수평선 -->
+      <line class="h1" x1="0" y1="180" x2="1440" y2="180" stroke="rgba(105,26,250,0.12)" stroke-width="1"/>
+      <line class="h2" x1="0" y1="360" x2="1440" y2="360" stroke="rgba(105,26,250,0.08)" stroke-width="1"/>
+      <line class="h3" x1="0" y1="540" x2="1440" y2="540" stroke="rgba(105,26,250,0.06)" stroke-width="1"/>
+      <!-- 수직선 -->
+      <line class="v1" x1="360" y1="0" x2="360" y2="720" stroke="rgba(105,26,250,0.08)" stroke-width="1"/>
+      <line class="v2" x1="720" y1="0" x2="720" y2="720" stroke="rgba(105,26,250,0.12)" stroke-width="1"/>
+      <line class="v3" x1="1080" y1="0" x2="1080" y2="720" stroke="rgba(105,26,250,0.08)" stroke-width="1"/>
+      <!-- 도면 원 -->
+      <circle class="c1" cx="720" cy="360" r="60" fill="none" stroke="rgba(105,26,250,0.1)" stroke-width="1" stroke-dasharray="4 4"/>
+      <circle class="c2" cx="720" cy="360" r="42" fill="none" stroke="rgba(105,26,250,0.07)" stroke-width="1"/>
+      <!-- 십자 포인트 -->
+      <line class="h1" x1="706" y1="360" x2="734" y2="360" stroke="rgba(105,26,250,0.25)" stroke-width="1.5"/>
+      <line class="v1" x1="720" y1="346" x2="720" y2="374" stroke="rgba(105,26,250,0.25)" stroke-width="1.5"/>
+    </svg>
+  </div>
   <div class="hero-media" id="heroMedia">
     <video src="hero-video.mp4" autoplay muted loop playsinline></video>
   </div>
   <div class="hero-overlay"></div>
   <!-- Geometric shapes -->
   <div class="hero-shapes">
-    <!-- 벤다이어그램 (두 원 합체) 좌상단 -->
-    <svg class="geo" style="top:12%;left:4%;animation:floatA 7s ease-in-out infinite;" width="200" height="120" viewBox="0 0 200 120">
-      <circle cx="72" cy="60" r="54" fill="#691afa" opacity="0.12"/>
-      <circle cx="128" cy="60" r="54" fill="#c68dff" opacity="0.12"/>
-      <circle cx="72" cy="60" r="54" fill="none" stroke="#691afa" stroke-width="1" opacity="0.3"/>
-      <circle cx="128" cy="60" r="54" fill="none" stroke="#c68dff" stroke-width="1" opacity="0.3"/>
+    <!-- 벤다이어그램 좌상단 -->
+    <svg class="geo geo-s1" style="top:10%;left:4%;animation:floatA 7s ease-in-out infinite 2.2s;" width="200" height="120" viewBox="0 0 200 120">
+      <circle cx="72" cy="60" r="54" fill="#691afa" opacity="0.13"/>
+      <circle cx="128" cy="60" r="54" fill="#c68dff" opacity="0.13"/>
+      <circle cx="72" cy="60" r="54" fill="none" stroke="#691afa" stroke-width="1.2" opacity="0.35"/>
+      <circle cx="128" cy="60" r="54" fill="none" stroke="#c68dff" stroke-width="1.2" opacity="0.35"/>
     </svg>
     <!-- 헥사곤 우상단 -->
-    <svg class="geo" style="top:14%;right:6%;animation:floatB 8s ease-in-out infinite;" width="100" height="116" viewBox="0 0 100 116">
-      <polygon points="50,3 97,27 97,89 50,113 3,89 3,27" fill="#ff6b9d" opacity="0.1" stroke="#ff6b9d" stroke-width="1.5" opacity="0.25"/>
+    <svg class="geo geo-s2" style="top:10%;right:5%;animation:floatB 8s ease-in-out infinite 2.4s;" width="100" height="116" viewBox="0 0 100 116">
+      <polygon points="50,3 97,27 97,89 50,113 3,89 3,27" fill="#ff6b9d" opacity="0.1" stroke="#ff6b9d" stroke-width="1.5"/>
     </svg>
     <!-- 삼각형 좌하단 -->
-    <svg class="geo" style="bottom:18%;left:8%;animation:floatC 9s ease-in-out infinite;" width="88" height="76" viewBox="0 0 88 76">
-      <polygon points="44,4 84,72 4,72" fill="#00d4aa" opacity="0.1" stroke="#00d4aa" stroke-width="1.5" opacity="0.25"/>
+    <svg class="geo geo-s3" style="bottom:14%;left:6%;animation:floatC 9s ease-in-out infinite 2.6s;" width="88" height="76" viewBox="0 0 88 76">
+      <polygon points="44,4 84,72 4,72" fill="#00d4aa" opacity="0.1" stroke="#00d4aa" stroke-width="1.5"/>
     </svg>
-    <!-- 작은 벤다이어그램 우하단 -->
-    <svg class="geo" style="bottom:22%;right:4%;animation:floatA 6s ease-in-out infinite 2s;" width="130" height="78" viewBox="0 0 130 78">
-      <circle cx="47" cy="39" r="35" fill="#ffd93d" opacity="0.1"/>
-      <circle cx="83" cy="39" r="35" fill="#6a00ff" opacity="0.1"/>
-      <circle cx="47" cy="39" r="35" fill="none" stroke="#ffd93d" stroke-width="1" opacity="0.2"/>
-      <circle cx="83" cy="39" r="35" fill="none" stroke="#6a00ff" stroke-width="1" opacity="0.2"/>
-    </svg>
-    <!-- 도면 십자선 -->
-    <svg class="geo" style="top:38%;left:0;opacity:0.12;" width="110" height="110" viewBox="0 0 110 110">
-      <line x1="0" y1="55" x2="110" y2="55" stroke="#691afa" stroke-width="0.5" stroke-dasharray="4 4"/>
-      <line x1="55" y1="0" x2="55" y2="110" stroke="#691afa" stroke-width="0.5" stroke-dasharray="4 4"/>
-      <circle cx="55" cy="55" r="36" fill="none" stroke="#691afa" stroke-width="0.5"/>
-      <circle cx="55" cy="55" r="4" fill="#691afa" opacity="0.5"/>
-    </svg>
-    <!-- 우측 중단 원 하나 -->
-    <svg class="geo" style="top:45%;right:2%;opacity:0.1;animation:floatB 11s ease-in-out infinite 1s;" width="80" height="80" viewBox="0 0 80 80">
-      <circle cx="40" cy="40" r="36" fill="none" stroke="#c68dff" stroke-width="2"/>
-      <circle cx="40" cy="40" r="22" fill="none" stroke="#c68dff" stroke-width="1"/>
+    <!-- 벤다이어그램 우하단 -->
+    <svg class="geo geo-s4" style="bottom:16%;right:4%;animation:floatA 6s ease-in-out infinite 2.8s;" width="130" height="78" viewBox="0 0 130 78">
+      <circle cx="47" cy="39" r="35" fill="#ffd93d" opacity="0.09"/>
+      <circle cx="83" cy="39" r="35" fill="#6a00ff" opacity="0.09"/>
+      <circle cx="47" cy="39" r="35" fill="none" stroke="#ffd93d" stroke-width="1" opacity="0.22"/>
+      <circle cx="83" cy="39" r="35" fill="none" stroke="#6a00ff" stroke-width="1" opacity="0.22"/>
     </svg>
   </div>
   <div class="hero-inner">
@@ -540,13 +554,11 @@
       <div class="c-dots" id="cDots"></div>
     </div>
     <div class="need-grid">
-      <!-- 차별화 (hover overlay) -->
-      <div class="need-card diff">
+      <div class="need-card">
         <div class="ni">🚀</div>
         <h3>차별화된 프로그램</h3>
         <p>다른 기관에서 쉽게 볼 수 없는 새로운 형식의 교육 콘텐츠를 제공합니다.</p>
         <div class="diff-hover">
-          <div class="diff-hover-bg"></div>
           <div class="diff-hover-content">
             <h4>차별화된 프로그램</h4>
             <ul>
@@ -561,16 +573,46 @@
         <div class="ni">🎯</div>
         <h3>대상에게 맞춘 프로그램</h3>
         <p>대상의 상황, 연령, 인원에 맞게 설계된 맞춤형 프로그램을 운영합니다.</p>
+        <div class="diff-hover">
+          <div class="diff-hover-content">
+            <h4>대상에게 맞춘 프로그램</h4>
+            <ul>
+              <li>학교 · 기관의 상황을 먼저 파악</li>
+              <li>연령 · 인원 · 목적에 맞게 설계</li>
+              <li>일회성이 아닌 맞춤 기획 제공</li>
+            </ul>
+          </div>
+        </div>
       </div>
       <div class="need-card">
         <div class="ni">🙌</div>
         <h3>모두 즐겁게 참여하는 프로그램</h3>
         <p>소수가 아닌 전체가 함께 참여하고 즐길 수 있는 구조로 설계됩니다.</p>
+        <div class="diff-hover">
+          <div class="diff-hover-content">
+            <h4>모두 참여하는 프로그램</h4>
+            <ul>
+              <li>소수 집중이 아닌 전체 참여 구조</li>
+              <li>게임·활동 기반의 자연스러운 참여</li>
+              <li>분위기를 이끄는 전문 진행자</li>
+            </ul>
+          </div>
+        </div>
       </div>
       <div class="need-card">
         <div class="ni">✨</div>
         <h3>결과값이 남는 프로그램</h3>
         <p>활동으로 끝나지 않고, 대상의 손에 실제로 남는 창작물과 경험이 있습니다.</p>
+        <div class="diff-hover">
+          <div class="diff-hover-content">
+            <h4>결과값이 남는 프로그램</h4>
+            <ul>
+              <li>음원 · 자서전 · 창작물 등 실제 결과물</li>
+              <li>생활기록부 기재 가능한 활동</li>
+              <li>평생 기억에 남는 경험 설계</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </div>
