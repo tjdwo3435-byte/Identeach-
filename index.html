@@ -461,18 +461,72 @@
     }
     .copy-btn:hover { border-color:var(--main); }
 
+    /* ── MOB ONLY ── */
+    .mob-only { display:none; }
+
+    /* ── TEAM MAIN CARD ── */
+    .team-main-card {
+      display:grid; grid-template-columns:1fr 1fr; gap:0;
+      background:var(--bg); border-radius:24px; overflow:hidden;
+      border:1px solid rgba(105,26,250,0.08);
+      transition:transform 0.25s,box-shadow 0.25s; cursor:pointer;
+      margin-bottom:32px; position:relative;
+    }
+    .team-main-card::after { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--main),var(--sub)); }
+    .team-main-card:hover { transform:translateY(-4px); box-shadow:0 20px 56px rgba(105,26,250,0.12); }
+    .team-main-img { position:relative; height:280px; overflow:hidden; }
+    .team-main-img img { width:100%;height:100%;object-fit:cover; }
+    .team-main-body { padding:36px 32px; display:flex; flex-direction:column; justify-content:center; }
+    .team-sub-header {
+      display:flex; align-items:center; gap:14px;
+      margin-bottom:20px; margin-top:4px;
+    }
+    .team-sub-header span { font-size:14px; font-weight:800; color:var(--gray); white-space:nowrap; }
+    .team-sub-header::before,.team-sub-header::after { content:''; flex:1; height:1px; background:rgba(105,26,250,0.12); }
+
+    /* ── AI BADGE ── */
+    .ai-badge {
+      position:absolute; top:12px; right:12px;
+      background:rgba(105,26,250,0.9); color:#fff;
+      font-size:11px; font-weight:800; padding:5px 11px; border-radius:12px;
+      backdrop-filter:blur(4px); pointer-events:none;
+    }
+
+    /* ── IDENTITY/RESULT SECTION ── */
+    .identity-result { background:var(--bg); }
+    .identity-cards { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-bottom:40px; }
+    .id-card {
+      background:var(--white); border-radius:20px; padding:30px 24px;
+      border:1px solid rgba(105,26,250,0.08); text-align:center;
+      transition:transform 0.25s,box-shadow 0.25s;
+    }
+    .id-card:hover { transform:translateY(-4px); box-shadow:0 12px 40px rgba(105,26,250,0.1); }
+    .id-icon { font-size:36px; margin-bottom:14px; }
+    .id-card h4 { font-size:17px; font-weight:800; margin-bottom:10px; color:var(--main); }
+    .id-card p { font-size:14px; color:var(--gray); line-height:1.7; }
+    .identity-closing {
+      text-align:center; padding:40px 32px;
+      background:linear-gradient(135deg,rgba(105,26,250,0.06),rgba(198,141,255,0.06));
+      border-radius:20px; border:1px solid rgba(105,26,250,0.1);
+      margin-bottom:48px;
+    }
+    .identity-closing p { font-size:17px; line-height:1.9; color:var(--text); }
+    .identity-closing strong { color:var(--main); }
+
     /* ── RESPONSIVE ── */
     @media(max-width:768px) {
       nav { padding:0 20px; }
       .nav-links a:not(.nav-cta) { display:none; }
       section { padding:70px 20px; }
-      .result-wrap { grid-template-columns:1fr; }
+      .mob-only { display:block; }
       .phil-shapes { grid-template-columns:1fr; }
-      .need-grid { grid-template-columns:1fr; }
       .modal { padding:28px 20px; }
       .fg-row { grid-template-columns:1fr; }
       .pm-details { grid-template-columns:1fr; }
       .proposal-banner { flex-direction:column; }
+      .team-main-card { grid-template-columns:1fr; }
+      .team-main-img { height:200px; }
+      .identity-cards { grid-template-columns:1fr; }
     }
   </style>
 </head>
@@ -547,11 +601,10 @@
   </div>
   <div class="hero-inner">
     <div class="hero-badge">🏫 학교·공공기관 경험 콘텐츠 기획사</div>
-    <h1>경험하는 교육을 설계하여<br /><span class="hl">나다움</span>을 찾다</h1>
+    <h1>경험하는 교육을<br class="mob-only" /> 설계하여<br /><span class="hl">나다움</span>을 찾다</h1>
     <p class="hero-desc">
-      듣고 쓰는 수업이 아닌,<br />
-      학교·기관에 맞춰 차별화된 프로그램으로<br />
-      손에 남는 결과물을 전달드립니다.
+      학교 · 기관에 맞춘 차별화된 프로그램으로<br />
+      정체성을 돌아보는 경험을 전달드립니다.
     </p>
     <div class="hero-btns">
       <button class="btn-main" onclick="openInquiry()">✉️ 교육 문의하기</button>
@@ -574,149 +627,20 @@
     <div class="need-intro">
       <p class="sec-label">왜 IDenTeach인가</p>
       <p class="big-q">새로운 프로그램을 <em>원하시나요?</em></p>
-      <p class="need-sub-txt">IDenTeach는 대상에 맞는 새로운 경험 중심 교육 콘텐츠를 설계합니다.</p>
+      <p class="need-sub-txt">정체성을 찾아가는 IDenTeach만의 새로운 경험 교육</p>
     </div>
     <!-- Carousel -->
     <div class="carousel" id="carousel">
       <div class="c-track" id="cTrack">
-        <div class="c-slide"><img src="assets/images/activity/활동현장 이미지/현장 이미지.1.jpg" alt="활동현장 1" style="width:100%;height:100%;object-fit:cover;" /></div>
-        <div class="c-slide"><img src="assets/images/activity/활동현장 이미지/현장 이미지.2.jpg" alt="활동현장 2" style="width:100%;height:100%;object-fit:cover;" /></div>
-        <div class="c-slide"><img src="assets/images/activity/활동현장 이미지/현장 이미지.3.jpg" alt="활동현장 3" style="width:100%;height:100%;object-fit:cover;" /></div>
+        <div class="c-slide"><img src="assets/images/activity/활동현장 이미지/변형1.jpeg" alt="활동현장 1" style="width:100%;height:100%;object-fit:cover;" /></div>
+        <div class="c-slide"><img src="assets/images/activity/활동현장 이미지/변형2.png" alt="활동현장 2" style="width:100%;height:100%;object-fit:cover;" /></div>
+        <div class="c-slide"><img src="assets/images/activity/활동현장 이미지/변형3.jpeg" alt="활동현장 3" style="width:100%;height:100%;object-fit:cover;" /></div>
       </div>
       <div class="c-dots" id="cDots"></div>
-    </div>
-    <div class="need-grid">
-      <div class="need-card">
-        <div class="ni">🚀</div>
-        <h3>차별화된 프로그램</h3>
-        <p>다른 기관에서 쉽게 볼 수 없는 새로운 형식의 교육 콘텐츠를 제공합니다.</p>
-        <div class="diff-hover">
-          <div class="diff-hover-content">
-            <h4>차별화된 프로그램</h4>
-            <ul>
-              <li>기존에 없던 새로운 형식의 경험 교육</li>
-              <li>AI · 문화 · 예술 융합 콘텐츠</li>
-              <li>결과물이 실제로 남는 교육 설계</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="need-card">
-        <div class="ni">🎯</div>
-        <h3>대상에게 맞춘 프로그램</h3>
-        <p>대상의 상황, 연령, 인원에 맞게 설계된 맞춤형 프로그램을 운영합니다.</p>
-        <div class="diff-hover">
-          <div class="diff-hover-content">
-            <h4>대상에게 맞춘 프로그램</h4>
-            <ul>
-              <li>학교 · 기관의 상황을 먼저 파악</li>
-              <li>연령 · 인원 · 목적에 맞게 설계</li>
-              <li>일회성이 아닌 맞춤 기획 제공</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="need-card">
-        <div class="ni">🙌</div>
-        <h3>모두 즐겁게 참여하는 프로그램</h3>
-        <p>소수가 아닌 전체가 함께 참여하고 즐길 수 있는 구조로 설계됩니다.</p>
-        <div class="diff-hover">
-          <div class="diff-hover-content">
-            <h4>모두 참여하는 프로그램</h4>
-            <ul>
-              <li>소수 집중이 아닌 전체 참여 구조</li>
-              <li>게임·활동 기반의 자연스러운 참여</li>
-              <li>분위기를 이끄는 전문 진행자</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="need-card">
-        <div class="ni">✨</div>
-        <h3>결과값이 남는 프로그램</h3>
-        <p>활동으로 끝나지 않고, 대상의 손에 실제로 남는 창작물과 경험이 있습니다.</p>
-        <div class="diff-hover">
-          <div class="diff-hover-content">
-            <h4>결과값이 남는 프로그램</h4>
-            <ul>
-              <li>음원 · 자서전 · 창작물 등 실제 결과물</li>
-              <li>생활기록부 기재 가능한 활동</li>
-              <li>평생 기억에 남는 경험 설계</li>
-            </ul>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </section>
 
-<!-- RESULT -->
-<section class="result">
-  <!-- Geo bg -->
-  <svg class="geo" style="right:-100px;top:50%;transform:translateY(-50%);opacity:0.07;z-index:0;" width="500" height="500" viewBox="0 0 500 500">
-    <circle cx="190" cy="250" r="180" fill="#691afa"/>
-    <circle cx="310" cy="250" r="180" fill="#c68dff"/>
-  </svg>
-  <svg class="geo" style="left:-60px;bottom:-60px;opacity:0.05;z-index:0;" width="180" height="156" viewBox="0 0 180 156">
-    <polygon points="90,4 174,50 174,106 90,152 6,106 6,50" fill="#00d4aa"/>
-  </svg>
-  <div class="container">
-    <div class="result-wrap">
-      <div class="result-left">
-        <div class="sec-label">결과물이 남는 프로그램</div>
-        <h2 class="sec-title">활동으로 끝나지 않는 교육</h2>
-        <p class="sec-sub">IDenTeach의 모든 프로그램은<br />대상의 손에 실제로 남는 결과물을 만들어냅니다.</p>
-        <div class="result-examples">
-          <div class="result-ex">
-            <div class="ei">🎵</div>
-            <div>
-              <h4>AI 음원 제작 · Spotify 등록</h4>
-              <p>팀이 함께 만든 음악이 실제 스트리밍 플랫폼에 올라갑니다</p>
-            </div>
-            <span class="etag">예시</span>
-          </div>
-          <div class="result-ex">
-            <div class="ei">📖</div>
-            <div>
-              <h4>AI 자서전 · 회고 결과물</h4>
-              <p>나의 이야기를 AI와 함께 기록으로 남기는 경험</p>
-            </div>
-            <span class="etag">예시</span>
-          </div>
-          <div class="result-ex">
-            <div class="ei">🤝</div>
-            <div>
-              <h4>팀빌딩 · 관계 형성 결과물</h4>
-              <p>협력의 과정과 결과가 함께 남는 창작 활동</p>
-            </div>
-            <span class="etag">예시</span>
-          </div>
-        </div>
-      </div>
-      <div class="result-visual">
-        <!-- 썸네일 이미지 -->
-        <img src="assets/images/reperance/음악이미지.png" alt="우리의 지금 앨범 커버" style="width:100%;height:100%;object-fit:cover;display:block;" />
-        <div class="result-overlay">
-          <p>실제 제작 결과물 예시</p>
-          <h3>우리의 지금</h3>
-          <!-- 재생 버튼 -->
-          <div style="margin-bottom:14px;">
-            <audio id="resultAudio" src="assets/music/우리의 지금.mp3"></audio>
-            <button onclick="toggleAudio()" id="playBtn"
-              style="display:inline-flex;align-items:center;gap:8px;background:var(--main);color:#fff;border:none;padding:10px 22px;border-radius:50px;font-size:14px;font-weight:800;cursor:pointer;font-family:inherit;box-shadow:0 4px 16px rgba(105,26,250,0.4);">
-              ▶ 재생하기
-            </button>
-          </div>
-          <div class="plat-badges">
-            <span class="pbadge">🎧 Spotify</span>
-            <span class="pbadge">▶ YouTube Music</span>
-            <span class="pbadge">📖 AI 자서전</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- PROGRAMS -->
 <section class="programs" id="programs">
@@ -728,87 +652,89 @@
     <h2 class="sec-title">경험 중심 교육 프로그램</h2>
     <p class="sec-sub">학교와 공공기관을 위한 다양한 경험 콘텐츠를 운영합니다.</p>
     <div class="prog-tabs">
-      <button class="prog-tab active" onclick="switchTab('school',this)">🏫 학교 프로그램</button>
-      <button class="prog-tab" onclick="switchTab('public',this)">🏛 공공기관 프로그램</button>
-      <button class="prog-tab" onclick="switchTab('custom',this)">⚙️ 커스텀</button>
+      <button class="prog-tab active" onclick="switchTab('team',this)">🤝 팀 교육 컨텐츠</button>
+      <button class="prog-tab" onclick="switchTab('personal',this)">🎯 개인 교육 컨텐츠</button>
+      <button class="prog-tab" onclick="switchTab('custom',this)">⚙️ 커스텀 교육</button>
     </div>
 
-    <!-- 학교 -->
-    <div class="prog-section active" id="tab-school">
-      <div class="prog-grid">
-        <div class="prog-card" onclick="openProgModal('enterai')">
-          <div class="prog-img" style="overflow:hidden;"><img src="assets/images/programs/프로그램 이미지/AI entertainment quest.png" alt="AI Entertainment Quest" style="width:100%;height:100%;object-fit:cover;" /></div>
-          <div class="prog-body">
-            <div class="prog-tag">문화형 × 참여형</div>
-            <h3>AI Entertainment Quest</h3>
-            <p class="psub">AI 엔터테인먼트 × 팀빌딩</p>
-            <div class="prog-meta"><span>초·중·고</span><span>최대 100명</span><span>비용 문의</span></div>
-            <p class="prog-more">자세히 보기 →</p>
-          </div>
+    <!-- 팀 교육 -->
+    <div class="prog-section active" id="tab-team">
+      <!-- 메인 대형 카드: AI Entertainment Quest -->
+      <div class="team-main-card" onclick="openProgModal('enterai')">
+        <div class="team-main-img">
+          <img src="assets/images/programs/프로그램 이미지/AI entertainment quest.png" alt="AI Entertainment Quest" />
+          <span class="ai-badge">🤖 AI활용</span>
         </div>
+        <div class="team-main-body">
+          <div class="prog-tag">문화형 × 참여형</div>
+          <h3 style="font-size:22px;margin-bottom:10px;">AI Entertainment Quest</h3>
+          <p class="psub" style="font-size:14px;">팀빌딩 게임을 통해 프롬프트를 만들어서<br />우리 팀의 정체성이 담긴 음악을 만든다!</p>
+          <div class="prog-meta" style="margin-top:14px;"><span>🏫 학교</span><span>초·중·고</span><span>최대 100명</span></div>
+          <p class="prog-more" style="margin-top:14px;">자세히 보기 →</p>
+        </div>
+      </div>
+      <!-- 서브 프로그램 -->
+      <div class="team-sub-header"><span>이런 프로그램도 있어요</span></div>
+      <div class="prog-grid">
         <div class="prog-card" onclick="openProgModal('relation')">
           <div class="prog-img" style="overflow:hidden;"><img src="assets/images/programs/프로그램 이미지/관계형성 학교폭력에방팀빌딩.jpeg" alt="관계형성 팀빌딩" style="width:100%;height:100%;object-fit:cover;" /></div>
           <div class="prog-body">
-            <div class="prog-tag">화합형 × 참여형</div>
+            <div class="prog-tag">학교폭력예방</div>
             <h3>관계형성 · 학교폭력예방 팀빌딩</h3>
             <p class="psub">함께 만드는 관계, 서로를 이해하는 경험</p>
-            <div class="prog-meta"><span>초·중·고</span><span>비용 문의</span></div>
+            <div class="prog-meta"><span>🏫 학교</span></div>
             <p class="prog-more">자세히 보기 →</p>
           </div>
         </div>
         <div class="prog-card" onclick="openProgModal('career')">
           <div class="prog-img" style="overflow:hidden;"><img src="assets/images/programs/프로그램 이미지/진로강연 프로그램.jpeg" alt="진로 레크리에이션 강연" style="width:100%;height:100%;object-fit:cover;" /></div>
           <div class="prog-body">
-            <div class="prog-tag">참여형 × 문화형</div>
+            <div class="prog-tag">진로교육</div>
             <h3>진로 레크리에이션 강연</h3>
             <p class="psub">나를 알아가는 진로 탐색 경험</p>
-            <div class="prog-meta"><span>초·중·고</span><span>비용 문의</span></div>
+            <div class="prog-meta"><span>🏫 학교</span></div>
             <p class="prog-more">자세히 보기 →</p>
           </div>
         </div>
         <div class="prog-card" onclick="openProgModal('reclec')">
-          <div class="prog-img" style="overflow:hidden;"><img src="assets/images/programs/프로그램 이미지/청소년 리더십.jpeg" alt="관계 교육 레크리에이션" style="width:100%;height:100%;object-fit:cover;" /></div>
+          <div class="prog-img" style="overflow:hidden;"><img src="assets/images/programs/프로그램 이미지/청소년 리더십.jpeg" alt="리더십 교육 워크샵" style="width:100%;height:100%;object-fit:cover;" /></div>
           <div class="prog-body">
-            <div class="prog-tag">화합형 × 참여형</div>
-            <h3>관계 교육 레크리에이션</h3>
-            <p class="psub">함께하는 즐거움으로 관계를 배우는 시간</p>
-            <div class="prog-meta"><span>초·중·고</span><span>비용 문의</span></div>
+            <div class="prog-tag">리더십교육</div>
+            <h3>리더십 교육 워크샵</h3>
+            <p class="psub">함께하는 즐거움으로 리더십을 경험하는 시간</p>
+            <div class="prog-meta"><span>🏫 학교</span></div>
             <p class="prog-more">자세히 보기 →</p>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- 공공기관 -->
-    <div class="prog-section" id="tab-public">
+    <!-- 개인 교육 -->
+    <div class="prog-section" id="tab-personal">
       <div class="prog-grid">
         <div class="prog-card" onclick="openProgModal('ailife')">
-          <div class="prog-img" style="overflow:hidden;"><img src="assets/images/programs/프로그램 이미지/나 를닮은 음악[ai음악 회고].png" alt="AI로 나의 삶 회고하기" style="width:100%;height:100%;object-fit:cover;" /></div>
+          <div class="prog-img" style="overflow:hidden;position:relative;">
+            <img src="assets/images/programs/프로그램 이미지/나 를닮은 음악[ai음악 회고].png" alt="나를 닮은 음악" style="width:100%;height:100%;object-fit:cover;" />
+            <span class="ai-badge">🤖 AI활용</span>
+          </div>
           <div class="prog-body">
             <div class="prog-tag">문화형 × 참여형</div>
-            <h3>AI로 나의 삶 회고하기</h3>
-            <p class="psub">AI와 함께 나의 이야기를 돌아보는 경험</p>
-            <div class="prog-meta"><span>성인 대상</span><span>비용 문의</span></div>
-            <p class="prog-more">자세히 보기 →</p>
-          </div>
-        </div>
-        <div class="prog-card" onclick="openProgModal('orgrec')">
-          <div class="prog-img" style="overflow:hidden;"><img src="assets/images/programs/프로그램 이미지/Gemini_Generated_Image_7bc3k97bc3k97bc3.png" alt="조직 관계형성 레크리에이션" style="width:100%;height:100%;object-fit:cover;" /></div>
-          <div class="prog-body">
-            <div class="prog-tag">화합형 × 참여형</div>
-            <h3>조직 관계형성 레크리에이션</h3>
-            <p class="psub">구성원이 함께 즐기며 관계를 만들어가는 프로그램</p>
-            <div class="prog-meta"><span>성인 대상</span><span>비용 문의</span></div>
+            <h3>나를 닮은 음악</h3>
+            <p class="psub">AI로 나의 정체성이 담긴 음악을 만드는 경험</p>
+            <div class="prog-meta"><span>🏫 학교</span><span>🏛 기관</span></div>
             <p class="prog-more">자세히 보기 →</p>
           </div>
         </div>
         <div class="prog-card" onclick="openProgModal('aibio')">
-          <div class="prog-img" style="overflow:hidden;"><img src="assets/images/programs/Gemini_Generated_Image_nzjrrxnzjrrxnzjr.png" alt="AI 자서전 만들기" style="width:100%;height:100%;object-fit:cover;" /></div>
+          <div class="prog-img" style="overflow:hidden;position:relative;">
+            <img src="assets/images/programs/Gemini_Generated_Image_nzjrrxnzjrrxnzjr.png" alt="AI를 만들어 나의 첫 자서전 만들기" style="width:100%;height:100%;object-fit:cover;" />
+            <span class="ai-badge">🤖 AI활용</span>
+          </div>
           <div class="prog-body">
             <div class="prog-tag">문화형 × 창작형</div>
-            <h3>AI를 활용하여 자서전 만들기</h3>
+            <h3>AI를 만들어 나의 첫 자서전 만들기</h3>
             <p class="psub">나의 삶을 AI와 함께 기록하고 책으로 남기는 경험</p>
-            <div class="prog-meta"><span>성인 대상</span><span>비용 문의</span></div>
+            <div class="prog-meta"><span>🏛 기관</span></div>
             <p class="prog-more">자세히 보기 →</p>
           </div>
         </div>
@@ -818,6 +744,7 @@
     <!-- 커스텀 -->
     <div class="prog-section" id="tab-custom">
       <div style="max-width:720px;">
+        <p style="font-size:16px;color:var(--gray);margin-bottom:24px;line-height:1.85;">혹시 기관에 맞춘 프로그램을 만들고 싶나요?<br />대상과 목적 및 원하는 결과물이 있다면 프로그램을 기획해드립니다.</p>
         <div class="prog-card custom" onclick="openInquiry()">
           <div class="prog-body">
             <div class="prog-tag">커스텀</div>
@@ -902,6 +829,60 @@
   </div>
 </section>
 
+<!-- IDENTITY / RESULT -->
+<section class="identity-result">
+  <svg class="geo" style="right:-100px;top:50%;transform:translateY(-50%);opacity:0.05;z-index:0;" width="400" height="400" viewBox="0 0 400 400">
+    <circle cx="160" cy="200" r="150" fill="#691afa"/>
+    <circle cx="240" cy="200" r="150" fill="#c68dff"/>
+  </svg>
+  <div class="container">
+    <div class="sec-label">결과물과 정체성</div>
+    <h2 class="sec-title">나만의 결과물이<br /><em style="color:var(--main);font-style:normal;">다름의 가치</em>를 만듭니다</h2>
+    <p class="sec-sub">IDenTeach의 모든 프로그램은 저마다 다른 결과물을 만들어냅니다.<br />그 다름 속에서 나를 돌아보고, 서로의 다양성을 존중하는 경험이 시작됩니다.</p>
+    <div class="identity-cards">
+      <div class="id-card">
+        <div class="id-icon">🎵</div>
+        <h4>나만의 음악</h4>
+        <p>팀이 함께 만든 음악은 모두 다릅니다. 나의 정체성이 담긴 소리를 통해 '나다움'을 발견합니다.</p>
+      </div>
+      <div class="id-card">
+        <div class="id-icon">📖</div>
+        <h4>나만의 이야기</h4>
+        <p>AI와 함께 기록한 자서전은 나만의 역사입니다. 다른 누구도 쓸 수 없는, 오직 나의 이야기.</p>
+      </div>
+      <div class="id-card">
+        <div class="id-icon">🌈</div>
+        <h4>다양성의 가치</h4>
+        <p>서로 다른 결과물을 공유하며 다름이 틀림이 아님을 자연스럽게 경험합니다.</p>
+      </div>
+    </div>
+    <div class="identity-closing">
+      <p>결국 대상 스스로 느끼는, <strong>나에 대한 탐구의 기회</strong>를 제공하는 것—<br />그것이 IDenTeach의 모든 프로그램이 추구하는 단 하나의 목적입니다.</p>
+    </div>
+    <!-- 결과물 예시 -->
+    <div style="max-width:380px;margin:0 auto;">
+      <div class="result-visual">
+        <img src="assets/images/reperance/음악이미지.png" alt="우리의 지금 앨범 커버" style="width:100%;display:block;" />
+        <div class="result-overlay">
+          <p>실제 제작 결과물 예시</p>
+          <h3>우리의 지금</h3>
+          <div style="margin-bottom:14px;">
+            <audio id="resultAudio" src="assets/music/우리의 지금.mp3"></audio>
+            <button onclick="toggleAudio()" id="playBtn"
+              style="display:inline-flex;align-items:center;gap:8px;background:var(--main);color:#fff;border:none;padding:10px 22px;border-radius:50px;font-size:14px;font-weight:800;cursor:pointer;font-family:inherit;box-shadow:0 4px 16px rgba(105,26,250,0.4);">
+              ▶ 재생하기
+            </button>
+          </div>
+          <div class="plat-badges">
+            <span class="pbadge">🎧 Spotify</span>
+            <span class="pbadge">▶ YouTube Music</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CONTACT -->
 <section class="contact" id="contact">
   <svg class="geo" style="top:-30px;right:-30px;opacity:0.07;z-index:0;" width="320" height="320" viewBox="0 0 320 320">
@@ -976,11 +957,15 @@
       <div class="fg"><label>⑦ 희망 프로그램</label>
         <select name="program">
           <option value="">선택해 주세요 (미정이면 미정으로 선택)</option>
-          <optgroup label="학교 프로그램">
+          <optgroup label="팀 교육 컨텐츠">
             <option>AI Entertainment Quest</option>
             <option>관계형성 · 학교폭력예방 팀빌딩</option>
             <option>진로 레크리에이션 강연</option>
-            <option>관계 교육 레크리에이션</option>
+            <option>리더십 교육 워크샵</option>
+          </optgroup>
+          <optgroup label="개인 교육 컨텐츠">
+            <option>나를 닮은 음악</option>
+            <option>AI를 만들어 나의 첫 자서전 만들기</option>
           </optgroup>
           <option>커스텀 프로그램 (맞춤 기획)</option>
           <option>미정 / 상담 원함</option>
@@ -1029,11 +1014,15 @@
     <div class="fg"><label>희망 프로그램</label>
       <select id="propProg">
         <option value="">선택해 주세요</option>
-        <optgroup label="학교 프로그램">
+        <optgroup label="팀 교육 컨텐츠">
           <option>AI Entertainment Quest</option>
           <option>관계형성 · 학교폭력예방 팀빌딩</option>
           <option>진로 레크리에이션 강연</option>
-          <option>관계 교육 레크리에이션</option>
+          <option>리더십 교육 워크샵</option>
+        </optgroup>
+        <optgroup label="개인 교육 컨텐츠">
+          <option>나를 닮은 음악</option>
+          <option>AI를 만들어 나의 첫 자서전 만들기</option>
         </optgroup>
         <option>커스텀 프로그램</option>
       </select>
@@ -1052,22 +1041,51 @@
 <div class="modal-overlay" id="progModal-enterai"><div class="modal">
   <button class="modal-close" onclick="closeModal('progModal-enterai')">✕</button>
   <div class="pm-img"><img src="assets/images/programs/프로그램 이미지/AI entertainment quest.png" alt="AI Entertainment Quest" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;" /></div>
-  <div class="pm-tag">문화형 × 참여형 · 학교</div>
+  <!-- 배지 -->
+  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;">
+    <span class="pm-tag">🤖 AI 유통경험</span>
+    <span class="pm-tag">⚖️ AI 저작권 교육</span>
+  </div>
   <h2>AI Entertainment Quest</h2>
-  <p class="modal-sub">찾아가는 AI 리터러시 × 팀빌딩 — 게임이 곧 음악이 되는 수업</p>
+  <p class="modal-sub" style="font-size:15px;font-weight:700;color:var(--main);margin-bottom:20px;line-height:1.65;background:rgba(105,26,250,0.06);border-radius:12px;padding:14px 16px;">
+    "팀빌딩 게임을 통해 프롬프트를 만들어서<br />우리 팀의 정체성이 담긴 음악을 만든다!"
+  </p>
   <div class="pm-details">
     <div class="pm-detail"><div class="dl">대상</div><div class="dv">초·중·고등학교</div></div>
     <div class="pm-detail"><div class="dl">인원</div><div class="dv">최대 100명 (10명×10조)</div></div>
     <div class="pm-detail"><div class="dl">시간</div><div class="dv">2교시 (약 100분)</div></div>
     <div class="pm-detail"><div class="dl">비용</div><div class="dv">문의</div></div>
-    <div class="pm-detail" style="grid-column:1/-1;"><div class="dl">목적</div><div class="dv">AI 리터러시 교육 · 팀빌딩 · 창의적 결과물 제작 경험</div></div>
   </div>
-  <ul class="pm-features">
-    <li>팀빌딩 게임 결과가 AI 프롬프트로 연결</li>
-    <li>AI 저작권 안전 — ODO 플랫폼 기반 (그레이프스)</li>
-    <li>Spotify · YouTube Music 실제 등록</li>
-    <li>생활기록부 기재 가능한 실질적 결과물</li>
-  </ul>
+  <!-- 4단계 플로우 -->
+  <div style="margin-bottom:18px;">
+    <p style="font-size:12px;font-weight:800;color:var(--gray);letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;">4단계 프로그램 흐름</p>
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <div style="display:flex;align-items:center;gap:12px;background:var(--bg);border-radius:12px;padding:12px 16px;">
+        <div style="min-width:28px;height:28px;background:var(--main);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:900;">①</div>
+        <span style="font-size:14px;font-weight:700;">강당 AI 팀빌딩 교육</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;background:var(--bg);border-radius:12px;padding:12px 16px;">
+        <div style="min-width:28px;height:28px;background:var(--main);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:900;">②</div>
+        <span style="font-size:14px;font-weight:700;">AI 저작권 · 유통 퀴즈게임</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;background:var(--bg);border-radius:12px;padding:12px 16px;">
+        <div style="min-width:28px;height:28px;background:var(--main);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:900;">③</div>
+        <span style="font-size:14px;font-weight:700;">정체성 확립</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;background:var(--bg);border-radius:12px;padding:12px 16px;">
+        <div style="min-width:28px;height:28px;background:var(--main);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:900;">④</div>
+        <span style="font-size:14px;font-weight:700;">실제 AI 음악 유통 체험</span>
+      </div>
+    </div>
+  </div>
+  <!-- 오디오 플레이어 -->
+  <div style="background:var(--bg);border-radius:14px;padding:16px;margin-bottom:16px;">
+    <p style="font-size:12px;color:var(--gray);font-weight:700;margin-bottom:4px;">🎧 실제 결과물 — 직접 들어보세요</p>
+    <p style="font-size:14px;font-weight:800;margin-bottom:8px;">우리의 지금</p>
+    <audio controls style="width:100%;border-radius:8px;">
+      <source src="assets/music/우리의 지금.mp3" type="audio/mpeg">
+    </audio>
+  </div>
   <div class="pm-result">🎵 결과물: 팀별 AI 음원 + 학년 합동 앨범 스트리밍 등록</div>
   <button class="btn-submit" onclick="closeModal('progModal-enterai');openInquiry()">이 프로그램 문의하기 →</button>
 </div></div>
@@ -1118,15 +1136,15 @@
   <button class="modal-close" onclick="closeModal('progModal-reclec')">✕</button>
   <div class="pm-img"><img src="assets/images/programs/프로그램 이미지/청소년 리더십.jpeg" alt="관계 교육 레크리에이션" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;" /></div>
   <div class="pm-tag">화합형 × 참여형 · 학교</div>
-  <h2>관계 교육 레크리에이션</h2>
-  <p class="modal-sub">함께하는 즐거움으로 관계를 배우는 시간</p>
+  <h2>리더십 교육 워크샵</h2>
+  <p class="modal-sub">함께하는 즐거움으로 리더십을 경험하는 시간</p>
   <div class="pm-details">
     <div class="pm-detail"><div class="dl">대상</div><div class="dv">초·중·고등학교</div></div>
     <div class="pm-detail"><div class="dl">비용</div><div class="dv">문의</div></div>
-    <div class="pm-detail" style="grid-column:1/-1;"><div class="dl">목적</div><div class="dv">관계 형성 · 공동체 의식 · 전체 참여형 즐거운 활동</div></div>
+    <div class="pm-detail" style="grid-column:1/-1;"><div class="dl">목적</div><div class="dv">리더십 함양 · 공동체 의식 · 협력 기반 활동 경험</div></div>
   </div>
   <ul class="pm-features">
-    <li>레크리에이션을 통한 자연스러운 관계 형성</li>
+    <li>레크리에이션 기반의 리더십 체험 활동</li>
     <li>모두가 참여하는 활동 중심 구성</li>
     <li>신학기·학교 행사 등 다양한 상황에 적용</li>
     <li>전문 레크리에이션 강사 진행</li>
@@ -1138,21 +1156,21 @@
 <div class="modal-overlay" id="progModal-ailife"><div class="modal">
   <button class="modal-close" onclick="closeModal('progModal-ailife')">✕</button>
   <div class="pm-img"><img src="assets/images/programs/프로그램 이미지/나 를닮은 음악[ai음악 회고].png" alt="AI로 나의 삶 회고하기" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;" /></div>
-  <div class="pm-tag">문화형 × 참여형 · 공공기관</div>
-  <h2>AI로 나의 삶 회고하기</h2>
-  <p class="modal-sub">AI와 함께 나의 이야기를 돌아보는 경험</p>
+  <div class="pm-tag">문화형 × 참여형 · 학교/기관</div>
+  <h2>나를 닮은 음악</h2>
+  <p class="modal-sub">AI로 나의 정체성이 담긴 음악을 만드는 경험</p>
   <div class="pm-details">
-    <div class="pm-detail"><div class="dl">대상</div><div class="dv">성인 / 공공기관</div></div>
+    <div class="pm-detail"><div class="dl">대상</div><div class="dv">학교 / 공공기관</div></div>
     <div class="pm-detail"><div class="dl">비용</div><div class="dv">문의</div></div>
-    <div class="pm-detail" style="grid-column:1/-1;"><div class="dl">목적</div><div class="dv">자기 탐구 · 삶의 회고 · 정체성 발견</div></div>
+    <div class="pm-detail" style="grid-column:1/-1;"><div class="dl">목적</div><div class="dv">자기 탐구 · 정체성 표현 · AI 음악 창작 경험</div></div>
   </div>
   <ul class="pm-features">
-    <li>AI 도구를 활용한 삶의 회고 작업</li>
-    <li>나의 경험과 기억을 구조화하는 과정</li>
+    <li>AI 도구를 활용한 나만의 음악 제작</li>
+    <li>나의 경험과 감정을 음악으로 표현하는 과정</li>
     <li>자기 탐구 · 정체성 발견의 시간</li>
-    <li>복지관, 평생교육원 등 연계 가능</li>
+    <li>학교 · 복지관 · 평생교육원 등 연계 가능</li>
   </ul>
-  <div class="pm-result">📖 인원·시간·비용은 기관 상황에 맞춰 제안드립니다</div>
+  <div class="pm-result">🎵 인원·시간·비용은 기관 상황에 맞춰 제안드립니다</div>
   <button class="btn-submit" onclick="closeModal('progModal-ailife');openInquiry()">이 프로그램 문의하기 →</button>
 </div></div>
 
@@ -1180,8 +1198,8 @@
 <div class="modal-overlay" id="progModal-aibio"><div class="modal">
   <button class="modal-close" onclick="closeModal('progModal-aibio')">✕</button>
   <div class="pm-img"><img src="assets/images/programs/Gemini_Generated_Image_nzjrrxnzjrrxnzjr.png" alt="AI 자서전 만들기" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;" /></div>
-  <div class="pm-tag">문화형 × 창작형 · 공공기관</div>
-  <h2>AI를 활용하여 자서전 만들기</h2>
+  <div class="pm-tag">문화형 × 창작형 · 기관</div>
+  <h2>AI를 만들어 나의 첫 자서전 만들기</h2>
   <p class="modal-sub">나의 삶을 AI와 함께 기록하고 책으로 남기는 경험</p>
   <div class="pm-details">
     <div class="pm-detail"><div class="dl">대상</div><div class="dv">성인 / 공공기관</div></div>
@@ -1392,7 +1410,7 @@
   const obs=new IntersectionObserver(entries=>{
     entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}});
   },{threshold:0.1});
-  document.querySelectorAll('.need-card,.prog-card,.phil-shape,.result-ex,.contact-card').forEach(el=>{
+  document.querySelectorAll('.prog-card,.phil-shape,.id-card,.contact-card,.team-main-card').forEach(el=>{
     el.style.opacity='0';el.style.transform='translateY(20px)';
     el.style.transition='opacity 0.5s ease,transform 0.5s ease';
     obs.observe(el);
