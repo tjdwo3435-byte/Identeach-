@@ -1003,6 +1003,24 @@
 
 <button class="floating-cta" onclick="openInquiry()">✉️ 교육 문의하기</button>
 
+<!-- ══ NEW PROGRAM POPUP ══ -->
+<div class="modal-overlay" id="newProgramPopup" style="z-index:200;">
+  <div class="modal" style="max-width:420px;padding:0;overflow:hidden;border-radius:20px;">
+    <button class="modal-close" onclick="closeModal('newProgramPopup')" style="position:absolute;top:12px;right:12px;z-index:10;background:rgba(0,0,0,0.45);color:#fff;border:none;width:32px;height:32px;border-radius:50%;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;">✕</button>
+    <div style="position:relative;">
+      <img src="assets/images/programs/프로그램 이미지/AI entertainment quest.png" alt="AI음악 창작 레크리에이션" style="width:100%;height:220px;object-fit:cover;display:block;" />
+      <div style="position:absolute;top:14px;left:14px;background:var(--main);color:#fff;font-size:11px;font-weight:800;padding:5px 12px;border-radius:20px;letter-spacing:0.5px;">🆕 신규 프로그램</div>
+    </div>
+    <div style="padding:24px 24px 28px;">
+      <p style="font-size:12px;color:var(--main);font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;">NEW PROGRAM</p>
+      <h2 style="font-size:22px;font-weight:900;line-height:1.35;margin-bottom:10px;">AI음악 창작<br/>레크리에이션</h2>
+      <p style="font-size:14px;color:var(--gray);line-height:1.7;margin-bottom:22px;">팀빌딩 게임으로 프롬프트를 만들고<br/>우리 팀만의 음악을 창작하는 특별한 경험!</p>
+      <button onclick="closeModal('newProgramPopup');openModal('proposalModal');" style="width:100%;padding:15px;background:var(--main);color:#fff;border:none;border-radius:14px;font-size:16px;font-weight:800;cursor:pointer;letter-spacing:0.3px;">📄 프로그램 제안서 받기</button>
+      <button onclick="closeModal('newProgramPopup')" style="width:100%;margin-top:10px;padding:11px;background:transparent;color:var(--gray);border:none;font-size:13px;cursor:pointer;">다음에 볼게요</button>
+    </div>
+  </div>
+</div>
+
 <!-- ══ INQUIRY MODAL ══ -->
 <div class="modal-overlay" id="inquiryModal">
   <div class="modal">
@@ -1039,7 +1057,7 @@
       </div>
       <div class="fg"><label>⑧ 프로그램 목적</label><input name="purpose" placeholder="예) 신학기 팀빌딩, 학교폭력예방 행사, 진로 교육 등 (미정)" /></div>
       <div class="fg"><label>⑨ 요청사항</label><textarea name="message" placeholder="기관 상황이나 원하시는 내용을 자유롭게 적어주세요. (미정인 항목은 미정으로 작성해 주세요)"></textarea></div>
-      <button type="submit" class="btn-submit">문의 이메일 보내기 →</button>
+      <button type="submit" class="btn-submit">빠른 문의 하기 클릭 →</button>
     </form>
   </div>
 </div>
@@ -1366,7 +1384,7 @@
     } catch(err){
       alert('네트워크 오류가 발생했습니다. idengroup@naver.com 으로 직접 이메일 주세요.');
     }
-    btn.textContent='문의 이메일 보내기 →'; btn.disabled=false;
+    btn.textContent='빠른 문의 하기 클릭 →'; btn.disabled=false;
   }
 
   /* Proposal */
@@ -1471,6 +1489,9 @@
       });
     },1600);
   })();
+
+  /* New program popup on load */
+  setTimeout(()=>{ openModal('newProgramPopup'); }, 800);
 
   /* Scroll animation */
   const obs=new IntersectionObserver(entries=>{
