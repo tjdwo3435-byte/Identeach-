@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>무료 프로그램 맞춤 요청 | 아이덴티치</title>
+<meta name="description" content="우리 학교 상황만 알려주시면 맞는 어울림 프로그램과 제안서·견적을 무료로 보내드립니다. 영업일 기준 1~2일 내 회신.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="무료 프로그램 맞춤 요청 | 아이덴티치">
+<meta property="og:url" content="https://identeach.co.kr/request">
+<meta property="og:locale" content="ko_KR">
+<link rel="canonical" href="https://identeach.co.kr/request">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<style>
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@1.3.9/dist/web/static/pretendard.css');
+:root{
+  --primary:#6C47D6;--primary-deep:#5836C0;--navy:#18142E;--accent:#FF7A4D;
+  --bg:#fff;--surface:#F6F4FB;--text:#18142E;--text-2:#6B6880;--border:#E0DDEA;--red:#E5484D;
+  --maxw:640px;--rc:14px;--rb:12px;--shadow:0 8px 30px rgba(24,20,46,.08);--pad-x:clamp(20px,5vw,24px);
+}
+*{margin:0;padding:0;box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{font-family:'Pretendard',-apple-system,sans-serif;color:var(--text);background:var(--surface);font-weight:500;line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad-x)}
+h1{letter-spacing:-.03em}
+header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav{display:flex;align-items:center;height:64px;max-width:1080px;margin:0 auto;padding:0 var(--pad-x)}
+.logo{font-size:22px;font-weight:800;letter-spacing:-.04em}.logo span{color:var(--primary)}
+.nav .back{margin-left:auto;font-size:14px;color:var(--text-2)}.nav .back:hover{color:var(--text)}
+.hero{text-align:center;padding:clamp(38px,7vw,60px) 0 clamp(24px,4vw,34px)}
+.eyebrow{display:inline-block;font-size:13px;font-weight:600;color:var(--primary);background:#EAE4F8;padding:6px 13px;border-radius:999px;margin-bottom:16px}
+.hero h1{font-size:clamp(24px,5.4vw,34px);font-weight:800;line-height:1.25}.hero p{font-size:clamp(15px,3vw,16px);color:var(--text-2);margin-top:12px}
+.card{background:#fff;border:1px solid var(--border);border-radius:var(--rc);padding:clamp(22px,5vw,34px);margin-bottom:34px;box-shadow:var(--shadow)}
+.field{margin-bottom:26px}
+label.q{display:block;font-size:15px;font-weight:700;margin-bottom:6px}
+.req{color:var(--red);font-size:13px;vertical-align:top}
+.note{font-size:13px;color:var(--text-2);margin:0 0 10px;line-height:1.55}.note.tight{margin-bottom:12px}
+select,input[type=text],textarea{width:100%;font-family:inherit;font-size:15px;color:var(--text);border:1.5px solid var(--border);border-radius:var(--rb);padding:13px 14px;background:#fff;transition:.15s}
+select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%236B6880' stroke-width='1.6' fill='none' stroke-linecap='round'/></svg>");background-repeat:no-repeat;background-position:right 16px center;padding-right:38px;cursor:pointer}
+select:focus,input[type=text]:focus,textarea:focus{outline:none;border-color:var(--primary)}
+select:invalid{color:var(--text-2)}
+.checks{display:flex;flex-wrap:wrap;gap:8px}
+.checks label{position:relative}.checks input{position:absolute;opacity:0;pointer-events:none}
+.checks span{display:block;font-size:14px;padding:10px 16px;border:1.5px solid var(--border);border-radius:999px;cursor:pointer;transition:.15s;background:#fff}
+.checks input:checked + span{border-color:var(--primary);background:#F1ECFC;color:var(--primary);font-weight:600}
+.phone{display:grid;grid-template-columns:1fr 16px 1fr 16px 1fr;align-items:center;gap:4px}
+.phone .dash{text-align:center;color:var(--text-2)}
+.policy{height:150px;overflow-y:auto;border:1.5px solid var(--border);border-radius:var(--rb);padding:16px;font-size:13px;color:var(--text-2);background:#FBFAFE;line-height:1.65}
+.policy b{color:var(--text)}
+.agree{display:flex;align-items:center;gap:10px;margin-top:14px;font-size:15px;cursor:pointer}
+.agree input{width:18px;height:18px;accent-color:var(--primary);cursor:pointer}
+.submit{width:100%;font-family:inherit;font-weight:700;font-size:16px;color:#fff;background:var(--primary);border:none;border-radius:var(--rb);padding:16px;cursor:pointer;transition:.18s;margin-top:6px}
+.submit:hover{background:var(--primary-deep)}
+.hint{font-size:13px;color:var(--text-2);text-align:center;margin-top:12px}
+.alt{text-align:center;margin-bottom:50px;font-size:14px;color:var(--text-2)}.alt a{color:var(--primary);font-weight:600}
+footer{background:#0F0C20;color:#B5B1C9;padding:38px 0;font-size:13px;text-align:center}
+footer .logo{font-size:18px;color:#fff;margin-bottom:10px;display:inline-block}
+</style>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <a href="/" class="logo">IDEN<span>TEACH</span></a>
+    <a href="/" class="back">← 홈으로</a>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">무료 · 부담 없이</span>
+      <h1>우리 학교 맞춤 프로그램<br>무료로 요청하기</h1>
+      <p>상황만 알려주시면 맞는 프로그램과 제안서·견적을 보내드려요.</p>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="card">
+      <div class="field">
+        <label class="q" for="route">유입경로 <span class="req">●</span></label>
+        <select id="route" required>
+          <option value="" selected disabled>(선택)</option>
+          <option>네이버·구글 검색</option>
+          <option>지인·동료 추천</option>
+          <option>SNS·블로그</option>
+          <option>공문·홍보물</option>
+          <option>기타</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label class="q" for="program">진행 희망 프로그램</label>
+        <p class="note">- 희망 프로그램이 있으면 선택해 주세요.<br>- 선택하지 않으면 담당자가 학교 상황을 고려해 추천해 드립니다.<br>- 진로 프로그램은 현재 준비 중이에요.</p>
+        <select id="program">
+          <option value="" selected>(선택 안 함 · 추천받기)</option>
+          <option>도미노 챌린지</option>
+          <option>협동 브루마블</option>
+          <option>스쿨핑</option>
+          <option>미션 퍼실리테이션</option>
+          <option>학교폭력예방 레크리에이션</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label class="q" for="when">진행 희망 시기 <span class="req">●</span></label>
+        <select id="when" required>
+          <option value="" selected disabled>(선택)</option>
+          <option>신학기 (3월)</option>
+          <option>1학기 (3~7월)</option>
+          <option>2학기 (9~12월)</option>
+          <option>학기말</option>
+          <option>미정 · 협의 후 결정</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label class="q" for="school">학교명 / 지역 / 학급 수 <span class="req">●</span></label>
+        <p class="note tight">- 예: 아이덴티치중학교 / 인천 / 5학급</p>
+        <input type="text" id="school" placeholder="학교명 / 지역 / 학급 수">
+      </div>
+
+      <div class="field">
+        <label class="q">진행 희망 학년 <span class="req">●</span></label>
+        <p class="note tight">- 해당하는 학년을 모두 선택해 주세요.</p>
+        <div class="checks" id="grades">
+          <label><input type="checkbox" value="1학년"><span>1학년</span></label>
+          <label><input type="checkbox" value="2학년"><span>2학년</span></label>
+          <label><input type="checkbox" value="3학년"><span>3학년</span></label>
+          <label><input type="checkbox" value="4학년"><span>4학년</span></label>
+          <label><input type="checkbox" value="5학년"><span>5학년</span></label>
+          <label><input type="checkbox" value="6학년"><span>6학년</span></label>
+          <label><input type="checkbox" value="전교생"><span>전교생</span></label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="q" for="name">성함 <span class="req">●</span></label>
+        <input type="text" id="name" placeholder="성함">
+      </div>
+
+      <div class="field">
+        <label class="q" for="email">이메일 <span class="req">●</span></label>
+        <p class="note tight">- 영업일 기준 1~2일 내 이메일로 제안서와 견적을 보내드립니다.</p>
+        <input type="text" id="email" placeholder="이메일 주소">
+      </div>
+
+      <div class="field">
+        <label class="q">연락처</label>
+        <p class="note tight">- 연락처·이메일은 안내 연락 용도 외에 사용되지 않습니다.</p>
+        <div class="phone">
+          <input type="text" id="p1" inputmode="numeric" placeholder="010">
+          <span class="dash">-</span>
+          <input type="text" id="p2" inputmode="numeric" placeholder="0000">
+          <span class="dash">-</span>
+          <input type="text" id="p3" inputmode="numeric" placeholder="0000">
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="q">개인정보 수집 및 이용 동의 <span class="req">●</span></label>
+        <div class="policy">
+          <b>아이덴티치는 '맞춤 요청' 접수 시 아래와 같이 개인정보를 수집·이용합니다.</b><br><br>
+          <b>&lt;개인정보 수집 및 이용 동의&gt;</b><br>
+          ① 수집 항목: 이름, 이메일, 연락처, 학교명/지역<br>
+          ② 수집 및 이용 목적: 문의 답변 및 프로그램 안내<br>
+          ③ 보유 및 이용 기간: 수집·이용 목적 관련 업무 완료 시까지<br><br>
+          동의를 거부할 권리가 있으며, 거부 시 문의 접수가 제한될 수 있습니다.
+        </div>
+        <label class="agree"><input type="checkbox" id="agree"> 개인정보 수집 및 이용에 동의합니다.</label>
+      </div>
+
+      <button class="submit" id="submit">신청하기</button>
+      <p class="hint">신청 시 작성한 내용이 담긴 이메일이 열립니다.</p>
+    </div>
+
+    <p class="alt">제안서를 먼저 보고 싶다면 <a href="/proposal.pdf" download>제안서 다운로드 →</a></p>
+  </div>
+</main>
+
+<footer>
+  <a href="/" class="logo">IDEN<span style="color:var(--primary)">TEACH</span></a>
+  <div>경험을 설계하는 진로·어울림 전문 교육기획사</div>
+  <div>010-4084-8962 · idengroup@naver.com</div>
+</footer>
+
+<script>
+document.getElementById('submit').addEventListener('click', function(){
+  var v = function(id){ return (document.getElementById(id).value||'').trim(); };
+  var grades = Array.from(document.querySelectorAll('#grades input:checked')).map(function(i){return i.value;});
+  if(!v('route')){ alert('유입경로를 선택해 주세요.'); return; }
+  if(!v('when')){ alert('진행 희망 시기를 선택해 주세요.'); return; }
+  if(!v('school')){ alert('학교명 / 지역을 입력해 주세요.'); return; }
+  if(grades.length===0){ alert('진행 희망 학년을 선택해 주세요.'); return; }
+  if(!v('name')){ alert('성함을 입력해 주세요.'); return; }
+  if(!v('email')){ alert('이메일을 입력해 주세요.'); return; }
+  if(!document.getElementById('agree').checked){ alert('개인정보 수집 및 이용에 동의해 주세요.'); return; }
+  var phone = [v('p1'),v('p2'),v('p3')].filter(Boolean).join('-');
+  var lines = [
+    '[무료 프로그램 맞춤 요청]','',
+    '유입경로: ' + v('route'),
+    '희망 프로그램: ' + (v('program') || '추천 희망'),
+    '희망 시기: ' + v('when'),
+    '학교명/지역/학급 수: ' + v('school'),
+    '희망 학년: ' + grades.join(', '),
+    '','---',
+    '성함: ' + v('name'),
+    '이메일: ' + v('email'),
+    '연락처: ' + (phone || '-')
+  ];
+  var subject = '[맞춤 요청] ' + v('school');
+  window.location.href = 'mailto:idengroup@naver.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(lines.join('\n'));
+});
+</script>
+</body>
+</html>
