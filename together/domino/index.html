@@ -4,215 +4,170 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>도미노 챌린지 | 어울림 프로그램 · 아이덴티치</title>
-<meta name="description" content="팀별로 도미노를 설계·설치하고 함께 쓰러뜨리며 협력을 경험하는 학년 단위 체험 챌린지. 초·중·고 전학년, 3교시(150분), 강당·교실. 준비는 아이덴티치가 합니다.">
+<meta name="description" content="팀별로 도미노를 설계·설치하고 함께 쓰러뜨리며 협력을 경험하는 학년 단위 체험. 초·중·고 전학년, 3교시 150분.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="도미노 챌린지 | 어울림 프로그램 · 아이덴티치">
 <meta property="og:url" content="https://identeach.co.kr/together/domino">
 <meta property="og:locale" content="ko_KR">
 <link rel="canonical" href="https://identeach.co.kr/together/domino">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Course","name":"도미노 챌린지","description":"팀별로 도미노를 설계·설치하고 함께 쓰러뜨리며 협력을 경험하는 학년 단위 체험 챌린지. 초·중·고 전학년, 3교시.","provider":{"@type":"Organization","name":"아이덴티치","url":"https://identeach.co.kr"}}
+{"@context":"https://schema.org","@type":"Course","name":"도미노 챌린지","description":"팀별로 도미노를 설계·설치하고 함께 쓰러뜨리며 협력을 경험하는 학년 단위 체험.","provider":{"@type":"Organization","name":"아이덴티치","url":"https://identeach.co.kr"}}
 </script>
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <style>
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@1.3.9/dist/web/static/pretendard.css');
-:root{
-  --primary:#6C47D6; --primary-deep:#5836C0; --navy:#18142E; --accent:#FF7A4D;
-  --bg:#fff; --surface:#F6F4FB; --text:#18142E; --text-2:#6B6880; --border:#E8E5F0;
-  --maxw:1000px; --rc:16px; --rb:12px; --shadow:0 8px 30px rgba(24,20,46,.08);
-  --pad-x:clamp(20px,5vw,24px); --sec-y:clamp(48px,7vw,72px);
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{font-family:'Pretendard',-apple-system,sans-serif;color:var(--text);background:var(--bg);
-  font-weight:500;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-a{color:inherit;text-decoration:none}
-.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad-x)}
-section{padding:var(--sec-y) 0}
-h1,h2,h3{letter-spacing:-.03em}
-.h2{font-size:clamp(20px,4.2vw,24px);font-weight:800;margin-bottom:clamp(16px,3vw,22px)}
-
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:600;
-  font-size:clamp(15px,2.4vw,16px);padding:14px 26px;border-radius:var(--rb);transition:.18s;cursor:pointer;border:none;white-space:nowrap}
-.btn-primary{background:var(--primary);color:#fff}
-.btn-primary:hover{background:var(--primary-deep);transform:translateY(-2px)}
-.btn-ghost{background:transparent;color:var(--primary);border:1.5px solid var(--primary)}
-.btn-ghost:hover{background:var(--primary);color:#fff}
-.btn-pill{background:#fff;color:var(--navy);border-radius:999px;padding:13px 26px;font-weight:600}
-
+:root{--primary:#6C47D6;--primary-deep:#5836C0;--navy:#18142E;--accent:#FF7A4D;--bg:#fff;--surface:#F6F4FB;--text:#18142E;--text-2:#6B6880;--border:#E8E5F0;--rc:16px;--rb:12px;--shadow:0 8px 30px rgba(24,20,46,.1);--pad-x:clamp(20px,5vw,24px)}
+*{margin:0;padding:0;box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{font-family:'Pretendard',-apple-system,sans-serif;color:var(--text);background:var(--bg);font-weight:500;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}.wrap{max-width:1080px;margin:0 auto;padding:0 var(--pad-x)}h1,h2,h3,h4{letter-spacing:-.03em}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:600;font-size:15px;padding:14px 26px;border-radius:var(--rb);transition:.18s;cursor:pointer;border:none;font-family:inherit;white-space:nowrap}
+.btn-primary{background:var(--primary);color:#fff}.btn-primary:hover{background:var(--primary-deep)}
+.btn-ghost{background:transparent;color:var(--primary);border:1.5px solid var(--primary)}.btn-ghost:hover{background:var(--primary);color:#fff}
 header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
 .nav{display:flex;align-items:center;gap:16px;height:64px}
-.logo{font-size:22px;font-weight:800;letter-spacing:-.04em;margin-right:auto}
-.logo span{color:var(--primary)}
-.nav-links{display:flex;align-items:center;gap:28px;font-size:15px;color:var(--text-2)}
-.nav-links a:hover{color:var(--text)}
-.nav-cta{padding:9px 18px;font-size:14px}
-.menu-toggle,.menu-btn{display:none}
+.nav-links{display:flex;align-items:center;gap:26px;font-size:15px;color:var(--text-2)}.nav-links a:hover{color:var(--text)}
+.nav-cta{padding:9px 18px;font-size:14px}.menu-toggle,.menu-btn{display:none}
 .menu-btn{font-size:24px;background:none;border:none;cursor:pointer;color:var(--text);padding:4px}
-@media(max-width:840px){
-  .menu-btn{display:block;order:3}.nav-cta{order:2}
-  .nav-links{position:absolute;top:64px;left:0;right:0;flex-direction:column;align-items:flex-start;gap:0;background:#fff;border-bottom:1px solid var(--border);max-height:0;overflow:hidden;transition:max-height .28s;font-size:16px}
-  .nav-links a{width:100%;padding:16px var(--pad-x);border-top:1px solid var(--border)}
-  .menu-toggle:checked ~ .nav-links{max-height:240px}
-}
-
-.intro{background:var(--surface);padding-top:clamp(26px,5vw,38px)}
-.crumb{font-size:13px;color:var(--text-2);margin-bottom:20px}
-.crumb a:hover{color:var(--primary)}
-.intro-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(26px,5vw,44px);align-items:center}
-.eyebrow{display:inline-block;font-size:13px;font-weight:600;color:#C9521F;background:#FDEAE2;padding:6px 13px;border-radius:999px;margin-bottom:16px}
-.intro h1{font-size:clamp(28px,6vw,42px);font-weight:800;line-height:1.2}
-.intro .lead{font-size:clamp(16px,3.2vw,18px);color:var(--text-2);margin:16px 0 24px;line-height:1.6}
-.tagchips{display:flex;flex-wrap:wrap;gap:8px}
-.tagchip{font-size:13px;font-weight:500;background:#fff;border:1px solid var(--border);padding:7px 13px;border-radius:999px}
-.poster{height:clamp(210px,40vw,300px);border-radius:18px;background:#3A2F66;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
-.poster .pl{color:rgba(255,255,255,.6);font-size:13px}
-.poster .pt{position:absolute;top:14px;left:14px;font-size:12px;font-weight:600;background:rgba(255,255,255,.92);color:#C9521F;padding:5px 11px;border-radius:999px}
-@media(max-width:760px){.intro-grid{grid-template-columns:1fr}.poster{order:-1}}
-
-.spec-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.spec{background:#fff;border:1px solid var(--border);border-radius:var(--rc);padding:20px 18px}
-.spec .l{font-size:13px;color:var(--text-2);margin-bottom:6px}
-.spec .v{font-size:17px;font-weight:600}
-@media(max-width:680px){.spec-grid{grid-template-columns:1fr 1fr}}
-
-.about{background:var(--surface)}
-.about p.desc{font-size:16px;color:var(--text);max-width:42em}
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}
-.step{background:#fff;border:1px solid var(--border);border-radius:var(--rc);padding:22px 20px}
-.step .n{font-size:13px;font-weight:800;color:var(--primary);margin-bottom:8px}
-.step h4{font-size:16px;font-weight:600;margin-bottom:6px}
-.step p{font-size:14px;color:var(--text-2)}
-@media(max-width:680px){.steps{grid-template-columns:1fr}}
-
-.point-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.point{background:#fff;border:1px solid var(--border);border-radius:var(--rc);padding:22px 20px;font-size:15px;font-weight:600}
-.point span{display:block;font-size:13px;font-weight:500;color:var(--text-2);margin-top:6px}
-@media(max-width:680px){.point-grid{grid-template-columns:1fr}}
-
-.prep{background:var(--surface)}
-.prep-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.pcol{border-radius:var(--rc);padding:22px 20px}
-.pcol.school{background:#fff;border:1px solid var(--border)}
-.pcol.us{background:var(--navy);color:#fff}
-.pcol .t{font-size:14px;font-weight:600;margin-bottom:10px}
-.pcol.school .t{color:var(--text-2)}
-.pcol.us .t{color:var(--accent)}
-.pcol p{font-size:16px;font-weight:600}
-.pcol.us p{color:#fff}
-@media(max-width:560px){.prep-grid{grid-template-columns:1fr}}
-
-.cta{background:var(--navy);text-align:center}
-.cta h2{color:#fff;font-size:clamp(23px,5vw,30px);font-weight:800}
-.cta p{color:#B5B1C9;margin:14px 0 30px}
-.cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-
-footer{background:#0F0C20;color:#B5B1C9;padding:44px 0;font-size:14px}
-footer .logo{font-size:20px;color:#fff;margin-bottom:14px}
-footer p{margin-bottom:4px}
+@media(max-width:840px){.menu-btn{display:block;order:3}.nav-cta{order:2}.nav-links{position:absolute;top:64px;left:0;right:0;flex-direction:column;align-items:flex-start;gap:0;background:#fff;border-bottom:1px solid var(--border);max-height:0;overflow:hidden;transition:max-height .28s;font-size:16px}.nav-links a{width:100%;padding:16px var(--pad-x);border-top:1px solid var(--border)}.menu-toggle:checked ~ .nav-links{max-height:240px}}
+.crumb-bar{background:var(--surface);padding:14px 0}.crumb{font-size:13px;color:var(--text-2)}.crumb a:hover{color:var(--primary)}
+.carousel-section{background:var(--surface);padding:clamp(24px,5vw,48px) 0 clamp(40px,7vw,72px)}
+.carousel-outer{max-width:840px;margin:0 auto}
+.carousel-container{overflow:hidden;border-radius:20px;box-shadow:var(--shadow)}
+.carousel-track{display:flex;transition:transform .36s cubic-bezier(.4,0,.2,1);will-change:transform}
+.slide{flex:0 0 100%;min-width:0;background:#fff}
+.cover-poster{height:clamp(190px,36vw,260px);display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;padding:clamp(22px,4vw,34px);border-radius:20px 20px 0 0;position:relative;overflow:hidden}
+.cover-poster .ctag{font-size:12px;font-weight:600;color:rgba(255,255,255,.75);margin-bottom:10px;display:block;letter-spacing:.04em}
+.cover-poster h1{font-size:clamp(26px,5.5vw,40px);font-weight:800;color:#fff;line-height:1.2}
+.slide-body{padding:clamp(22px,4vw,36px)}
+.spec-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+@media(max-width:520px){.spec-row{grid-template-columns:1fr 1fr;gap:8px}}
+.sitem{background:var(--surface);border-radius:10px;padding:12px 14px}.sl{font-size:11px;color:var(--text-2);margin-bottom:3px}.sv{font-size:14px;font-weight:700}
+.slide-lbl{font-size:11px;font-weight:700;color:var(--primary);letter-spacing:.07em;margin-bottom:10px}
+.slide-h2{font-size:clamp(18px,3.8vw,24px);font-weight:800;margin-bottom:14px;line-height:1.3}
+.slide-desc{font-size:15px;color:var(--text-2);line-height:1.75;margin-bottom:22px}
+.step-list{display:flex;flex-direction:column;gap:10px}
+.step-item{display:flex;gap:14px;align-items:flex-start;background:var(--surface);border-radius:10px;padding:13px 15px}
+.stn{font-size:11px;font-weight:800;color:var(--primary);white-space:nowrap;padding-top:2px;letter-spacing:.04em}
+.stt{font-size:14px;line-height:1.6}.stt strong{font-weight:700}
+.benefit-list{display:flex;flex-direction:column;gap:12px}
+.benefit-item{display:flex;gap:14px;align-items:flex-start;border:1px solid var(--border);border-radius:12px;padding:15px 17px}
+.bnum{width:28px;height:28px;border-radius:8px;background:#EEE9FB;color:var(--primary);font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.btxt strong{display:block;font-size:15px;font-weight:700;margin-bottom:3px}.btxt p{font-size:13px;color:var(--text-2);line-height:1.6}
+.prep-cols{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:26px}
+@media(max-width:440px){.prep-cols{grid-template-columns:1fr}}
+.pcol{border-radius:12px;padding:18px 20px}.pcol.school{background:var(--surface)}.pcol.us{background:var(--navy);color:#fff}
+.pcol .pt{font-size:11px;font-weight:700;margin-bottom:8px}.pcol.school .pt{color:var(--text-2)}.pcol.us .pt{color:var(--accent)}
+.pcol .pv{font-size:15px;font-weight:600;line-height:1.55}.pcol.us .pv{color:#fff}
+.cta-btns{display:flex;gap:10px;flex-wrap:wrap}
+.carousel-nav{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:20px}
+.nbtn{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--border);background:#fff;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:.15s;color:var(--text);font-family:inherit}
+.nbtn:hover:not(:disabled){border-color:var(--primary);color:var(--primary)}.nbtn:disabled{opacity:.3;cursor:default}
+.dots{display:flex;gap:8px;align-items:center}
+.dot{width:8px;height:8px;border-radius:4px;background:var(--border);border:none;cursor:pointer;transition:.2s;padding:0;flex:0 0 auto}
+.dot.active{background:var(--primary);width:24px}
+.slide-counter{text-align:center;font-size:13px;color:var(--text-2);margin-top:10px;font-weight:600}
+.other-section{padding:clamp(40px,7vw,72px) 0}.other-h{font-size:clamp(18px,3.8vw,22px);font-weight:800;margin-bottom:22px}
+.other-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media(max-width:720px){.other-grid{grid-template-columns:repeat(2,1fr)}}
+.ocard{display:block;border-radius:var(--rc);overflow:hidden;transition:.18s;color:var(--text)}.ocard:hover{transform:translateY(-4px)}
+.ocard-poster{position:relative;height:clamp(130px,24vw,180px);border-radius:14px;overflow:hidden;margin-bottom:8px}
+.ocard-poster .onum{position:absolute;left:8px;bottom:-5px;font-size:58px;font-weight:800;color:rgba(255,255,255,.88);line-height:1;pointer-events:none}
+.ocard-poster .ottl{position:absolute;right:11px;bottom:11px;color:#fff;font-weight:800;font-size:15px;text-align:right;line-height:1.25}
+.ocard-poster .otag{position:absolute;top:9px;left:9px;font-size:10px;font-weight:600;background:rgba(255,255,255,.9);color:#C9521F;padding:3px 8px;border-radius:999px}
+.ocard h4{font-size:13px;font-weight:700;margin-bottom:2px}.ocard p{font-size:12px;color:var(--text-2)}
+footer{background:#0F0C20;color:#B5B1C9;padding:44px 0;font-size:14px}footer p{margin-bottom:4px}
 </style>
 </head>
 <body>
-
 <header>
   <div class="wrap nav">
-    <a href="/" class="logo">IDEN<span>TEACH</span></a>
+    <a href="/" style="margin-right:auto"><img src="/assets/images/LOgo.png" alt="아이덴티치" style="height:34px;display:block;"></a>
     <input type="checkbox" id="nav-toggle" class="menu-toggle">
-    <nav class="nav-links">
-      <a href="/together">어울림 프로그램</a>
-      <a href="/career">진로 프로그램</a>
-      <a href="/about">회사소개</a>
-    </nav>
+    <nav class="nav-links"><a href="/together">어울림 프로그램</a><a href="/career">진로 프로그램</a><a href="/about">회사소개</a></nav>
     <a href="/request" class="btn btn-primary nav-cta">무료 맞춤 요청</a>
-    <label for="nav-toggle" class="menu-btn" aria-label="메뉴 열기">☰</label>
+    <label for="nav-toggle" class="menu-btn" aria-label="메뉴">☰</label>
   </div>
 </header>
-
+<div class="crumb-bar"><div class="wrap"><nav class="crumb"><a href="/">홈</a> › <a href="/together">어울림 프로그램</a> › 도미노 챌린지</nav></div></div>
 <main>
-  <section class="intro">
+  <section class="carousel-section">
     <div class="wrap">
-      <nav class="crumb"><a href="/">홈</a> › <a href="/together">어울림 프로그램</a> › 도미노 챌린지</nav>
-      <div class="intro-grid">
-        <div>
-          <span class="eyebrow">어울림 · 학년 단위 체험</span>
-          <h1>도미노 챌린지</h1>
-          <p class="lead">팀별로 도미노를 설계하고 함께 세운 뒤 다 같이 쓰러뜨리며, 협력의 성취감을 경험하는 학년 단위 체험 활동입니다.</p>
-          <div class="tagchips">
-            <span class="tagchip">초·중·고 전학년</span>
-            <span class="tagchip">3교시 (150분)</span>
-            <span class="tagchip">강당·교실</span>
-            <span class="tagchip">최대 한 학년</span>
+      <div class="carousel-outer">
+        <div class="carousel-container">
+          <div class="carousel-track" id="ct">
+            <div class="slide">
+              <div class="cover-poster" style="background:#3A2F66"><span class="ctag">어울림 · 학년 단위 체험</span><h1>도미노 챌린지</h1></div>
+              <div class="slide-body"><div class="spec-row">
+                <div class="sitem"><div class="sl">대상</div><div class="sv">초·중·고 전학년</div></div>
+                <div class="sitem"><div class="sl">시간</div><div class="sv">3교시 · 150분</div></div>
+                <div class="sitem"><div class="sl">인원</div><div class="sv">학년 단위</div></div>
+                <div class="sitem"><div class="sl">장소</div><div class="sv">강당 · 교실</div></div>
+              </div></div>
+            </div>
+            <div class="slide"><div class="slide-body">
+              <div class="slide-lbl">PROGRAM</div>
+              <h2 class="slide-h2">어떤 프로그램인가요?</h2>
+              <p class="slide-desc">팀별로 도미노를 설계하고 설치한 뒤, 모든 팀의 도미노를 연결해 함께 쓰러뜨리는 학년 단위 협력 챌린지입니다.</p>
+              <div class="step-list">
+                <div class="step-item"><span class="stn">STEP 1</span><span class="stt"><strong>설계·설치</strong> — 각 팀이 구간을 맡아 도미노를 세워요</span></div>
+                <div class="step-item"><span class="stn">STEP 2</span><span class="stt"><strong>연결·점검</strong> — 팀 간 도미노를 이어 최종 점검해요</span></div>
+                <div class="step-item"><span class="stn">STEP 3</span><span class="stt"><strong>챌린지</strong> — 모두 모여 함께 쓰러뜨려요</span></div>
+              </div>
+            </div></div>
+            <div class="slide"><div class="slide-body">
+              <div class="slide-lbl">TEACHER</div>
+              <h2 class="slide-h2">선생님이 편한 이유</h2>
+              <div class="benefit-list">
+                <div class="benefit-item"><span class="bnum">1</span><div class="btxt"><strong>선생님이 챙길 게 없어요</strong><p>기획·도구·인력·정리까지 전부 저희가 합니다</p></div></div>
+                <div class="benefit-item"><span class="bnum">2</span><div class="btxt"><strong>소외되는 아이가 없어요</strong><p>모든 팀원에게 역할이 있어 누구도 구경만 하지 않아요</p></div></div>
+                <div class="benefit-item"><span class="bnum">3</span><div class="btxt"><strong>학생들이 알아서 빠져들어요</strong><p>쓰러지는 순간 학년 전체가 하나가 되는 경험이 강렬합니다</p></div></div>
+              </div>
+            </div></div>
+            <div class="slide"><div class="slide-body">
+              <div class="slide-lbl">READY</div>
+              <h2 class="slide-h2">준비는 저희가 합니다</h2>
+              <div class="prep-cols">
+                <div class="pcol school"><div class="pt">학교 준비</div><div class="pv">빔프로젝터<br>공간 정리</div></div>
+                <div class="pcol us"><div class="pt">아이덴티치 제공</div><div class="pv">도미노 세트 · 음향<br>진행 인력 일체</div></div>
+              </div>
+              <div class="cta-btns"><a href="/request" class="btn btn-primary">무료 맞춤 요청</a><a href="/proposal.pdf" download class="btn btn-ghost">제안서 다운로드</a></div>
+            </div></div>
           </div>
         </div>
-        <div class="poster"><span class="pt">어울림</span><span class="pl">[대표 사진 자리]</span></div>
+        <div class="carousel-nav">
+          <button class="nbtn prev" onclick="prev()" aria-label="이전">←</button>
+          <div class="dots" id="dots"><button class="dot active" onclick="go(0)"></button><button class="dot" onclick="go(1)"></button><button class="dot" onclick="go(2)"></button><button class="dot" onclick="go(3)"></button></div>
+          <button class="nbtn next" onclick="next()" aria-label="다음">→</button>
+        </div>
+        <div class="slide-counter" id="counter">1 / 4</div>
       </div>
     </div>
   </section>
-
-  <section>
+  <section class="other-section">
     <div class="wrap">
-      <div class="spec-grid">
-        <div class="spec"><div class="l">대상</div><div class="v">초·중·고 전학년</div></div>
-        <div class="spec"><div class="l">인원</div><div class="v">최대 한 학년</div></div>
-        <div class="spec"><div class="l">소요 시간</div><div class="v">3교시 · 150분</div></div>
-        <div class="spec"><div class="l">필요 공간</div><div class="v">강당 / 교실</div></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="about">
-    <div class="wrap">
-      <h2 class="h2">어떤 프로그램인가요?</h2>
-      <p class="desc">학생들이 팀을 이뤄 도미노로 글자나 그림을 직접 설계하고, 조심스럽게 세운 뒤 다 같이 쓰러뜨립니다. 함께 만든 작품이 한 번에 무너지는 순간의 성취감으로 협력을 경험하는 활동이에요. 강당·교실에서 전 학생이 안전하게 참여할 수 있습니다.</p>
-      <div class="steps">
-        <div class="step"><div class="n">STEP 1</div><h4>설계</h4><p>팀별로 어떤 그림을 만들지 정하고 역할을 나눠 도면을 그려요.</p></div>
-        <div class="step"><div class="n">STEP 2</div><h4>설치</h4><p>도면대로 도미노를 조심조심 세우며 우리만의 작품을 완성해요.</p></div>
-        <div class="step"><div class="n">STEP 3</div><h4>도미노 SHOW</h4><p>다 함께 쓰러뜨리고, 완성 작품 앞에서 단체 사진으로 마무리해요.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="wrap">
-      <h2 class="h2">이런 점이 좋아요</h2>
-      <div class="point-grid">
-        <div class="point">전 학생 참여 · 안전<span>소수가 아닌 모두가 함께하는 안전한 구성</span></div>
-        <div class="point">결과물이 남아요<span>활동 사진·자료로 생기부·결재 자료 확보</span></div>
-        <div class="point">정책 연계 가능<span>학교폭력예방·창체 자율활동과 연계</span></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="prep">
-    <div class="wrap">
-      <h2 class="h2">준비는 저희가 합니다</h2>
-      <div class="prep-grid">
-        <div class="pcol school"><div class="t">학교 준비</div><p>빔프로젝터 · 마이크 · 공간 정리</p></div>
-        <div class="pcol us"><div class="t">아이덴티치 제공</div><p>음향 · 도미노 · 진행 인력 일체</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="cta" id="contact">
-    <div class="wrap">
-      <h2>우리 학교에서 진행하려면</h2>
-      <p>대상·인원·일정만 알려주시면 맞춤 제안서를 보내드립니다.</p>
-      <div class="cta-row">
-        <a href="/request" class="btn btn-pill">무료 프로그램 맞춤 요청</a>
-        <a href="/proposal.pdf" download class="btn btn-ghost" style="color:#fff;border-color:rgba(255,255,255,.4)">제안서 다운로드</a>
+      <h2 class="other-h">다른 프로그램도 있어요</h2>
+      <div class="other-grid">
+        <a href="/together/brumarble" class="ocard"><div class="ocard-poster" style="background:#6C47D6"><span class="otag">어울림</span><span class="onum">2</span><span class="ottl">협동<br>브루마블</span></div><h4>협동 브루마블</h4><p>학급 협동 보드게임</p></a>
+        <a href="/together/schoolping" class="ocard"><div class="ocard-poster" style="background:#2E5A7A"><span class="otag">어울림</span><span class="onum">3</span><span class="ottl">스쿨핑</span></div><h4>스쿨핑</h4><p>실내 캠핑 체험</p></a>
+        <a href="/together/facilitation" class="ocard"><div class="ocard-poster" style="background:#2A2342"><span class="otag">어울림</span><span class="onum">4</span><span class="ottl">미션 퍼실<br>리테이션</span></div><h4>미션 퍼실리테이션</h4><p>회의·소통 역량 교육</p></a>
+        <a href="/together/violence-prevention" class="ocard"><div class="ocard-poster" style="background:#C24A22"><span class="otag">어울림</span><span class="onum">5</span><span class="ottl">학교폭력<br>예방 레크</span></div><h4>학교폭력예방 레크</h4><p>전교생 화합</p></a>
       </div>
     </div>
   </section>
 </main>
-
-<footer>
-  <div class="wrap">
-    <div class="logo">IDEN<span style="color:var(--primary)">TEACH</span></div>
-    <p>경험을 설계하는 진로·어울림 전문 교육기획사 · 대표 진성재</p>
-    <p>010-4084-8962 · idengroup@naver.com</p>
-    <p style="margin-top:16px;color:#6E6A85">© 2026 IDenTeach (아이덴티치).</p>
-  </div>
-</footer>
-
+<footer><div class="wrap">
+  <div><img src="/assets/images/LOgo.png" alt="아이덴티치" style="height:28px;display:block;margin-bottom:14px;opacity:.85;filter:brightness(0) invert(1);"></div>
+  <p>경험을 설계하는 진로·어울림 전문 교육기획사 · 대표 진성재</p>
+  <p>010-4084-8962 · idengroup@naver.com</p>
+  <p style="margin-top:16px;color:#6E6A85">© 2026 IDenTeach (아이덴티치).</p>
+</div></footer>
+<script>
+var cur=0,total=4,track=document.getElementById('ct'),dotsEl=document.getElementById('dots').querySelectorAll('.dot'),counter=document.getElementById('counter');
+function go(n){cur=Math.max(0,Math.min(n,total-1));track.style.transform='translateX(-'+(cur*100)+'%)';dotsEl.forEach(function(d,i){d.classList.toggle('active',i===cur);});counter.textContent=(cur+1)+' / '+total;document.querySelector('.nbtn.prev').disabled=cur===0;document.querySelector('.nbtn.next').disabled=cur===total-1;}
+function prev(){go(cur-1);}function next(){go(cur+1);}
+var tx=0;track.addEventListener('touchstart',function(e){tx=e.touches[0].clientX;},{passive:true});track.addEventListener('touchend',function(e){var dx=tx-e.changedTouches[0].clientX;if(Math.abs(dx)>40){dx>0?next():prev();}});
+document.addEventListener('keydown',function(e){if(e.key==='ArrowLeft')prev();if(e.key==='ArrowRight')next();});
+go(0);
+</script>
 </body>
 </html>
