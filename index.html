@@ -158,8 +158,10 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);
 .bcard .bkw{position:absolute;top:10px;right:10px;font-size:10px;font-weight:700;
   background:rgba(255,255,255,.2);color:#fff;padding:3px 9px;border-radius:999px;
   backdrop-filter:blur(4px);z-index:2}
-.bcard-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
-  opacity:.22;mix-blend-mode:luminosity;pointer-events:none;z-index:0}
+.bcard-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;z-index:0}
+.bcard::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(to top,rgba(0,0,0,.72) 0%,rgba(0,0,0,.28) 55%,rgba(0,0,0,.12) 100%)}
+.bcard .bkw,.bcard .btag,.bcard .bnum,.bcard .bttl,.bcard .bsub{position:relative;z-index:2}
 @media(max-width:560px){.bcard{min-width:80px}.bcard .bttl{font-size:12px}}
 
 /* Career coming soon */
@@ -277,7 +279,7 @@ footer p{margin-bottom:4px}
           <a href="/together" class="shelf-more">전체 프로그램 보기 →</a>
         </div>
         <div class="prog-shelf">
-          <a href="/together/domino" class="bcard" style="background:#3A2F66">
+          <a href="/together/domino" class="bcard">
             <img class="bcard-bg" src="/assets/images/programs/together/domino.png" alt="">
             <span class="bkw">팀빌딩</span>
             <span class="btag">어울림 01</span>
@@ -285,7 +287,7 @@ footer p{margin-bottom:4px}
             <span class="bttl">도미노<br>챌린지</span>
             <span class="bsub">협력 미션 · 학년 단위</span>
           </a>
-          <a href="/together/brumarble" class="bcard" style="background:#6C47D6">
+          <a href="/together/brumarble" class="bcard">
             <img class="bcard-bg" src="/assets/images/programs/together/brumarble.png" alt="">
             <span class="bkw">보드게임</span>
             <span class="btag">어울림 02</span>
@@ -293,7 +295,7 @@ footer p{margin-bottom:4px}
             <span class="bttl">협동<br>브루마블</span>
             <span class="bsub">학급 협동 보드게임</span>
           </a>
-          <a href="/together/schoolping" class="bcard" style="background:#2E5A7A">
+          <a href="/together/schoolping" class="bcard">
             <img class="bcard-bg" src="/assets/images/programs/together/schoolping.png" alt="">
             <span class="bkw">체육대회</span>
             <span class="btag">어울림 03</span>
@@ -301,7 +303,7 @@ footer p{margin-bottom:4px}
             <span class="bttl">스쿨핑</span>
             <span class="bsub">실내 캠핑 체험</span>
           </a>
-          <a href="/together/facilitation" class="bcard" style="background:#2A2342">
+          <a href="/together/facilitation" class="bcard">
             <img class="bcard-bg" src="/assets/images/programs/together/facilitation.jpg" alt="">
             <span class="bkw">리더십</span>
             <span class="btag">어울림 04</span>
@@ -309,7 +311,7 @@ footer p{margin-bottom:4px}
             <span class="bttl">미션<br>퍼실리테이션</span>
             <span class="bsub">리더십·소통 교육</span>
           </a>
-          <a href="/together/violence-prevention" class="bcard" style="background:#C24A22">
+          <a href="/together/violence-prevention" class="bcard">
             <img class="bcard-bg" src="/assets/images/programs/together/violence-prevention.png" alt="">
             <span class="bkw">예방교육</span>
             <span class="btag">어울림 05</span>
@@ -327,7 +329,7 @@ footer p{margin-bottom:4px}
           <a href="/career" class="shelf-more">전체 프로그램 보기 →</a>
         </div>
         <div class="prog-shelf">
-          <a href="/request" class="bcard" style="background:#1A3A5C">
+          <a href="/request" class="bcard">
             <img class="bcard-bg" src="/assets/images/programs/career/touching-voice.png" alt="">
             <span class="bkw">공연</span>
             <span class="btag">진로 01</span>
@@ -335,7 +337,7 @@ footer p{margin-bottom:4px}
             <span class="bttl">터칭보이스<br>진로 뮤직 콘서트</span>
             <span class="bsub">찾아가는 음악 진로 체험</span>
           </a>
-          <a href="/request" class="bcard" style="background:#2D1B69">
+          <a href="/request" class="bcard">
             <img class="bcard-bg" src="/assets/images/programs/career/career-lecture.jpg" alt="">
             <span class="bkw">진로캠프</span>
             <span class="btag">진로 02</span>
@@ -343,7 +345,7 @@ footer p{margin-bottom:4px}
             <span class="bttl">미래직업연구소</span>
             <span class="bsub">몰입형 진로캠프</span>
           </a>
-          <a href="/request" class="bcard" style="background:#4A2040">
+          <a href="/request" class="bcard">
             <img class="bcard-bg" src="/assets/images/programs/career/leadership.jpg" alt="">
             <span class="bkw">강연</span>
             <span class="btag">진로 03</span>
