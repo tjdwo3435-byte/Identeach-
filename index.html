@@ -166,12 +166,12 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);
   padding:13px 18px;display:flex;align-items:center;gap:12px;font-size:14px;font-weight:600}
 .career-item .cdot{width:7px;height:7px;border-radius:50%;background:var(--primary);flex:0 0 auto}
 
-/* === WHAT WE DO === */
-.whatwedo{background:var(--navy);padding:clamp(64px,10vw,108px) 0}
-.wwd-top{margin-bottom:clamp(44px,7vw,68px)}
+/* === WHAT WE DO + ENTRY (merged section) === */
+.whatwedo{background:var(--bg);padding:clamp(64px,10vw,108px) 0 clamp(64px,10vw,108px)}
+.wwd-top{margin-bottom:clamp(40px,6vw,60px)}
 .wwd-top .lab{font-size:12px;font-weight:700;color:var(--primary);letter-spacing:.12em;display:block;margin-bottom:20px}
-.wwd-top h2{font-size:clamp(26px,4.5vw,44px);font-weight:800;color:#fff;line-height:1.25;margin-bottom:22px}
-.wwd-top p{font-size:clamp(15px,1.8vw,17px);color:rgba(255,255,255,.58);line-height:1.9;max-width:44em}
+.wwd-top h2{font-size:clamp(26px,4.5vw,44px);font-weight:800;color:var(--text);line-height:1.25;margin-bottom:22px}
+.wwd-top p{font-size:clamp(15px,1.8vw,17px);color:var(--text-2);line-height:1.9;max-width:44em}
 .pcat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
   background:rgba(255,255,255,.1);border-radius:20px;overflow:hidden}
 .pcat{background:rgba(255,255,255,.04);padding:clamp(24px,4vw,40px);
@@ -239,26 +239,15 @@ footer p{margin-bottom:4px}
     </div>
   </section>
 
-  <section class="brand-stmt">
-    <div class="wrap">
-      <p>아이덴티치는 앉아서 받는 교육이 아닌<br>웃고 움직이고 기억에 남는<br><strong>다양한 배움의 경험을 제공합니다.</strong></p>
-    </div>
-  </section>
-
   <section class="whatwedo">
     <div class="wrap">
       <div class="wwd-top">
         <span class="lab">WHAT WE DO</span>
-        <h2>단순한 행사를 넘어<br>함께 성장하는 경험을 만듭니다</h2>
+        <h2>웃고 움직이고 기억에 남는 배움의 경험을 제공하여<br>학교의 새로운 문화를 만듭니다.</h2>
         <p>아이덴티치는 아이들이 혼자가 아닌 함께 새롭게 체험하는 프로그램을 개발하고 직접 진행합니다.<br>
         체육대회·학교축제 같은 일회성 행사를 넘어, 공동체·진로·리더십 프로그램으로<br>
         아이들이 다양한 경험 속에서 자신만의 정체성을 빠르게 형성할 수 있도록 돕습니다.</p>
       </div>
-    </div>
-  </section>
-
-  <section class="entry">
-    <div class="wrap">
       <div class="entry-box">
       <div class="entry-grid">
         <button class="ecard together active" id="btn-together" onclick="switchProg('together')">
