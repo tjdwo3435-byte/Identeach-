@@ -16,71 +16,69 @@
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <style>
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@1.3.9/dist/web/static/pretendard.css');
-:root{--primary:#6C47D6;--primary-deep:#5836C0;--navy:#18142E;--accent:#FF7A4D;--bg:#fff;--surface:#F6F4FB;--text:#18142E;--text-2:#6B6880;--border:#E8E5F0;--rc:16px;--rb:12px;--shadow:0 8px 30px rgba(24,20,46,.1);--pad-x:clamp(20px,5vw,24px)}
-*{margin:0;padding:0;box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+:root{--primary:#6C47D6;--primary-deep:#5836C0;--navy:#18142E;--accent:#FF7A4D;--bg:#fff;--surface:#F6F4FB;--text:#18142E;--text-2:#6B6880;--border:#E8E5F0;--maxw:780px;--rc:16px;--rb:12px;--shadow:0 8px 30px rgba(24,20,46,.08);--pad-x:clamp(20px,5vw,24px)}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{font-family:'Pretendard',-apple-system,sans-serif;color:var(--text);background:var(--bg);font-weight:500;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-a{color:inherit;text-decoration:none}.wrap{max-width:1080px;margin:0 auto;padding:0 var(--pad-x)}h1,h2,h3,h4{letter-spacing:-.03em}
+a{color:inherit;text-decoration:none}.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad-x)}h1,h2,h3{letter-spacing:-.03em}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:600;font-size:15px;padding:14px 26px;border-radius:var(--rb);transition:.18s;cursor:pointer;border:none;font-family:inherit;white-space:nowrap}
-.btn-primary{background:var(--primary);color:#fff}.btn-primary:hover{background:var(--primary-deep)}
+.btn-primary{background:var(--primary);color:#fff}.btn-primary:hover{background:var(--primary-deep);transform:translateY(-2px)}
 .btn-ghost{background:transparent;color:var(--primary);border:1.5px solid var(--primary)}.btn-ghost:hover{background:var(--primary);color:#fff}
 header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
-.nav{display:flex;align-items:center;gap:16px;height:64px}
+.nav{display:flex;align-items:center;gap:16px;height:64px;max-width:1140px;margin:0 auto;padding:0 var(--pad-x)}
 .nav-links{display:flex;align-items:center;gap:26px;font-size:15px;color:var(--text-2)}.nav-links a:hover{color:var(--text)}
 .nav-cta{padding:9px 18px;font-size:14px}.menu-toggle,.menu-btn{display:none}
 .menu-btn{font-size:24px;background:none;border:none;cursor:pointer;color:var(--text);padding:4px}
 @media(max-width:840px){.menu-btn{display:block;order:3}.nav-cta{order:2}.nav-links{position:absolute;top:64px;left:0;right:0;flex-direction:column;align-items:flex-start;gap:0;background:#fff;border-bottom:1px solid var(--border);max-height:0;overflow:hidden;transition:max-height .28s;font-size:16px}.nav-links a{width:100%;padding:16px var(--pad-x);border-top:1px solid var(--border)}.menu-toggle:checked ~ .nav-links{max-height:240px}}
-.crumb-bar{background:var(--surface);padding:14px 0}.crumb{font-size:13px;color:var(--text-2)}.crumb a:hover{color:var(--primary)}
-.carousel-section{background:var(--surface);padding:clamp(24px,5vw,48px) 0 clamp(40px,7vw,72px)}
-.carousel-outer{max-width:840px;margin:0 auto}
-.carousel-container{overflow:hidden;border-radius:20px;box-shadow:var(--shadow)}
-.carousel-track{display:flex;transition:transform .36s cubic-bezier(.4,0,.2,1);will-change:transform}
-.slide{flex:0 0 100%;min-width:0;background:#fff}
-.cover-poster{height:clamp(190px,36vw,260px);display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;padding:clamp(22px,4vw,34px);border-radius:20px 20px 0 0;position:relative;overflow:hidden}
-.cover-poster .ctag{font-size:12px;font-weight:600;color:rgba(255,255,255,.75);margin-bottom:10px;display:block;letter-spacing:.04em}
-.cover-poster h1{font-size:clamp(26px,5.5vw,40px);font-weight:800;color:#fff;line-height:1.2}
-.slide-body{padding:clamp(22px,4vw,36px)}
-.spec-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-@media(max-width:520px){.spec-row{grid-template-columns:1fr 1fr;gap:8px}}
-.sitem{background:var(--surface);border-radius:10px;padding:12px 14px}.sl{font-size:11px;color:var(--text-2);margin-bottom:3px}.sv{font-size:14px;font-weight:700}
-.slide-lbl{font-size:11px;font-weight:700;color:var(--primary);letter-spacing:.07em;margin-bottom:10px}
-.slide-h2{font-size:clamp(18px,3.8vw,24px);font-weight:800;margin-bottom:14px;line-height:1.3}
-.slide-desc{font-size:15px;color:var(--text-2);line-height:1.75;margin-bottom:22px}
-.step-list{display:flex;flex-direction:column;gap:10px}
-.step-item{display:flex;gap:14px;align-items:flex-start;background:var(--surface);border-radius:10px;padding:13px 15px}
-.stn{font-size:11px;font-weight:800;color:var(--primary);white-space:nowrap;padding-top:2px;letter-spacing:.04em}
-.stt{font-size:14px;line-height:1.6}.stt strong{font-weight:700}
-.benefit-list{display:flex;flex-direction:column;gap:12px}
-.benefit-item{display:flex;gap:14px;align-items:flex-start;border:1px solid var(--border);border-radius:12px;padding:15px 17px}
-.bnum{width:28px;height:28px;border-radius:8px;background:#EEE9FB;color:var(--primary);font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
-.btxt strong{display:block;font-size:15px;font-weight:700;margin-bottom:3px}.btxt p{font-size:13px;color:var(--text-2);line-height:1.6}
-.prep-cols{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:26px}
+.crumb-bar{background:var(--surface);padding:14px 0;border-bottom:1px solid var(--border)}
+.crumb{font-size:13px;color:var(--text-2)}.crumb a:hover{color:var(--primary)}
+.prog-hero{padding:clamp(52px,9vw,88px) 0 clamp(44px,7vw,68px);color:#fff}
+.prog-tag{font-size:13px;font-weight:600;letter-spacing:.06em;opacity:.72;display:block;margin-bottom:18px}
+.prog-hero h1{font-size:clamp(36px,6.5vw,56px);font-weight:800;line-height:1.15;margin-bottom:clamp(32px,5vw,48px)}
+.spec-row{display:flex;flex-wrap:wrap;gap:10px}
+.sitem{background:rgba(255,255,255,.15);border-radius:12px;padding:13px 18px;min-width:110px}
+.sl{font-size:11px;font-weight:600;opacity:.65;margin-bottom:4px;letter-spacing:.04em}
+.sv{font-size:15px;font-weight:700}
+.prog-sec{padding:clamp(52px,8vw,80px) 0}
+.prog-sec--surface{background:var(--surface)}
+.sec-lbl{font-size:11px;font-weight:700;color:var(--primary);letter-spacing:.1em;display:block;margin-bottom:14px}
+.prog-sec h2{font-size:clamp(22px,3.8vw,32px);font-weight:800;margin-bottom:20px;line-height:1.3}
+.prog-desc{font-size:clamp(16px,2.2vw,18px);color:var(--text-2);line-height:1.85;margin-bottom:32px}
+.step-list{display:flex;flex-direction:column;gap:12px}
+.step-item{display:flex;gap:16px;align-items:flex-start;background:var(--surface);border-radius:14px;padding:18px 20px}
+.stn{font-size:11px;font-weight:800;color:var(--primary);white-space:nowrap;padding-top:3px;letter-spacing:.05em;flex:0 0 auto;min-width:52px}
+.stt{font-size:15px;line-height:1.65}.stt strong{font-weight:700;display:block;margin-bottom:2px}
+.benefit-list{display:flex;flex-direction:column;gap:14px}
+.benefit-item{display:flex;gap:16px;align-items:flex-start;background:#fff;border-radius:14px;padding:20px 22px;box-shadow:var(--shadow)}
+.bnum{width:32px;height:32px;border-radius:9px;background:#EEE9FB;color:var(--primary);font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.btxt strong{display:block;font-size:16px;font-weight:700;margin-bottom:5px}
+.btxt p{font-size:14px;color:var(--text-2);line-height:1.65}
+.prep-cols{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:30px}
 @media(max-width:440px){.prep-cols{grid-template-columns:1fr}}
-.pcol{border-radius:12px;padding:18px 20px}.pcol.school{background:var(--surface)}.pcol.us{background:var(--navy);color:#fff}
-.pcol .pt{font-size:11px;font-weight:700;margin-bottom:8px}.pcol.school .pt{color:var(--text-2)}.pcol.us .pt{color:var(--accent)}
-.pcol .pv{font-size:15px;font-weight:600;line-height:1.55}.pcol.us .pv{color:#fff}
-.cta-btns{display:flex;gap:10px;flex-wrap:wrap}
-.carousel-nav{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:20px}
-.nbtn{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--border);background:#fff;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:.15s;color:var(--text);font-family:inherit}
-.nbtn:hover:not(:disabled){border-color:var(--primary);color:var(--primary)}.nbtn:disabled{opacity:.3;cursor:default}
-.dots{display:flex;gap:8px;align-items:center}
-.dot{width:8px;height:8px;border-radius:4px;background:var(--border);border:none;cursor:pointer;transition:.2s;padding:0;flex:0 0 auto}
-.dot.active{background:var(--primary);width:24px}
-.slide-counter{text-align:center;font-size:13px;color:var(--text-2);margin-top:10px;font-weight:600}
-.other-section{padding:clamp(40px,7vw,72px) 0}.other-h{font-size:clamp(18px,3.8vw,22px);font-weight:800;margin-bottom:22px}
+.pcol{border-radius:16px;padding:22px 24px}
+.pcol.school{background:var(--surface)}.pcol.us{background:var(--navy);color:#fff}
+.pcol .pt{font-size:11px;font-weight:700;letter-spacing:.06em;margin-bottom:12px}
+.pcol.school .pt{color:var(--text-2)}.pcol.us .pt{color:var(--accent)}
+.pcol .pv{font-size:15px;font-weight:600;line-height:1.65}
+.cta-btns{display:flex;gap:12px;flex-wrap:wrap}
+.other-sec{padding:clamp(52px,8vw,80px) 0;background:var(--surface)}
+.other-h{font-size:clamp(18px,3vw,22px);font-weight:800;margin-bottom:22px}
 .other-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-@media(max-width:720px){.other-grid{grid-template-columns:repeat(2,1fr)}}
-.ocard{display:block;border-radius:var(--rc);overflow:hidden;transition:.18s;color:var(--text)}.ocard:hover{transform:translateY(-4px)}
-.ocard-poster{position:relative;height:clamp(130px,24vw,180px);border-radius:14px;overflow:hidden;margin-bottom:8px}
-.ocard-poster .onum{position:absolute;left:8px;bottom:-5px;font-size:58px;font-weight:800;color:rgba(255,255,255,.88);line-height:1;pointer-events:none}
-.ocard-poster .ottl{position:absolute;right:11px;bottom:11px;color:#fff;font-weight:800;font-size:15px;text-align:right;line-height:1.25}
-.ocard-poster .otag{position:absolute;top:9px;left:9px;font-size:10px;font-weight:600;background:rgba(255,255,255,.9);color:#C9521F;padding:3px 8px;border-radius:999px}
-.ocard h4{font-size:13px;font-weight:700;margin-bottom:2px}.ocard p{font-size:12px;color:var(--text-2)}
+@media(max-width:640px){.other-grid{grid-template-columns:repeat(2,1fr)}}
+.ocard{display:block;border-radius:var(--rc);overflow:hidden;transition:.18s;color:var(--text);background:#fff;box-shadow:0 2px 12px rgba(24,20,46,.07)}
+.ocard:hover{transform:translateY(-4px)}
+.ocard-poster{position:relative;height:clamp(110px,18vw,150px)}
+.ocard-poster .onum{position:absolute;left:10px;bottom:-4px;font-size:50px;font-weight:800;color:rgba(255,255,255,.85);line-height:1}
+.ocard-poster .ottl{position:absolute;right:12px;bottom:12px;color:#fff;font-weight:800;font-size:14px;text-align:right;line-height:1.25}
+.ocard-poster .otag{position:absolute;top:10px;left:10px;font-size:10px;font-weight:600;background:rgba(255,255,255,.9);color:#C9521F;padding:3px 8px;border-radius:999px}
+.ocard-body{padding:14px 16px}
+.ocard-body h4{font-size:14px;font-weight:700;margin-bottom:3px}
+.ocard-body p{font-size:12px;color:var(--text-2)}
 footer{background:#0F0C20;color:#B5B1C9;padding:44px 0;font-size:14px}footer p{margin-bottom:4px}
 </style>
 </head>
 <body>
 <header>
-  <div class="wrap nav">
+  <div class="nav">
     <a href="/" style="margin-right:auto"><img src="/assets/images/LOgo.png" alt="아이덴티치" style="height:34px;display:block;"></a>
     <input type="checkbox" id="nav-toggle" class="menu-toggle">
     <nav class="nav-links"><a href="/together">어울림 프로그램</a><a href="/career">진로 프로그램</a><a href="/about">회사소개</a></nav>
@@ -88,86 +86,103 @@ footer{background:#0F0C20;color:#B5B1C9;padding:44px 0;font-size:14px}footer p{m
     <label for="nav-toggle" class="menu-btn" aria-label="메뉴">☰</label>
   </div>
 </header>
-<div class="crumb-bar"><div class="wrap"><nav class="crumb"><a href="/">홈</a> › <a href="/together">어울림 프로그램</a> › 도미노 챌린지</nav></div></div>
+
+<div class="crumb-bar">
+  <div class="wrap"><nav class="crumb"><a href="/">홈</a> › <a href="/together">어울림 프로그램</a> › 도미노 챌린지</nav></div>
+</div>
+
 <main>
-  <section class="carousel-section">
+  <section class="prog-hero" style="background:#3A2F66">
     <div class="wrap">
-      <div class="carousel-outer">
-        <div class="carousel-container">
-          <div class="carousel-track" id="ct">
-            <div class="slide">
-              <div class="cover-poster" style="background:#3A2F66"><span class="ctag">어울림 · 학년 단위 체험</span><h1>도미노 챌린지</h1></div>
-              <div class="slide-body"><div class="spec-row">
-                <div class="sitem"><div class="sl">대상</div><div class="sv">초·중·고 전학년</div></div>
-                <div class="sitem"><div class="sl">시간</div><div class="sv">3교시 · 150분</div></div>
-                <div class="sitem"><div class="sl">인원</div><div class="sv">학년 단위</div></div>
-                <div class="sitem"><div class="sl">장소</div><div class="sv">강당 · 교실</div></div>
-              </div></div>
-            </div>
-            <div class="slide"><div class="slide-body">
-              <div class="slide-lbl">PROGRAM</div>
-              <h2 class="slide-h2">어떤 프로그램인가요?</h2>
-              <p class="slide-desc">팀별로 도미노를 설계하고 설치한 뒤, 모든 팀의 도미노를 연결해 함께 쓰러뜨리는 학년 단위 협력 챌린지입니다.</p>
-              <div class="step-list">
-                <div class="step-item"><span class="stn">STEP 1</span><span class="stt"><strong>설계·설치</strong> — 각 팀이 구간을 맡아 도미노를 세워요</span></div>
-                <div class="step-item"><span class="stn">STEP 2</span><span class="stt"><strong>연결·점검</strong> — 팀 간 도미노를 이어 최종 점검해요</span></div>
-                <div class="step-item"><span class="stn">STEP 3</span><span class="stt"><strong>챌린지</strong> — 모두 모여 함께 쓰러뜨려요</span></div>
-              </div>
-            </div></div>
-            <div class="slide"><div class="slide-body">
-              <div class="slide-lbl">TEACHER</div>
-              <h2 class="slide-h2">선생님이 편한 이유</h2>
-              <div class="benefit-list">
-                <div class="benefit-item"><span class="bnum">1</span><div class="btxt"><strong>선생님이 챙길 게 없어요</strong><p>기획·도구·인력·정리까지 전부 저희가 합니다</p></div></div>
-                <div class="benefit-item"><span class="bnum">2</span><div class="btxt"><strong>소외되는 아이가 없어요</strong><p>모든 팀원에게 역할이 있어 누구도 구경만 하지 않아요</p></div></div>
-                <div class="benefit-item"><span class="bnum">3</span><div class="btxt"><strong>학생들이 알아서 빠져들어요</strong><p>쓰러지는 순간 학년 전체가 하나가 되는 경험이 강렬합니다</p></div></div>
-              </div>
-            </div></div>
-            <div class="slide"><div class="slide-body">
-              <div class="slide-lbl">READY</div>
-              <h2 class="slide-h2">준비는 저희가 합니다</h2>
-              <div class="prep-cols">
-                <div class="pcol school"><div class="pt">학교 준비</div><div class="pv">빔프로젝터<br>공간 정리</div></div>
-                <div class="pcol us"><div class="pt">아이덴티치 제공</div><div class="pv">도미노 세트 · 음향<br>진행 인력 일체</div></div>
-              </div>
-              <div class="cta-btns"><a href="/request" class="btn btn-primary">무료 맞춤 요청</a><a href="/proposal.pdf" download class="btn btn-ghost">제안서 다운로드</a></div>
-            </div></div>
-          </div>
-        </div>
-        <div class="carousel-nav">
-          <button class="nbtn prev" onclick="prev()" aria-label="이전">←</button>
-          <div class="dots" id="dots"><button class="dot active" onclick="go(0)"></button><button class="dot" onclick="go(1)"></button><button class="dot" onclick="go(2)"></button><button class="dot" onclick="go(3)"></button></div>
-          <button class="nbtn next" onclick="next()" aria-label="다음">→</button>
-        </div>
-        <div class="slide-counter" id="counter">1 / 4</div>
+      <span class="prog-tag">어울림 · 학년 단위 체험</span>
+      <h1>도미노 챌린지</h1>
+      <div class="spec-row">
+        <div class="sitem"><div class="sl">대상</div><div class="sv">초·중·고 전학년</div></div>
+        <div class="sitem"><div class="sl">시간</div><div class="sv">3교시 · 150분</div></div>
+        <div class="sitem"><div class="sl">인원</div><div class="sv">학년 단위</div></div>
+        <div class="sitem"><div class="sl">장소</div><div class="sv">강당 · 교실</div></div>
       </div>
     </div>
   </section>
-  <section class="other-section">
+
+  <section class="prog-sec">
+    <div class="wrap">
+      <span class="sec-lbl">PROGRAM</span>
+      <h2>어떤 프로그램인가요?</h2>
+      <p class="prog-desc">팀별로 도미노를 설계하고 설치한 뒤, 모든 팀의 도미노를 연결해 함께 쓰러뜨리는 학년 단위 협력 챌린지입니다.</p>
+      <div class="step-list">
+        <div class="step-item">
+          <span class="stn">STEP 1</span>
+          <div class="stt"><strong>설계·설치</strong>각 팀이 구간을 맡아 도미노를 세워요</div>
+        </div>
+        <div class="step-item">
+          <span class="stn">STEP 2</span>
+          <div class="stt"><strong>연결·점검</strong>팀 간 도미노를 이어 최종 점검해요</div>
+        </div>
+        <div class="step-item">
+          <span class="stn">STEP 3</span>
+          <div class="stt"><strong>챌린지</strong>모두 모여 함께 쓰러뜨려요</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="prog-sec prog-sec--surface">
+    <div class="wrap">
+      <span class="sec-lbl">TEACHER</span>
+      <h2>선생님이 편한 이유</h2>
+      <div class="benefit-list">
+        <div class="benefit-item">
+          <span class="bnum">1</span>
+          <div class="btxt"><strong>선생님이 챙길 게 없어요</strong><p>기획·도구·인력·정리까지 전부 저희가 합니다</p></div>
+        </div>
+        <div class="benefit-item">
+          <span class="bnum">2</span>
+          <div class="btxt"><strong>소외되는 아이가 없어요</strong><p>모든 팀원에게 역할이 있어 누구도 구경만 하지 않아요</p></div>
+        </div>
+        <div class="benefit-item">
+          <span class="bnum">3</span>
+          <div class="btxt"><strong>학생들이 알아서 빠져들어요</strong><p>쓰러지는 순간 학년 전체가 하나가 되는 경험이 강렬합니다</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="prog-sec">
+    <div class="wrap">
+      <span class="sec-lbl">READY</span>
+      <h2>준비는 저희가 합니다</h2>
+      <div class="prep-cols">
+        <div class="pcol school"><div class="pt">학교 준비</div><div class="pv">빔프로젝터<br>공간 정리</div></div>
+        <div class="pcol us"><div class="pt">아이덴티치 제공</div><div class="pv">도미노 세트 · 음향<br>진행 인력 일체</div></div>
+      </div>
+      <div class="cta-btns">
+        <a href="/request" class="btn btn-primary">무료 맞춤 요청</a>
+        <a href="/proposal.pdf" download class="btn btn-ghost">제안서 다운로드</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="other-sec">
     <div class="wrap">
       <h2 class="other-h">다른 프로그램도 있어요</h2>
       <div class="other-grid">
-        <a href="/together/brumarble" class="ocard"><div class="ocard-poster" style="background:#6C47D6"><span class="otag">어울림</span><span class="onum">2</span><span class="ottl">협동<br>브루마블</span></div><h4>협동 브루마블</h4><p>학급 협동 보드게임</p></a>
-        <a href="/together/schoolping" class="ocard"><div class="ocard-poster" style="background:#2E5A7A"><span class="otag">어울림</span><span class="onum">3</span><span class="ottl">스쿨핑</span></div><h4>스쿨핑</h4><p>실내 캠핑 체험</p></a>
-        <a href="/together/facilitation" class="ocard"><div class="ocard-poster" style="background:#2A2342"><span class="otag">어울림</span><span class="onum">4</span><span class="ottl">미션 퍼실<br>리테이션</span></div><h4>미션 퍼실리테이션</h4><p>회의·소통 역량 교육</p></a>
-        <a href="/together/violence-prevention" class="ocard"><div class="ocard-poster" style="background:#C24A22"><span class="otag">어울림</span><span class="onum">5</span><span class="ottl">학교폭력<br>예방 레크</span></div><h4>학교폭력예방 레크</h4><p>전교생 화합</p></a>
+        <a href="/together/brumarble" class="ocard"><div class="ocard-poster" style="background:#6C47D6"><span class="otag">어울림</span><span class="onum">2</span><span class="ottl">협동<br>브루마블</span></div><div class="ocard-body"><h4>협동 브루마블</h4><p>학급 협동 보드게임</p></div></a>
+        <a href="/together/schoolping" class="ocard"><div class="ocard-poster" style="background:#2E5A7A"><span class="otag">어울림</span><span class="onum">3</span><span class="ottl">스쿨핑</span></div><div class="ocard-body"><h4>스쿨핑</h4><p>실내 캠핑 체험</p></div></a>
+        <a href="/together/facilitation" class="ocard"><div class="ocard-poster" style="background:#2A2342"><span class="otag">어울림</span><span class="onum">4</span><span class="ottl">미션<br>퍼실리테이션</span></div><div class="ocard-body"><h4>미션 퍼실리테이션</h4><p>리더십·소통 교육</p></div></a>
+        <a href="/together/violence-prevention" class="ocard"><div class="ocard-poster" style="background:#C24A22"><span class="otag">어울림</span><span class="onum">5</span><span class="ottl">학교폭력예방<br>레크리에이션</span></div><div class="ocard-body"><h4>학교폭력예방 레크</h4><p>전교생 화합</p></div></a>
       </div>
     </div>
   </section>
 </main>
-<footer><div class="wrap">
-  <div><img src="/assets/images/LOgo.png" alt="아이덴티치" style="height:28px;display:block;margin-bottom:14px;opacity:.85;filter:brightness(0) invert(1);"></div>
-  <p>경험을 설계하는 진로·어울림 전문 교육기획사 · 대표 진성재</p>
-  <p>010-4084-8962 · idengroup@naver.com</p>
-  <p style="margin-top:16px;color:#6E6A85">© 2026 IDenTeach (아이덴티치).</p>
-</div></footer>
-<script>
-var cur=0,total=4,track=document.getElementById('ct'),dotsEl=document.getElementById('dots').querySelectorAll('.dot'),counter=document.getElementById('counter');
-function go(n){cur=Math.max(0,Math.min(n,total-1));track.style.transform='translateX(-'+(cur*100)+'%)';dotsEl.forEach(function(d,i){d.classList.toggle('active',i===cur);});counter.textContent=(cur+1)+' / '+total;document.querySelector('.nbtn.prev').disabled=cur===0;document.querySelector('.nbtn.next').disabled=cur===total-1;}
-function prev(){go(cur-1);}function next(){go(cur+1);}
-var tx=0;track.addEventListener('touchstart',function(e){tx=e.touches[0].clientX;},{passive:true});track.addEventListener('touchend',function(e){var dx=tx-e.changedTouches[0].clientX;if(Math.abs(dx)>40){dx>0?next():prev();}});
-document.addEventListener('keydown',function(e){if(e.key==='ArrowLeft')prev();if(e.key==='ArrowRight')next();});
-go(0);
-</script>
+
+<footer>
+  <div class="wrap">
+    <div><img src="/assets/images/LOgo.png" alt="아이덴티치" style="height:28px;display:block;margin-bottom:14px;opacity:.85;filter:brightness(0) invert(1);"></div>
+    <p>경험을 설계하는 진로·어울림 전문 교육기획사 · 대표 진성재</p>
+    <p>010-4084-8962 · idengroup@naver.com</p>
+    <p style="margin-top:16px;color:#6E6A85">© 2026 IDenTeach (아이덴티치).</p>
+  </div>
+</footer>
 </body>
 </html>
