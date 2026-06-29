@@ -78,15 +78,17 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);
   cursor:pointer;position:relative;border-radius:18px;
   overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;
   padding:clamp(18px,3.5vw,28px);padding-top:clamp(28px,5vw,44px);
-  color:#fff;transition:padding-top .32s cubic-bezier(.4,0,.2,1);width:100%;outline:none;flex:1}
+  color:#fff;transition:padding-top .32s cubic-bezier(.4,0,.2,1),filter .22s,transform .18s;
+  width:100%;outline:none;flex:1}
 .ecard.active{padding-top:clamp(70px,14vw,110px)}
-.ecard:hover:not(.active){filter:brightness(1.06)}
+.ecard:not(.active){filter:grayscale(.65) brightness(.7)}
+.ecard:not(.active):hover{filter:grayscale(.2) brightness(.9);transform:translateY(-3px)}
 .ecard.together{background:var(--navy)}
 .ecard.career{background:var(--primary)}
 .ecard .ecax{font-size:11px;font-weight:700;letter-spacing:.1em;opacity:.6;margin-bottom:8px;display:block}
 .ecard.together .ecax{color:var(--accent);opacity:1}
-.ecard h3{font-size:clamp(17px,3.2vw,22px);font-weight:800;margin-bottom:7px}
-.ecard p{font-size:13px;opacity:.82;line-height:1.6;max-width:26em}
+.ecard h3{font-size:clamp(17px,3.2vw,22px);font-weight:800;margin-bottom:8px}
+.ecard p{font-size:clamp(14px,2.4vw,16px);opacity:.88;line-height:1.65;max-width:26em}
 .ecard .badge{position:absolute;top:14px;right:14px;font-size:11px;font-weight:700;
   background:#fff;color:var(--primary);padding:4px 10px;border-radius:999px}
 .ecard .earrow{display:block;margin-top:14px;font-size:12px;font-weight:600;
@@ -190,14 +192,14 @@ footer p{margin-bottom:4px}
         <button class="ecard together active" id="btn-together" onclick="switchProg('together')">
           <span class="ecax">TOGETHER</span>
           <h3>어울림 활동</h3>
-          <p>대인관계·팀빌딩·학교폭력예방·체육대회 등<br>친구들과 함께 어울리는 활동</p>
+          <p>대인관계 · 공동체 · 학교폭력예방<br>체육대회 · 리더십캠프 등</p>
           <span class="earrow">▾ 프로그램 선택</span>
         </button>
         <button class="ecard career" id="btn-career" onclick="switchProg('career')">
           <span class="badge">준비 중</span>
           <span class="ecax">CAREER</span>
           <h3>진로 활동</h3>
-          <p>진로캠프·콘서트·강연 등<br>나를 탐구하는 모든 진로 활동</p>
+          <p>진로캠프 · 콘서트 · 강연 등<br>나를 탐구하는 모든 진로 활동</p>
           <span class="earrow">▾ 프로그램 선택</span>
         </button>
       </div>
