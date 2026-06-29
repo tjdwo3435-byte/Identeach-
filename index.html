@@ -70,11 +70,12 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);
 .hero-sub{font-size:clamp(15px,3vw,18px);color:var(--text-2);margin-top:18px;line-height:1.65;max-width:30em}
 
 /* === ENTRY TABS === */
-.entry{padding:clamp(48px,8vw,80px) 0 0}
+.entry{padding:clamp(48px,8vw,80px) 0}
+.entry-box{background:var(--surface);border-radius:26px;padding:14px 14px 28px}
 .entry-grid{display:flex;gap:8px;align-items:flex-end}
 @media(max-width:560px){.entry-grid{gap:6px}}
 .ecard{-webkit-appearance:none;appearance:none;border:none;text-align:left;font-family:inherit;
-  cursor:pointer;position:relative;border-radius:20px 20px 0 0;
+  cursor:pointer;position:relative;border-radius:18px;
   overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;
   padding:clamp(18px,3.5vw,28px);padding-top:clamp(28px,5vw,44px);
   color:#fff;transition:padding-top .32s cubic-bezier(.4,0,.2,1);width:100%;outline:none;flex:1}
@@ -93,8 +94,8 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);
 .ecard.active .earrow{opacity:1}
 
 /* === PROGRAM PANELS === */
-.prog-panel{padding:clamp(20px,4vw,32px) 0 clamp(48px,8vw,80px);
-  animation:fadeIn .22s ease;background:var(--bg)}
+.prog-panel{padding:clamp(16px,3vw,24px) 0 0;
+  animation:fadeIn .22s ease;background:transparent}
 .prog-panel.hidden{display:none}
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 
@@ -184,6 +185,7 @@ footer p{margin-bottom:4px}
 
   <section class="entry">
     <div class="wrap">
+      <div class="entry-box">
       <div class="entry-grid">
         <button class="ecard together active" id="btn-together" onclick="switchProg('together')">
           <span class="ecax">TOGETHER</span>
@@ -250,6 +252,7 @@ footer p{margin-bottom:4px}
           <a href="/request" class="btn btn-primary">오픈 소식 받기</a>
         </div>
       </div>
+      </div><!-- /entry-box -->
     </div>
   </section>
 
