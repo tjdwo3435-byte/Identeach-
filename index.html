@@ -63,11 +63,34 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);
 }
 
 /* === HERO === */
-.hero{padding:clamp(60px,10vw,100px) 0 clamp(64px,10vw,108px);background:var(--surface)}
+.hero{min-height:100vh;background:var(--bg);display:flex;flex-direction:column;
+  position:relative;overflow:hidden}
+.hero-inner{display:flex;flex:1;align-items:center;min-height:calc(100vh - 64px)}
+.hero-visual{flex:1.1;display:flex;align-items:center;justify-content:center;
+  padding:clamp(32px,6vw,80px);position:relative;align-self:stretch}
+.hero-art{width:100%;height:100%;min-height:420px;background:var(--surface);
+  border-radius:28px;display:flex;align-items:center;justify-content:center;
+  color:var(--text-2);font-size:14px;position:relative;overflow:hidden}
+.hero-copy{flex:0.9;padding:clamp(40px,6vw,72px) clamp(40px,7vw,96px) clamp(40px,6vw,72px) 0;
+  display:flex;flex-direction:column;justify-content:center}
 .eyebrow{display:inline-block;font-size:13px;font-weight:700;color:var(--primary);
-  background:#EAE4F8;padding:6px 14px;border-radius:999px;margin-bottom:20px;letter-spacing:.02em}
-.hero h1{font-size:clamp(27px,5.8vw,44px);font-weight:800;line-height:1.26}
-.hero-sub{font-size:clamp(15px,3vw,18px);color:var(--text-2);margin-top:18px;line-height:1.65;max-width:30em}
+  background:#EAE4F8;padding:6px 14px;border-radius:999px;margin-bottom:24px;letter-spacing:.02em}
+.hero h1{font-size:clamp(32px,5.2vw,58px);font-weight:800;line-height:1.18;letter-spacing:-.04em}
+.hero-sub{font-size:clamp(15px,2vw,18px);color:var(--text-2);margin-top:22px;line-height:1.75}
+.scroll-hint{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:10px;
+  font-size:11px;font-weight:700;color:var(--text-2);letter-spacing:.1em}
+.scroll-circle{width:38px;height:38px;border:1.5px solid var(--border);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  animation:scrollBounce 1.6s ease-in-out infinite}
+.scroll-circle::after{content:'';width:6px;height:6px;border-radius:50%;background:var(--text-2)}
+@keyframes scrollBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+@media(max-width:800px){
+  .hero-inner{flex-direction:column}
+  .hero-visual{width:100%;flex:none;min-height:320px;padding-bottom:0;align-self:auto}
+  .hero-art{min-height:260px}
+  .hero-copy{padding:28px var(--pad-x) 80px}
+}
 
 /* === ENTRY TABS === */
 .entry{padding:clamp(48px,8vw,80px) 0}
@@ -179,10 +202,21 @@ footer p{margin-bottom:4px}
 <main>
 
   <section class="hero">
-    <div class="wrap">
-      <span class="eyebrow fade d1">경험 교육 콘텐츠 기획사</span>
-      <h1 class="fade d2">교육부터 행사까지<br>학교 맞춤 프로그램 기획사</h1>
-      <p class="hero-sub fade d3">진로캠프 · 어울림 활동 · 학교폭력예방 · 체육대회 등<br>즐거움과 새로움이 필요한 교육 활동 콘텐츠를 제작합니다.</p>
+    <div class="hero-inner">
+      <div class="hero-visual">
+        <div class="hero-art">
+          <!-- 디자인 작업물 영역 -->
+        </div>
+      </div>
+      <div class="hero-copy">
+        <span class="eyebrow fade d1">경험 교육 콘텐츠 기획사</span>
+        <h1 class="fade d2">교육부터 행사까지<br>학교 맞춤<br>프로그램 기획사</h1>
+        <p class="hero-sub fade d3">진로캠프 · 어울림 활동 · 학교폭력예방 · 체육대회 등<br>즐거움과 새로움이 필요한 교육 활동 콘텐츠를 제작합니다.</p>
+      </div>
+    </div>
+    <div class="scroll-hint">
+      <span>Scroll Down</span>
+      <div class="scroll-circle"></div>
     </div>
   </section>
 
