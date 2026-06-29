@@ -130,6 +130,15 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);
 .prog-panel.hidden{display:none}
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 
+/* shelf header */
+.shelf-head{display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:14px;padding-top:4px}
+.shelf-lbl{font-size:15px;font-weight:700;color:var(--text)}
+.shelf-lbl em{font-style:normal;color:var(--primary)}
+.shelf-more{font-size:13px;font-weight:600;color:var(--primary);
+  display:flex;align-items:center;gap:4px;white-space:nowrap}
+.shelf-more:hover{text-decoration:underline}
+
 /* booklet shelf */
 .prog-shelf{display:flex;align-items:flex-end;gap:10px;overflow-x:auto;padding:4px 0 16px;
   scrollbar-width:none;-ms-overflow-style:none}
@@ -247,6 +256,10 @@ footer p{margin-bottom:4px}
 
       <!-- 어울림 프로그램 목록 -->
       <div class="prog-panel" id="panel-together">
+        <div class="shelf-head">
+          <span class="shelf-lbl">아이덴티치만의 <em>인기 프로그램</em></span>
+          <a href="/together" class="shelf-more">전체 프로그램 보기 →</a>
+        </div>
         <div class="prog-shelf">
           <a href="/together/domino" class="bcard" style="background:#3A2F66">
             <span class="btag">어울림 01</span>
