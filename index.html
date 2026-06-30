@@ -1,14 +1,14 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>아이덴티치 | 경험 교육 콘텐츠 기획사</title>
-<meta name="description" content="초·중·고 학교 맞춤 교육 콘텐츠 기획사. 진로캠프·어울림 활동·학교폭력예방 레크리에이션·체육대회까지, 기획부터 강사 파견·현장 운영까지 한 번에 맡깁니다.">
+<meta name="description" content="초·중·고 학교 맞춤 교육 콘텐츠 기획사. 진로캠프·어울림 활동·학교폭력예방·체육대회까지, 기획부터 강사 파견·현장 운영까지 한 번에 맡깁니다.">
 <meta name="keywords" content="어울림프로그램,팀빌딩,학급단합,학교폭력예방,진로캠프,아이덴티치">
 <meta property="og:type" content="website">
 <meta property="og:title" content="아이덴티치 | 경험 교육 콘텐츠 기획사">
-<meta property="og:description" content="경험을 설계하여 진로캠프와 어울림 활동을 기획합니다.">
+<meta property="og:description" content="경험을 설계하는 진로·어울림 전문 교육기획사.">
 <meta property="og:url" content="https://identeach.co.kr">
 <meta property="og:locale" content="ko_KR">
 <link rel="canonical" href="https://identeach.co.kr">
@@ -18,383 +18,808 @@
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <style>
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@1.3.9/dist/web/static/pretendard.css');
-:root{
-  --primary:#6C47D6;--primary-deep:#5836C0;--navy:#18142E;--accent:#FF7A4D;
-  --bg:#fff;--surface:#F6F4FB;--text:#18142E;--text-2:#6B6880;--border:#E8E5F0;
-  --maxw:1140px;--rc:16px;--rb:12px;--shadow:0 8px 30px rgba(24,20,46,.08);
-  --pad-x:clamp(20px,5vw,24px);
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{font-family:'Pretendard',-apple-system,sans-serif;color:var(--text);background:var(--bg);
-  font-weight:500;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-a{color:inherit;text-decoration:none}
-.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad-x)}
-h1,h2,h3,h4{letter-spacing:-.03em}
 
-/* === BUTTONS === */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:600;
-  font-size:clamp(15px,2.4vw,16px);padding:14px 26px;border-radius:var(--rb);transition:.18s;
-  cursor:pointer;border:none;white-space:nowrap;font-family:inherit}
-.btn-primary{background:var(--primary);color:#fff}
-.btn-primary:hover{background:var(--primary-deep);transform:translateY(-2px)}
-.btn-ghost{background:transparent;color:var(--primary);border:1.5px solid var(--primary)}
-.btn-ghost:hover{background:var(--primary);color:#fff}
-.btn-pill{background:#fff;color:var(--navy);border-radius:999px;padding:13px 26px;font-weight:600}
-
-/* === HEADER === */
-header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);
-  backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
-.nav{display:flex;align-items:center;gap:16px;height:64px}
-.nav-links{display:flex;align-items:center;gap:28px;font-size:15px;color:var(--text-2)}
-.nav-links a:hover{color:var(--text)}
-.nav-links .new{font-size:10px;font-weight:700;color:var(--primary);background:#EEE9FB;
-  padding:2px 6px;border-radius:5px;margin-left:5px;vertical-align:middle}
-.nav-cta{padding:9px 18px;font-size:14px}
-.menu-toggle,.menu-btn{display:none}
-.menu-btn{font-size:24px;background:none;border:none;cursor:pointer;color:var(--text);padding:4px}
-@media(max-width:860px){
-  .menu-btn{display:block;order:3}.nav-cta{order:2}
-  .nav-links{position:absolute;top:64px;left:0;right:0;flex-direction:column;align-items:flex-start;
-    gap:0;background:#fff;border-bottom:1px solid var(--border);max-height:0;overflow:hidden;
-    transition:max-height .28s;font-size:16px}
-  .nav-links a{width:100%;padding:16px var(--pad-x);border-top:1px solid var(--border)}
-  .menu-toggle:checked ~ .nav-links{max-height:320px}
+/* ===== DESIGN TOKENS ===== */
+:root {
+  --blue:       #1F2392;
+  --blue-soft:  rgba(31,35,146,.08);
+  --blue-mid:   rgba(31,35,146,.16);
+  --yellow:     #FFD84D;
+  --yellow-soft:rgba(255,216,77,.18);
+  --warm-white: #FFFDF7;
+  --white:      #FFFFFF;
+  --navy:       #14142B;
+  --gray:       #6F7287;
+  --border:     #E8E8F0;
+  --maxw:       1200px;
+  --pad-x:      clamp(20px,5vw,40px);
+  --rc:         24px;
+  --shadow:     0 4px 24px rgba(20,20,43,.08);
+  --shadow-lg:  0 14px 48px rgba(20,20,43,.14);
 }
 
-/* === HERO === */
-.hero{min-height:78vh;display:flex;flex-direction:column;position:relative;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background:url('/assets/images/hero/hero-bg.jpg') center/cover no-repeat;z-index:0}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(110deg,rgba(18,14,38,.82) 0%,rgba(18,14,38,.56) 55%,rgba(18,14,38,.28) 100%);z-index:1}
-.hero-inner{position:relative;z-index:2;display:flex;flex:1;align-items:center;justify-content:center;min-height:calc(78vh - 64px);padding:0 clamp(32px,7vw,96px)}
-.hero-copy{max-width:660px;display:flex;flex-direction:column;align-items:center;text-align:center;padding:clamp(48px,8vw,80px) 0}
-.eyebrow{display:inline-block;font-size:13px;font-weight:700;color:#fff;
-  background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);
-  padding:6px 14px;border-radius:999px;margin-bottom:24px;letter-spacing:.02em}
-.hero h1{font-size:clamp(34px,5.8vw,64px);font-weight:800;line-height:1.15;letter-spacing:-.04em;color:#fff}
-.hero-sub{font-size:clamp(15px,2vw,18px);color:rgba(255,255,255,.76);margin-top:22px;line-height:1.78}
-.hero-btns{display:flex;gap:12px;margin-top:36px;flex-wrap:wrap}
-.hero-btns .btn-white{background:#fff;color:var(--primary);font-weight:700;font-size:15px;
-  padding:14px 28px;border-radius:var(--rb);transition:.18s;display:inline-flex;align-items:center}
-.hero-btns .btn-white:hover{background:#f0ecfb;transform:translateY(-2px)}
-.hero-btns .btn-ghost-w{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.45);
-  font-size:15px;font-weight:600;padding:13px 24px;border-radius:var(--rb);transition:.18s;display:inline-flex;align-items:center}
-.hero-btns .btn-ghost-w:hover{background:rgba(255,255,255,.12)}
-.scroll-hint{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:2;
-  display:flex;flex-direction:column;align-items:center;gap:10px;
-  font-size:11px;font-weight:700;color:#fff;letter-spacing:.1em}
-.scroll-circle{width:38px;height:38px;border:2px solid rgba(255,255,255,.85);border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  animation:scrollBounce 1.6s ease-in-out infinite}
-.scroll-circle::after{content:'';width:6px;height:6px;border-radius:50%;background:#fff}
-@keyframes scrollBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
-@media(max-width:640px){
-  .hero-inner{padding:0 var(--pad-x)}
-  .hero h1{font-size:clamp(30px,8.5vw,44px)}
+/* ===== RESET ===== */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box }
+html { scroll-behavior:smooth; -webkit-text-size-adjust:100% }
+body {
+  font-family:'Pretendard',-apple-system,BlinkMacSystemFont,sans-serif;
+  color:var(--navy); background:var(--warm-white);
+  font-weight:400; line-height:1.7;
+  -webkit-font-smoothing:antialiased; overflow-x:hidden;
+}
+a { color:inherit; text-decoration:none }
+img { max-width:100%; height:auto; display:block }
+h1,h2,h3,h4,h5 { letter-spacing:-.03em }
+.wrap { max-width:var(--maxw); margin:0 auto; padding:0 var(--pad-x) }
+
+/* ===== BUTTONS ===== */
+.btn {
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  font-family:inherit; font-weight:700; cursor:pointer; border:none;
+  white-space:nowrap; transition:all .18s; text-decoration:none;
+}
+.btn-blue { background:var(--blue); color:#fff; font-size:16px; padding:16px 30px; border-radius:999px }
+.btn-blue:hover { background:#171980; transform:translateY(-2px); box-shadow:0 8px 24px rgba(31,35,146,.28) }
+.btn-ghost-blue {
+  background:transparent; color:var(--blue); border:1.5px solid var(--blue);
+  font-size:15px; padding:14px 26px; border-radius:999px;
+}
+.btn-ghost-blue:hover { background:var(--blue); color:#fff }
+.btn-white {
+  background:#fff; color:var(--blue); font-size:15px; font-weight:700;
+  padding:15px 30px; border-radius:999px;
+}
+.btn-white:hover { background:#f0f0ff; transform:translateY(-2px) }
+.btn-outline-w {
+  background:transparent; color:#fff; border:1.5px solid rgba(255,255,255,.45);
+  font-size:14px; font-weight:600; padding:13px 26px; border-radius:999px;
+}
+.btn-outline-w:hover { background:rgba(255,255,255,.1) }
+
+/* ===== HEADER ===== */
+header {
+  position:sticky; top:0; z-index:100;
+  background:rgba(255,253,247,.95);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+}
+.nav { display:flex; align-items:center; gap:16px; height:64px }
+.nav-logo { margin-right:auto; display:flex; align-items:center }
+.nav-links {
+  display:flex; align-items:center; gap:28px;
+  font-size:15px; font-weight:500; color:var(--gray);
+}
+.nav-links a { transition:color .15s }
+.nav-links a:hover { color:var(--navy) }
+.nav-tag {
+  font-size:10px; font-weight:700; color:var(--blue);
+  background:var(--blue-soft); padding:2px 6px; border-radius:5px;
+  margin-left:4px; vertical-align:middle;
+}
+.nav-cta { padding:10px 20px; font-size:14px }
+.menu-toggle, .menu-btn { display:none }
+.menu-btn {
+  font-size:22px; background:none; border:none;
+  cursor:pointer; color:var(--navy); padding:4px;
+}
+@media(max-width:860px) {
+  .menu-btn { display:block; order:3 }
+  .nav-cta { order:2 }
+  .nav-links {
+    position:absolute; top:64px; left:0; right:0;
+    flex-direction:column; align-items:flex-start; gap:0;
+    background:var(--warm-white); border-bottom:1px solid var(--border);
+    max-height:0; overflow:hidden; transition:max-height .28s; font-size:16px;
+  }
+  .nav-links a { width:100%; padding:16px var(--pad-x); border-top:1px solid var(--border) }
+  .menu-toggle:checked ~ .nav-links { max-height:360px }
 }
 
-/* === BRAND STATEMENT === */
-.brand-stmt{background:var(--surface);padding:clamp(64px,11vw,108px) 0}
-.brand-stmt p{font-size:clamp(22px,3.8vw,40px);font-weight:700;line-height:1.55;
-  color:var(--text);max-width:18em}
-.brand-stmt p strong{color:var(--primary)}
+/* ===== HERO ===== */
+.hero {
+  background:var(--warm-white);
+  padding:clamp(56px,9vw,96px) 0;
+  position:relative; overflow:hidden;
+}
+/* soft yellow glow top-right */
+.hero::after {
+  content:''; position:absolute; top:-100px; right:-100px;
+  width:480px; height:480px; border-radius:50%;
+  background:radial-gradient(circle, rgba(255,216,77,.22) 0%, transparent 68%);
+  pointer-events:none; z-index:0;
+}
+.hero-grid {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:clamp(40px,7vw,96px); align-items:center;
+  position:relative; z-index:1;
+}
+/* ---- Left: text ---- */
+.hero-eyebrow {
+  display:inline-flex; align-items:center; gap:8px;
+  background:var(--blue-soft); color:var(--blue);
+  font-size:13px; font-weight:700; letter-spacing:.04em;
+  padding:7px 16px; border-radius:999px; margin-bottom:26px;
+}
+.hero-eyebrow::before {
+  content:''; width:6px; height:6px;
+  border-radius:50%; background:var(--blue); flex-shrink:0;
+}
+.hero h1 {
+  font-size:clamp(38px,5.5vw,56px); font-weight:800; line-height:1.13;
+  color:var(--navy); margin-bottom:22px;
+}
+.hero h1 em {
+  font-style:normal;
+  background:var(--yellow);
+  padding:0 6px 2px; border-radius:8px;
+}
+.hero-desc {
+  font-size:clamp(15px,1.8vw,18px); color:var(--gray);
+  line-height:1.9; margin-bottom:36px;
+}
+.hero-btns { display:flex; gap:12px; flex-wrap:wrap }
 
-/* === ENTRY TABS === */
-.entry{padding:clamp(48px,8vw,80px) 0}
-.entry-box{background:var(--surface);border-radius:26px;padding:14px 14px 28px}
-.entry-grid{display:flex;gap:8px;align-items:flex-end}
-@media(max-width:560px){.entry-grid{gap:6px}}
-.ecard{-webkit-appearance:none;appearance:none;border:none;text-align:left;font-family:inherit;
-  cursor:pointer;position:relative;border-radius:18px;
-  overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;
-  padding:clamp(18px,3.5vw,28px);padding-top:clamp(28px,5vw,44px);
-  color:#fff;transition:padding-top .32s cubic-bezier(.4,0,.2,1),filter .22s,transform .18s;
-  width:100%;outline:none;flex:1}
-.ecard.active{padding-top:clamp(70px,14vw,110px)}
-.ecard:not(.active){filter:grayscale(.65) brightness(.7)}
-.ecard:not(.active):hover{filter:grayscale(.2) brightness(.9);transform:translateY(-3px)}
-.ecard.together{background:var(--navy)}
-.ecard.career{background:var(--primary)}
-.ecard .ecax{font-size:11px;font-weight:700;letter-spacing:.1em;opacity:.6;margin-bottom:8px;display:block}
-.ecard.together .ecax{color:var(--accent);opacity:1}
-.ecard h3{font-size:clamp(17px,3.2vw,22px);font-weight:800;margin-bottom:8px}
-.ecard p{font-size:clamp(14px,2.4vw,16px);opacity:.88;line-height:1.65;max-width:26em}
-.ecard .badge{position:absolute;top:14px;right:14px;font-size:11px;font-weight:700;
-  background:#fff;color:var(--primary);padding:4px 10px;border-radius:999px}
-.ecard .earrow{display:block;margin-top:14px;font-size:12px;font-weight:600;
-  opacity:.5;transition:opacity .2s;letter-spacing:.02em}
-.ecard.active .earrow{opacity:1}
+/* ---- Right: visual ---- */
+.hero-visual { position:relative; padding:28px 32px 12px 16px }
+.hero-photo {
+  width:100%; height:clamp(340px,46vw,500px);
+  border-radius:28px; object-fit:cover;
+  box-shadow:var(--shadow-lg);
+}
+/* speech bubbles */
+.sbbl {
+  position:absolute; border-radius:18px; font-weight:700;
+  font-size:14px; padding:10px 18px; z-index:3;
+  box-shadow:0 4px 16px rgba(0,0,0,.1); line-height:1.3;
+}
+.sbbl-blue  { background:var(--blue); color:#fff }
+.sbbl-yellow{ background:var(--yellow); color:var(--navy) }
+/* tails */
+.sbbl-tl::after {
+  content:''; position:absolute; bottom:-9px; left:16px;
+  border:9px solid transparent;
+  border-top-color:var(--blue); border-bottom-width:0;
+}
+.sbbl-br::after {
+  content:''; position:absolute; top:-9px; right:16px;
+  border:9px solid transparent;
+  border-bottom-color:var(--blue); border-top-width:0;
+}
+.sbbl-tr::after {
+  content:''; position:absolute; bottom:-9px; right:16px;
+  border:9px solid transparent;
+  border-top-color:var(--yellow); border-bottom-width:0;
+}
+.sb1 { top:-16px; left:0 }
+.sb2 { top:36%; right:-28px }
+.sb3 { bottom:16px; left:-18px; font-size:15px; padding:12px 20px }
+/* Do it badge */
+.doit-badge {
+  position:absolute; top:-20px; right:20px; z-index:4;
+  background:var(--blue); color:#fff;
+  font-size:14px; font-weight:800; padding:9px 18px; border-radius:16px;
+  box-shadow:0 6px 20px rgba(31,35,146,.32);
+}
+.doit-badge::after {
+  content:''; position:absolute; bottom:-8px; left:18px;
+  border:8px solid transparent;
+  border-top-color:var(--blue); border-bottom-width:0;
+}
+/* dot grid */
+.hero-dots {
+  position:absolute; bottom:16px; right:0; z-index:1;
+  display:flex; flex-direction:column; gap:6px;
+}
+.hero-dots span { display:flex; gap:6px }
+.hero-dots i {
+  width:4px; height:4px; border-radius:50%;
+  background:var(--blue); opacity:.2; display:block;
+}
+/* float animation */
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-7px)} }
+.sb1 { animation:float 3.2s ease-in-out infinite }
+.sb2 { animation:float 2.8s ease-in-out infinite .4s }
+.sb3 { animation:float 3.6s ease-in-out infinite .8s }
+.doit-badge { animation:float 2.5s ease-in-out infinite .2s }
 
-/* === PROGRAM PANELS === */
-.prog-panel{padding:clamp(16px,3vw,24px) 0 0;
-  animation:fadeIn .22s ease;background:transparent}
-.prog-panel.hidden{display:none}
-@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-
-/* shelf header */
-.shelf-head{display:flex;align-items:center;justify-content:space-between;
-  margin-bottom:14px;padding-top:4px}
-.shelf-lbl{font-size:15px;font-weight:700;color:var(--text)}
-.shelf-lbl em{font-style:normal;color:var(--primary)}
-.shelf-more{font-size:13px;font-weight:600;color:var(--primary);
-  display:flex;align-items:center;gap:4px;white-space:nowrap}
-.shelf-more:hover{text-decoration:underline}
-
-/* booklet shelf */
-.prog-shelf{display:flex;align-items:flex-end;gap:10px;overflow-x:auto;padding:4px 0 16px;
-  scrollbar-width:none;-ms-overflow-style:none}
-.prog-shelf::-webkit-scrollbar{display:none}
-.bcard{display:flex;flex-direction:column;justify-content:flex-end;flex:1 1 0;min-width:100px;
-  height:clamp(210px,36vw,280px);
-  border-radius:14px 14px 6px 6px;padding:clamp(12px,2.5vw,18px);color:#fff;
-  text-decoration:none;position:relative;overflow:hidden;
-  box-shadow:2px 6px 18px rgba(0,0,0,.18);transition:transform .2s,box-shadow .2s}
-.bcard:hover{transform:translateY(-8px);box-shadow:4px 12px 28px rgba(0,0,0,.28)}
-.bcard .btag{font-size:10px;font-weight:700;opacity:.7;display:block;margin-bottom:auto;padding-bottom:clamp(28px,6vw,44px)}
-.bcard .bnum{position:absolute;left:8px;top:8px;font-size:clamp(44px,8vw,60px);font-weight:800;
-  color:rgba(255,255,255,.12);line-height:1;pointer-events:none}
-.bcard .bttl{font-size:clamp(15px,2.6vw,19px);font-weight:800;line-height:1.3;position:relative;z-index:1}
-.bcard .bsub{font-size:clamp(12px,1.6vw,14px);opacity:.75;margin-top:6px;position:relative;z-index:1}
-.bcard .bkw{position:absolute;top:10px;right:10px;font-size:10px;font-weight:700;
-  background:rgba(255,255,255,.2);color:#fff;padding:3px 9px;border-radius:999px;
-  backdrop-filter:blur(4px);z-index:2}
-.bcard-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;z-index:0}
-.bcard::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
-  background:linear-gradient(to top,rgba(0,0,0,.72) 0%,rgba(0,0,0,.28) 55%,rgba(0,0,0,.12) 100%)}
-.bcard .bkw,.bcard .btag,.bcard .bnum,.bcard .bttl,.bcard .bsub{position:relative;z-index:2}
-@media(max-width:560px){.bcard{min-width:80px}.bcard .bttl{font-size:12px}}
-
-/* Career coming soon */
-.career-soon{background:var(--surface);border-radius:20px;padding:clamp(28px,5vw,48px);
-  text-align:center;max-width:500px;margin:0 auto}
-.career-soon h3{font-size:20px;font-weight:800;margin-bottom:12px;line-height:1.35}
-.career-soon > p{font-size:15px;color:var(--text-2);margin-bottom:22px}
-.career-items{display:flex;flex-direction:column;gap:10px;text-align:left;margin-bottom:28px}
-.career-item{background:#fff;border:1px solid var(--border);border-radius:var(--rb);
-  padding:13px 18px;display:flex;align-items:center;gap:12px;font-size:14px;font-weight:600}
-.career-item .cdot{width:7px;height:7px;border-radius:50%;background:var(--primary);flex:0 0 auto}
-
-/* === WHAT WE DO + ENTRY (merged section) === */
-.whatwedo{background:var(--bg);padding:clamp(64px,10vw,108px) 0 clamp(64px,10vw,108px)}
-.wwd-top{margin-bottom:clamp(40px,6vw,60px)}
-.wwd-top .lab{font-size:12px;font-weight:700;color:var(--primary);letter-spacing:.12em;display:block;margin-bottom:20px}
-.wwd-top h2{font-size:clamp(26px,4.5vw,44px);font-weight:800;color:var(--text);line-height:1.25;margin-bottom:22px}
-.wwd-top p{font-size:clamp(15px,1.8vw,17px);color:var(--text-2);line-height:1.9;max-width:44em}
-.pcat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
-  background:rgba(255,255,255,.1);border-radius:20px;overflow:hidden}
-.pcat{background:rgba(255,255,255,.04);padding:clamp(24px,4vw,40px);
-  display:flex;flex-direction:column}
-.pcat-n{display:block;font-size:11px;font-weight:700;color:var(--primary);
-  letter-spacing:.12em;margin-bottom:18px}
-.pcat h3{font-size:clamp(18px,2.6vw,24px);font-weight:800;color:#fff;
-  margin-bottom:14px;line-height:1.25}
-.pcat p{font-size:14px;color:rgba(255,255,255,.5);line-height:1.82;flex:1;margin-bottom:20px}
-.pcat-link{font-size:13px;font-weight:700;color:var(--primary);align-self:flex-start}
-.pcat-link:hover{text-decoration:underline}
-.pcat-coming{font-size:11px;font-weight:700;background:rgba(255,255,255,.08);
-  color:rgba(255,255,255,.4);padding:4px 12px;border-radius:999px;align-self:flex-start}
-@media(max-width:720px){
-  .pcat-grid{grid-template-columns:1fr}
-  .pcat{border-top:1px solid rgba(255,255,255,.1)}
-  .pcat:first-child{border-top:none}
+/* hero responsive */
+@media(max-width:768px) {
+  .hero-grid { grid-template-columns:1fr }
+  .hero-visual { order:-1; padding:0 0 12px }
+  .hero-photo { height:clamp(220px,55vw,360px); border-radius:20px }
+  .sb1 { top:-12px; left:8px }
+  .sb2 { top:auto; bottom:-12px; right:4px }
+  .sb3 { display:none }
+  .doit-badge { top:-16px; right:14px }
+  .hero-dots { display:none }
+  .hero::after { display:none }
+}
+@media(max-width:480px) {
+  .hero { padding:40px 0 56px }
+  .hero h1 { font-size:34px }
+  .hero-btns .btn-blue, .hero-btns .btn-ghost-blue {
+    font-size:14px; padding:13px 22px;
+  }
 }
 
-/* === CTA === */
-.cta{background:var(--navy);text-align:center;padding:clamp(60px,10vw,100px) 0}
-.cta h2{color:#fff;font-size:clamp(23px,5vw,30px);font-weight:800}
-.cta p{color:#B5B1C9;margin:14px 0 30px}
-.cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+/* ===== SECTION COMMONS ===== */
+.sec { padding:clamp(72px,10vw,120px) 0 }
+.sec-white  { background:var(--white) }
+.sec-warm   { background:var(--warm-white) }
+.sec-blue   { background:var(--blue) }
+.sec-head   { margin-bottom:clamp(48px,7vw,72px) }
+.sec-head.center { text-align:center }
+.sec-eyebrow {
+  display:block; font-size:12px; font-weight:700;
+  color:var(--blue); letter-spacing:.12em; margin-bottom:14px;
+}
+.sec-head h2 {
+  font-size:clamp(28px,4.5vw,44px); font-weight:800;
+  line-height:1.2; color:var(--navy); margin-bottom:16px;
+}
+.sec-head p {
+  font-size:clamp(15px,1.8vw,17px); color:var(--gray);
+  line-height:1.9; max-width:46em;
+}
+.sec-head.center p { margin:0 auto }
 
-/* === FOOTER === */
-footer{background:#0F0C20;color:#B5B1C9;padding:46px 0;font-size:14px}
-footer p{margin-bottom:4px}
+/* ===== WHAT WE DO ===== */
+.wwd-layout {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:clamp(48px,8vw,96px); align-items:start;
+}
+.wwd-text .sec-eyebrow { margin-bottom:14px }
+.wwd-text h2 {
+  font-size:clamp(26px,3.8vw,40px); font-weight:800;
+  line-height:1.25; color:var(--navy); margin-bottom:20px;
+}
+.wwd-text p {
+  font-size:clamp(15px,1.6vw,17px); color:var(--gray);
+  line-height:1.9; margin-bottom:36px;
+}
+.wwd-stats {
+  display:flex; gap:36px; flex-wrap:wrap;
+  padding-top:28px; border-top:1.5px solid var(--border);
+}
+.stat-n {
+  font-size:clamp(28px,3.8vw,38px); font-weight:800;
+  color:var(--blue); line-height:1;
+}
+.stat-n sup { font-size:14px; font-weight:700 }
+.stat-lbl { font-size:13px; color:var(--gray); margin-top:5px }
+/* feature cards grid */
+.feat-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px }
+.feat-card {
+  background:var(--white); border:1.5px solid var(--border);
+  border-radius:var(--rc); padding:24px 22px;
+  transition:all .22s; position:relative; overflow:hidden;
+}
+.feat-card:hover {
+  border-color:var(--blue);
+  transform:translateY(-3px); box-shadow:var(--shadow);
+}
+.feat-card:nth-child(1), .feat-card:nth-child(3) { border-top:3px solid var(--blue) }
+.feat-card:nth-child(2), .feat-card:nth-child(4) { border-top:3px solid var(--yellow) }
+.feat-num {
+  position:absolute; top:14px; right:16px;
+  font-size:11px; font-weight:700;
+  color:var(--blue); background:var(--blue-soft);
+  padding:3px 9px; border-radius:999px;
+}
+.feat-icon {
+  width:44px; height:44px; border-radius:12px;
+  display:flex; align-items:center; justify-content:center;
+  margin-bottom:14px;
+}
+.feat-icon.blue   { background:var(--blue-soft) }
+.feat-icon.yellow { background:var(--yellow-soft) }
+.feat-card h3 { font-size:17px; font-weight:700; color:var(--navy); margin-bottom:8px }
+.feat-card p  { font-size:14px; color:var(--gray); line-height:1.7 }
+@media(max-width:860px) { .wwd-layout { grid-template-columns:1fr; gap:40px } }
+@media(max-width:480px) {
+  .feat-grid { grid-template-columns:1fr }
+  .wwd-stats { gap:24px }
+}
 
-@media(prefers-reduced-motion:no-preference){
-  .fade{opacity:0;transform:translateY(14px);animation:up .65s forwards}
-  .d1{animation-delay:.05s}.d2{animation-delay:.18s}.d3{animation-delay:.32s}
-  @keyframes up{to{opacity:1;transform:none}}
+/* ===== PROGRAMS ===== */
+.prog-tabs { display:flex; gap:8px; margin-bottom:28px; flex-wrap:wrap }
+.ptab {
+  background:var(--white); border:1.5px solid var(--border);
+  border-radius:999px; padding:10px 22px;
+  font-size:14px; font-weight:700; color:var(--gray);
+  cursor:pointer; transition:all .18s; font-family:inherit;
+}
+.ptab.on  { background:var(--blue); color:#fff; border-color:var(--blue) }
+.ptab:hover:not(.on) { border-color:var(--blue); color:var(--blue) }
+.prog-panel { animation:fadeUp .22s ease }
+.prog-panel.hidden { display:none }
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(6px) }
+  to   { opacity:1; transform:none }
+}
+.prog-scroll {
+  display:flex; gap:14px; overflow-x:auto; padding:4px 0 16px;
+  scrollbar-width:none; -ms-overflow-style:none;
+}
+.prog-scroll::-webkit-scrollbar { display:none }
+/* program card */
+.pcard {
+  flex:0 0 200px; height:280px; border-radius:20px;
+  padding:16px; color:#fff; text-decoration:none;
+  position:relative; overflow:hidden;
+  box-shadow:0 4px 20px rgba(0,0,0,.13);
+  transition:transform .22s, box-shadow .22s;
+  display:flex; flex-direction:column; justify-content:flex-end;
+}
+.pcard:hover { transform:translateY(-8px); box-shadow:0 16px 44px rgba(0,0,0,.22) }
+.pcard-img {
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover; z-index:0;
+}
+.pcard::after {
+  content:''; position:absolute; inset:0; z-index:1;
+  background:linear-gradient(to top, rgba(20,20,43,.82) 0%, rgba(20,20,43,.18) 60%, transparent 100%);
+}
+.pcard-tag {
+  position:absolute; top:14px; left:14px; z-index:2;
+  background:var(--yellow); color:var(--navy);
+  font-size:11px; font-weight:700; padding:3px 10px; border-radius:999px;
+}
+.pcard-title { font-size:17px; font-weight:800; line-height:1.3; position:relative; z-index:2 }
+.pcard-sub   { font-size:12px; opacity:.8; margin-top:5px; position:relative; z-index:2 }
+.prog-more {
+  display:inline-flex; align-items:center; gap:6px; margin-top:24px;
+  font-size:14px; font-weight:700; color:var(--blue);
+  border:1.5px solid var(--blue); padding:11px 24px; border-radius:999px;
+  transition:all .18s;
+}
+.prog-more:hover { background:var(--blue); color:#fff }
+/* career coming soon */
+.career-box {
+  background:var(--white); border-radius:20px; padding:36px;
+  max-width:520px;
+}
+.career-box h3 { font-size:18px; font-weight:800; margin-bottom:10px; color:var(--navy) }
+.career-box > p { font-size:14px; color:var(--gray); margin-bottom:22px; line-height:1.8 }
+.coming-list { display:flex; flex-direction:column; gap:10px; margin-bottom:28px }
+.coming-item {
+  background:var(--warm-white); border-radius:12px;
+  padding:13px 16px; font-size:14px; font-weight:600;
+  display:flex; align-items:center; gap:10px;
+}
+.coming-item::before {
+  content:''; width:6px; height:6px; border-radius:50%;
+  background:var(--blue); flex-shrink:0;
+}
+@media(max-width:480px) { .pcard { flex:0 0 164px; height:240px } }
+
+/* ===== IDENTITY METHOD ===== */
+.method-grid {
+  display:grid; grid-template-columns:repeat(4,1fr); gap:16px;
+}
+.method-card {
+  background:var(--white); border:1.5px solid var(--border);
+  border-radius:var(--rc); padding:28px 22px; transition:all .22s;
+}
+.method-card:hover {
+  border-color:var(--blue);
+  transform:translateY(-4px); box-shadow:var(--shadow);
+}
+.method-card.highlight {
+  border-color:var(--yellow); background:rgba(255,216,77,.05);
+}
+.method-badge {
+  width:44px; height:44px; border-radius:50%;
+  font-size:18px; font-weight:800;
+  display:flex; align-items:center; justify-content:center;
+  margin-bottom:20px;
+  background:var(--blue-soft); color:var(--blue);
+}
+.method-card.highlight .method-badge { background:var(--yellow); color:var(--navy) }
+.method-step {
+  display:block; font-size:11px; font-weight:700;
+  color:var(--blue); letter-spacing:.1em; margin-bottom:8px;
+}
+.method-card.highlight .method-step { color:#b58900 }
+.method-card h3 { font-size:18px; font-weight:700; color:var(--navy); margin-bottom:10px }
+.method-card p  { font-size:14px; color:var(--gray); line-height:1.7 }
+@media(max-width:860px) { .method-grid { grid-template-columns:repeat(2,1fr) } }
+@media(max-width:480px) { .method-grid { grid-template-columns:1fr } }
+
+/* ===== GALLERY ===== */
+.gallery-grid {
+  columns:3; gap:12px;
+}
+.gitem {
+  break-inside:avoid; margin-bottom:12px;
+  border-radius:16px; overflow:hidden; display:block;
+}
+.gitem img {
+  width:100%; object-fit:cover;
+  transition:transform .32s;
+}
+.gitem:hover img { transform:scale(1.04) }
+.gitem:nth-child(1) img { aspect-ratio:3/4 }
+.gitem:nth-child(2) img { aspect-ratio:4/3 }
+.gitem:nth-child(3) img { aspect-ratio:3/4 }
+.gitem:nth-child(4) img { aspect-ratio:1/1 }
+.gitem:nth-child(5) img { aspect-ratio:4/3 }
+.gitem:nth-child(6) img { aspect-ratio:3/4 }
+@media(max-width:720px) { .gallery-grid { columns:2 } }
+@media(max-width:440px) { .gallery-grid { columns:2; gap:8px } .gitem { margin-bottom:8px } }
+
+/* ===== FINAL CTA ===== */
+.cta-sec {
+  background:var(--blue);
+  padding:clamp(72px,10vw,120px) 0;
+  position:relative; overflow:hidden;
+}
+.cta-sec::before {
+  content:''; position:absolute; top:-140px; right:-140px;
+  width:560px; height:560px; border-radius:50%;
+  border:80px solid rgba(255,255,255,.05); pointer-events:none;
+}
+.cta-sec::after {
+  content:''; position:absolute; bottom:-80px; left:-60px;
+  width:340px; height:340px; border-radius:50%;
+  background:rgba(255,216,77,.07); pointer-events:none;
+}
+.cta-inner {
+  display:grid; grid-template-columns:1fr auto;
+  gap:48px; align-items:center; position:relative; z-index:1;
+}
+.cta-sec h2 {
+  font-size:clamp(26px,4vw,40px); font-weight:800;
+  color:#fff; line-height:1.25; margin-bottom:14px;
+}
+.cta-sec p { font-size:16px; color:rgba(255,255,255,.7); line-height:1.9 }
+.cta-actions { display:flex; flex-direction:column; gap:12px; flex-shrink:0 }
+@media(max-width:720px) {
+  .cta-inner { grid-template-columns:1fr }
+  .cta-actions { flex-direction:row; flex-wrap:wrap }
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background:#0C0A1E; color:rgba(255,255,255,.45);
+  padding:48px 0; font-size:14px;
+}
+.footer-logo { margin-bottom:16px }
+footer p { line-height:1.7; margin-bottom:4px }
+.footer-copy { margin-top:20px; color:rgba(255,255,255,.22); font-size:12px }
+
+/* ===== SCROLL-IN ANIMATIONS ===== */
+@media(prefers-reduced-motion:no-preference) {
+  .fade { opacity:0; transform:translateY(16px); animation:up .6s forwards }
+  .d1{animation-delay:.06s} .d2{animation-delay:.16s}
+  .d3{animation-delay:.28s} .d4{animation-delay:.42s}
+  @keyframes up { to { opacity:1; transform:none } }
 }
 </style>
 </head>
 <body>
 
+<!-- ========== HEADER ========== -->
 <header>
   <div class="wrap nav">
-    <a href="/" style="margin-right:auto"><img src="/assets/images/logo.png" alt="아이덴티치" style="height:48px;display:block;"></a>
+    <a href="/" class="nav-logo">
+      <img src="/assets/images/logo.png" alt="아이덴티치" style="height:48px;">
+    </a>
     <input type="checkbox" id="nav-toggle" class="menu-toggle">
     <nav class="nav-links">
       <a href="/together">어울림 프로그램</a>
-      <a href="/career">진로 프로그램<span class="new">NEW</span></a>
+      <a href="/career">진로 프로그램<span class="nav-tag">NEW</span></a>
       <a href="/about">회사소개</a>
     </nav>
-    <a href="/request" class="btn btn-primary nav-cta">무료 맞춤 요청</a>
+    <a href="/request" class="btn btn-blue nav-cta">무료 맞춤 요청</a>
     <label for="nav-toggle" class="menu-btn" aria-label="메뉴">☰</label>
   </div>
 </header>
 
 <main>
 
-  <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-overlay"></div>
-    <div class="hero-inner">
-      <div class="hero-copy">
-        <span class="eyebrow fade d1">경험 교육 콘텐츠 기획사</span>
-        <h1 class="fade d2">교육부터 행사까지<br>학교 맞춤<br>프로그램 기획사</h1>
-        <p class="hero-sub fade d3">진로캠프 · 어울림 활동 · 학교폭력예방 · 체육대회 등<br>즐거움과 새로움이 필요한 교육 활동 콘텐츠를 제작합니다.</p>
+<!-- ========== HERO ========== -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+
+      <!-- Left: copy -->
+      <div class="hero-text">
+        <div class="hero-eyebrow fade d1">경험 교육 콘텐츠 기획사</div>
+        <h1 class="fade d2">다양한 <em>경험</em>으로<br>정체성을 키우다</h1>
+        <p class="hero-desc fade d3">
+          아이덴티치는 학교의 다양한 활동을<br>
+          학생들이 웃고, 움직이고, 표현하며<br>
+          자신을 발견하는 배움의 경험으로 만듭니다.
+        </p>
+        <div class="hero-btns fade d4">
+          <a href="/together" class="btn btn-blue">프로그램 보기</a>
+          <a href="/about"   class="btn btn-ghost-blue">아이덴티치 소개</a>
+        </div>
+      </div>
+
+      <!-- Right: visual -->
+      <div class="hero-visual">
+        <img class="hero-photo" src="/assets/images/hero/hero-bg.jpg" alt="아이덴티치 교육 현장">
+
+        <!-- Do it badge (brand mark) -->
+        <div class="doit-badge">Do it</div>
+
+        <!-- Speech bubbles -->
+        <div class="sbbl sbbl-blue sbbl-tl sb1">말하고</div>
+        <div class="sbbl sbbl-blue sbbl-br sb2">움직이고</div>
+        <div class="sbbl sbbl-yellow sbbl-tr sb3">표현하는 배움의 경험</div>
+
+        <!-- Dot grid decoration -->
+        <div class="hero-dots">
+          <span><i></i><i></i><i></i></span>
+          <span><i></i><i></i><i></i></span>
+          <span><i></i><i></i><i></i></span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ========== WHAT WE DO ========== -->
+<section class="sec sec-white">
+  <div class="wrap">
+    <div class="wwd-layout">
+
+      <!-- Left: text + stats -->
+      <div class="wwd-text">
+        <span class="sec-eyebrow">WHAT WE DO</span>
+        <h2>학교 활동을<br>배움의 경험으로<br>바꿉니다</h2>
+        <p>진로교육, 리더십캠프, 공동체 프로그램, 학교폭력예방교육, 체육대회까지.<br>
+          아이덴티치는 학교에 필요한 활동을 학생 참여형 교육 콘텐츠로 기획하고 직접 운영합니다.</p>
+        <div class="wwd-stats">
+          <div>
+            <div class="stat-n">100<sup>+</sup></div>
+            <div class="stat-lbl">누적 운영 학교</div>
+          </div>
+          <div>
+            <div class="stat-n">30<sup>+</sup></div>
+            <div class="stat-lbl">프로그램 종류</div>
+          </div>
+          <div>
+            <div class="stat-n">100<sup>%</sup></div>
+            <div class="stat-lbl">맞춤형 기획</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: feature cards -->
+      <div class="feat-grid">
+        <div class="feat-card">
+          <span class="feat-num">01</span>
+          <div class="feat-icon blue">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1F2392" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="9"/><path d="M12 8v5l3 2"/>
+            </svg>
+          </div>
+          <h3>경험 중심</h3>
+          <p>직접 참여하고 몸으로 배우는 활동 중심 교육</p>
+        </div>
+        <div class="feat-card">
+          <span class="feat-num">02</span>
+          <div class="feat-icon yellow">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#14142B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/>
+            </svg>
+          </div>
+          <h3>맞춤형 기획</h3>
+          <p>학교 상황과 목적에 맞는 프로그램을 맞춤 설계</p>
+        </div>
+        <div class="feat-card">
+          <span class="feat-num">03</span>
+          <div class="feat-icon blue">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1F2392" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+            </svg>
+          </div>
+          <h3>전문 운영</h3>
+          <p>교육 전문 강사진과 체계적인 운영 노하우</p>
+        </div>
+        <div class="feat-card">
+          <span class="feat-num">04</span>
+          <div class="feat-icon yellow">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#14142B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="9" y1="18" x2="15" y2="18"/><line x1="10" y1="22" x2="14" y2="22"/>
+              <path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0018 8 6 6 0 006 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 018.91 14"/>
+            </svg>
+          </div>
+          <h3>기억에 남는 교육</h3>
+          <p>하루의 경험이 자기이해와 성장으로 이어지는 교육</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ========== PROGRAMS ========== -->
+<section class="sec sec-warm">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-eyebrow">PROGRAMS</span>
+      <h2>프로그램 한눈에 보기</h2>
+      <p>진로교육부터 체육대회까지, 학교에 필요한 모든 경험형 활동을 기획하고 운영합니다.</p>
+    </div>
+
+    <div class="prog-tabs">
+      <button class="ptab on" id="tab-together" onclick="switchProg('together')">어울림 활동</button>
+      <button class="ptab"    id="tab-career"   onclick="switchProg('career')">진로 활동</button>
+    </div>
+
+    <!-- 어울림 -->
+    <div id="panel-together" class="prog-panel">
+      <div class="prog-scroll">
+        <a href="/together/domino" class="pcard">
+          <img class="pcard-img" src="/assets/images/programs/together/domino.png" alt="도미노 챌린지">
+          <span class="pcard-tag">팀빌딩</span>
+          <div class="pcard-title">도미노<br>챌린지</div>
+          <div class="pcard-sub">협력 미션 · 학년 단위</div>
+        </a>
+        <a href="/together/brumarble" class="pcard">
+          <img class="pcard-img" src="/assets/images/programs/together/brumarble.png" alt="협동 브루마블">
+          <span class="pcard-tag">보드게임</span>
+          <div class="pcard-title">협동<br>브루마블</div>
+          <div class="pcard-sub">학급 협동 보드게임</div>
+        </a>
+        <a href="/together/schoolping" class="pcard">
+          <img class="pcard-img" src="/assets/images/programs/together/schoolping.png" alt="스쿨핑">
+          <span class="pcard-tag">체육대회</span>
+          <div class="pcard-title">스쿨핑</div>
+          <div class="pcard-sub">실내 캠핑 체험</div>
+        </a>
+        <a href="/together/facilitation" class="pcard">
+          <img class="pcard-img" src="/assets/images/programs/together/facilitation.jpg" alt="미션 퍼실리테이션">
+          <span class="pcard-tag">리더십</span>
+          <div class="pcard-title">미션<br>퍼실리테이션</div>
+          <div class="pcard-sub">리더십 · 소통 교육</div>
+        </a>
+        <a href="/together/violence-prevention" class="pcard">
+          <img class="pcard-img" src="/assets/images/programs/together/violence-prevention.png" alt="학교폭력예방">
+          <span class="pcard-tag">예방교육</span>
+          <div class="pcard-title">학교폭력예방<br>레크리에이션</div>
+          <div class="pcard-sub">전교생 화합</div>
+        </a>
+      </div>
+      <a href="/together" class="prog-more">전체 어울림 프로그램 보기 →</a>
+    </div>
+
+    <!-- 진로 -->
+    <div id="panel-career" class="prog-panel hidden">
+      <div class="career-box">
+        <h3>진로 프로그램 준비 중</h3>
+        <p>아래 프로그램들이 준비되면 순서대로 오픈할 예정이에요.</p>
+        <div class="coming-list">
+          <div class="coming-item">AI Entertainment Quest</div>
+          <div class="coming-item">나를 닮은 음악 (AI 음악 회고)</div>
+          <div class="coming-item">진로캠프 · 직업체험</div>
+          <div class="coming-item">진로 레크리에이션 강연</div>
+        </div>
+        <a href="/request" class="btn btn-blue">맞춤 프로그램 문의</a>
       </div>
     </div>
-    <div class="scroll-hint"><div class="scroll-circle"></div>SCROLL</div>
-  </section>
 
-  <section class="whatwedo">
-    <div class="wrap">
-      <div class="wwd-top">
-        <span class="lab">WHAT WE DO</span>
-        <h2>다양한 경험으로 정체성을 키웁니다.</h2>
-        <p>자신을 발견하는 배움의 경험으로<br>
-        학생 스스로의 정체성을 키웁니다.</p>
-      </div>
-      <div class="entry-box">
-      <div class="entry-grid">
-        <button class="ecard together active" id="btn-together" onclick="switchProg('together')">
-          <span class="ecax">TOGETHER</span>
-          <h3>어울림 활동</h3>
-          <p>대인관계 · 공동체 · 학교폭력예방<br>체육대회 · 리더십캠프 등</p>
-          <span class="earrow">▾ 프로그램 선택</span>
-        </button>
-        <button class="ecard career" id="btn-career" onclick="switchProg('career')">
-          <span class="badge">준비 중</span>
-          <span class="ecax">CAREER</span>
-          <h3>진로 활동</h3>
-          <p>진로캠프 · 콘서트 · 강연 등<br>나를 탐구하는 모든 진로 활동</p>
-          <span class="earrow">▾ 프로그램 선택</span>
-        </button>
-      </div>
+  </div>
+</section>
 
-      <!-- 어울림 프로그램 목록 -->
-      <div class="prog-panel" id="panel-together">
-        <div class="shelf-head">
-          <span class="shelf-lbl">아이덴티치만의 <em>인기 프로그램</em></span>
-          <a href="/together" class="shelf-more">전체 프로그램 보기 →</a>
-        </div>
-        <div class="prog-shelf">
-          <a href="/together/domino" class="bcard">
-            <img class="bcard-bg" src="/assets/images/programs/together/domino.png" alt="">
-            <span class="bkw">팀빌딩</span>
-            <span class="btag">어울림 01</span>
-            <span class="bnum">1</span>
-            <span class="bttl">도미노<br>챌린지</span>
-            <span class="bsub">협력 미션 · 학년 단위</span>
-          </a>
-          <a href="/together/brumarble" class="bcard">
-            <img class="bcard-bg" src="/assets/images/programs/together/brumarble.png" alt="">
-            <span class="bkw">보드게임</span>
-            <span class="btag">어울림 02</span>
-            <span class="bnum">2</span>
-            <span class="bttl">협동<br>브루마블</span>
-            <span class="bsub">학급 협동 보드게임</span>
-          </a>
-          <a href="/together/schoolping" class="bcard">
-            <img class="bcard-bg" src="/assets/images/programs/together/schoolping.png" alt="">
-            <span class="bkw">체육대회</span>
-            <span class="btag">어울림 03</span>
-            <span class="bnum">3</span>
-            <span class="bttl">스쿨핑</span>
-            <span class="bsub">실내 캠핑 체험</span>
-          </a>
-          <a href="/together/facilitation" class="bcard">
-            <img class="bcard-bg" src="/assets/images/programs/together/facilitation.jpg" alt="">
-            <span class="bkw">리더십</span>
-            <span class="btag">어울림 04</span>
-            <span class="bnum">4</span>
-            <span class="bttl">미션<br>퍼실리테이션</span>
-            <span class="bsub">리더십·소통 교육</span>
-          </a>
-          <a href="/together/violence-prevention" class="bcard">
-            <img class="bcard-bg" src="/assets/images/programs/together/violence-prevention.png" alt="">
-            <span class="bkw">예방교육</span>
-            <span class="btag">어울림 05</span>
-            <span class="bnum">5</span>
-            <span class="bttl">학교폭력예방<br>레크리에이션</span>
-            <span class="bsub">전교생 화합</span>
-          </a>
-        </div>
-      </div>
 
-      <!-- 진로 프로그램 목록 -->
-      <div class="prog-panel hidden" id="panel-career">
-        <div class="shelf-head">
-          <span class="shelf-lbl">아이덴티치만의 <em>진로 프로그램</em></span>
-          <a href="/career" class="shelf-more">전체 프로그램 보기 →</a>
-        </div>
-        <div class="prog-shelf">
-          <a href="/request" class="bcard">
-            <img class="bcard-bg" src="/assets/images/programs/career/touching-voice.png" alt="">
-            <span class="bkw">공연</span>
-            <span class="btag">진로 01</span>
-            <span class="bnum">1</span>
-            <span class="bttl">터칭보이스<br>진로 뮤직 콘서트</span>
-            <span class="bsub">찾아가는 음악 진로 체험</span>
-          </a>
-          <a href="/request" class="bcard">
-            <img class="bcard-bg" src="/assets/images/programs/career/career-lecture.jpg" alt="">
-            <span class="bkw">진로캠프</span>
-            <span class="btag">진로 02</span>
-            <span class="bnum">2</span>
-            <span class="bttl">미래직업연구소</span>
-            <span class="bsub">몰입형 진로캠프</span>
-          </a>
-          <a href="/request" class="bcard">
-            <img class="bcard-bg" src="/assets/images/programs/career/leadership.jpg" alt="">
-            <span class="bkw">강연</span>
-            <span class="btag">진로 03</span>
-            <span class="bnum">3</span>
-            <span class="bttl">대표와의 만남<br>진로토크콘서트</span>
-            <span class="bsub">나만의 길을 가는 대표들과</span>
-          </a>
-        </div>
-      </div>
-      </div><!-- /entry-box -->
+<!-- ========== IDENTITY METHOD ========== -->
+<section class="sec sec-white">
+  <div class="wrap">
+    <div class="sec-head center">
+      <span class="sec-eyebrow">IDENTITY METHOD</span>
+      <h2>경험이 정체성이 되는 과정</h2>
+      <p>아이덴티치의 모든 프로그램은 이 4단계 흐름으로 설계됩니다.</p>
     </div>
-  </section>
-
-  <section class="cta">
-    <div class="wrap">
-      <h2>우리 학생들에게 필요한<br>맞춤형 프로그램 요청</h2>
-      <p>상황만 알려주시면 맞는 프로그램을 무료로 제안드립니다.</p>
-      <div class="cta-row">
-        <a href="/request" class="btn btn-pill">프로그램 맞춤 요청</a>
-        <a href="/proposal.pdf" download class="btn btn-ghost" style="color:#fff;border-color:rgba(255,255,255,.4)">제안서 다운로드</a>
+    <div class="method-grid">
+      <div class="method-card">
+        <div class="method-badge">1</div>
+        <span class="method-step">STEP 01</span>
+        <h3>경험하다</h3>
+        <p>다양한 활동에 직접 참여하고 새로운 경험을 만납니다.</p>
+      </div>
+      <div class="method-card highlight">
+        <div class="method-badge">2</div>
+        <span class="method-step">STEP 02</span>
+        <h3>표현하다</h3>
+        <p>느낀 점과 생각을 말하고 나누어 나를 표현합니다.</p>
+      </div>
+      <div class="method-card">
+        <div class="method-badge">3</div>
+        <span class="method-step">STEP 03</span>
+        <h3>발견하다</h3>
+        <p>나의 성향, 강점, 관계 방식을 알아차립니다.</p>
+      </div>
+      <div class="method-card">
+        <div class="method-badge">4</div>
+        <span class="method-step">STEP 04</span>
+        <h3>연결하다</h3>
+        <p>경험을 진로와 학교생활의 변화로 이어갑니다.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
+
+<!-- ========== GALLERY ========== -->
+<section class="sec sec-warm">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-eyebrow">GALLERY</span>
+      <h2>아이덴티치가 만든<br>배움의 장면들</h2>
+    </div>
+    <div class="gallery-grid">
+      <a href="/together" class="gitem">
+        <img src="/assets/images/activity/act-concert.jpg" alt="진로 콘서트 현장">
+      </a>
+      <a href="/together/domino" class="gitem">
+        <img src="/assets/images/activity/act-ai-quest-wide.jpg" alt="팀 활동 현장">
+      </a>
+      <a href="/together/facilitation" class="gitem">
+        <img src="/assets/images/programs/together/facilitation.jpg" alt="퍼실리테이션 현장">
+      </a>
+      <a href="/together/brumarble" class="gitem">
+        <img src="/assets/images/activity/act-ai-quest-close.png" alt="모둠 활동 현장">
+      </a>
+      <a href="/together/violence-prevention" class="gitem">
+        <img src="/assets/images/activity/act-ai-literacy.jpg" alt="학교 프로그램 현장">
+      </a>
+      <a href="/together/schoolping" class="gitem">
+        <img src="/assets/images/programs/together/schoolping.png" alt="스쿨핑 현장">
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========== FINAL CTA ========== -->
+<section class="cta-sec">
+  <div class="wrap">
+    <div class="cta-inner">
+      <div>
+        <h2>우리 학교에 맞는<br>프로그램이 필요하다면?</h2>
+        <p>학년, 인원, 목적만 알려주세요.<br>
+          아이덴티치가 학교 상황에 맞는 프로그램을 함께 설계합니다.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="/request"       class="btn btn-white">무료 맞춤 요청하기</a>
+        <a href="/proposal.pdf" download class="btn btn-outline-w">제안서 다운로드</a>
+      </div>
+    </div>
+  </div>
+</section>
 
 </main>
 
+<!-- ========== FOOTER ========== -->
 <footer>
   <div class="wrap">
-    <div><img src="/assets/images/logo.png" alt="아이덴티치" style="height:28px;display:block;margin-bottom:14px;opacity:.85;filter:invert(1);"></div>
+    <div class="footer-logo">
+      <img src="/assets/images/logo.png" alt="아이덴티치"
+           style="height:32px; filter:invert(1); opacity:.8;">
+    </div>
     <p>경험을 설계하는 진로·어울림 전문 교육기획사 · 대표 진성재</p>
     <p>010-4084-8962 · idengroup@naver.com</p>
-    <p style="margin-top:16px;color:#6E6A85">© 2026 IDenTeach (아이덴티치).</p>
+    <p class="footer-copy">© 2026 IDenTeach (아이덴티치). All rights reserved.</p>
   </div>
 </footer>
 
 <script>
 function switchProg(tab) {
   ['together','career'].forEach(function(t) {
-    document.getElementById('btn-' + t).classList.toggle('active', t === tab);
-    document.getElementById('panel-' + t).classList.toggle('hidden', t !== tab);
+    document.getElementById('tab-'+t).classList.toggle('on', t===tab);
+    document.getElementById('panel-'+t).classList.toggle('hidden', t!==tab);
   });
 }
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
