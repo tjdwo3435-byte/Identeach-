@@ -78,11 +78,18 @@ h1,h2,h3,h4,h5 { letter-spacing:-.03em }
 /* ===== HEADER ===== */
 header {
   position:sticky; top:0; z-index:100;
-  background:rgba(244,244,246,.95);
-  backdrop-filter:blur(12px);
-  border-bottom:1px solid var(--border);
+  background:rgba(255,255,255,.35);
+  backdrop-filter:blur(16px);
+  padding:10px clamp(12px,2.5vw,28px);
 }
-.nav { display:flex; align-items:center; gap:16px; height:64px }
+.nav {
+  display:flex; align-items:center; gap:16px; height:96px;
+  background:#fff;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,.07);
+  box-shadow:0 2px 20px rgba(0,0,0,.09);
+  padding:0 clamp(20px,3vw,36px);
+}
 .nav-logo { margin-right:auto; display:flex; align-items:center }
 .nav-links {
   display:flex; align-items:center; gap:28px;
@@ -105,9 +112,10 @@ header {
   .menu-btn { display:block; order:3 }
   .nav-cta { order:2 }
   .nav-links {
-    position:absolute; top:64px; left:0; right:0;
+    position:absolute; top:106px; left:clamp(12px,2.5vw,28px); right:clamp(12px,2.5vw,28px);
     flex-direction:column; align-items:flex-start; gap:0;
-    background:var(--warm-white); border-bottom:1px solid var(--border);
+    background:#fff; border-radius:24px;
+    box-shadow:0 8px 28px rgba(0,0,0,.12);
     max-height:0; overflow:hidden; transition:max-height .28s; font-size:16px;
   }
   .nav-links a { width:100%; padding:16px var(--pad-x); border-top:1px solid var(--border) }
@@ -503,7 +511,7 @@ footer p { line-height:1.7; margin-bottom:4px }
 <header>
   <div class="wrap nav">
     <a href="/" class="nav-logo">
-      <img src="/assets/images/logo.png" alt="아이덴티치" style="height:48px;">
+      <img src="/assets/images/logo.png" alt="아이덴티치" style="height:96px;">
     </a>
     <input type="checkbox" id="nav-toggle" class="menu-toggle">
     <nav class="nav-links">
