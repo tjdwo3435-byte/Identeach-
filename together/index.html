@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>어울림 프로그램 | 아이덴티치</title>
+<title>어울림 프로그램 | 팀빌딩·학급단합·학교폭력예방 · 아이덴티치</title>
 <meta name="description" content="함께 어울리는 경험을 설계합니다. 도미노 챌린지·협동 브루마블·스쿨핑·미션 퍼실리테이션·학교폭력예방 레크리에이션 등 초·중·고 어울림 프로그램.">
 <meta name="keywords" content="어울림 프로그램,팀빌딩,학급단합,학교폭력예방,레크리에이션,도미노 챌린지,협동 브루마블,스쿨핑,아이덴티치">
 <meta property="og:type" content="website">
@@ -16,435 +16,240 @@
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@1.3.9/dist/web/static/pretendard.css');
 
 :root {
-  --blue:      #1F2392;
-  --yellow:    #FFD84D;
-  --navy:      #14142B;
-  --gray:      #6F7287;
-  --warm:      #F4F4F6;
-  --border:    #E8E8F0;
-  --white:     #fff;
-  --maxw:      1120px;
-  --pad-x:     clamp(20px,5vw,40px);
-  --rc:        20px;
-  --shadow:    0 4px 24px rgba(20,20,43,.08);
+  --blue:   #1F2392;
+  --blue-d: #171980;
+  --yellow: #FFD84D;
+  --navy:   #14142B;
+  --gray:   #6F7287;
+  --warm:   #F4F4F6;
+  --border: #E8E8F0;
+  --white:  #fff;
+  --maxw:   1080px;
+  --rc:     16px;
+  --shadow: 0 8px 30px rgba(20,20,43,.08);
+  --pad-x:  clamp(20px,5vw,24px);
+  --sec-y:  clamp(52px,8vw,80px);
 }
 
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box }
-html { -webkit-text-size-adjust:100%; scroll-behavior:smooth }
+html { scroll-behavior:smooth; -webkit-text-size-adjust:100% }
 body {
   font-family:'Pretendard',-apple-system,sans-serif;
   color:var(--navy); background:var(--white);
-  font-weight:400; line-height:1.7;
-  -webkit-font-smoothing:antialiased;
+  font-weight:500; line-height:1.7;
+  -webkit-font-smoothing:antialiased; overflow-x:hidden;
 }
 a { color:inherit; text-decoration:none }
-img { max-width:100%; height:auto; display:block }
+img { display:block; max-width:100% }
 h1,h2,h3 { letter-spacing:-.03em }
 .wrap { max-width:var(--maxw); margin:0 auto; padding:0 var(--pad-x) }
+section { padding:var(--sec-y) 0 }
 
-/* ── 버튼 ── */
-.btn-blue {
-  display:inline-flex; align-items:center; justify-content:center;
-  font-family:inherit; font-weight:700; cursor:pointer; border:none;
-  background:var(--blue); color:#fff;
-  font-size:16px; padding:16px 36px; border-radius:999px;
-  transition:all .18s; text-decoration:none;
+/* 버튼 */
+.btn {
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  font-family:inherit; font-weight:600; font-size:clamp(15px,2.4vw,16px);
+  padding:14px 26px; border-radius:var(--rc); transition:.18s; cursor:pointer; border:none; white-space:nowrap;
 }
-.btn-blue:hover { background:#171980; transform:translateY(-2px); box-shadow:0 8px 24px rgba(31,35,146,.28) }
-.btn-white {
-  display:inline-flex; align-items:center; justify-content:center;
-  font-family:inherit; font-weight:700; cursor:pointer; border:none;
-  background:#fff; color:var(--blue);
-  font-size:15px; padding:14px 28px; border-radius:999px;
-  transition:all .18s; text-decoration:none;
-}
-.btn-white:hover { background:#f0f0ff; transform:translateY(-2px) }
-.btn-outline-w {
-  display:inline-flex; align-items:center;
-  font-family:inherit; font-weight:600; font-size:14px;
-  background:transparent; color:#fff;
-  border:1.5px solid rgba(255,255,255,.4);
-  padding:13px 26px; border-radius:999px;
-  transition:all .18s; text-decoration:none;
-}
-.btn-outline-w:hover { background:rgba(255,255,255,.1) }
+.btn-primary { background:var(--blue); color:#fff }
+.btn-primary:hover { background:var(--blue-d); transform:translateY(-2px) }
+.btn-pill { background:#fff; color:var(--navy); border-radius:999px; padding:13px 26px }
+.btn-ghost-w { background:transparent; color:#fff; border:1.5px solid rgba(255,255,255,.4); border-radius:var(--rc) }
+.btn-ghost-w:hover { background:rgba(255,255,255,.1) }
 
-/* ── 헤더 ── */
+/* 헤더 */
 header {
   position:sticky; top:0; z-index:100;
-  background:rgba(255,255,255,.96);
-  backdrop-filter:blur(16px);
+  background:rgba(255,255,255,.92); backdrop-filter:blur(12px);
   border-bottom:1px solid var(--border);
 }
 .nav {
-  display:flex; align-items:center; height:72px;
+  display:flex; align-items:center; height:64px;
   max-width:var(--maxw); margin:0 auto; padding:0 var(--pad-x);
 }
-.nav-back {
-  margin-left:auto; font-size:14px; color:var(--gray);
-  display:flex; align-items:center; gap:6px; transition:color .15s;
-}
+.nav-back { margin-left:auto; font-size:14px; color:var(--gray) }
 .nav-back:hover { color:var(--navy) }
 
-/* ── 히어로 ── */
-.hero {
-  background:var(--blue);
-  padding:clamp(60px,10vw,100px) 0 clamp(50px,8vw,80px);
-  text-align:center;
+/* 인트로 */
+.intro { background:var(--warm); text-align:center; padding-top:clamp(40px,7vw,64px) }
+.crumb { font-size:13px; color:var(--gray); margin-bottom:20px }
+.crumb a:hover { color:var(--blue) }
+.eyebrow {
+  display:inline-block; font-size:13px; font-weight:700;
+  color:var(--blue); background:rgba(31,35,146,.09);
+  padding:6px 13px; border-radius:999px; margin-bottom:18px;
 }
-.hero-eyebrow {
-  display:inline-flex; align-items:center; gap:7px;
-  background:rgba(255,255,255,.12); color:rgba(255,255,255,.88);
-  border:1px solid rgba(255,255,255,.24);
-  font-size:12px; font-weight:700; letter-spacing:.08em;
-  padding:6px 16px; border-radius:999px; margin-bottom:24px;
-}
-.hero-eyebrow::before {
-  content:''; width:6px; height:6px; border-radius:50%;
-  background:var(--yellow); flex-shrink:0;
-}
-.hero h1 {
-  font-size:clamp(32px,5.5vw,54px); font-weight:800; line-height:1.15;
-  color:#fff; margin-bottom:18px;
-}
-.hero h1 em {
-  font-style:normal;
-  background:var(--yellow); color:var(--navy);
-  padding:2px 8px 4px; border-radius:8px;
-}
-.hero-sub {
-  font-size:clamp(15px,2vw,17px); color:rgba(255,255,255,.72);
-  line-height:1.85; margin-bottom:36px;
-}
-.hero-btns { display:flex; gap:12px; justify-content:center; flex-wrap:wrap }
+.intro h1 { font-size:clamp(28px,6vw,40px); font-weight:800; line-height:1.2 }
+.intro p { font-size:clamp(15px,3vw,17px); color:var(--gray); margin:14px auto 0; max-width:34em; line-height:1.65 }
 
-/* ── 섹션 ── */
-.sec { padding:clamp(60px,9vw,100px) 0 }
-.sec-eyebrow {
-  display:block; font-size:11px; font-weight:700;
-  color:var(--blue); letter-spacing:.12em; margin-bottom:12px;
-}
-.sec h2 {
-  font-size:clamp(24px,4vw,36px); font-weight:800; margin-bottom:14px;
-}
-.sec-sub { font-size:clamp(14px,1.8vw,16px); color:var(--gray); line-height:1.75 }
-
-/* ── 프로그램 카드 그리드 ── */
-.prog-grid {
+/* 카드 그리드 */
+.grid {
   display:grid;
-  grid-template-columns:repeat(2, 1fr);
-  gap:clamp(16px,3vw,28px);
-  margin-top:clamp(32px,5vw,52px);
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
 }
-@media(max-width:680px) {
-  .prog-grid { grid-template-columns:1fr }
-}
+@media(max-width:860px) { .grid { grid-template-columns:1fr 1fr } }
+@media(max-width:560px) { .grid { grid-template-columns:1fr } }
 
-/* 5번째 카드 가로형 레이아웃 */
-.prog-card-wide {
-  grid-column: 1 / -1;
-  display:flex; flex-direction:row;
-  background:#fff; border-radius:var(--rc);
-  border:1px solid var(--border);
-  overflow:hidden; transition:all .22s;
-  box-shadow:var(--shadow);
-}
-.prog-card-wide:hover {
-  transform:translateY(-6px);
-  box-shadow:0 14px 40px rgba(20,20,43,.13);
-}
-.prog-card-wide .prog-thumb {
-  width:55%; flex-shrink:0; aspect-ratio:auto;
-  min-height:260px;
-}
-.prog-card-wide .prog-body {
-  padding:clamp(24px,4vw,40px); flex:1; display:flex; flex-direction:column; justify-content:center;
-}
-@media(max-width:680px) {
-  .prog-card-wide { flex-direction:column; grid-column:auto }
-  .prog-card-wide .prog-thumb { width:100%; min-height:auto; aspect-ratio:16/9 }
-}
-
-/* 일반 카드 */
-.prog-card {
-  background:#fff; border-radius:var(--rc);
-  border:1px solid var(--border);
-  overflow:hidden; transition:all .22s;
+.card {
   display:flex; flex-direction:column;
-  box-shadow:var(--shadow);
+  background:#fff; border:1px solid var(--border);
+  border-radius:var(--rc); overflow:hidden; transition:.2s;
 }
-.prog-card:hover {
-  transform:translateY(-6px);
-  box-shadow:0 14px 40px rgba(20,20,43,.13);
-}
+.card:hover { transform:translateY(-4px); box-shadow:var(--shadow) }
 
-/* 썸네일 공통 */
-.prog-thumb {
-  width:100%; aspect-ratio:16/9;
-  overflow:hidden; flex-shrink:0;
+/* 썸네일 */
+.thumb {
+  position:relative; height:160px; overflow:hidden;
 }
-.prog-thumb img {
-  width:100%; height:100%;
-  object-fit:cover; object-position:center;
+.thumb img {
+  width:100%; height:100%; object-fit:cover; object-position:center;
   transition:transform .35s;
 }
-.prog-card:hover .prog-thumb img,
-.prog-card-wide:hover .prog-thumb img { transform:scale(1.04) }
-
-/* 카드 본문 공통 */
-.prog-body { padding:clamp(18px,3vw,28px); flex:1; display:flex; flex-direction:column }
-.prog-tags { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px }
-.prog-tag {
+.card:hover .thumb img { transform:scale(1.04) }
+.thumb-tag {
+  position:absolute; top:12px; left:12px;
   font-size:11px; font-weight:700; letter-spacing:.04em;
+  background:var(--blue); color:#fff;
+  padding:5px 11px; border-radius:999px;
+}
+
+/* 카드 본문 */
+.body { padding:20px 20px 22px; display:flex; flex-direction:column; flex:1 }
+.body h3 { font-size:16px; font-weight:800; margin-bottom:8px }
+.body p { font-size:14px; color:var(--gray); flex:1; line-height:1.65 }
+.tags { display:flex; flex-wrap:wrap; gap:6px; margin:12px 0 16px }
+.tags span {
+  font-size:12px; font-weight:600;
+  background:var(--warm); color:var(--gray);
   padding:4px 10px; border-radius:999px;
 }
-.prog-tag.cat { background:rgba(31,35,146,.08); color:var(--blue) }
-.prog-tag.num { background:var(--warm); color:var(--gray) }
-.prog-body h3 {
-  font-size:clamp(17px,2.4vw,22px); font-weight:800;
-  line-height:1.3; margin-bottom:8px;
-}
-.prog-card-wide .prog-body h3 { font-size:clamp(20px,2.8vw,28px) }
-.prog-body p {
-  font-size:clamp(13px,1.6vw,15px); color:var(--gray);
-  line-height:1.75; margin-bottom:20px; flex:1;
-}
-.prog-cta {
-  font-size:13px; font-weight:700; color:var(--blue);
-  display:inline-flex; align-items:center; gap:6px; transition:gap .15s;
-}
-.prog-card:hover .prog-cta,
-.prog-card-wide:hover .prog-cta { gap:10px }
+.more { font-size:14px; font-weight:700; color:var(--blue) }
 
-/* ── 특징 섹션 ── */
-.feat-sec { background:var(--warm); padding:clamp(60px,9vw,100px) 0 }
-.feat-grid {
-  display:grid; grid-template-columns:repeat(4,1fr);
-  gap:clamp(12px,2.5vw,24px); margin-top:clamp(32px,5vw,48px);
-}
-@media(max-width:860px) { .feat-grid { grid-template-columns:repeat(2,1fr) } }
-@media(max-width:480px) { .feat-grid { grid-template-columns:1fr } }
+/* CTA */
+.cta { background:var(--navy); text-align:center }
+.cta h2 { color:#fff; font-size:clamp(21px,5vw,28px); font-weight:800 }
+.cta p { color:#B5B1C9; margin:12px 0 28px; font-size:clamp(14px,2vw,16px) }
+.cta-row { display:flex; gap:12px; justify-content:center; flex-wrap:wrap }
 
-.feat-card {
-  background:#fff; border-radius:var(--rc);
-  border:1px solid var(--border);
-  padding:clamp(20px,3vw,32px);
-}
-.feat-icon {
-  width:44px; height:44px; border-radius:12px;
-  display:flex; align-items:center; justify-content:center;
-  margin-bottom:16px;
-}
-.feat-icon.blue { background:rgba(31,35,146,.08) }
-.feat-icon.yellow { background:rgba(255,216,77,.18) }
-.feat-card h3 { font-size:16px; font-weight:800; margin-bottom:8px }
-.feat-card p { font-size:13px; color:var(--gray); line-height:1.7 }
-
-/* ── CTA 섹션 ── */
-.cta-sec {
-  background:var(--navy);
-  padding:clamp(60px,9vw,96px) 0;
-  text-align:center;
-}
-.cta-sec h2 { font-size:clamp(24px,4vw,36px); font-weight:800; color:#fff; margin-bottom:14px }
-.cta-sec p { font-size:clamp(14px,1.8vw,16px); color:rgba(255,255,255,.6); margin-bottom:32px; line-height:1.75 }
-
-/* ── 푸터 ── */
-footer {
-  background:#0F0C20; color:#B5B1C9;
-  padding:40px 0; font-size:13px; text-align:center;
-}
-footer img { margin:0 auto 12px }
-footer div { margin-bottom:4px }
+/* 푸터 */
+footer { background:#0F0C20; color:#B5B1C9; padding:44px 0; font-size:14px }
+footer p { margin-bottom:4px }
 </style>
 </head>
 <body>
 
 <header>
   <div class="nav">
-    <a href="/" class="nav-logo">
-      <img src="/assets/images/logo.png" alt="아이덴티치" style="height:48px;">
-    </a>
+    <a href="/"><img src="/assets/images/logo.png" alt="아이덴티치" style="height:48px;"></a>
     <a href="/" class="nav-back">← 홈으로</a>
   </div>
 </header>
 
 <main>
 
-  <!-- 히어로 -->
-  <section class="hero">
+  <section class="intro">
     <div class="wrap">
-      <span class="hero-eyebrow">TOGETHER PROGRAMS</span>
-      <h1>함께 어울리는<br><em>경험</em>을 설계합니다</h1>
-      <p class="hero-sub">
-        대인관계, 공동체, 학교폭력예방, 체육대회, 리더십캠프까지.<br>
-        아이덴티치는 학교에 필요한 어울림 활동을<br>
-        학생 참여형 교육 콘텐츠로 기획하고 직접 운영합니다.
-      </p>
-      <div class="hero-btns">
-        <a href="/request" class="btn-white">맞춤 프로그램 문의</a>
-        <a href="/career" class="btn-outline-w">진로 프로그램 보기</a>
-      </div>
+      <nav class="crumb"><a href="/">홈</a> › 어울림 프로그램</nav>
+      <span class="eyebrow">함께 어울림 · TOGETHER</span>
+      <h1>어울림 프로그램</h1>
+      <p>함께 어울리는 경험을 설계합니다. 팀빌딩·학급단합·학교폭력예방·교내 행사까지, 전 학생이 안전하게 참여하는 활동이에요.</p>
     </div>
   </section>
 
-  <!-- 프로그램 목록 -->
-  <section class="sec">
+  <section style="padding-top:clamp(32px,5vw,48px)">
     <div class="wrap">
-      <span class="sec-eyebrow">PROGRAMS</span>
-      <h2>어울림 프로그램 한눈에 보기</h2>
-      <p class="sec-sub">학급·학년·전교생 단위로 함께 만드는 어울림 경험</p>
+      <div class="grid">
 
-      <div class="prog-grid">
-
-        <!-- 01 도미노 챌린지 -->
-        <div class="prog-card">
-          <div class="prog-thumb">
-            <img src="/assets/images/programs/together/domino.png" alt="도미노 챌린지 - 팀빌딩">
+        <a href="/together/domino" class="card">
+          <div class="thumb">
+            <img src="/assets/images/programs/together/domino.png" alt="도미노 챌린지">
+            <span class="thumb-tag">어울림 01</span>
           </div>
-          <div class="prog-body">
-            <div class="prog-tags">
-              <span class="prog-tag cat">팀빌딩</span>
-              <span class="prog-tag num">어울림 01</span>
-            </div>
+          <div class="body">
             <h3>도미노 챌린지</h3>
-            <p>학년 전체가 하나로 연결되는 협력 미션. 소통과 신뢰를 배우며 함께 완성하는 도미노 퍼포먼스로 잊지 못할 기억을 만듭니다.</p>
-            <a href="/together/domino" class="prog-cta">자세히 보기 →</a>
+            <p>팀별로 도미노를 설계·설치하고 함께 쓰러뜨리며 협력을 경험하는 학년 단위 체험.</p>
+            <div class="tags"><span>신학기 학급단합</span><span>학교폭력예방</span></div>
+            <span class="more">자세히 보기 →</span>
           </div>
-        </div>
+        </a>
 
-        <!-- 02 협동 브루마블 -->
-        <div class="prog-card">
-          <div class="prog-thumb">
-            <img src="/assets/images/programs/together/brumarble.png" alt="협동 브루마블 - 보드게임">
+        <a href="/together/brumarble" class="card">
+          <div class="thumb">
+            <img src="/assets/images/programs/together/brumarble.png" alt="협동 브루마블">
+            <span class="thumb-tag">어울림 02</span>
           </div>
-          <div class="prog-body">
-            <div class="prog-tags">
-              <span class="prog-tag cat">보드게임</span>
-              <span class="prog-tag num">어울림 02</span>
-            </div>
+          <div class="body">
             <h3>협동 브루마블</h3>
-            <p>경쟁 대신 협력으로 즐기는 학급 보드게임. 모둠별 전략과 소통으로 함께 골인하는 새로운 방식의 학급 단합 프로그램입니다.</p>
-            <a href="/together/brumarble" class="prog-cta">자세히 보기 →</a>
+            <p>퀴즈와 협동 미션을 풀며 결승점까지 함께 전진하는 학급 단위 협동 보드게임.</p>
+            <div class="tags"><span>학급단합</span><span>협동·팀워크</span></div>
+            <span class="more">자세히 보기 →</span>
           </div>
-        </div>
+        </a>
 
-        <!-- 03 스쿨핑 -->
-        <div class="prog-card">
-          <div class="prog-thumb">
-            <img src="/assets/images/programs/together/schoolping.png" alt="스쿨핑 - 실내 캠핑 체험">
+        <a href="/together/schoolping" class="card">
+          <div class="thumb">
+            <img src="/assets/images/programs/together/schoolping.png" alt="스쿨핑">
+            <span class="thumb-tag">어울림 03</span>
           </div>
-          <div class="prog-body">
-            <div class="prog-tags">
-              <span class="prog-tag cat">체육대회</span>
-              <span class="prog-tag num">어울림 03</span>
-            </div>
+          <div class="body">
             <h3>스쿨핑</h3>
-            <p>학교 안에서 즐기는 실내 캠핑 체험. 텐트, 모닥불, 자연 활동을 교실에서 구현해 색다른 추억과 공동체 감각을 선물합니다.</p>
-            <a href="/together/schoolping" class="prog-cta">자세히 보기 →</a>
+            <p>야외 캠핑과 체육활동을 실내에서. 신체활동·협동 미션으로 체육과 공동체를 함께.</p>
+            <div class="tags"><span>체육대회</span><span>학급단합</span></div>
+            <span class="more">자세히 보기 →</span>
           </div>
-        </div>
+        </a>
 
-        <!-- 04 미션 퍼실리테이션 -->
-        <div class="prog-card">
-          <div class="prog-thumb">
-            <img src="/assets/images/programs/together/facilitation.jpg" alt="미션 퍼실리테이션 - 리더십 소통 교육">
+        <a href="/together/facilitation" class="card">
+          <div class="thumb">
+            <img src="/assets/images/programs/together/facilitation.jpg" alt="미션 퍼실리테이션">
+            <span class="thumb-tag">어울림 04</span>
           </div>
-          <div class="prog-body">
-            <div class="prog-tags">
-              <span class="prog-tag cat">리더십</span>
-              <span class="prog-tag num">어울림 04</span>
-            </div>
+          <div class="body">
             <h3>미션 퍼실리테이션</h3>
-            <p>미션 수행을 통해 배우는 리더십과 소통 교육. 학생 스스로가 리더와 팔로워를 경험하며 실질적인 협력 역량을 키웁니다.</p>
-            <a href="/together/facilitation" class="prog-cta">자세히 보기 →</a>
+            <p>퍼실리테이션 기법과 레크리에이션을 접목해 소통 역량을 익히는 활동.</p>
+            <div class="tags"><span>리더십</span><span>토론·소통</span></div>
+            <span class="more">자세히 보기 →</span>
           </div>
-        </div>
+        </a>
 
-        <!-- 05 학교폭력예방 레크리에이션 (와이드 카드) -->
-        <div class="prog-card-wide">
-          <div class="prog-thumb">
+        <a href="/together/violence-prevention" class="card">
+          <div class="thumb">
             <img src="/assets/images/programs/together/violence-prevention.png" alt="학교폭력예방 레크리에이션">
+            <span class="thumb-tag">어울림 05</span>
           </div>
-          <div class="prog-body">
-            <div class="prog-tags">
-              <span class="prog-tag cat">예방교육</span>
-              <span class="prog-tag num">어울림 05</span>
-            </div>
+          <div class="body">
             <h3>학교폭력예방<br>레크리에이션</h3>
-            <p>딱딱한 교육이 아닌 활동과 웃음으로 배우는 학교폭력예방 프로그램. 전교생이 함께 참여하며 서로를 이해하고 배려하는 공동체 문화를 만들어 갑니다. 기획부터 진행까지 아이덴티치가 함께합니다.</p>
-            <a href="/together/violence-prevention" class="prog-cta">자세히 보기 →</a>
+            <p>레크리에이션에 학교폭력예방 목표를 담아, 선생님과 학생이 함께 즐기며 화합하는 활동.</p>
+            <div class="tags"><span>학교폭력예방</span><span>전교생 화합</span></div>
+            <span class="more">자세히 보기 →</span>
           </div>
-        </div>
+        </a>
 
       </div>
     </div>
   </section>
 
-  <!-- 특징 -->
-  <section class="feat-sec">
+  <section class="cta">
     <div class="wrap">
-      <span class="sec-eyebrow">WHY IDENTEACH</span>
-      <h2>아이덴티치 어울림 프로그램의<br>특별한 점</h2>
-      <div class="feat-grid">
-        <div class="feat-card">
-          <div class="feat-icon blue">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1F2392" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="9"/><path d="M12 8v5l3 2"/>
-            </svg>
-          </div>
-          <h3>경험 중심 설계</h3>
-          <p>강의가 아닌 직접 참여. 몸으로 배우는 활동 중심 교육으로 기억에 남는 하루를 만듭니다.</p>
-        </div>
-        <div class="feat-card">
-          <div class="feat-icon yellow">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#14142B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/>
-            </svg>
-          </div>
-          <h3>맞춤형 기획</h3>
-          <p>학교 상황, 학년 특성, 행사 목적에 맞게 프로그램을 처음부터 함께 설계합니다.</p>
-        </div>
-        <div class="feat-card">
-          <div class="feat-icon blue">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1F2392" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
-              <circle cx="9" cy="7" r="4"/>
-              <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
-            </svg>
-          </div>
-          <h3>전문 운영 인력</h3>
-          <p>교육 전문 강사진과 체계적인 현장 운영 노하우로 당일까지 완벽하게 진행합니다.</p>
-        </div>
-        <div class="feat-card">
-          <div class="feat-icon yellow">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#14142B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="9" y1="18" x2="15" y2="18"/><line x1="10" y1="22" x2="14" y2="22"/>
-              <path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0018 8 6 6 0 006 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 018.91 14"/>
-            </svg>
-          </div>
-          <h3>기억에 남는 교육</h3>
-          <p>하루의 경험이 자기이해와 공동체 감각으로 이어지는, 의미 있는 활동을 만듭니다.</p>
-        </div>
+      <h2>어떤 프로그램이 맞을지 모르겠다면</h2>
+      <p>학교 상황만 알려주시면 맞는 프로그램을 함께 골라드립니다.</p>
+      <div class="cta-row">
+        <a href="/request" class="btn btn-pill">무료 프로그램 맞춤 요청</a>
+        <a href="/career" class="btn btn-ghost-w">진로 프로그램 보기</a>
       </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="cta-sec">
-    <div class="wrap">
-      <h2>우리 학교에 맞는<br>어울림 프로그램이 궁금하신가요?</h2>
-      <p>학교 상황과 목표에 맞게 맞춤 기획합니다.<br>무료로 상담받아 보세요.</p>
-      <a href="/request" class="btn-blue">무료 맞춤 상담 신청</a>
     </div>
   </section>
 
 </main>
 
 <footer>
-  <img src="/assets/images/logo.png" alt="아이덴티치" style="height:28px;opacity:.85;filter:invert(1);">
-  <div>경험을 설계하는 진로·어울림 전문 교육기획사</div>
-  <div style="margin-top:6px">010-4084-8962 · idengroup@naver.com</div>
+  <div class="wrap">
+    <img src="/assets/images/logo.png" alt="아이덴티치" style="height:28px;margin-bottom:14px;opacity:.85;filter:invert(1);">
+    <p>경험을 설계하는 진로·어울림 전문 교육기획사 · 대표 진성재</p>
+    <p>010-4084-8962 · idengroup@naver.com</p>
+    <p style="margin-top:16px;color:#6E6A85">© 2026 IDenTeach (아이덴티치).</p>
+  </div>
 </footer>
 
 </body>
