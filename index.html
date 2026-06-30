@@ -114,16 +114,29 @@ header {
   .menu-toggle:checked ~ .nav-links { max-height:360px }
 }
 
-/* ===== HERO (full-bleed) ===== */
+/* ===== HERO (full-bleed slideshow) ===== */
 .hero {
   min-height:82vh; display:flex; flex-direction:column;
   position:relative; overflow:hidden;
 }
-/* 배경 — 이미지/영상으로 나중에 교체 가능 */
-.hero-bg {
+/* 슬라이드 레이어 */
+.hero-slide {
   position:absolute; inset:0;
-  background:url('/assets/images/hero/hero-bg.jpg') center/cover no-repeat;
-  z-index:0;
+  background-size:cover; background-position:center;
+  z-index:0; opacity:0;
+  animation:heroFade 25s infinite;
+}
+.hero-slide:nth-child(1){ background-image:url('/assets/images/hero/slide1.jpg'); animation-delay:0s }
+.hero-slide:nth-child(2){ background-image:url('/assets/images/hero/slide2.jpg'); animation-delay:5s }
+.hero-slide:nth-child(3){ background-image:url('/assets/images/hero/slide3.jpg'); animation-delay:10s }
+.hero-slide:nth-child(4){ background-image:url('/assets/images/hero/slide4.jpg'); animation-delay:15s }
+.hero-slide:nth-child(5){ background-image:url('/assets/images/hero/slide5.jpg'); animation-delay:20s }
+@keyframes heroFade {
+  0%   { opacity:0 }
+  4%   { opacity:1 }
+  20%  { opacity:1 }
+  24%  { opacity:0 }
+  100% { opacity:0 }
 }
 .hero-overlay {
   position:absolute; inset:0; z-index:1;
@@ -435,6 +448,8 @@ header {
 .gitem:nth-child(4) img { aspect-ratio:1/1 }
 .gitem:nth-child(5) img { aspect-ratio:4/3 }
 .gitem:nth-child(6) img { aspect-ratio:3/4 }
+.gitem:nth-child(7) img { aspect-ratio:4/3 }
+.gitem:nth-child(8) img { aspect-ratio:1/1 }
 @media(max-width:720px) { .gallery-grid { columns:2 } }
 @media(max-width:440px) { .gallery-grid { columns:2; gap:8px } .gitem { margin-bottom:8px } }
 
@@ -505,7 +520,11 @@ footer p { line-height:1.7; margin-bottom:4px }
 
 <!-- ========== HERO (풀블리드 - 추후 영상/루핑이미지 교체) ========== -->
 <section class="hero">
-  <div class="hero-bg"></div>
+  <div class="hero-slide"></div>
+  <div class="hero-slide"></div>
+  <div class="hero-slide"></div>
+  <div class="hero-slide"></div>
+  <div class="hero-slide"></div>
   <div class="hero-overlay"></div>
   <div class="hero-inner">
     <div class="hero-copy">
@@ -752,22 +771,28 @@ footer p { line-height:1.7; margin-bottom:4px }
     </div>
     <div class="gallery-grid">
       <a href="/together" class="gitem">
-        <img src="/assets/images/activity/act-concert.jpg" alt="진로 콘서트 현장">
+        <img src="/assets/images/gallery/g1.jpg" alt="팀빌딩 활동 현장">
       </a>
-      <a href="/together/domino" class="gitem">
-        <img src="/assets/images/activity/act-ai-quest-wide.jpg" alt="팀 활동 현장">
+      <a href="/together" class="gitem">
+        <img src="/assets/images/gallery/g4.jpg" alt="체육대회 현장">
       </a>
       <a href="/together/facilitation" class="gitem">
-        <img src="/assets/images/programs/together/facilitation.jpg" alt="퍼실리테이션 현장">
+        <img src="/assets/images/gallery/g7.jpg" alt="퍼실리테이션 현장">
       </a>
-      <a href="/together/brumarble" class="gitem">
-        <img src="/assets/images/activity/act-ai-quest-close.png" alt="모둠 활동 현장">
+      <a href="/together" class="gitem">
+        <img src="/assets/images/gallery/g2.jpg" alt="팀 협동 활동">
       </a>
-      <a href="/together/violence-prevention" class="gitem">
-        <img src="/assets/images/activity/act-ai-literacy.jpg" alt="학교 프로그램 현장">
+      <a href="/together" class="gitem">
+        <img src="/assets/images/gallery/g5.jpg" alt="체육대회 활동">
       </a>
       <a href="/together/schoolping" class="gitem">
-        <img src="/assets/images/programs/together/schoolping.png" alt="스쿨핑 현장">
+        <img src="/assets/images/gallery/g6.jpg" alt="스쿨핑 현장">
+      </a>
+      <a href="/together" class="gitem">
+        <img src="/assets/images/gallery/g3.jpg" alt="학생 활동 현장">
+      </a>
+      <a href="/together" class="gitem">
+        <img src="/assets/images/gallery/g8.jpg" alt="진로체험 현장">
       </a>
     </div>
   </div>
