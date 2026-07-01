@@ -122,28 +122,36 @@ header {
 
 /* ===== 인트로 오버레이 ===== */
 #intro {
-  position:fixed; inset:0; z-index:9999;
-  background:#000;
-  display:flex; flex-direction:column;
-  align-items:center; justify-content:center;
-  gap:clamp(16px,4vh,36px);
+  position:fixed; inset:0; z-index:9999; background:#000;
   transition:opacity .8s ease;
 }
 #intro.fade-out { opacity:0; pointer-events:none }
-#intro-svg { width:min(78vw,520px) }
-#intro-hl {
-  text-align:center; color:#fff;
-  font-family:'Pretendard',-apple-system,sans-serif;
-  font-size:clamp(22px,5vw,46px); font-weight:800; line-height:1.2;
-  opacity:0; transform:translateY(12px);
-  transition:opacity .5s ease, transform .5s ease;
+#hl-block, #intro-svg {
+  position:absolute; top:50%; left:50%;
+  transform:translate(-50%,-50%);
 }
-#intro-hl.on { opacity:1; transform:translateY(0) }
-#intro-hl em {
-  font-style:normal;
-  background:var(--yellow); color:var(--navy);
-  padding:2px 10px 4px; border-radius:8px;
+#hl-block {
+  text-align:center; line-height:1.25; letter-spacing:-.03em;
+  font-size:clamp(30px,6.5vw,64px); font-weight:800;
+  transition:transform .38s cubic-bezier(.85,0,.15,1), opacity .28s;
+  will-change:transform;
 }
+.hl-line { display:block }
+.hw {
+  display:inline-block; color:transparent;
+  position:relative; padding:2px 6px; margin:0 2px; white-space:nowrap;
+}
+.hw::before {
+  content:''; position:absolute; inset:-5px -3px;
+  background:#FFD84D; border-radius:8px;
+  transform:scaleX(0); transform-origin:left; z-index:-1;
+}
+.hw.hw-in::before  { animation:hwIn  .2s ease forwards }
+.hw.hw-out::before { animation:hwOut .2s ease forwards }
+@keyframes hwIn  { to{transform:scaleX(1)} }
+@keyframes hwOut { from{transform:scaleX(1);transform-origin:right} to{transform:scaleX(0);transform-origin:right} }
+#hl-block.hl-exit { transform:translate(calc(-50% - 110vw),-50%); opacity:0 }
+#intro-svg { width:min(78vw,520px); opacity:0 }
 
 /* ===== HERO (full-bleed slideshow 10장/3s) ===== */
 .hero {
@@ -542,7 +550,11 @@ footer p { line-height:1.7; margin-bottom:4px }
 <!-- ========== HEADER ========== -->
 <!-- ========== 인트로 오버레이 ========== -->
 <div id="intro">
-  <svg id="intro-svg" viewBox="0 0 700 100" xmlns="http://www.w3.org/2000/svg">
+  <div id="hl-block">
+    <div class="hl-line"><span class="hw">다양한</span><span class="hw">경험으로</span></div>
+    <div class="hl-line"><span class="hw">정체성을</span><span class="hw">키우다</span></div>
+  </div>
+  <svg id="intro-svg" viewBox="0 0 700 100" xmlns="http://www.w3.org/2000/svg" style="overflow:visible">
     <!-- Do -->
     <g id="iDo">
       <g transform="translate(0,-39)">
@@ -572,7 +584,6 @@ footer p { line-height:1.7; margin-bottom:4px }
       </g>
     </g>
   </svg>
-  <div id="intro-hl">다양한 <em>경험</em>으로<br>정체성을 키우다</div>
 </div>
 
 <header>
@@ -926,8 +937,34 @@ footer p { line-height:1.7; margin-bottom:4px }
 </footer>
 
 <script>
-/* ── 인트로 오버레이 로고 애니메이션 ─────────────────────────── */
-(function() {
+/* ── 인트로 오버레이 애니메이션 ──────────────────────────────── */
+(function(){
+  /* Phase 1: 헤드라인 단어별 Yellow 스윕 */
+  var YELLOW_DUR=200, WORD_GAP=210;
+  var hlWords=document.querySelectorAll('.hw');
+  var hlBlock=document.getElementById('hl-block');
+  var introSvg=document.getElementById('intro-svg');
+
+  hlWords.forEach(function(w,i){
+    setTimeout(function(){
+      w.classList.add('hw-in');
+      setTimeout(function(){
+        w.style.color='#fff';
+        w.classList.remove('hw-in');
+        w.classList.add('hw-out');
+        setTimeout(function(){ w.classList.remove('hw-out'); }, YELLOW_DUR+50);
+      }, YELLOW_DUR);
+    }, 120 + i * WORD_GAP);
+  });
+
+  /* 마지막 단어 완료 후 300ms 뒤 헤드라인 왼쪽 퇴장 */
+  /* exitAt = 120 + 3*210 + 200 + 300 = 1250ms */
+  var exitAt = 120 + (hlWords.length-1)*WORD_GAP + YELLOW_DUR + 300;
+  setTimeout(function(){
+    hlBlock.classList.add('hl-exit');
+  }, exitAt);
+
+  /* Phase 2: 로고 애니메이션 (헤드라인 퇴장 시작 350ms 뒤) */
   var SWISH=300, HOLD1=700, HOLD2=800;
   var SW=700, SH=100, DO_W=115, DO_H=57, IT_W=75, IN_W=375;
   var GAP_DI=22, GAP_DN=28;
@@ -943,8 +980,7 @@ footer p { line-height:1.7; margin-bottom:4px }
   var gIden=document.getElementById('iIden');
   var running=new Map();
 
-  function ease(t){ return t<0.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2 }
-
+  function ease(t){ return t<0.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2; }
   function go(el,x0,y0,x1,y1,a0,a1,dur,delay){
     delay=delay||0;
     if(running.has(el)) cancelAnimationFrame(running.get(el));
@@ -960,38 +996,41 @@ footer p { line-height:1.7; margin-bottom:4px }
   }
 
   /* 초기 상태 */
-  gDo.setAttribute('transform','translate('+(S1_DO-80)+','+TY+')'); gDo.setAttribute('opacity','0');
-  gIt.setAttribute('transform','translate('+(S1_IT+80)+','+TY+')'); gIt.setAttribute('opacity','0');
-  gIden.setAttribute('transform','translate('+(SW+60)+','+TY+')');  gIden.setAttribute('opacity','0');
+  gDo.setAttribute('transform','translate('+(S1_DO-80)+','+TY+')');  gDo.setAttribute('opacity','0');
+  gIt.setAttribute('transform','translate('+(S1_IT+80)+','+TY+')');  gIt.setAttribute('opacity','0');
+  gIden.setAttribute('transform','translate('+(SW+60)+','+TY+')');   gIden.setAttribute('opacity','0');
 
-  /* Stage 1: "Do it" 등장 */
-  go(gDo, S1_DO-80,TY, S1_DO,TY, 0,1, SWISH);
-  go(gIt, S1_IT+80,TY, S1_IT,TY, 0,1, SWISH, 60);
+  /* svgAt ≈ exitAt + 350 = 1600ms */
+  var svgAt = exitAt + 350;
 
-  /* Stage 2: it → IdenTeach */
+  /* Stage 1: Do + it 등장 */
   setTimeout(function(){
-    go(gIt,   S1_IT,  TY, S1_IT,  TY-90,  1,0, SWISH);
-    go(gDo,   S1_DO,  TY, S2_DO,  TY,     1,1, SWISH);
-    go(gIden, SW+60,  TY, S2_IDEN,TY,     0,1, SWISH);
-  }, HOLD1);
+    introSvg.style.opacity='1';
+    go(gDo, S1_DO-80,TY, S1_DO,TY, 0,1, SWISH);
+    go(gIt, S1_IT+80,TY, S1_IT,TY, 0,1, SWISH, 60);
+  }, svgAt);
 
-  /* Stage 3: Do 퇴장 → IdenTeach 중앙 */
+  /* Stage 2: it 오른쪽 퇴장 → Do 이동 → IdenTeach 우측에서 등장 */
+  /* "Do IdenTeach" 완성 */
   setTimeout(function(){
-    go(gDo,   S2_DO,  TY, -180,    TY, 1,0, SWISH);
-    go(gIden, S2_IDEN,TY, S3_IDEN, TY, 1,1, SWISH);
-  }, HOLD1+HOLD2);
+    go(gIt,   S1_IT, TY, SW+140, TY,      1,0, SWISH);
+    go(gDo,   S1_DO, TY, S2_DO,  TY,     1,1, SWISH);
+    go(gIden, SW+80, TY, S2_IDEN,TY,     0,1, SWISH, 80);
+  }, svgAt + HOLD1);
 
-  /* 헤드라인 등장 (1800ms) */
+  /* Stage 3: Do 왼쪽 퇴장 → IDENTEACH 중앙 */
   setTimeout(function(){
-    document.getElementById('intro-hl').classList.add('on');
-  }, 1800);
+    go(gDo,   S2_DO,   TY, -180,    TY, 1,0, SWISH);
+    go(gIden, S2_IDEN, TY, S3_IDEN, TY, 1,1, SWISH);
+  }, svgAt + HOLD1 + HOLD2);
 
-  /* 오버레이 페이드아웃 (3400ms → 4200ms) */
+  /* 오버레이 페이드아웃 */
+  /* fadeAt ≈ svgAt + 700 + 800 + 300 + 500 ≈ 3900ms, done ~4.7s */
   setTimeout(function(){
     var intro=document.getElementById('intro');
     intro.classList.add('fade-out');
     setTimeout(function(){ intro.style.display='none'; }, 900);
-  }, 3400);
+  }, svgAt + HOLD1 + HOLD2 + SWISH + 500);
 })();
 
 function switchProg(tab) {
