@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>회사소개 | 아이덴티치</title>
-<meta name="description" content="AI 시대, 가장 필요한 교육은 정체성입니다. 아이덴티치는 학생들이 경험을 통해 자신을 이해하고, 그 이해를 바탕으로 미래를 선택할 수 있도록 돕는 교육을 만듭니다.">
+<meta name="description" content="AI 시대, 가장 필요한 교육은 정체성입니다. 아이덴티치는 경험을 통해 학생이 자신을 이해하고, 그 이해를 바탕으로 미래를 선택할 수 있도록 돕습니다.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="회사소개 | 아이덴티치">
 <meta property="og:url" content="https://identeach.co.kr/about">
@@ -15,17 +15,19 @@
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@1.3.9/dist/web/static/pretendard.css');
 
 :root {
-  --blue:   #1F2392;
-  --yellow: #FFD84D;
-  --navy:   #14142B;
-  --gray:   #6F7287;
-  --warm:   #F4F4F6;
-  --border: #E8E8F0;
-  --white:  #fff;
-  --maxw:   1120px;
-  --pad-x:  clamp(20px,5vw,40px);
-  --rc:     20px;
-  --shadow: 0 4px 24px rgba(20,20,43,.08);
+  --blue:      #1F2392;
+  --blue-soft: rgba(31,35,146,.08);
+  --yellow:    #FFD84D;
+  --navy:      #14142B;
+  --gray:      #6F7287;
+  --warm:      #F4F4F6;
+  --border:    #E8E8F0;
+  --white:     #fff;
+  --maxw:      1120px;
+  --pad-x:     clamp(20px,5vw,40px);
+  --rc:        20px;
+  --shadow:    0 4px 24px rgba(20,20,43,.08);
+  --shadow-lg: 0 14px 48px rgba(20,20,43,.14);
 }
 
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box }
@@ -47,16 +49,16 @@ h1,h2,h3 { letter-spacing:-.03em }
   font-family:inherit; font-weight:700; cursor:pointer; border:none;
   background:var(--blue); color:#fff;
   font-size:16px; padding:16px 36px; border-radius:999px;
-  transition:all .18s; text-decoration:none;
+  transition:all .18s;
 }
 .btn-blue:hover { background:#171980; transform:translateY(-2px); box-shadow:0 8px 24px rgba(31,35,146,.28) }
 .btn-outline-w {
-  display:inline-flex; align-items:center;
-  font-family:inherit; font-weight:600; font-size:14px;
+  display:inline-flex; align-items:center; justify-content:center;
+  font-family:inherit; font-weight:600; font-size:15px;
   background:transparent; color:#fff;
-  border:1.5px solid rgba(255,255,255,.4);
-  padding:13px 26px; border-radius:999px;
-  transition:all .18s; text-decoration:none;
+  border:1.5px solid rgba(255,255,255,.45);
+  padding:14px 28px; border-radius:999px;
+  transition:all .18s;
 }
 .btn-outline-w:hover { background:rgba(255,255,255,.1) }
 
@@ -65,142 +67,140 @@ header {
   position:sticky; top:0; z-index:100;
   background:rgba(255,255,255,.96);
   backdrop-filter:blur(16px);
-  border-bottom:1px solid var(--border);
 }
 .nav {
-  display:flex; align-items:center; height:72px;
-  max-width:var(--maxw); margin:0 auto; padding:0 var(--pad-x);
+  display:flex; align-items:center; gap:16px; height:96px;
+  background:#fff;
+  border-radius:0 0 28px 28px;
+  box-shadow:0 4px 20px rgba(0,0,0,.08);
+  padding:0 clamp(20px,3vw,36px);
+  max-width:var(--maxw); margin:0 auto;
 }
-.nav-back {
-  margin-left:auto; font-size:14px; color:var(--gray);
-  display:flex; align-items:center; gap:6px; transition:color .15s;
-}
+.nav-logo { margin-right:auto }
+.nav-back { font-size:14px; color:var(--gray); transition:color .15s }
 .nav-back:hover { color:var(--navy) }
 
 /* ── 히어로 ── */
 .hero {
   background:var(--blue);
-  padding:clamp(72px,11vw,120px) 0 clamp(60px,9vw,96px);
-  text-align:center;
+  padding:clamp(80px,12vw,130px) 0 clamp(72px,10vw,110px);
+  text-align:center; position:relative; overflow:hidden;
 }
-.hero-eyebrow {
+/* 배경 도형 */
+.hero::before {
+  content:'';
+  position:absolute; right:-120px; top:-80px;
+  width:420px; height:420px; border-radius:50%;
+  background:rgba(255,255,255,.04); pointer-events:none;
+}
+.hero::after {
+  content:'';
+  position:absolute; left:-80px; bottom:-100px;
+  width:300px; height:300px; border-radius:50%;
+  background:rgba(255,255,255,.03); pointer-events:none;
+}
+.hero-inner { position:relative; z-index:1 }
+.hero-label {
   display:inline-flex; align-items:center; gap:7px;
-  background:rgba(255,255,255,.12); color:rgba(255,255,255,.88);
-  border:1px solid rgba(255,255,255,.24);
-  font-size:12px; font-weight:700; letter-spacing:.08em;
-  padding:6px 16px; border-radius:999px; margin-bottom:28px;
+  background:rgba(255,255,255,.13); color:rgba(255,255,255,.9);
+  border:1px solid rgba(255,255,255,.25);
+  font-size:12px; font-weight:700; letter-spacing:.1em;
+  padding:7px 18px; border-radius:999px; margin-bottom:32px;
 }
-.hero-eyebrow::before {
+.hero-label::before {
   content:''; width:6px; height:6px; border-radius:50%;
   background:var(--yellow); flex-shrink:0;
 }
 .hero h1 {
-  font-size:clamp(28px,5vw,52px); font-weight:800; line-height:1.18;
-  color:#fff; margin-bottom:8px;
+  font-size:clamp(32px,5.5vw,60px); font-weight:800; line-height:1.15;
+  color:#fff; margin-bottom:24px;
 }
-.hero-kicker {
-  font-size:clamp(18px,3.5vw,32px); font-weight:800; color:var(--yellow);
-  margin-bottom:28px; line-height:1.2;
+.hero h1 em {
+  font-style:normal;
+  background:var(--yellow); color:var(--navy);
+  padding:2px 10px 5px; border-radius:10px;
 }
 .hero-sub {
-  font-size:clamp(14px,2vw,17px); color:rgba(255,255,255,.72);
-  line-height:1.9; max-width:640px; margin:0 auto 40px;
+  font-size:clamp(15px,2vw,18px); color:rgba(255,255,255,.7);
+  line-height:1.9; max-width:580px; margin:0 auto;
 }
 
 /* ── 섹션 공통 ── */
 .sec { padding:clamp(72px,10vw,110px) 0 }
-.sec-label {
+.sec-chip {
   display:inline-flex; align-items:center; gap:7px;
-  background:rgba(31,35,146,.07); color:var(--blue);
-  border:1px solid rgba(31,35,146,.15);
-  font-size:11px; font-weight:700; letter-spacing:.1em;
-  padding:5px 14px; border-radius:999px; margin-bottom:20px;
+  background:var(--blue-soft); color:var(--blue);
+  border:1px solid rgba(31,35,146,.16);
+  font-size:11px; font-weight:700; letter-spacing:.12em;
+  padding:5px 14px; border-radius:999px; margin-bottom:22px;
 }
-.sec-label::before {
+.sec-chip::before {
   content:''; width:5px; height:5px; border-radius:50%;
   background:var(--blue); flex-shrink:0;
 }
 
-/* ── ABOUT 섹션 (본문) ── */
+/* ── ABOUT 섹션 ── */
 .about-sec { background:var(--white) }
 .about-grid {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:clamp(32px,6vw,80px);
-  align-items:start;
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:clamp(32px,6vw,80px); align-items:start;
   margin-top:clamp(36px,5vw,56px);
 }
 @media(max-width:720px) { .about-grid { grid-template-columns:1fr } }
 
 .about-body h2 {
-  font-size:clamp(22px,3.5vw,32px); font-weight:800; line-height:1.3;
-  margin-bottom:20px;
+  font-size:clamp(24px,3.8vw,36px); font-weight:800; line-height:1.25;
+  margin-bottom:22px;
 }
-.about-body h2 em {
-  font-style:normal; color:var(--blue);
-}
+.about-body h2 em { font-style:normal; color:var(--blue) }
 .about-body p {
   font-size:clamp(14px,1.7vw,16px); color:var(--gray);
-  line-height:1.9; margin-bottom:16px;
+  line-height:1.95; margin-bottom:16px;
 }
 .about-body p:last-child { margin-bottom:0 }
-.about-body p strong { color:var(--navy); font-weight:700 }
+.about-body strong { color:var(--navy); font-weight:700 }
 
-/* 오른쪽 하이라이트 카드 */
-.about-highlight {
+/* 하이라이트 카드 */
+.hl-card {
   background:var(--warm); border-radius:var(--rc);
-  padding:clamp(28px,4vw,44px);
-  border:1px solid var(--border);
+  padding:clamp(28px,4vw,44px); border:1px solid var(--border);
 }
-.about-highlight h3 {
-  font-size:clamp(16px,2.2vw,20px); font-weight:800;
-  line-height:1.4; margin-bottom:20px; color:var(--navy);
+.hl-card-title {
+  font-size:clamp(15px,2vw,18px); font-weight:800; line-height:1.4;
+  margin-bottom:24px; color:var(--navy);
 }
-.about-highlight h3 em {
-  font-style:normal; color:var(--blue);
-}
-.hl-list { list-style:none; display:flex; flex-direction:column; gap:16px }
+.hl-card-title em { font-style:normal; color:var(--blue) }
+.hl-list { list-style:none; display:flex; flex-direction:column; gap:18px }
 .hl-list li {
   display:flex; gap:14px; align-items:flex-start;
   font-size:clamp(13px,1.6vw,15px); color:var(--gray); line-height:1.75;
 }
-.hl-dot {
-  flex-shrink:0; margin-top:7px;
-  width:8px; height:8px; border-radius:50%;
-  background:var(--blue);
-}
+.hl-dot { flex-shrink:0; margin-top:8px; width:7px; height:7px; border-radius:50%; background:var(--blue) }
+.hl-list strong { color:var(--navy); font-weight:700 }
 
 /* ── 미션 섹션 ── */
 .mission-sec { background:var(--warm) }
-.mission-inner {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:clamp(32px,6vw,80px);
-  align-items:start;
+.mission-grid {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:clamp(32px,6vw,80px); align-items:start;
   margin-top:clamp(36px,5vw,56px);
 }
-@media(max-width:720px) { .mission-inner { grid-template-columns:1fr } }
+@media(max-width:720px) { .mission-grid { grid-template-columns:1fr } }
 
-.mission-q {
+/* 질문 카드 */
+.q-card {
   background:var(--white); border-radius:var(--rc);
-  padding:clamp(24px,3.5vw,40px);
-  border:1px solid var(--border);
-  margin-bottom:20px;
+  padding:clamp(22px,3vw,36px); border:1px solid var(--border);
+  margin-bottom:16px;
 }
-.mission-q-label {
-  font-size:11px; font-weight:700; color:var(--gray);
-  letter-spacing:.1em; margin-bottom:10px;
-}
-.mission-q blockquote {
-  font-size:clamp(15px,2vw,18px); font-weight:800;
-  color:var(--navy); line-height:1.4; border:none; padding:0;
-}
-.mission-q blockquote.accent {
-  color:var(--blue);
-}
+.q-card:last-child { margin-bottom:0 }
+.q-label { font-size:11px; font-weight:700; color:var(--gray); letter-spacing:.1em; margin-bottom:10px }
+.q-text { font-size:clamp(15px,2vw,19px); font-weight:800; line-height:1.4; color:var(--navy) }
+.q-text.blue { color:var(--blue) }
 
+/* 미션 본문 */
 .mission-body h2 {
-  font-size:clamp(22px,3.5vw,32px); font-weight:800;
+  font-size:clamp(22px,3.5vw,34px); font-weight:800;
   line-height:1.3; margin-bottom:20px;
 }
 .mission-body h2 em { font-style:normal; color:var(--blue) }
@@ -210,47 +210,41 @@ header {
 }
 .mission-body p:last-child { margin-bottom:0 }
 
-/* 자기이해 키워드 태그 */
-.kw-list {
-  display:flex; flex-wrap:wrap; gap:10px;
-  margin:24px 0;
-}
+/* 키워드 태그 */
+.kw-list { display:flex; flex-wrap:wrap; gap:10px; margin:22px 0 }
 .kw {
   background:rgba(31,35,146,.08); color:var(--blue);
   border:1px solid rgba(31,35,146,.18);
-  font-size:13px; font-weight:700; letter-spacing:.02em;
-  padding:8px 16px; border-radius:999px;
+  font-size:13px; font-weight:700; padding:8px 16px; border-radius:999px;
 }
 
-/* 미션 결론 문장 */
+/* 미션 결론 블록 */
 .mission-stmt {
   background:var(--blue); border-radius:var(--rc);
-  padding:clamp(28px,4vw,44px);
-  margin-top:clamp(36px,5vw,56px);
-  text-align:center;
+  padding:clamp(36px,5vw,60px) clamp(24px,4vw,48px);
+  margin-top:clamp(48px,7vw,72px); text-align:center;
 }
 .mission-stmt p {
-  font-size:clamp(16px,2.4vw,22px); font-weight:700;
-  color:#fff; line-height:1.7;
+  font-size:clamp(17px,2.5vw,24px); font-weight:700;
+  color:#fff; line-height:1.75;
 }
 .mission-stmt p em { font-style:normal; color:var(--yellow) }
 
 /* ── CTA ── */
 .cta-sec {
   background:var(--navy);
-  padding:clamp(60px,9vw,96px) 0;
-  text-align:center;
+  padding:clamp(60px,9vw,96px) 0; text-align:center;
 }
 .cta-sec h2 { font-size:clamp(22px,3.5vw,34px); font-weight:800; color:#fff; margin-bottom:14px }
-.cta-sec p { font-size:clamp(14px,1.8vw,16px); color:rgba(255,255,255,.6); margin-bottom:32px; line-height:1.75 }
+.cta-sec p { font-size:clamp(14px,1.8vw,16px); color:rgba(255,255,255,.6); margin-bottom:32px; line-height:1.8 }
 .cta-btns { display:flex; gap:12px; justify-content:center; flex-wrap:wrap }
 
 /* ── 푸터 ── */
 footer {
   background:#0F0C20; color:#B5B1C9;
-  padding:40px 0; font-size:13px; text-align:center;
+  padding:44px 0; font-size:13px; text-align:center;
 }
-footer img { margin:0 auto 12px }
+footer img { margin:0 auto 14px }
 footer div { margin-bottom:4px }
 </style>
 </head>
@@ -259,7 +253,7 @@ footer div { margin-bottom:4px }
 <header>
   <div class="nav">
     <a href="/" class="nav-logo">
-      <img src="/assets/images/logo.png" alt="아이덴티치" style="height:48px;">
+      <img src="/assets/images/logo.png" alt="아이덴티치" style="height:56px;">
     </a>
     <a href="/" class="nav-back">← 홈으로</a>
   </div>
@@ -269,55 +263,54 @@ footer div { margin-bottom:4px }
 
   <!-- 히어로 -->
   <section class="hero">
-    <div class="wrap">
-      <span class="hero-eyebrow">ABOUT IDENTEACH</span>
-      <h1>AI 시대,</h1>
-      <p class="hero-kicker">가장 필요한 교육은 정체성입니다</p>
-      <p class="hero-sub">
-        기술은 빠르게 변하고, 직업의 형태도 계속 달라지고 있습니다.<br>
-        학생들이 앞으로 만나게 될 미래는 지금보다 더 불확실하고,<br>
-        더 자주 달라질 것입니다.
-      </p>
+    <div class="hero-inner">
+      <div class="wrap">
+        <span class="hero-label">ABOUT IDENTEACH</span>
+        <h1>AI 시대,<br>가장 필요한 교육은<br><em>정체성</em>입니다</h1>
+        <p class="hero-sub">
+          기술이 빠르게 변할수록, 직업의 형태가 달라질수록<br>
+          가장 먼저 필요한 것은 '나는 어떤 사람인가'를 아는 힘입니다.
+        </p>
+      </div>
     </div>
   </section>
 
-  <!-- ABOUT 본문 -->
+  <!-- ABOUT -->
   <section class="sec about-sec">
     <div class="wrap">
-      <span class="sec-label">ABOUT IDENTEACH</span>
+      <span class="sec-chip">ABOUT IDENTEACH</span>
       <div class="about-grid">
         <div class="about-body">
-          <h2>변화 속에서도<br><em>나다운 방향</em>을 찾는 힘</h2>
-          <p>이런 시대에 필요한 것은 단순히 많은 정보를 아는 것이 아닙니다.</p>
+          <h2>변화 속에서도<br><em>흔들리지 않는</em> 기준</h2>
           <p>
-            중요한 것은 변화 속에서도 자신을 이해하고,<br>
-            선택의 기준을 세우고,<br>
-            나다운 방향을 찾아가는 힘입니다.
+            더 많은 정보, 더 빠른 변화, 더 많은 선택지 앞에서<br>
+            정작 중요한 것은 '무엇을 선택할 것인가'가 아니라<br>
+            <strong>'나는 어떤 기준으로 선택하는 사람인가'</strong>입니다.
           </p>
           <p>
             아이덴티치는 학생들이 다양한 경험 속에서<br>
-            <strong>자신이 어떤 사람인지 발견하고,</strong><br>
+            자신이 어떤 사람인지 발견하고,<br>
             스스로의 가능성을 이해할 수 있도록 돕는 교육을 만듭니다.
           </p>
         </div>
-        <div class="about-highlight">
-          <h3>왜 <em>정체성</em>이 핵심인가요?</h3>
+        <div class="hl-card">
+          <p class="hl-card-title">왜 지금 <em>정체성</em>이 핵심인가요?</p>
           <ul class="hl-list">
             <li>
               <span class="hl-dot"></span>
-              <span>AI와 자동화가 대체하기 어려운 것은 <strong style="color:var(--navy)">자기만의 관점과 가치관</strong>입니다</span>
+              <span>AI가 대체하기 어려운 것은 <strong>자기만의 관점과 판단 기준</strong>입니다</span>
             </li>
             <li>
               <span class="hl-dot"></span>
-              <span>직업과 직무가 빠르게 바뀔수록, <strong style="color:var(--navy)">흔들리지 않는 자기이해</strong>가 기반이 됩니다</span>
+              <span>직업이 빠르게 바뀔수록, <strong>흔들리지 않는 자기이해</strong>가 진짜 경쟁력이 됩니다</span>
             </li>
             <li>
               <span class="hl-dot"></span>
-              <span>정보가 넘치는 시대에 <strong style="color:var(--navy)">나에게 맞는 것을 선택하는 능력</strong>이 더 중요해졌습니다</span>
+              <span>정보가 넘쳐날수록, <strong>나에게 맞는 것을 고르는 능력</strong>이 더 중요해집니다</span>
             </li>
             <li>
               <span class="hl-dot"></span>
-              <span>경험을 통한 자기발견은 단기 교육이 아닌 <strong style="color:var(--navy)">진짜 성장</strong>으로 이어집니다</span>
+              <span>경험을 통한 자기발견은 지식 습득이 아닌 <strong>진짜 성장</strong>으로 이어집니다</span>
             </li>
           </ul>
         </div>
@@ -328,37 +321,43 @@ footer div { margin-bottom:4px }
   <!-- 미션 -->
   <section class="sec mission-sec">
     <div class="wrap">
-      <span class="sec-label">OUR MISSION</span>
-      <div class="mission-inner">
+      <span class="sec-chip">OUR MISSION</span>
+      <div class="mission-grid">
+
         <div>
-          <div class="mission-q">
-            <p class="mission-q-label">많은 학생들이 먼저 하는 질문</p>
-            <blockquote>"어떤 직업을 선택해야 할까?"</blockquote>
+          <div class="q-card">
+            <p class="q-label">많은 학생들이 먼저 묻는 질문</p>
+            <p class="q-text">"어떤 직업을 선택해야 할까?"</p>
           </div>
-          <div class="mission-q">
-            <p class="mission-q-label">아이덴티치가 먼저 묻는 질문</p>
-            <blockquote class="accent">"나는 어떤 사람인가?"</blockquote>
+          <div class="q-card">
+            <p class="q-label">아이덴티치가 먼저 건네는 질문</p>
+            <p class="q-text blue">"나는 어떤 사람인가?"</p>
           </div>
         </div>
+
         <div class="mission-body">
-          <h2>불확실한 미래에<br><em>나를 이해하는 과정</em>을<br>먼저 만듭니다</h2>
-          <p>아이덴티치는 직업 선택보다 자기 이해가 먼저라고 생각합니다.</p>
-          <p>알아가야 하는 것들이 있습니다.</p>
+          <h2>불확실한 미래 앞에서<br><em>나를 먼저</em> 이해하는 과정</h2>
+          <p>
+            직업을 고르기 전에, 먼저 나를 알아야 합니다.<br>
+            그래야 선택에 확신이 생기고, 방향이 흔들리지 않습니다.
+          </p>
+          <p>알아가야 할 것들이 있습니다.</p>
           <div class="kw-list">
             <span class="kw">무엇에 흥미를 느끼는지</span>
             <span class="kw">어떤 상황에서 에너지를 얻는지</span>
             <span class="kw">어떤 방식으로 관계 맺는지</span>
-            <span class="kw">어떤 가치를 중요하게 생각하는지</span>
+            <span class="kw">어떤 가치를 중요하게 여기는지</span>
           </div>
-          <p>이 과정이 있어야 진로도 더 현실적으로 선택할 수 있습니다.</p>
+          <p>이 과정이 있을 때, 진로도 훨씬 현실적으로 선택할 수 있습니다.</p>
         </div>
+
       </div>
 
       <div class="mission-stmt">
         <p>
           아이덴티치의 미션은<br>
           학생들이 경험을 통해 <em>자신을 이해</em>하고,<br>
-          그 이해를 바탕으로 <em>미래를 선택</em>할 수 있도록 돕는 것입니다.
+          그 이해를 바탕으로 <em>스스로의 미래를 선택</em>할 수 있도록 돕는 것입니다.
         </p>
       </div>
     </div>
@@ -368,10 +367,10 @@ footer div { margin-bottom:4px }
   <section class="cta-sec">
     <div class="wrap">
       <h2>아이덴티치와 함께<br>시작해보세요</h2>
-      <p>진로·어울림 프로그램부터 학교 맞춤 기획까지.<br>무료로 상담받아 보세요.</p>
+      <p>진로·어울림 프로그램부터 학교 맞춤 기획까지.<br>먼저 무료로 상담해드립니다.</p>
       <div class="cta-btns">
         <a href="/request" class="btn-blue">무료 맞춤 상담 신청</a>
-        <a href="/together" class="btn-outline-w">어울림 프로그램 보기</a>
+        <a href="/together" class="btn-outline-w">프로그램 둘러보기</a>
       </div>
     </div>
   </section>
@@ -379,7 +378,7 @@ footer div { margin-bottom:4px }
 </main>
 
 <footer>
-  <img src="/assets/images/logo.png" alt="아이덴티치" style="height:28px;opacity:.85;filter:invert(1);">
+  <img src="/assets/images/logo.png" alt="아이덴티치" style="height:30px;opacity:.85;filter:invert(1);">
   <div>경험을 설계하는 진로·어울림 전문 교육기획사</div>
   <div style="margin-top:6px">010-4084-8962 · idengroup@naver.com</div>
 </footer>
