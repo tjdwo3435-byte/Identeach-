@@ -90,11 +90,13 @@ header {
 }
 .nav-logo { margin-right:auto; display:flex; align-items:center }
 .nav-links {
-  display:flex; align-items:center; gap:28px;
+  display:flex; align-items:center; gap:4px;
   font-size:15px; font-weight:500; color:var(--gray);
 }
-.nav-links a { transition:color .15s }
+.nav-links a { padding:7px 14px; border-radius:999px; transition:color .15s, background .15s }
 .nav-links a:hover { color:var(--navy) }
+.nav-links a.nav-active { background:var(--navy); color:#fff; font-weight:700 }
+.nav-links a.nav-active:hover { color:#fff }
 .nav-tag {
   font-size:10px; font-weight:700; color:var(--blue);
   background:var(--blue-soft); padding:2px 6px; border-radius:5px;

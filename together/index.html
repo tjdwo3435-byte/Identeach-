@@ -60,15 +60,45 @@ section { padding:var(--sec-y) 0 }
 /* 헤더 */
 header {
   position:sticky; top:0; z-index:100;
-  background:rgba(255,255,255,.92); backdrop-filter:blur(12px);
-  border-bottom:1px solid var(--border);
+  background:rgba(255,255,255,.96);
+  backdrop-filter:blur(16px);
 }
 .nav {
-  display:flex; align-items:center; height:64px;
-  max-width:var(--maxw); margin:0 auto; padding:0 var(--pad-x);
+  display:flex; align-items:center; gap:16px; height:72px;
+  background:#fff;
+  border-radius:0 0 20px 20px;
+  box-shadow:0 4px 20px rgba(0,0,0,.08);
+  padding:0 clamp(20px,3vw,36px);
+  max-width:var(--maxw); margin:0 auto;
 }
-.nav-back { margin-left:auto; font-size:14px; color:var(--gray) }
-.nav-back:hover { color:var(--navy) }
+.nav-logo { margin-right:auto; display:flex; align-items:center }
+.nav-links {
+  display:flex; align-items:center; gap:4px;
+  font-size:15px; font-weight:500; color:var(--gray);
+}
+.nav-links a { padding:7px 14px; border-radius:999px; transition:color .15s, background .15s; white-space:nowrap }
+.nav-links a:hover { color:var(--navy) }
+.nav-links a.nav-active { background:var(--navy); color:#fff; font-weight:700 }
+.nav-links a.nav-active:hover { color:#fff }
+.nav-cta { padding:9px 18px; font-size:14px }
+.menu-toggle, .menu-btn { display:none }
+.menu-btn {
+  font-size:22px; background:none; border:none;
+  cursor:pointer; color:var(--navy); padding:4px;
+}
+@media(max-width:860px) {
+  .menu-btn { display:block; order:3 }
+  .nav-cta { order:2 }
+  .nav-links {
+    position:absolute; top:72px; left:0; right:0;
+    flex-direction:column; align-items:flex-start; gap:0;
+    background:#fff; border-radius:24px;
+    box-shadow:0 8px 28px rgba(0,0,0,.12);
+    max-height:0; overflow:hidden; transition:max-height .28s; font-size:16px; z-index:200;
+  }
+  .nav-links a { width:100%; padding:14px clamp(20px,5vw,24px); border-radius:0; border-top:1px solid var(--border) }
+  .menu-toggle:checked ~ .nav-links { max-height:360px }
+}
 
 /* 인트로 */
 .intro { background:var(--warm); text-align:center; padding-top:clamp(40px,7vw,64px) }
@@ -141,8 +171,18 @@ footer p { margin-bottom:4px }
 
 <header>
   <div class="nav">
-    <a href="/"><img src="/assets/images/logo.png" alt="아이덴티치" style="height:48px;"></a>
-    <a href="/" class="nav-back">← 홈으로</a>
+    <a href="/" class="nav-logo">
+      <img src="/assets/images/logo.png" alt="아이덴티치" style="height:48px;">
+    </a>
+    <input type="checkbox" id="nav-toggle" class="menu-toggle">
+    <nav class="nav-links">
+      <a href="/together" class="nav-active">어울림 프로그램</a>
+      <a href="/career">진로 프로그램</a>
+      <a href="/events">교내 행사</a>
+      <a href="/about">회사소개</a>
+    </nav>
+    <a href="/request" class="btn btn-primary nav-cta">무료 맞춤 요청</a>
+    <label for="nav-toggle" class="menu-btn" aria-label="메뉴">☰</label>
   </div>
 </header>
 
