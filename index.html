@@ -431,24 +431,6 @@ header {
   background:var(--warm-white);
   padding:clamp(72px,10vw,120px) 0;
 }
-/* geometric shapes */
-.geo { position:absolute; pointer-events:none }
-.geo-c1  { width:260px; height:260px; border-radius:50%; background:var(--blue); opacity:.05; top:-80px; right:-80px }
-.geo-c2  { width:120px; height:120px; border-radius:50%; border:18px solid var(--yellow); opacity:.18; top:60%; left:-40px }
-.geo-c3  { width:70px;  height:70px;  border-radius:50%; background:var(--blue); opacity:.08; bottom:10%; right:20% }
-.geo-c4  { width:40px;  height:40px;  border-radius:50%; background:var(--yellow); opacity:.22; top:20%; left:18% }
-.geo-sq1 { width:100px; height:100px; background:var(--blue); opacity:.05; bottom:-30px; right:-30px; border-radius:16px; transform:rotate(22deg) }
-.geo-sq2 { width:56px;  height:56px;  border:8px solid var(--blue); opacity:.1; top:30%; right:8%; border-radius:10px; transform:rotate(15deg) }
-.geo-sq3 { width:36px;  height:36px;  background:var(--yellow); opacity:.2; top:10%; right:30%; border-radius:6px; transform:rotate(-10deg) }
-.geo-dm1 { width:80px;  height:80px;  background:var(--blue); opacity:.06; bottom:20%; left:12%; transform:rotate(45deg); border-radius:8px }
-.geo-dm2 { width:44px;  height:44px;  border:6px solid var(--yellow); opacity:.18; top:12%; left:42%; transform:rotate(45deg); border-radius:6px }
-.geo-tr1 { width:0; height:0; border-left:40px solid transparent; border-right:40px solid transparent; border-bottom:70px solid var(--blue); opacity:.06; top:5%; left:6% }
-.geo-tr2 { width:0; height:0; border-left:24px solid transparent; border-right:24px solid transparent; border-bottom:42px solid var(--yellow); opacity:.16; bottom:15%; right:6% }
-.geo-dot1{ width:10px; height:10px; border-radius:50%; background:var(--blue); opacity:.15; top:45%; left:5% }
-.geo-dot2{ width:10px; height:10px; border-radius:50%; background:var(--yellow); opacity:.3; bottom:35%; right:4% }
-.geo-dot3{ width:6px;  height:6px;  border-radius:50%; background:var(--blue); opacity:.2; top:70%; left:35% }
-.geo-dot4{ width:6px;  height:6px;  border-radius:50%; background:var(--yellow); opacity:.25; top:25%; right:45% }
-
 .method-wrap { position:relative; z-index:1 }
 .method-grid {
   display:grid; grid-template-columns:repeat(4,1fr); gap:16px;
@@ -481,6 +463,68 @@ header {
 .method-card p  { font-size:14px; color:var(--gray); line-height:1.7 }
 @media(max-width:860px) { .method-grid { grid-template-columns:repeat(2,1fr) } }
 @media(max-width:480px) { .method-grid { grid-template-columns:1fr } }
+
+/* ===== REVIEW CARDS ===== */
+.review-sec { padding:clamp(60px,9vw,96px) 0; background:#fff }
+.review-grid {
+  display:grid; grid-template-columns:1fr 1fr; gap:14px; align-items:stretch;
+}
+.rv-card { border-radius:24px; overflow:hidden }
+
+/* 왼쪽 — 후기 텍스트 카드 */
+.rv-text {
+  background:var(--blue); color:#fff;
+  padding:clamp(32px,5vw,52px);
+  display:flex; flex-direction:column;
+}
+.rv-quote {
+  font-size:clamp(20px,3.2vw,28px); font-weight:800; line-height:1.35;
+  margin-bottom:22px;
+}
+.rv-body {
+  font-size:clamp(14px,1.8vw,15px); color:rgba(255,255,255,.78);
+  line-height:1.8; flex:1;
+}
+.rv-who {
+  font-size:13px; color:rgba(255,255,255,.5);
+  margin:20px 0 28px;
+}
+.rv-btn {
+  display:inline-flex; align-items:center; gap:8px;
+  background:var(--yellow); color:var(--navy);
+  font-family:inherit; font-weight:700; font-size:15px;
+  padding:13px 24px; border-radius:999px; width:fit-content;
+  border:none; cursor:pointer; transition:.18s;
+}
+.rv-btn:hover { filter:brightness(.93); transform:translateY(-2px) }
+
+/* 오른쪽 — 사진 카드 */
+.rv-photo {
+  background:var(--warm); display:flex; flex-direction:column;
+}
+.rv-caption {
+  display:flex; align-items:flex-start; justify-content:space-between; gap:12px;
+  padding:clamp(24px,4vw,40px); padding-bottom:clamp(16px,2.5vw,24px);
+}
+.rv-hl {
+  font-size:clamp(20px,3.2vw,28px); font-weight:800;
+  color:var(--navy); line-height:1.3;
+}
+.rv-plus {
+  flex-shrink:0; width:44px; height:44px; border-radius:50%;
+  border:2px solid rgba(20,20,43,.25); color:var(--navy);
+  display:flex; align-items:center; justify-content:center;
+  font-size:22px; font-weight:300; transition:.18s; text-decoration:none;
+}
+.rv-plus:hover { background:var(--navy); color:#fff; border-color:var(--navy) }
+.rv-img { flex:1; min-height:220px; overflow:hidden }
+.rv-img img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s }
+.rv-photo:hover .rv-img img { transform:scale(1.03) }
+
+@media(max-width:680px) {
+  .review-grid { grid-template-columns:1fr }
+  .rv-img { min-height:200px }
+}
 
 /* ===== GALLERY ===== */
 .gallery-grid { columns:3; gap:12px }
@@ -814,23 +858,6 @@ footer p { line-height:1.7; margin-bottom:4px }
 
 <!-- ========== IDENTITY METHOD ========== -->
 <section class="method-sec">
-  <!-- Geometric background shapes -->
-  <div class="geo geo-c1"></div>
-  <div class="geo geo-c2"></div>
-  <div class="geo geo-c3"></div>
-  <div class="geo geo-c4"></div>
-  <div class="geo geo-sq1"></div>
-  <div class="geo geo-sq2"></div>
-  <div class="geo geo-sq3"></div>
-  <div class="geo geo-dm1"></div>
-  <div class="geo geo-dm2"></div>
-  <div class="geo geo-tr1"></div>
-  <div class="geo geo-tr2"></div>
-  <div class="geo geo-dot1"></div>
-  <div class="geo geo-dot2"></div>
-  <div class="geo geo-dot3"></div>
-  <div class="geo geo-dot4"></div>
-
   <div class="wrap method-wrap">
     <div class="sec-head center">
       <img src="/assets/images/eyebrow/identity-method.png" alt="IDENTITY METHOD" class="sec-eyebrow-img">
@@ -862,6 +889,35 @@ footer p { line-height:1.7; margin-bottom:4px }
         <h3>연결하다</h3>
         <p>경험을 진로와 학교생활의 변화로 이어갑니다.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========== REVIEW CARDS ========== -->
+<section class="review-sec">
+  <div class="wrap">
+    <div class="review-grid">
+
+      <!-- 왼쪽: 학교 후기 -->
+      <div class="rv-card rv-text">
+        <div class="rv-quote">"프로그램 끝나고<br>아이들 표정이<br>달라졌어요"</div>
+        <p class="rv-body">수업 시작 10분 만에 전교생이 집중했습니다. 시키지 않아도 스스로 참여하고, 서로를 응원하는 모습이 낯설 정도였어요. 아이덴티치의 방식이 분명 달랐습니다.</p>
+        <p class="rv-who">경기도 ○○초등학교 담임교사</p>
+        <a href="/request" class="rv-btn">무료 맞춤 상담 →</a>
+      </div>
+
+      <!-- 오른쪽: 현장 사진 -->
+      <div class="rv-card rv-photo">
+        <div class="rv-caption">
+          <span class="rv-hl">경험이<br>말을 만든다</span>
+          <a href="/together" class="rv-plus" aria-label="어울림 프로그램 보기">+</a>
+        </div>
+        <div class="rv-img">
+          <img src="/assets/images/gallery/g2.jpg" alt="아이덴티치 프로그램 현장">
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
