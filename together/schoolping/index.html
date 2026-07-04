@@ -1,192 +1,434 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>스쿨핑 | 어울림 프로그램 · 아이덴티치</title>
-<meta name="description" content="강당에 텐트를 치고 협동 체육 미션을 즐기는 실내 캠핑 체험. 초·중·고 전학년, 4교시 150분.">
+<title id="pg-title">스쿨핑 | 어울림 프로그램 · 아이덴티치</title>
+<meta name="description" id="pg-desc" content="">
 <meta property="og:type" content="website">
-<meta property="og:title" content="스쿨핑 | 어울림 프로그램 · 아이덴티치">
-<meta property="og:url" content="https://identeach.co.kr/together/schoolping">
 <meta property="og:locale" content="ko_KR">
-<link rel="canonical" href="https://identeach.co.kr/together/schoolping">
+<link rel="canonical" id="pg-canonical" href="">
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <style>
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@1.3.9/dist/web/static/pretendard.css');
-:root{--primary:#6C47D6;--primary-deep:#5836C0;--navy:#18142E;--accent:#FF7A4D;--bg:#fff;--surface:#F6F4FB;--text:#18142E;--text-2:#6B6880;--border:#E8E5F0;--maxw:780px;--rc:16px;--rb:12px;--shadow:0 8px 30px rgba(24,20,46,.08);--pad-x:clamp(20px,5vw,24px)}
-*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{font-family:'Pretendard',-apple-system,sans-serif;color:var(--text);background:var(--bg);font-weight:500;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-a{color:inherit;text-decoration:none}.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad-x)}h1,h2,h3{letter-spacing:-.03em}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:600;font-size:15px;padding:14px 26px;border-radius:var(--rb);transition:.18s;cursor:pointer;border:none;font-family:inherit;white-space:nowrap}
-.btn-primary{background:var(--primary);color:#fff}.btn-primary:hover{background:var(--primary-deep);transform:translateY(-2px)}
-.btn-ghost{background:transparent;color:var(--primary);border:1.5px solid var(--primary)}.btn-ghost:hover{background:var(--primary);color:#fff}
-header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
-.nav{display:flex;align-items:center;gap:16px;height:64px;max-width:1140px;margin:0 auto;padding:0 var(--pad-x)}
-.nav-links{display:flex;align-items:center;gap:26px;font-size:15px;color:var(--text-2)}.nav-links a:hover{color:var(--text)}
-.nav-cta{padding:9px 18px;font-size:14px}.menu-toggle,.menu-btn{display:none}
-.menu-btn{font-size:24px;background:none;border:none;cursor:pointer;color:var(--text);padding:4px}
-@media(max-width:840px){.menu-btn{display:block;order:3}.nav-cta{order:2}.nav-links{position:absolute;top:64px;left:0;right:0;flex-direction:column;align-items:flex-start;gap:0;background:#fff;border-bottom:1px solid var(--border);max-height:0;overflow:hidden;transition:max-height .28s;font-size:16px}.nav-links a{width:100%;padding:16px var(--pad-x);border-top:1px solid var(--border)}.menu-toggle:checked ~ .nav-links{max-height:240px}}
-.crumb-bar{background:var(--surface);padding:14px 0;border-bottom:1px solid var(--border)}
-.crumb{font-size:13px;color:var(--text-2)}.crumb a:hover{color:var(--primary)}
-.prog-hero{padding:clamp(52px,9vw,88px) 0 clamp(44px,7vw,68px);color:#fff}
-.prog-tag{font-size:13px;font-weight:600;letter-spacing:.06em;opacity:.72;display:block;margin-bottom:18px}
-.prog-hero h1{font-size:clamp(36px,6.5vw,56px);font-weight:800;line-height:1.15;margin-bottom:clamp(32px,5vw,48px)}
-.spec-row{display:flex;flex-wrap:wrap;gap:10px}
-.sitem{background:rgba(255,255,255,.15);border-radius:12px;padding:13px 18px;min-width:110px}
-.sl{font-size:11px;font-weight:600;opacity:.65;margin-bottom:4px;letter-spacing:.04em}
-.sv{font-size:15px;font-weight:700}
-.prog-sec{padding:clamp(52px,8vw,80px) 0}
-.prog-sec--surface{background:var(--surface)}
-.sec-lbl{font-size:11px;font-weight:700;color:var(--primary);letter-spacing:.1em;display:block;margin-bottom:14px}
-.prog-sec h2{font-size:clamp(22px,3.8vw,32px);font-weight:800;margin-bottom:20px;line-height:1.3}
-.prog-desc{font-size:clamp(16px,2.2vw,18px);color:var(--text-2);line-height:1.85;margin-bottom:32px}
-.step-list{display:flex;flex-direction:column;gap:12px}
-.step-item{display:flex;gap:16px;align-items:flex-start;background:var(--surface);border-radius:14px;padding:18px 20px}
-.stn{font-size:11px;font-weight:800;color:var(--primary);white-space:nowrap;padding-top:3px;letter-spacing:.05em;flex:0 0 auto;min-width:52px}
-.stt{font-size:15px;line-height:1.65}.stt strong{font-weight:700;display:block;margin-bottom:2px}
-.benefit-list{display:flex;flex-direction:column;gap:14px}
-.benefit-item{display:flex;gap:16px;align-items:flex-start;background:#fff;border-radius:14px;padding:20px 22px;box-shadow:var(--shadow)}
-.bnum{width:32px;height:32px;border-radius:9px;background:#EEE9FB;color:var(--primary);font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
-.btxt strong{display:block;font-size:16px;font-weight:700;margin-bottom:5px}
-.btxt p{font-size:14px;color:var(--text-2);line-height:1.65}
-.prep-cols{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:30px}
-@media(max-width:440px){.prep-cols{grid-template-columns:1fr}}
-.pcol{border-radius:16px;padding:22px 24px}
-.pcol.school{background:var(--surface)}.pcol.us{background:var(--navy);color:#fff}
-.pcol .pt{font-size:11px;font-weight:700;letter-spacing:.06em;margin-bottom:12px}
-.pcol.school .pt{color:var(--text-2)}.pcol.us .pt{color:var(--accent)}
-.pcol .pv{font-size:15px;font-weight:600;line-height:1.65}
-.cta-btns{display:flex;gap:12px;flex-wrap:wrap}
-.other-sec{padding:clamp(52px,8vw,80px) 0;background:var(--surface)}
-.other-h{font-size:clamp(18px,3vw,22px);font-weight:800;margin-bottom:22px}
-.other-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-@media(max-width:640px){.other-grid{grid-template-columns:repeat(2,1fr)}}
-.ocard{display:block;border-radius:var(--rc);overflow:hidden;transition:.18s;color:var(--text);background:#fff;box-shadow:0 2px 12px rgba(24,20,46,.07)}
-.ocard:hover{transform:translateY(-4px)}
-.ocard-poster{position:relative;height:clamp(110px,18vw,150px)}
-.ocard-poster .onum{position:absolute;left:10px;bottom:-4px;font-size:50px;font-weight:800;color:rgba(255,255,255,.85);line-height:1}
-.ocard-poster .ottl{position:absolute;right:12px;bottom:12px;color:#fff;font-weight:800;font-size:14px;text-align:right;line-height:1.25}
-.ocard-poster .otag{position:absolute;top:10px;left:10px;font-size:10px;font-weight:600;background:rgba(255,255,255,.9);color:#C9521F;padding:3px 8px;border-radius:999px}
-.ocard-body{padding:14px 16px}
-.ocard-body h4{font-size:14px;font-weight:700;margin-bottom:3px}
-.ocard-body p{font-size:12px;color:var(--text-2)}
-footer{background:#0F0C20;color:#B5B1C9;padding:44px 0;font-size:14px}footer p{margin-bottom:4px}
+:root { --blue:#1F2392; --yellow:#FFD84D; --navy:#14142B; --gray:#6F7287; --warm:#F7F7FA; --white:#fff; --border:#E8E8F0; --maxw:1140px; --pad-x:clamp(18px,5vw,40px); --rc:14px }
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'Pretendard',-apple-system,sans-serif;color:var(--navy);background:var(--white);font-weight:400;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none} img{max-width:100%;height:auto;display:block} h1,h2,h3{letter-spacing:-.03em}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad-x)}
+.sec{padding:clamp(52px,7vw,80px) 0}
+.sec--warm{background:var(--warm)} .sec--white{background:var(--white)}
+.sec+.sec{border-top:1px solid var(--border)}
+header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdrop-filter:blur(16px)}
+.nav{display:flex;align-items:center;gap:16px;height:72px;background:#fff;border-radius:0 0 20px 20px;box-shadow:0 4px 20px rgba(0,0,0,.08);padding:0 clamp(20px,3vw,36px);max-width:var(--maxw);margin:0 auto}
+.nav-logo{margin-right:auto;display:flex;align-items:center}
+.nav-links{display:flex;align-items:center;gap:4px;font-size:15px;font-weight:500;color:var(--gray)}
+.nav-links a{padding:7px 14px;border-radius:999px;transition:color .15s,background .15s;white-space:nowrap}
+.nav-links a:hover{color:var(--navy)}
+.nav-links a.nav-active{background:var(--navy);color:#fff;font-weight:700}
+.nav-cta{display:inline-flex;align-items:center;font-family:inherit;font-weight:700;background:var(--blue);color:#fff;font-size:14px;padding:9px 18px;border-radius:999px;white-space:nowrap;border:none;cursor:pointer}
+.menu-toggle,.menu-btn{display:none}
+.menu-btn{font-size:22px;background:none;border:none;cursor:pointer;color:var(--navy);padding:4px}
+@media(max-width:860px){.menu-btn{display:block;order:3}.nav-cta{order:2}.nav-links{position:absolute;top:72px;left:0;right:0;flex-direction:column;align-items:flex-start;gap:0;background:#fff;border-radius:24px;box-shadow:0 8px 28px rgba(0,0,0,.12);max-height:0;overflow:hidden;transition:max-height .28s;font-size:16px;z-index:200}.nav-links a{width:100%;padding:14px clamp(20px,5vw,24px);border-radius:0;border-top:1px solid var(--border)}.menu-toggle:checked~.nav-links{max-height:360px}}
+.crumb-bar{background:var(--white);border-bottom:1px solid var(--border);padding:11px 0}
+.crumb{font-size:12px;color:var(--gray);display:flex;align-items:center;gap:5px}
+.crumb a:hover{color:var(--blue)} .crumb-sep{opacity:.35}
+.hero-banner{width:100%;overflow:hidden;background:var(--navy);border-bottom:1px solid var(--border)}
+.hero-banner img{width:100%;display:block;aspect-ratio:16/7;object-fit:cover;max-height:520px}
+.hero-banner-empty{aspect-ratio:16/7;max-height:520px;background:linear-gradient(135deg,#1a1f5e 0%,#2d3494 100%);display:flex;align-items:center;justify-content:center;font-size:14px;color:rgba(255,255,255,.4)}
+.hero-info{background:var(--white);padding:clamp(28px,4vw,44px) 0 clamp(32px,4vw,48px);border-bottom:3px solid var(--border)}
+.hero-tagline{display:inline-flex;align-items:center;gap:6px;background:var(--yellow);color:var(--navy);font-size:12px;font-weight:800;letter-spacing:.05em;padding:5px 14px;border-radius:999px;margin-bottom:14px}
+.hero-h1{font-size:clamp(26px,4.5vw,42px);font-weight:800;color:var(--navy);line-height:1.15;margin-bottom:10px}
+.hero-sub{font-size:clamp(14px,1.8vw,16px);color:var(--gray);line-height:1.7;margin-bottom:28px;max-width:44em}
+.info-strip{display:flex;gap:10px;flex-wrap:wrap}
+.info-chip{display:flex;align-items:center;gap:10px;background:var(--warm);border:1px solid var(--border);border-radius:10px;padding:10px 16px}
+.info-chip-label{font-size:11px;font-weight:700;color:var(--gray);letter-spacing:.04em}
+.info-chip-val{font-size:14px;font-weight:800;color:var(--navy);line-height:1.3}
+@media(max-width:600px){.info-strip{gap:8px}.info-chip{padding:8px 12px}}
+.activity-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(32px,5vw,60px);align-items:center}
+.activity-photo{border-radius:18px;overflow:hidden;aspect-ratio:4/3;background:var(--border);box-shadow:0 6px 32px rgba(20,20,43,.1)}
+.activity-photo img{width:100%;height:100%;object-fit:cover}
+.activity-eyebrow{display:inline-flex;align-items:center;gap:6px;background:rgba(31,35,146,.07);color:var(--blue);border:1px solid rgba(31,35,146,.14);font-size:11px;font-weight:700;letter-spacing:.1em;padding:4px 12px;border-radius:999px;margin-bottom:16px}
+.activity-h2{font-size:clamp(20px,3vw,30px);font-weight:800;color:var(--navy);line-height:1.25;margin-bottom:20px;white-space:pre-line}
+.bullet-list{display:flex;flex-direction:column;gap:12px}
+.bullet-item{display:flex;align-items:flex-start;gap:12px;font-size:clamp(14px,1.6vw,15px);color:var(--navy);font-weight:500}
+.bullet-dot{width:6px;height:6px;border-radius:50%;background:var(--blue);flex-shrink:0;margin-top:7px}
+@media(max-width:720px){.activity-grid{grid-template-columns:1fr}.activity-photo{aspect-ratio:16/10}}
+.kw-sec-title{font-size:clamp(11px,1.5vw,13px);font-weight:700;letter-spacing:.1em;color:var(--gray);margin-bottom:16px;text-transform:uppercase}
+.kw-h2{font-size:clamp(20px,3vw,28px);font-weight:800;color:var(--navy);margin-bottom:24px}
+.kw-wrap{display:flex;flex-wrap:wrap;gap:8px}
+.kw-chip{font-size:14px;font-weight:600;padding:9px 18px;border-radius:999px;cursor:default;transition:transform .15s}
+.kw-chip:hover{transform:translateY(-2px)}
+.kw-chip--a{background:rgba(31,35,146,.07);color:var(--blue);border:1.5px solid rgba(31,35,146,.18)}
+.kw-chip--b{background:var(--white);color:var(--navy);border:1.5px solid var(--border)}
+.kw-chip--c{background:rgba(255,216,77,.18);color:#7A6200;border:1.5px solid rgba(255,216,77,.5)}
+.xp-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:32px}
+.xp-card{background:var(--white);border:1px solid var(--border);border-radius:var(--rc);padding:20px 16px;display:flex;flex-direction:column;gap:14px;transition:box-shadow .2s,transform .2s}
+.xp-card:hover{transform:translateY(-3px);box-shadow:0 6px 24px rgba(20,20,43,.08)}
+.xp-num{font-size:32px;font-weight:900;color:var(--yellow);line-height:1}
+.xp-action{font-size:clamp(13px,1.5vw,14px);font-weight:700;color:var(--navy);line-height:1.45}
+.xp-detail{font-size:12px;color:var(--gray);margin-top:2px}
+@media(max-width:900px){.xp-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:560px){.xp-grid{grid-template-columns:repeat(2,1fr)}}
+.proc-row{display:flex;align-items:flex-start;position:relative;margin-top:36px}
+.proc-row::before{content:'';position:absolute;top:23px;left:calc(10% + 24px);right:calc(10% + 24px);height:2px;background:var(--border);z-index:0}
+.proc-step{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;padding:0 6px}
+.proc-num{width:48px;height:48px;border-radius:50%;background:var(--blue);color:#fff;font-size:15px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;z-index:1}
+.proc-title{font-size:clamp(12px,1.5vw,14px);font-weight:800;color:var(--navy);line-height:1.4}
+.proc-desc{font-size:clamp(11px,1.3vw,12px);color:var(--gray);line-height:1.55}
+@media(max-width:700px){.proc-row{flex-direction:column;gap:10px}.proc-row::before{display:none}.proc-step{flex-direction:row;align-items:flex-start;text-align:left;gap:16px;width:100%;background:var(--white);border:1px solid var(--border);border-radius:var(--rc);padding:16px 18px}.proc-num{flex-shrink:0;width:38px;height:38px;font-size:13px}.proc-body{display:flex;flex-direction:column;gap:3px}.proc-title{font-size:14px}.proc-desc{font-size:12px}}
+.struct-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:32px}
+.struct-card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:28px 20px 22px;text-align:center}
+.struct-vis{height:80px;display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.dp{width:6px;height:16px;background:var(--blue);border-radius:1.5px;flex-shrink:0}
+.dp-y{background:var(--yellow)}
+.sv-row{display:flex;gap:3px;align-items:center}
+.sv-col{display:inline-flex;flex-direction:column;gap:3px;align-items:flex-start}
+.struct-name{font-size:15px;font-weight:800;color:var(--navy);margin-bottom:7px}
+.struct-desc{font-size:13px;color:var(--gray);line-height:1.6}
+@media(max-width:600px){.struct-grid{grid-template-columns:1fr}}
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:32px}
+.g-item{display:flex;flex-direction:column;gap:9px}
+.g-frame{aspect-ratio:3/4;border-radius:12px;overflow:hidden;background:var(--border)}
+.g-frame img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.g-item:hover .g-frame img{transform:scale(1.05)}
+.g-cap{font-size:12px;color:var(--gray);text-align:center}
+@media(max-width:720px){.gallery-grid{grid-template-columns:repeat(2,1fr)}.g-frame{aspect-ratio:4/3}}
+.sec-label{display:inline-flex;align-items:center;gap:5px;background:rgba(31,35,146,.07);color:var(--blue);border:1px solid rgba(31,35,146,.14);font-size:11px;font-weight:700;letter-spacing:.1em;padding:4px 12px;border-radius:999px;margin-bottom:14px}
+.sec-label::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--blue);flex-shrink:0}
+.sec-h2{font-size:clamp(20px,3vw,28px);font-weight:800;color:var(--navy);line-height:1.25;white-space:pre-line}
+footer{background:#0F0C20;color:#B5B1C9;padding:44px 0;font-size:13px;text-align:center}
+footer img{margin:0 auto 14px}
+footer div{margin-bottom:4px}
 </style>
 </head>
 <body>
+
 <header>
   <div class="nav">
-    <a href="/" style="margin-right:auto"><img src="/assets/images/logo.png" alt="아이덴티치" style="height:48px;display:block;"></a>
+    <a href="/" class="nav-logo">
+      <img src="/assets/images/logo.png" alt="아이덴티치" style="height:48px;">
+    </a>
     <input type="checkbox" id="nav-toggle" class="menu-toggle">
-    <nav class="nav-links"><a href="/together">어울림 프로그램</a><a href="/career">진로 프로그램</a><a href="/about">회사소개</a></nav>
-    <a href="/request" class="btn btn-primary nav-cta">무료 맞춤 요청</a>
+    <nav class="nav-links" id="nav-links"></nav>
+    <a href="/request" class="nav-cta">무료 맞춤 요청</a>
     <label for="nav-toggle" class="menu-btn" aria-label="메뉴">☰</label>
   </div>
 </header>
 
 <div class="crumb-bar">
-  <div class="wrap"><nav class="crumb"><a href="/">홈</a> › <a href="/together">어울림 프로그램</a> › 스쿨핑</nav></div>
+  <div class="wrap">
+    <nav class="crumb" id="pg-crumb"></nav>
+  </div>
 </div>
 
-<main>
-  <section class="prog-hero" style="background:#2E5A7A">
-    <div class="wrap">
-      <span class="prog-tag">어울림 · 실내 캠핑 체험</span>
-      <h1>스쿨핑</h1>
-      <div class="spec-row">
-        <div class="sitem"><div class="sl">대상</div><div class="sv">초·중·고 전학년</div></div>
-        <div class="sitem"><div class="sl">시간</div><div class="sv">4교시 · 150분</div></div>
-        <div class="sitem"><div class="sl">인원</div><div class="sv">최대 한 학년</div></div>
-        <div class="sitem"><div class="sl">장소</div><div class="sv">강당 · 교실</div></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="prog-sec">
-    <div class="wrap">
-      <span class="sec-lbl">PROGRAM</span>
-      <h2>어떤 프로그램인가요?</h2>
-      <p class="prog-desc">강당·교실에 텐트를 치고 팀별로 꾸미며 협동 체육 미션을 즐기는 실내 캠핑 체험입니다. 야외 캠핑을 학교 안에서 경험하는 특별한 하루예요.</p>
-      <div class="step-list">
-        <div class="step-item">
-          <span class="stn">STEP 1</span>
-          <div class="stt"><strong>텐트 꾸미기</strong>팀별로 텐트를 꾸미고 팀명·구호를 만들어요</div>
-        </div>
-        <div class="step-item">
-          <span class="stn">STEP 2</span>
-          <div class="stt"><strong>협동 체육</strong>바운드볼·파이프라인 등 협동 미션을 함께 즐겨요</div>
-        </div>
-        <div class="step-item">
-          <span class="stn">STEP 3</span>
-          <div class="stt"><strong>마무리</strong>우승팀을 가리고 사진·설문으로 마무리해요</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="prog-sec prog-sec--surface">
-    <div class="wrap">
-      <span class="sec-lbl">TEACHER</span>
-      <h2>선생님이 편한 이유</h2>
-      <div class="benefit-list">
-        <div class="benefit-item">
-          <span class="bnum">1</span>
-          <div class="btxt"><strong>텐트만 봐도 아이들이 들떠요</strong><p>별다른 안내 없이도 학생들이 자발적으로 참여해요</p></div>
-        </div>
-        <div class="benefit-item">
-          <span class="bnum">2</span>
-          <div class="btxt"><strong>체육대회와 연계해요</strong><p>체육 활동과 접목하거나 체육대회 프로그램으로 운영할 수 있어요</p></div>
-        </div>
-        <div class="benefit-item">
-          <span class="bnum">3</span>
-          <div class="btxt"><strong>학교 최고의 기억이 돼요</strong><p>학생들이 가장 오래 기억하는 학교 활동 중 하나예요</p></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="prog-sec">
-    <div class="wrap">
-      <span class="sec-lbl">READY</span>
-      <h2>준비는 저희가 합니다</h2>
-      <div class="prep-cols">
-        <div class="pcol school"><div class="pt">학교 준비</div><div class="pv">빔프로젝터<br>공간 정리</div></div>
-        <div class="pcol us"><div class="pt">아이덴티치 제공</div><div class="pv">텐트 · 음향 · 활동 도구<br>진행 인력 일체</div></div>
-      </div>
-      <div class="cta-btns">
-        <a href="/request" class="btn btn-primary">무료 맞춤 요청</a>
-        <a href="/proposal.pdf" download class="btn btn-ghost">제안서 다운로드</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="other-sec">
-    <div class="wrap">
-      <h2 class="other-h">다른 프로그램도 있어요</h2>
-      <div class="other-grid">
-        <a href="/together/domino" class="ocard"><div class="ocard-poster" style="background:#3A2F66"><span class="otag">어울림</span><span class="onum">1</span><span class="ottl">도미노<br>챌린지</span></div><div class="ocard-body"><h4>도미노 챌린지</h4><p>협력 미션 · 학년 단위</p></div></a>
-        <a href="/together/brumarble" class="ocard"><div class="ocard-poster" style="background:#6C47D6"><span class="otag">어울림</span><span class="onum">2</span><span class="ottl">협동<br>브루마블</span></div><div class="ocard-body"><h4>협동 브루마블</h4><p>학급 협동 보드게임</p></div></a>
-        <a href="/together/facilitation" class="ocard"><div class="ocard-poster" style="background:#2A2342"><span class="otag">어울림</span><span class="onum">4</span><span class="ottl">미션<br>퍼실리테이션</span></div><div class="ocard-body"><h4>미션 퍼실리테이션</h4><p>리더십·소통 교육</p></div></a>
-        <a href="/together/violence-prevention" class="ocard"><div class="ocard-poster" style="background:#C24A22"><span class="otag">어울림</span><span class="onum">5</span><span class="ottl">학교폭력예방<br>레크리에이션</span></div><div class="ocard-body"><h4>학교폭력예방 레크</h4><p>전교생 화합</p></div></a>
-      </div>
-    </div>
-  </section>
-</main>
+<main id="pg-root"></main>
 
 <footer>
-  <div class="wrap">
-    <div><img src="/assets/images/logo.png" alt="아이덴티치" style="height:28px;display:block;margin-bottom:14px;opacity:.85;filter:invert(1);"></div>
-    <p>경험을 설계하는 진로·어울림 전문 교육기획사 · 대표 진성재</p>
-    <p>010-4084-8962 · idengroup@naver.com</p>
-    <p style="margin-top:16px;color:#6E6A85">© 2026 IDenTeach (아이덴티치).</p>
-  </div>
+  <img src="/assets/images/logo.png" alt="아이덴티치" style="height:28px;opacity:.85;filter:invert(1);">
+  <div>경험을 설계하는 진로·어울림 전문 콘텐츠 기획사</div>
+  <div style="margin-top:6px">010-4084-8962 · idengroup@naver.com</div>
+  <div style="margin-top:14px;color:#6E6A85">© 2026 IDenTeach (아이덴티치).</div>
 </footer>
+
+<script>
+const programData = {
+  pageTitle: "스쿨핑 | 어울림 프로그램 · 아이덴티치",
+  pageDesc: "팀이 함께 움직이며 협력을 경험하는 스포츠형 어울림 프로그램.",
+  canonicalUrl: "https://identeach.co.kr/together/schoolping",
+  navActive: "/together",
+  crumbs: [
+    { label:"홈", href:"/" },
+    { label:"어울림 프로그램", href:"/together" },
+    { label:"스쿨핑", href:null }
+  ],
+  heroImage: { src:"/assets/images/programs/together/schoolping/스쿨핑사진1.jpg", alt:"스쿨핑 활동 전체 장면" },
+  category: "어울림 프로그램",
+  title: "스쿨핑",
+  tagline: "팀이 함께 움직이고 협력하는 스포츠형 어울림 활동",
+  description: "규칙을 함께 익히고 팀으로 전략을 세우며\n움직임 속에서 자연스럽게 협력을 경험합니다.",
+  info: [
+    { label:"대상",  value:"초등 ~ 고등학생" },
+    { label:"시간",  value:"2교시" },
+    { label:"인원",  value:"20명 ~ 학년 단위" },
+    { label:"장소",  value:"강당 · 체육관 · 운동장" }
+  ],
+  activity: {
+    image: { src:"/assets/images/programs/together/schoolping/스쿨핑사진2.jpg", alt:"학생들이 스쿨핑 게임에 참여하는 모습" },
+    headline: "몸을 움직이며\n팀이 하나가 됩니다",
+    bullets: [
+      "팀별로 전략을 세우고 역할을 맞춥니다",
+      "움직임 속에서 자연스럽게 협력을 경험합니다",
+      "결과보다 함께하는 과정에 집중합니다"
+    ]
+  },
+  keywords: [
+    { label:"신학기 관계 형성",  type:"a" },
+    { label:"스포츠 어울림",      type:"a" },
+    { label:"학년 전체 활동",    type:"a" },
+    { label:"교내 행사",         type:"b" },
+    { label:"체육 연계",         type:"b" },
+    { label:"팀빌딩",            type:"b" },
+    { label:"공동체 활동",       type:"c" },
+    { label:"학급 단위 활동",    type:"c" }
+  ],
+  studentExperiences: [
+    { action:"팀 전략을\n함께 세웁니다",     detail:"머리를 맞대며" },
+    { action:"서로의 역할을\n맞춥니다",       detail:"소통하며" },
+    { action:"응원하고\n격려합니다",          detail:"팀원을 북돋으며" },
+    { action:"규칙을\n함께 지킵니다",         detail:"공정하게" },
+    { action:"결과보다\n과정을 즐깁니다",     detail:"함께 웃으며" }
+  ],
+  process: {
+    steps: [
+      { title:"규칙 안내",    desc:"게임 방식 이해" },
+      { title:"팀 구성",      desc:"역할 분담" },
+      { title:"연습 라운드",  desc:"규칙 익히기" },
+      { title:"본 게임",      desc:"전략·협력 적용" },
+      { title:"결과 공유",    desc:"소감·회고 나누기" }
+    ]
+  },
+  structuresSection: {
+    label: "게임 구성 예시",
+    title: "게임 구성 예시",
+    items: [
+      { name:"예선 라운드",      type:"aspect", desc:"팀별 기초 전략을 익히는 단계입니다." },
+      { name:"팀 전략 타임",     type:"aspect", desc:"작전과 역할을 함께 조율합니다." },
+      { name:"결승 챌린지",      type:"aspect", desc:"전 팀이 참여하는 최종 라운드입니다." }
+    ]
+  },
+  gallery: {
+    images: [
+      { src:"/assets/images/programs/together/schoolping/스쿨핑사진1.jpg", alt:"스쿨핑 활동 전체",  caption:"전체 활동" },
+      { src:"/assets/images/programs/together/schoolping/스쿨핑사진2.jpg", alt:"게임 진행 장면",   caption:"게임 진행" },
+      { src:"/assets/images/programs/together/schoolping/스쿨핑사진3.jpg", alt:"팀 전략 장면",     caption:"팀 전략 타임" },
+      { src:"/assets/images/programs/together/schoolping/스쿨핑사진3.jpg", alt:"마무리 장면",      caption:"결과 공유" }
+    ]
+  }
+};
+
+/* ══════════════════════════════════════════════════════
+   렌더링 엔진
+══════════════════════════════════════════════════════ */
+
+const NAV_ITEMS = [
+  { label:"어울림 프로그램", href:"/together" },
+  { label:"진로 프로그램",   href:"/career" },
+  { label:"교내 행사",       href:"/events" },
+  { label:"회사소개",        href:"/about" }
+];
+
+function nl(s){ return (s||'').replace(/\n/g,'<br>') }
+function dp(n, yellow){ const c=yellow?'dp dp-y':'dp'; return Array.from({length:n},()=>`<div class="${c}"></div>`).join('') }
+
+function structVis(type, i) {
+  if (type === 'line') {
+    return `<div class="sv-row">${dp(10)}</div>`;
+  }
+  if (type === 'corner') {
+    return `
+      <div class="sv-col">
+        ${dp(3)}
+        <div class="sv-row">${dp(7)}</div>
+      </div>`;
+  }
+  if (type === 'zones') {
+    return `
+      <div style="display:flex;flex-direction:column;gap:8px;align-items:center">
+        <div style="display:flex;gap:14px;align-items:flex-end">
+          <div style="display:flex;flex-direction:column;gap:2px;align-items:center">
+            <span style="font-size:9px;color:var(--gray);font-weight:700;margin-bottom:3px">팀A</span>
+            <div class="sv-row">${dp(3)}</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:2px;align-items:center">
+            <span style="font-size:9px;color:var(--gray);font-weight:700;margin-bottom:3px">팀B</span>
+            <div class="sv-row">${dp(3)}</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:2px;align-items:center">
+            <span style="font-size:9px;color:var(--gray);font-weight:700;margin-bottom:3px">팀C</span>
+            <div class="sv-row">${dp(3)}</div>
+          </div>
+        </div>
+        <div style="font-size:10px;color:var(--gray)">↓ 연결</div>
+        <div class="sv-row">${dp(7,true)}</div>
+      </div>`;
+  }
+  /* default: colored number circle */
+  return `<div style="width:56px;height:56px;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:900">${i+1}</div>`;
+}
+
+function renderNav(active) {
+  document.getElementById('nav-links').innerHTML = NAV_ITEMS.map(item =>
+    `<a href="${item.href}"${item.href===active?' class="nav-active"':''}>${item.label}</a>`
+  ).join('');
+}
+
+function renderCrumb(crumbs) {
+  document.getElementById('pg-crumb').innerHTML = crumbs.map((c,i) =>
+    i < crumbs.length-1
+      ? `<a href="${c.href}">${c.label}</a><span class="crumb-sep">›</span>`
+      : `<span>${c.label}</span>`
+  ).join('');
+}
+
+function renderMeta(d) {
+  document.getElementById('pg-title').textContent = d.pageTitle;
+  document.getElementById('pg-desc').content      = d.pageDesc;
+  document.getElementById('pg-canonical').href    = d.canonicalUrl;
+}
+
+function renderHero(d) {
+  const banner = d.heroImage.src
+    ? `<div class="hero-banner"><img src="${d.heroImage.src}" alt="${d.heroImage.alt}" loading="eager"></div>`
+    : `<div class="hero-banner"><div class="hero-banner-empty">활동 사진을 넣어주세요</div></div>`;
+
+  return `
+${banner}
+<div class="hero-info">
+  <div class="wrap">
+    <div class="hero-tagline">${d.tagline}</div>
+    <h1 class="hero-h1">${d.title}</h1>
+    <p class="hero-sub">${nl(d.description)}</p>
+    <div class="info-strip">
+      ${d.info.map(item=>`
+      <div class="info-chip">
+        <div>
+          <div class="info-chip-label">${item.label}</div>
+          <div class="info-chip-val">${item.value}</div>
+        </div>
+      </div>`).join('')}
+    </div>
+  </div>
+</div>`;
+}
+
+function renderActivity(a) {
+  const imgHtml = a.image.src
+    ? `<img src="${a.image.src}" alt="${a.image.alt}" loading="lazy">`
+    : '';
+  return `
+<section class="sec sec--warm">
+  <div class="wrap">
+    <div class="activity-grid">
+      <div class="activity-photo">${imgHtml}</div>
+      <div>
+        <span class="activity-eyebrow">PROGRAM OVERVIEW</span>
+        <h2 class="activity-h2">${nl(a.headline)}</h2>
+        <div class="bullet-list">
+          ${a.bullets.map(b=>`
+          <div class="bullet-item">
+            <div class="bullet-dot"></div>
+            <span>${b}</span>
+          </div>`).join('')}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>`;
+}
+
+function renderKeywords(kws) {
+  return `
+<section class="sec sec--white">
+  <div class="wrap">
+    <div class="kw-sec-title">활용 장면</div>
+    <h2 class="kw-h2">어디서, 언제 쓸 수 있나요?</h2>
+    <div class="kw-wrap">
+      ${kws.map(k=>`<span class="kw-chip kw-chip--${k.type}">${k.label}</span>`).join('')}
+    </div>
+  </div>
+</section>`;
+}
+
+function renderStudentXP(items) {
+  return `
+<section class="sec sec--warm">
+  <div class="wrap">
+    <span class="sec-label">이 활동에서 학생들은</span>
+    <div class="xp-grid">
+      ${items.map((x,i)=>`
+      <div class="xp-card">
+        <div class="xp-num">${String(i+1).padStart(2,'0')}</div>
+        <div class="xp-action">${nl(x.action)}</div>
+        <div class="xp-detail">${x.detail}</div>
+      </div>`).join('')}
+    </div>
+  </div>
+</section>`;
+}
+
+function renderProcess(proc) {
+  return `
+<section class="sec sec--white">
+  <div class="wrap">
+    <span class="sec-label">진행 흐름</span>
+    <h2 class="sec-h2">이렇게 진행됩니다</h2>
+    <div class="proc-row">
+      ${proc.steps.map((s,i)=>`
+      <div class="proc-step">
+        <div class="proc-num">${i+1}</div>
+        <div class="proc-body">
+          <div class="proc-title">${s.title}</div>
+          <div class="proc-desc">${s.desc}</div>
+        </div>
+      </div>`).join('')}
+    </div>
+  </div>
+</section>`;
+}
+
+function renderStructures(d) {
+  return `
+<section class="sec sec--warm">
+  <div class="wrap">
+    <span class="sec-label">${d.structuresSection.label}</span>
+    <h2 class="sec-h2">${d.structuresSection.title}</h2>
+    <div class="struct-grid">
+      ${d.structuresSection.items.map((s,i)=>`
+      <div class="struct-card">
+        <div class="struct-vis">${structVis(s.type, i)}</div>
+        <div class="struct-name">${s.name}</div>
+        <div class="struct-desc">${s.desc}</div>
+      </div>`).join('')}
+    </div>
+  </div>
+</section>`;
+}
+
+function renderGallery(g) {
+  return `
+<section class="sec sec--white">
+  <div class="wrap">
+    <span class="sec-label">활동 모습</span>
+    <h2 class="sec-h2" style="margin-bottom:0">현장 사진</h2>
+    <div class="gallery-grid">
+      ${g.images.map(img=>`
+      <div class="g-item">
+        <div class="g-frame"><img src="${img.src}" alt="${img.alt}" loading="lazy"></div>
+        <p class="g-cap">${img.caption}</p>
+      </div>`).join('')}
+    </div>
+  </div>
+</section>`;
+}
+
+function renderPage(d) {
+  renderMeta(d);
+  renderNav(d.navActive);
+  renderCrumb(d.crumbs);
+  document.getElementById('pg-root').innerHTML =
+    renderHero(d) +
+    renderActivity(d.activity) +
+    renderKeywords(d.keywords) +
+    renderStudentXP(d.studentExperiences) +
+    renderProcess(d.process) +
+    renderStructures(d) +
+    renderGallery(d.gallery);
+}
+
+renderPage(programData);
+</script>
+
 </body>
 </html>
-
-
-
-
-
-
-
