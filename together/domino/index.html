@@ -18,23 +18,20 @@
   --yellow: #FFD84D;
   --navy:   #14142B;
   --gray:   #6F7287;
-  --warm:   #FFFDF7;
+  --warm:   #F7F7FA;
   --white:  #fff;
   --border: #E8E8F0;
-  --maxw:   1180px;
+  --maxw:   1140px;
   --pad-x:  clamp(18px,5vw,40px);
-  --rc:     16px;
-  --shadow: 0 4px 20px rgba(20,20,43,.08);
-  --sec-y:  clamp(72px,10vw,104px);
+  --rc:     14px;
 }
 
-/* ── 리셋 ── */
 *,*::before,*::after { margin:0; padding:0; box-sizing:border-box }
 html { scroll-behavior:smooth; -webkit-text-size-adjust:100% }
 body {
   font-family:'Pretendard',-apple-system,sans-serif;
-  color:var(--navy); background:var(--warm);
-  font-weight:400; line-height:1.7;
+  color:var(--navy); background:var(--white);
+  font-weight:400; line-height:1.65;
   -webkit-font-smoothing:antialiased; overflow-x:hidden;
 }
 a { color:inherit; text-decoration:none }
@@ -42,24 +39,24 @@ img { max-width:100%; height:auto; display:block }
 h1,h2,h3 { letter-spacing:-.03em }
 .wrap { max-width:var(--maxw); margin:0 auto; padding:0 var(--pad-x) }
 
+/* ── 섹션 공통 패딩 ── */
+.sec { padding:clamp(52px,7vw,80px) 0 }
+.sec--warm { background:var(--warm) }
+.sec--white { background:var(--white) }
+.sec--blue { background:var(--blue) }
+.sec + .sec { border-top:1px solid var(--border) }
+
 /* ── 헤더 ── */
-header {
-  position:sticky; top:0; z-index:100;
-  background:rgba(255,255,255,.96); backdrop-filter:blur(16px);
-}
+header { position:sticky; top:0; z-index:100; background:rgba(255,255,255,.96); backdrop-filter:blur(16px) }
 .nav {
   display:flex; align-items:center; gap:16px; height:72px;
   background:#fff; border-radius:0 0 20px 20px;
   box-shadow:0 4px 20px rgba(0,0,0,.08);
-  padding:0 clamp(20px,3vw,36px);
-  max-width:var(--maxw); margin:0 auto;
+  padding:0 clamp(20px,3vw,36px); max-width:var(--maxw); margin:0 auto;
 }
 .nav-logo { margin-right:auto; display:flex; align-items:center }
-.nav-links {
-  display:flex; align-items:center; gap:4px;
-  font-size:15px; font-weight:500; color:var(--gray);
-}
-.nav-links a { padding:7px 14px; border-radius:999px; transition:color .15s, background .15s; white-space:nowrap }
+.nav-links { display:flex; align-items:center; gap:4px; font-size:15px; font-weight:500; color:var(--gray) }
+.nav-links a { padding:7px 14px; border-radius:999px; transition:color .15s,background .15s; white-space:nowrap }
 .nav-links a:hover { color:var(--navy) }
 .nav-links a.nav-active { background:var(--navy); color:#fff; font-weight:700 }
 .nav-cta {
@@ -84,164 +81,154 @@ header {
 }
 
 /* ── 브레드크럼 ── */
-.crumb-bar { background:var(--white); border-bottom:1px solid var(--border); padding:12px 0 }
-.crumb { font-size:13px; color:var(--gray); display:flex; align-items:center; gap:6px }
+.crumb-bar { background:var(--white); border-bottom:1px solid var(--border); padding:11px 0 }
+.crumb { font-size:12px; color:var(--gray); display:flex; align-items:center; gap:5px }
 .crumb a:hover { color:var(--blue) }
-.crumb-sep { opacity:.4 }
+.crumb-sep { opacity:.35 }
 
 /* ══════════════════════════════════
-   01. HERO
+   [A] 히어로 배너 이미지 (전체 폭)
 ══════════════════════════════════ */
-.hero-sec {
+.hero-banner {
+  width:100%; overflow:hidden;
+  background:var(--navy);
+  border-bottom:1px solid var(--border);
+}
+.hero-banner img {
+  width:100%; display:block;
+  aspect-ratio:16/7; object-fit:cover;
+  max-height:520px;
+}
+.hero-banner-empty {
+  aspect-ratio:16/7; max-height:520px;
+  background:linear-gradient(135deg,#1a1f5e 0%,#2d3494 100%);
+  display:flex; align-items:center; justify-content:center;
+  font-size:14px; color:rgba(255,255,255,.4);
+}
+
+/* ── 히어로 텍스트 영역 ── */
+.hero-info {
   background:var(--white);
-  padding:clamp(52px,8vw,88px) 0 clamp(44px,7vw,72px);
-  border-bottom:1px solid var(--border);
+  padding:clamp(28px,4vw,44px) 0 clamp(32px,4vw,48px);
+  border-bottom:3px solid var(--border);
 }
-.hero-grid {
-  display:grid; grid-template-columns:1fr 1fr;
-  gap:clamp(40px,6vw,80px); align-items:center;
+.hero-tagline {
+  display:inline-flex; align-items:center; gap:6px;
+  background:var(--yellow); color:var(--navy);
+  font-size:12px; font-weight:800; letter-spacing:.05em;
+  padding:5px 14px; border-radius:999px; margin-bottom:14px;
 }
-.hero-chip {
+.hero-h1 {
+  font-size:clamp(26px,4.5vw,42px); font-weight:800;
+  color:var(--navy); line-height:1.15; margin-bottom:10px;
+}
+.hero-sub {
+  font-size:clamp(14px,1.8vw,16px); color:var(--gray);
+  line-height:1.7; margin-bottom:28px; max-width:44em;
+}
+.info-strip { display:flex; gap:10px; flex-wrap:wrap }
+.info-chip {
+  display:flex; align-items:center; gap:10px;
+  background:var(--warm); border:1px solid var(--border);
+  border-radius:10px; padding:10px 16px;
+}
+.info-chip-label { font-size:11px; font-weight:700; color:var(--gray); letter-spacing:.04em }
+.info-chip-val { font-size:14px; font-weight:800; color:var(--navy); line-height:1.3 }
+@media(max-width:600px) { .info-strip { gap:8px } .info-chip { padding:8px 12px } }
+
+/* ══════════════════════════════════
+   [B] 활동 이미지 + 프로그램 요약
+══════════════════════════════════ */
+.activity-grid {
+  display:grid; grid-template-columns:1.15fr 1fr;
+  gap:clamp(32px,5vw,60px); align-items:center;
+}
+.activity-photo {
+  border-radius:18px; overflow:hidden;
+  aspect-ratio:4/3; background:var(--border);
+  box-shadow:0 6px 32px rgba(20,20,43,.1);
+}
+.activity-photo img { width:100%; height:100%; object-fit:cover }
+.activity-eyebrow {
   display:inline-flex; align-items:center; gap:6px;
   background:rgba(31,35,146,.07); color:var(--blue);
   border:1px solid rgba(31,35,146,.14);
-  font-size:11px; font-weight:700; letter-spacing:.12em;
-  padding:5px 13px; border-radius:999px; margin-bottom:18px;
+  font-size:11px; font-weight:700; letter-spacing:.1em;
+  padding:4px 12px; border-radius:999px; margin-bottom:16px;
 }
-.hero-chip::before {
-  content:''; width:5px; height:5px; border-radius:50%;
-  background:var(--blue); flex-shrink:0;
+.activity-h2 {
+  font-size:clamp(20px,3vw,30px); font-weight:800;
+  color:var(--navy); line-height:1.25; margin-bottom:20px;
+  white-space:pre-line;
 }
-.hero-title {
-  font-size:clamp(34px,5vw,56px); font-weight:800;
-  line-height:1.15; color:var(--navy);
-  margin-bottom:16px; white-space:pre-line;
+.bullet-list { display:flex; flex-direction:column; gap:12px }
+.bullet-item {
+  display:flex; align-items:flex-start; gap:12px;
+  font-size:clamp(14px,1.6vw,15px); color:var(--navy); font-weight:500;
 }
-.hero-desc {
-  font-size:clamp(15px,1.8vw,17px); color:var(--gray);
-  line-height:1.9; margin-bottom:32px; white-space:pre-line;
-  max-width:34em;
+.bullet-dot {
+  width:6px; height:6px; border-radius:50%;
+  background:var(--blue); flex-shrink:0; margin-top:7px;
 }
-.info-grid {
-  display:grid; grid-template-columns:repeat(4,1fr); gap:10px;
-}
-.info-item {
-  background:var(--warm); border:1px solid var(--border);
-  border-radius:12px; padding:14px 16px;
-}
-.info-label {
-  font-size:11px; font-weight:700; color:var(--gray);
-  letter-spacing:.06em; margin-bottom:5px;
-}
-.info-value {
-  font-size:clamp(13px,1.5vw,15px); font-weight:700; color:var(--navy);
-  line-height:1.4;
-}
-.hero-img-wrap {
-  border-radius:24px; overflow:hidden;
-  aspect-ratio:4/3; background:var(--warm);
-  box-shadow:0 8px 40px rgba(20,20,43,.12);
-}
-.hero-img-wrap img {
-  width:100%; height:100%; object-fit:cover; display:block;
-}
-@media(max-width:760px) {
-  .hero-grid { grid-template-columns:1fr }
-  .hero-img-wrap { aspect-ratio:16/9 }
-  .info-grid { grid-template-columns:repeat(2,1fr) }
+@media(max-width:720px) {
+  .activity-grid { grid-template-columns:1fr }
+  .activity-photo { aspect-ratio:16/10 }
 }
 
 /* ══════════════════════════════════
-   02. PROGRAM POINT
+   [C] 활용 키워드
 ══════════════════════════════════ */
-.point-sec {
-  background:var(--warm);
-  padding:var(--sec-y) 0;
-  border-bottom:1px solid var(--border);
+.kw-sec-title {
+  font-size:clamp(11px,1.5vw,13px); font-weight:700; letter-spacing:.1em;
+  color:var(--gray); margin-bottom:16px; text-transform:uppercase;
 }
-.sec-chip {
-  display:inline-flex; align-items:center; gap:6px;
-  background:rgba(31,35,146,.07); color:var(--blue);
-  border:1px solid rgba(31,35,146,.14);
-  font-size:11px; font-weight:700; letter-spacing:.12em;
-  padding:5px 13px; border-radius:999px; margin-bottom:18px;
+.kw-h2 {
+  font-size:clamp(20px,3vw,28px); font-weight:800;
+  color:var(--navy); margin-bottom:24px;
 }
-.sec-chip::before {
-  content:''; width:5px; height:5px; border-radius:50%;
-  background:var(--blue); flex-shrink:0;
+.kw-wrap { display:flex; flex-wrap:wrap; gap:8px }
+.kw-chip {
+  font-size:14px; font-weight:600;
+  padding:9px 18px; border-radius:999px; cursor:default;
+  transition:transform .15s;
 }
-.sec-h2 {
-  font-size:clamp(24px,3.5vw,38px); font-weight:800;
-  line-height:1.25; color:var(--navy); margin-bottom:14px;
-  white-space:pre-line;
-}
-.sec-desc {
-  font-size:clamp(14px,1.7vw,16px); color:var(--gray);
-  line-height:1.95; max-width:38em; margin-bottom:clamp(32px,5vw,48px);
-  white-space:pre-line;
-}
+.kw-chip:hover { transform:translateY(-2px) }
+.kw-chip--a { background:rgba(31,35,146,.07); color:var(--blue); border:1.5px solid rgba(31,35,146,.18) }
+.kw-chip--b { background:var(--white); color:var(--navy); border:1.5px solid var(--border) }
+.kw-chip--c { background:rgba(255,216,77,.18); color:#7A6200; border:1.5px solid rgba(255,216,77,.5) }
+
+/* ══════════════════════════════════
+   [D] 이 활동에서 학생들은
+══════════════════════════════════ */
 .xp-grid {
-  display:grid; grid-template-columns:repeat(4,1fr); gap:14px;
+  display:grid; grid-template-columns:repeat(5,1fr); gap:12px;
+  margin-top:32px;
 }
 .xp-card {
   background:var(--white); border:1px solid var(--border);
-  border-radius:var(--rc); padding:24px 20px;
+  border-radius:var(--rc); padding:20px 16px;
   display:flex; flex-direction:column; gap:14px;
+  transition:box-shadow .2s, transform .2s;
 }
-.xp-icon {
-  width:40px; height:40px; border-radius:10px;
-  background:var(--yellow); display:flex; align-items:center;
-  justify-content:center;
+.xp-card:hover { transform:translateY(-3px); box-shadow:0 6px 24px rgba(20,20,43,.08) }
+.xp-num {
+  font-size:32px; font-weight:900; color:var(--yellow);
+  line-height:1;
 }
-.xp-icon svg { width:20px; height:20px }
-.xp-card p {
-  font-size:clamp(14px,1.6vw,15px); font-weight:700;
-  color:var(--navy); line-height:1.5;
+.xp-action {
+  font-size:clamp(13px,1.5vw,14px); font-weight:700;
+  color:var(--navy); line-height:1.45;
 }
-@media(max-width:760px) { .xp-grid { grid-template-columns:repeat(2,1fr) } }
-@media(max-width:480px) { .xp-grid { grid-template-columns:1fr } }
+.xp-detail { font-size:12px; color:var(--gray); margin-top:2px }
+@media(max-width:900px) { .xp-grid { grid-template-columns:repeat(3,1fr) } }
+@media(max-width:560px) { .xp-grid { grid-template-columns:repeat(2,1fr) } }
 
 /* ══════════════════════════════════
-   03. USE CASES
+   [E] 이렇게 진행됩니다
 ══════════════════════════════════ */
-.usecase-sec {
-  background:var(--white);
-  padding:var(--sec-y) 0;
-  border-bottom:1px solid var(--border);
-}
-.uc-grid {
-  display:grid; grid-template-columns:repeat(2,1fr); gap:16px;
-}
-.uc-card {
-  background:var(--warm); border:1px solid var(--border);
-  border-radius:var(--rc); padding:26px 28px;
-}
-.uc-card-title {
-  font-size:16px; font-weight:800; color:var(--navy); margin-bottom:10px;
-  display:flex; align-items:center; gap:8px;
-}
-.uc-card-title::before {
-  content:''; width:6px; height:6px; border-radius:50%;
-  background:var(--blue); flex-shrink:0;
-}
-.uc-card p {
-  font-size:14px; color:var(--gray); line-height:1.75;
-}
-@media(max-width:620px) { .uc-grid { grid-template-columns:1fr } }
-
-/* ══════════════════════════════════
-   04. PROCESS
-══════════════════════════════════ */
-.process-sec {
-  background:var(--warm);
-  padding:var(--sec-y) 0;
-  border-bottom:1px solid var(--border);
-}
-/* PC: 가로 타임라인 */
 .proc-row {
   display:flex; align-items:flex-start;
-  gap:0; position:relative;
-  padding-top:2px;
+  position:relative; margin-top:36px;
 }
 .proc-row::before {
   content:''; position:absolute;
@@ -250,8 +237,7 @@ header {
 }
 .proc-step {
   flex:1; display:flex; flex-direction:column;
-  align-items:center; text-align:center; gap:16px;
-  padding:0 8px;
+  align-items:center; text-align:center; gap:14px; padding:0 6px;
 }
 .proc-num {
   width:48px; height:48px; border-radius:50%;
@@ -260,61 +246,80 @@ header {
   display:flex; align-items:center; justify-content:center;
   flex-shrink:0; position:relative; z-index:1;
 }
-.proc-step:first-child .proc-num { background:var(--blue) }
-.proc-title {
-  font-size:clamp(13px,1.5vw,15px); font-weight:800;
-  color:var(--navy); line-height:1.4;
-}
-.proc-desc {
-  font-size:clamp(12px,1.3vw,13px); color:var(--gray);
-  line-height:1.65;
-}
-/* 모바일: 세로 카드 */
-@media(max-width:720px) {
-  .proc-row { flex-direction:column; gap:12px }
+.proc-title { font-size:clamp(12px,1.5vw,14px); font-weight:800; color:var(--navy); line-height:1.4 }
+.proc-desc { font-size:clamp(11px,1.3vw,12px); color:var(--gray); line-height:1.55 }
+@media(max-width:700px) {
+  .proc-row { flex-direction:column; gap:10px }
   .proc-row::before { display:none }
   .proc-step {
     flex-direction:row; align-items:flex-start;
     text-align:left; gap:16px; width:100%;
     background:var(--white); border:1px solid var(--border);
-    border-radius:var(--rc); padding:18px 20px;
+    border-radius:var(--rc); padding:16px 18px;
   }
-  .proc-num { flex-shrink:0; width:40px; height:40px; font-size:14px }
-  .proc-body { display:flex; flex-direction:column; gap:4px }
-  .proc-title { font-size:15px }
-  .proc-desc { font-size:13px }
+  .proc-num { flex-shrink:0; width:38px; height:38px; font-size:13px }
+  .proc-body { display:flex; flex-direction:column; gap:3px }
+  .proc-title { font-size:14px }
+  .proc-desc { font-size:12px }
 }
 
 /* ══════════════════════════════════
-   05. GALLERY
+   [F] 도미노 구조 예시
 ══════════════════════════════════ */
-.gallery-sec {
-  background:var(--white);
-  padding:var(--sec-y) 0;
+.struct-grid {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:32px;
 }
+.struct-card {
+  background:var(--white); border:1px solid var(--border);
+  border-radius:16px; padding:28px 20px 22px; text-align:center;
+}
+.struct-vis {
+  height:80px; display:flex; align-items:center; justify-content:center;
+  margin-bottom:18px;
+}
+/* domino piece */
+.dp { width:6px; height:16px; background:var(--blue); border-radius:1.5px; flex-shrink:0 }
+.dp-y { background:var(--yellow) }
+.sv-row { display:flex; gap:3px; align-items:center }
+.sv-col { display:inline-flex; flex-direction:column; gap:3px; align-items:flex-start }
+.struct-name { font-size:15px; font-weight:800; color:var(--navy); margin-bottom:7px }
+.struct-desc { font-size:13px; color:var(--gray); line-height:1.6 }
+@media(max-width:600px) { .struct-grid { grid-template-columns:1fr } }
+
+/* ══════════════════════════════════
+   [G] 활동 모습 (갤러리)
+══════════════════════════════════ */
 .gallery-grid {
-  display:grid; grid-template-columns:repeat(4,1fr); gap:12px;
+  display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:32px;
 }
-.g-item {
-  display:flex; flex-direction:column; gap:10px;
+.g-item { display:flex; flex-direction:column; gap:9px }
+.g-frame {
+  aspect-ratio:3/4; border-radius:12px; overflow:hidden; background:var(--border);
 }
-.g-img {
-  aspect-ratio:3/4; border-radius:14px; overflow:hidden;
-  background:var(--warm);
+.g-frame img {
+  width:100%; height:100%; object-fit:cover;
+  transition:transform .3s;
 }
-.g-img img {
-  width:100%; height:100%; object-fit:cover; display:block;
-  transition:transform .32s;
-}
-.g-item:hover .g-img img { transform:scale(1.04) }
-.g-caption {
-  font-size:13px; color:var(--gray); text-align:center;
-}
-@media(max-width:760px) {
+.g-item:hover .g-frame img { transform:scale(1.05) }
+.g-cap { font-size:12px; color:var(--gray); text-align:center }
+@media(max-width:720px) {
   .gallery-grid { grid-template-columns:repeat(2,1fr) }
-  .g-img { aspect-ratio:4/3 }
+  .g-frame { aspect-ratio:4/3 }
 }
-@media(max-width:420px) { .gallery-grid { grid-template-columns:1fr } }
+
+/* ── 섹션 레이블 ── */
+.sec-label {
+  display:inline-flex; align-items:center; gap:5px;
+  background:rgba(31,35,146,.07); color:var(--blue);
+  border:1px solid rgba(31,35,146,.14);
+  font-size:11px; font-weight:700; letter-spacing:.1em;
+  padding:4px 12px; border-radius:999px; margin-bottom:14px;
+}
+.sec-label::before { content:''; width:5px; height:5px; border-radius:50%; background:var(--blue); flex-shrink:0 }
+.sec-h2 {
+  font-size:clamp(20px,3vw,28px); font-weight:800;
+  color:var(--navy); line-height:1.25; white-space:pre-line;
+}
 
 /* ── 푸터 ── */
 footer { background:#0F0C20; color:#B5B1C9; padding:44px 0; font-size:13px; text-align:center }
@@ -354,161 +359,138 @@ footer div { margin-bottom:4px }
 <script>
 /* ══════════════════════════════════════════════════════════
    ✅ 프로그램 데이터 — 이 객체만 수정하면 페이지가 바뀝니다.
-   ✅ 새 프로그램 추가 시 이 객체를 복사해 내용만 교체하세요.
+   ✅ 새 프로그램: 이 객체를 복사 후 내용만 교체하세요.
 ══════════════════════════════════════════════════════════ */
 const programData = {
 
   /* 페이지 메타 */
-  pageTitle:   "도미노 챌린지 | 어울림 프로그램 · 아이덴티치",
-  pageDesc:    "팀별로 도미노를 설계·설치하고 함께 쓰러뜨리며 협력을 경험하는 학년 단위 체험.",
-  canonicalUrl:"https://identeach.co.kr/together/domino",
-
-  /* 브레드크럼 */
+  pageTitle:    "도미노 챌린지 | 어울림 프로그램 · 아이덴티치",
+  pageDesc:     "팀별로 도미노를 설계·설치하고 함께 쓰러뜨리는 협력 체험 프로그램.",
+  canonicalUrl: "https://identeach.co.kr/together/domino",
+  navActive:    "/together",
   crumbs: [
     { label:"홈", href:"/" },
     { label:"어울림 프로그램", href:"/together" },
     { label:"도미노 챌린지", href:null }
   ],
 
-  /* 네비게이션 현재 위치 */
-  navActive: "/together",
+  /* ──────────────────────────────────────────
+     [A] 히어로 배너
+     heroImage.src: 전체 폭 활동 이미지 (16:7 가로형 권장)
+     ✅ 실제 활동 사진으로 교체하세요
+  ────────────────────────────────────────── */
+  heroImage: {
+    src: "/assets/images/gallery/g1.jpg",
+    alt: "학생들이 도미노 챌린지에 참여하는 전체 활동 장면"
+  },
 
-  /* ──────────────────────────────
-     01. HERO
-  ────────────────────────────── */
   category: "어울림 프로그램",
+  title:    "도미노 챌린지",
 
-  /* ✅ title: 프로그램명 */
-  title: "도미노 챌린지",
+  /* ✅ tagline: 프로그램 한 줄 설명 */
+  tagline: "공동체 · 리더십 · 어울림 활동에 활용할 수 있는 참여형 프로그램",
 
-  /* ✅ headline: 메인 카피 (\n으로 줄바꿈) */
-  headline: "하나가 무너지면,\n모두가 다시 맞춰가는 협력 활동",
-
-  /* ✅ description: 2~3줄 설명 */
-  description: "학생들이 팀별로 도미노 구조를 설계하고 연결하며\n협력과 소통의 과정을 경험하는 공동체 프로그램입니다.",
+  /* ✅ description: 2줄 이내 짧은 설명 */
+  description: "팀별로 도미노를 설계하고 직접 세웁니다.\n혼자는 완성할 수 없고, 함께해야 쓰러뜨릴 수 있습니다.",
 
   /* ✅ info: 기본 정보 4개 */
   info: [
-    { label:"대상",  value:"초등 고학년\n~ 고등학생" },
+    { label:"대상",  value:"초등 고학년 ~ 고등학생" },
     { label:"시간",  value:"2~3교시" },
-    { label:"인원",  value:"30명\n~ 학년 단위" },
-    { label:"장소",  value:"강당, 체육관\n넓은 교실" }
+    { label:"인원",  value:"30명 ~ 학년 단위" },
+    { label:"장소",  value:"강당 · 체육관 · 넓은 교실" }
   ],
 
-  /* ✅ heroImage: 대표 이미지 (없으면 src를 빈 문자열로) */
-  heroImage: {
-    src: "/assets/images/programs/together/domino-vertical.png",
-    alt: "학생들이 도미노 챌린지 활동에 참여하는 모습"
-  },
-
-  /* ──────────────────────────────
-     02. 프로그램 포인트
-  ────────────────────────────── */
-  point: {
-    /* ✅ 섹션 제목 */
-    title: "협력은 설명보다\n함께 해보는 과정에서 배웁니다",
-
-    /* ✅ 섹션 설명 (3줄 이내) */
-    description: "도미노는 혼자 완성할 수 없습니다.\n역할을 나누고, 의견을 맞추고, 무너진 구간을 다시 세우며\n학생들은 자연스럽게 협력 방식을 배웁니다.",
-
-    /* ✅ 경험 카드 4개 (짧은 문장) */
-    experiences: [
-      "역할을 나눕니다",
-      "의견을 조율합니다",
-      "실패 후 다시 시도합니다",
-      "함께 만든 결과를 확인합니다"
+  /* ──────────────────────────────────────────
+     [B] 활동 이미지 + 프로그램 요약
+     ✅ activityImage.src: 활동 장면 사진 (4:3 가로형 권장)
+  ────────────────────────────────────────── */
+  activity: {
+    image: {
+      src: "/assets/images/gallery/g2.jpg",
+      alt: "학생들이 팀별로 도미노 구조를 제작하는 장면"
+    },
+    headline: "팀이 함께\n하나의 도미노를 완성합니다",
+    bullets: [
+      "팀별로 구조를 직접 설계하고 세웁니다",
+      "각 팀의 결과물을 이어 하나의 흐름으로 연결합니다",
+      "학년 전체가 공동의 목표를 향해 협력합니다"
     ]
   },
 
-  /* ──────────────────────────────
-     03. 활용 장면
-  ────────────────────────────── */
-  useCases: {
-    /* ✅ 섹션 제목 */
-    title: "필요한 교육 장면에 맞춰\n다양하게 활용할 수 있습니다",
+  /* ──────────────────────────────────────────
+     [C] 활용 키워드
+     ✅ type: "a"(파랑) | "b"(기본) | "c"(노랑)
+  ────────────────────────────────────────── */
+  keywords: [
+    { label:"신학기 관계 형성",    type:"a" },
+    { label:"학년 전체 어울림",    type:"a" },
+    { label:"공동체 활동",         type:"a" },
+    { label:"리더십 캠프",         type:"b" },
+    { label:"학생 자치활동",       type:"b" },
+    { label:"교내 행사",           type:"b" },
+    { label:"체육대회 전 협력",    type:"c" },
+    { label:"진로 연계 자기이해",  type:"c" }
+  ],
 
-    /* ✅ 활용 카드 4개 */
-    cards: [
-      {
-        title: "신학기 관계 형성",
-        desc:  "처음 만난 친구들과 자연스럽게 대화하고 협력하는 활동입니다."
-      },
-      {
-        title: "공동체·어울림 활동",
-        desc:  "함께 목표를 세우고 역할을 나누며 협력의 의미를 경험합니다."
-      },
-      {
-        title: "리더십·자치활동 연계",
-        desc:  "역할 분담과 의사결정을 통해 책임감을 자연스럽게 경험합니다."
-      },
-      {
-        title: "진로·자기이해 연계",
-        desc:  "내가 맡는 역할과 협력 방식을 통해 자신을 돌아볼 수 있습니다."
-      }
-    ]
-  },
+  /* ──────────────────────────────────────────
+     [D] 이 활동에서 학생들은
+     ✅ 5개 이내, 짧은 행동 문장
+  ────────────────────────────────────────── */
+  studentExperiences: [
+    { action:"팀을 구성하고\n역할을 나눕니다",       detail:"강요 없이 자연스럽게" },
+    { action:"구조를\n함께 설계합니다",              detail:"의견을 맞추면서" },
+    { action:"무너진 구간을\n스스로 수정합니다",     detail:"실패 후 다시 시도하며" },
+    { action:"팀 결과물을\n하나로 연결합니다",       detail:"서로 조율하면서" },
+    { action:"완성된 결과를\n함께 확인합니다",       detail:"성취감을 느끼며" }
+  ],
 
-  /* ──────────────────────────────
-     04. 진행 흐름
-  ────────────────────────────── */
+  /* ──────────────────────────────────────────
+     [E] 이렇게 진행됩니다
+     ✅ 5단계, 각 title + desc
+  ────────────────────────────────────────── */
   process: {
-    /* ✅ 섹션 제목 */
-    title: "설계하고, 만들고,\n연결하며 마무리합니다",
-
-    /* ✅ 단계 5개 (각 title + desc) */
     steps: [
-      {
-        title: "오리엔테이션",
-        desc:  "프로그램 목적을 안내하고 팀을 구성합니다."
-      },
-      {
-        title: "미션 설계",
-        desc:  "팀별로 역할을 나누고 구조를 설계합니다."
-      },
-      {
-        title: "협동 제작",
-        desc:  "도미노를 세우며 문제를 함께 해결합니다."
-      },
-      {
-        title: "연결 챌린지",
-        desc:  "팀별 결과물을 하나의 흐름으로 연결합니다."
-      },
-      {
-        title: "회고",
-        desc:  "활동 속에서 발견한 협력 방식을 함께 정리합니다."
-      }
+      { title:"오리엔테이션",  desc:"팀 구성·목적 안내" },
+      { title:"미션 설계",     desc:"역할 분담·구조 설계" },
+      { title:"협동 제작",     desc:"도미노 제작·문제 해결" },
+      { title:"연결 챌린지",   desc:"팀별 결과물 연결" },
+      { title:"활동 회고",     desc:"협력 경험 나누기" }
     ]
   },
 
-  /* ──────────────────────────────
-     05. 갤러리
-  ────────────────────────────── */
-  gallery: {
-    /* ✅ 섹션 제목 */
-    title: "학생들이 직접 만들고\n함께 연결합니다",
+  /* ──────────────────────────────────────────
+     [F] 도미노 구조 예시
+     ✅ type: "line" | "corner" | "zones"
+  ────────────────────────────────────────── */
+  structures: [
+    {
+      name: "일자 연결형",
+      type: "line",
+      desc: "팀별 직선 구조를 순서대로 연결합니다. 가장 기본적인 구성."
+    },
+    {
+      name: "ㄱ자 꺾임형",
+      type: "corner",
+      desc: "방향을 전환하며 공간을 활용합니다. 복도·강당에 적합."
+    },
+    {
+      name: "팀 통합형",
+      type: "zones",
+      desc: "3개 이상 팀이 하나의 흐름으로 합쳐집니다. 전체 연결에 활용."
+    }
+  ],
 
-    /* ✅ 사진 4장 (src + alt + caption) */
+  /* ──────────────────────────────────────────
+     [G] 활동 모습 갤러리
+     ✅ 사진 4장 (3:4 세로형 권장)
+  ────────────────────────────────────────── */
+  gallery: {
     images: [
-      {
-        src:     "/assets/images/gallery/g1.jpg",
-        alt:     "도미노 챌린지 전체 활동 장면",
-        caption: "전체 활동 장면"
-      },
-      {
-        src:     "/assets/images/gallery/g2.jpg",
-        alt:     "학생들이 팀별로 도미노를 제작하는 모습",
-        caption: "팀별 제작 활동"
-      },
-      {
-        src:     "/assets/images/gallery/g3.jpg",
-        alt:     "완성된 도미노 결과물을 연결하는 모습",
-        caption: "연결 챌린지"
-      },
-      {
-        src:     "/assets/images/gallery/g4.jpg",
-        alt:     "강사가 학생들과 활동을 회고하는 모습",
-        caption: "활동 회고"
-      }
+      { src:"/assets/images/gallery/g3.jpg", alt:"도미노 제작 활동", caption:"팀별 제작" },
+      { src:"/assets/images/gallery/g4.jpg", alt:"연결 챌린지 장면", caption:"연결 챌린지" },
+      { src:"/assets/images/gallery/g5.jpg", alt:"전체 연결 성공 장면", caption:"전체 연결 성공" },
+      { src:"/assets/images/gallery/g6.jpg", alt:"활동 회고 장면",   caption:"활동 회고" }
     ]
   }
 
@@ -519,34 +501,60 @@ const programData = {
    렌더링 엔진 — 수정 불필요
 ══════════════════════════════════════════════════════ */
 
-/* 네비 링크 */
 const NAV_ITEMS = [
   { label:"어울림 프로그램", href:"/together" },
-  { label:"진로 프로그램",  href:"/career" },
-  { label:"교내 행사",      href:"/events" },
-  { label:"회사소개",       href:"/about" }
+  { label:"진로 프로그램",   href:"/career" },
+  { label:"교내 행사",       href:"/events" },
+  { label:"회사소개",        href:"/about" }
 ];
 
-/* SVG 아이콘 (경험 카드용) — 4개 순환 */
-const XP_ICONS = [
-  `<svg viewBox="0 0 20 20" fill="none" stroke="#14142B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2L12.5 7.5H18L13.5 11L15.5 17L10 13.5L4.5 17L6.5 11L2 7.5H7.5L10 2Z"/></svg>`,
-  `<svg viewBox="0 0 20 20" fill="none" stroke="#14142B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="8"/><path d="M10 6v4l3 2"/></svg>`,
-  `<svg viewBox="0 0 20 20" fill="none" stroke="#14142B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 12.5A7 7 0 116 3.5M9 7l1 2 2 .5"/></svg>`,
-  `<svg viewBox="0 0 20 20" fill="none" stroke="#14142B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 10l4 4 6-7"/></svg>`
-];
+function nl(s){ return (s||'').replace(/\n/g,'<br>') }
+function dp(n, yellow){ const c=yellow?'dp dp-y':'dp'; return Array.from({length:n},()=>`<div class="${c}"></div>`).join('') }
 
-function nl(str) { return (str||'').replace(/\n/g,'<br>') }
+/* 구조 시각화 */
+function structVis(type) {
+  if (type === 'line') {
+    return `<div class="sv-row">${dp(10)}</div>`;
+  }
+  if (type === 'corner') {
+    return `
+      <div class="sv-col">
+        ${dp(3)}
+        <div class="sv-row">${dp(7)}</div>
+      </div>`;
+  }
+  if (type === 'zones') {
+    return `
+      <div style="display:flex;flex-direction:column;gap:8px;align-items:center">
+        <div style="display:flex;gap:14px;align-items:flex-end">
+          <div style="display:flex;flex-direction:column;gap:2px;align-items:center">
+            <span style="font-size:9px;color:var(--gray);font-weight:700;margin-bottom:3px">팀A</span>
+            <div class="sv-row">${dp(3)}</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:2px;align-items:center">
+            <span style="font-size:9px;color:var(--gray);font-weight:700;margin-bottom:3px">팀B</span>
+            <div class="sv-row">${dp(3)}</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:2px;align-items:center">
+            <span style="font-size:9px;color:var(--gray);font-weight:700;margin-bottom:3px">팀C</span>
+            <div class="sv-row">${dp(3)}</div>
+          </div>
+        </div>
+        <div style="font-size:10px;color:var(--gray)">↓ 연결</div>
+        <div class="sv-row">${dp(7,true)}</div>
+      </div>`;
+  }
+  return '';
+}
 
 function renderNav(active) {
-  const el = document.getElementById('nav-links');
-  el.innerHTML = NAV_ITEMS.map(item =>
+  document.getElementById('nav-links').innerHTML = NAV_ITEMS.map(item =>
     `<a href="${item.href}"${item.href===active?' class="nav-active"':''}>${item.label}</a>`
   ).join('');
 }
 
 function renderCrumb(crumbs) {
-  const el = document.getElementById('pg-crumb');
-  el.innerHTML = crumbs.map((c,i) =>
+  document.getElementById('pg-crumb').innerHTML = crumbs.map((c,i) =>
     i < crumbs.length-1
       ? `<a href="${c.href}">${c.label}</a><span class="crumb-sep">›</span>`
       : `<span>${c.label}</span>`
@@ -554,79 +562,102 @@ function renderCrumb(crumbs) {
 }
 
 function renderMeta(d) {
-  document.getElementById('pg-title').textContent  = d.pageTitle;
-  document.getElementById('pg-desc').content       = d.pageDesc;
-  document.getElementById('pg-canonical').href     = d.canonicalUrl;
+  document.getElementById('pg-title').textContent = d.pageTitle;
+  document.getElementById('pg-desc').content      = d.pageDesc;
+  document.getElementById('pg-canonical').href    = d.canonicalUrl;
 }
 
+/* ─ [A] 히어로 ─ */
 function renderHero(d) {
-  const imgHtml = d.heroImage.src
-    ? `<div class="hero-img-wrap"><img src="${d.heroImage.src}" alt="${d.heroImage.alt}" loading="eager"></div>`
-    : `<div class="hero-img-wrap" style="background:var(--border)"></div>`;
+  const banner = d.heroImage.src
+    ? `<div class="hero-banner"><img src="${d.heroImage.src}" alt="${d.heroImage.alt}" loading="eager"></div>`
+    : `<div class="hero-banner"><div class="hero-banner-empty">활동 사진을 넣어주세요</div></div>`;
 
   return `
-<section class="hero-sec">
+${banner}
+<div class="hero-info">
   <div class="wrap">
-    <div class="hero-grid">
+    <div class="hero-tagline">${d.tagline}</div>
+    <h1 class="hero-h1">${d.title}</h1>
+    <p class="hero-sub">${nl(d.description)}</p>
+    <div class="info-strip">
+      ${d.info.map(item=>`
+      <div class="info-chip">
+        <div>
+          <div class="info-chip-label">${item.label}</div>
+          <div class="info-chip-val">${item.value}</div>
+        </div>
+      </div>`).join('')}
+    </div>
+  </div>
+</div>`;
+}
+
+/* ─ [B] 활동 이미지 + 요약 ─ */
+function renderActivity(a) {
+  const imgHtml = a.image.src
+    ? `<img src="${a.image.src}" alt="${a.image.alt}" loading="lazy">`
+    : '';
+  return `
+<section class="sec sec--warm">
+  <div class="wrap">
+    <div class="activity-grid">
+      <div class="activity-photo">${imgHtml}</div>
       <div>
-        <span class="hero-chip">${d.category}</span>
-        <h1 class="hero-title">${nl(d.headline)}</h1>
-        <p class="hero-desc">${nl(d.description)}</p>
-        <div class="info-grid">
-          ${d.info.map(item=>`
-          <div class="info-item">
-            <div class="info-label">${item.label}</div>
-            <div class="info-value">${nl(item.value)}</div>
+        <span class="activity-eyebrow">PROGRAM OVERVIEW</span>
+        <h2 class="activity-h2">${nl(a.headline)}</h2>
+        <div class="bullet-list">
+          ${a.bullets.map(b=>`
+          <div class="bullet-item">
+            <div class="bullet-dot"></div>
+            <span>${b}</span>
           </div>`).join('')}
         </div>
       </div>
-      ${imgHtml}
     </div>
   </div>
 </section>`;
 }
 
-function renderPoint(p) {
+/* ─ [C] 활용 키워드 ─ */
+function renderKeywords(kws) {
   return `
-<section class="point-sec">
+<section class="sec sec--white">
   <div class="wrap">
-    <span class="sec-chip">PROGRAM POINT</span>
-    <h2 class="sec-h2">${nl(p.title)}</h2>
-    <p class="sec-desc">${nl(p.description)}</p>
+    <div class="kw-sec-title">활용 장면</div>
+    <h2 class="kw-h2">어디서, 언제 쓸 수 있나요?</h2>
+    <div class="kw-wrap">
+      ${kws.map(k=>`<span class="kw-chip kw-chip--${k.type}">${k.label}</span>`).join('')}
+    </div>
+  </div>
+</section>`;
+}
+
+/* ─ [D] 이 활동에서 학생들은 ─ */
+function renderStudentXP(items) {
+  return `
+<section class="sec sec--warm">
+  <div class="wrap">
+    <span class="sec-label">이 활동에서 학생들은</span>
     <div class="xp-grid">
-      ${p.experiences.map((xp,i)=>`
+      ${items.map((x,i)=>`
       <div class="xp-card">
-        <div class="xp-icon">${XP_ICONS[i%4]}</div>
-        <p>${xp}</p>
+        <div class="xp-num">${String(i+1).padStart(2,'0')}</div>
+        <div class="xp-action">${nl(x.action)}</div>
+        <div class="xp-detail">${x.detail}</div>
       </div>`).join('')}
     </div>
   </div>
 </section>`;
 }
 
-function renderUseCases(u) {
-  return `
-<section class="usecase-sec">
-  <div class="wrap">
-    <span class="sec-chip">활용 장면</span>
-    <h2 class="sec-h2">${nl(u.title)}</h2>
-    <div class="uc-grid">
-      ${u.cards.map(c=>`
-      <div class="uc-card">
-        <div class="uc-card-title">${c.title}</div>
-        <p>${c.desc}</p>
-      </div>`).join('')}
-    </div>
-  </div>
-</section>`;
-}
-
+/* ─ [E] 이렇게 진행됩니다 ─ */
 function renderProcess(proc) {
   return `
-<section class="process-sec">
+<section class="sec sec--white">
   <div class="wrap">
-    <span class="sec-chip">진행 흐름</span>
-    <h2 class="sec-h2" style="margin-bottom:clamp(36px,5vw,52px)">${nl(proc.title)}</h2>
+    <span class="sec-label">진행 흐름</span>
+    <h2 class="sec-h2">이렇게 진행됩니다</h2>
     <div class="proc-row">
       ${proc.steps.map((s,i)=>`
       <div class="proc-step">
@@ -641,37 +672,56 @@ function renderProcess(proc) {
 </section>`;
 }
 
-function renderGallery(g) {
+/* ─ [F] 도미노 구조 예시 ─ */
+function renderStructures(structs) {
   return `
-<section class="gallery-sec">
+<section class="sec sec--warm">
   <div class="wrap">
-    <span class="sec-chip">활동 모습</span>
-    <h2 class="sec-h2" style="margin-bottom:clamp(32px,4vw,44px)">${nl(g.title)}</h2>
-    <div class="gallery-grid">
-      ${g.images.map(img=>`
-      <div class="g-item">
-        <div class="g-img">
-          <img src="${img.src}" alt="${img.alt}" loading="lazy">
-        </div>
-        <p class="g-caption">${img.caption}</p>
+    <span class="sec-label">구조 예시</span>
+    <h2 class="sec-h2">도미노 구조 예시</h2>
+    <div class="struct-grid">
+      ${structs.map(s=>`
+      <div class="struct-card">
+        <div class="struct-vis">${structVis(s.type)}</div>
+        <div class="struct-name">${s.name}</div>
+        <div class="struct-desc">${s.desc}</div>
       </div>`).join('')}
     </div>
   </div>
 </section>`;
 }
 
-/* ── 페이지 진입점 ── */
-function renderPage(data) {
-  renderMeta(data);
-  renderNav(data.navActive);
-  renderCrumb(data.crumbs);
+/* ─ [G] 갤러리 ─ */
+function renderGallery(g) {
+  return `
+<section class="sec sec--white">
+  <div class="wrap">
+    <span class="sec-label">활동 모습</span>
+    <h2 class="sec-h2" style="margin-bottom:0">현장 사진</h2>
+    <div class="gallery-grid">
+      ${g.images.map(img=>`
+      <div class="g-item">
+        <div class="g-frame"><img src="${img.src}" alt="${img.alt}" loading="lazy"></div>
+        <p class="g-cap">${img.caption}</p>
+      </div>`).join('')}
+    </div>
+  </div>
+</section>`;
+}
 
+/* ── 진입점 ── */
+function renderPage(d) {
+  renderMeta(d);
+  renderNav(d.navActive);
+  renderCrumb(d.crumbs);
   document.getElementById('pg-root').innerHTML =
-    renderHero(data) +
-    renderPoint(data.point) +
-    renderUseCases(data.useCases) +
-    renderProcess(data.process) +
-    renderGallery(data.gallery);
+    renderHero(d) +
+    renderActivity(d.activity) +
+    renderKeywords(d.keywords) +
+    renderStudentXP(d.studentExperiences) +
+    renderProcess(d.process) +
+    renderStructures(d.structures) +
+    renderGallery(d.gallery);
 }
 
 renderPage(programData);
