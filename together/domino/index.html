@@ -1,195 +1,681 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>도미노 챌린지 | 어울림 프로그램 · 아이덴티치</title>
-<meta name="description" content="팀별로 도미노를 설계·설치하고 함께 쓰러뜨리며 협력을 경험하는 학년 단위 체험. 초·중·고 전학년, 3교시 150분.">
+<title id="pg-title">도미노 챌린지 | 어울림 프로그램 · 아이덴티치</title>
+<meta name="description" id="pg-desc" content="">
 <meta property="og:type" content="website">
-<meta property="og:title" content="도미노 챌린지 | 어울림 프로그램 · 아이덴티치">
-<meta property="og:url" content="https://identeach.co.kr/together/domino">
 <meta property="og:locale" content="ko_KR">
-<link rel="canonical" href="https://identeach.co.kr/together/domino">
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Course","name":"도미노 챌린지","description":"팀별로 도미노를 설계·설치하고 함께 쓰러뜨리며 협력을 경험하는 학년 단위 체험.","provider":{"@type":"Organization","name":"아이덴티치","url":"https://identeach.co.kr"}}
-</script>
+<link rel="canonical" id="pg-canonical" href="">
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <style>
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@1.3.9/dist/web/static/pretendard.css');
-:root{--primary:#6C47D6;--primary-deep:#5836C0;--navy:#18142E;--accent:#FF7A4D;--bg:#fff;--surface:#F6F4FB;--text:#18142E;--text-2:#6B6880;--border:#E8E5F0;--maxw:780px;--rc:16px;--rb:12px;--shadow:0 8px 30px rgba(24,20,46,.08);--pad-x:clamp(20px,5vw,24px)}
-*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{font-family:'Pretendard',-apple-system,sans-serif;color:var(--text);background:var(--bg);font-weight:500;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-a{color:inherit;text-decoration:none}.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad-x)}h1,h2,h3{letter-spacing:-.03em}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:600;font-size:15px;padding:14px 26px;border-radius:var(--rb);transition:.18s;cursor:pointer;border:none;font-family:inherit;white-space:nowrap}
-.btn-primary{background:var(--primary);color:#fff}.btn-primary:hover{background:var(--primary-deep);transform:translateY(-2px)}
-.btn-ghost{background:transparent;color:var(--primary);border:1.5px solid var(--primary)}.btn-ghost:hover{background:var(--primary);color:#fff}
-header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
-.nav{display:flex;align-items:center;gap:16px;height:64px;max-width:1140px;margin:0 auto;padding:0 var(--pad-x)}
-.nav-links{display:flex;align-items:center;gap:26px;font-size:15px;color:var(--text-2)}.nav-links a:hover{color:var(--text)}
-.nav-cta{padding:9px 18px;font-size:14px}.menu-toggle,.menu-btn{display:none}
-.menu-btn{font-size:24px;background:none;border:none;cursor:pointer;color:var(--text);padding:4px}
-@media(max-width:840px){.menu-btn{display:block;order:3}.nav-cta{order:2}.nav-links{position:absolute;top:64px;left:0;right:0;flex-direction:column;align-items:flex-start;gap:0;background:#fff;border-bottom:1px solid var(--border);max-height:0;overflow:hidden;transition:max-height .28s;font-size:16px}.nav-links a{width:100%;padding:16px var(--pad-x);border-top:1px solid var(--border)}.menu-toggle:checked ~ .nav-links{max-height:240px}}
-.crumb-bar{background:var(--surface);padding:14px 0;border-bottom:1px solid var(--border)}
-.crumb{font-size:13px;color:var(--text-2)}.crumb a:hover{color:var(--primary)}
-.prog-hero{padding:clamp(52px,9vw,88px) 0 clamp(44px,7vw,68px);color:#fff}
-.prog-tag{font-size:13px;font-weight:600;letter-spacing:.06em;opacity:.72;display:block;margin-bottom:18px}
-.prog-hero h1{font-size:clamp(36px,6.5vw,56px);font-weight:800;line-height:1.15;margin-bottom:clamp(32px,5vw,48px)}
-.spec-row{display:flex;flex-wrap:wrap;gap:10px}
-.sitem{background:rgba(255,255,255,.15);border-radius:12px;padding:13px 18px;min-width:110px}
-.sl{font-size:11px;font-weight:600;opacity:.65;margin-bottom:4px;letter-spacing:.04em}
-.sv{font-size:15px;font-weight:700}
-.prog-sec{padding:clamp(52px,8vw,80px) 0}
-.prog-sec--surface{background:var(--surface)}
-.sec-lbl{font-size:11px;font-weight:700;color:var(--primary);letter-spacing:.1em;display:block;margin-bottom:14px}
-.prog-sec h2{font-size:clamp(22px,3.8vw,32px);font-weight:800;margin-bottom:20px;line-height:1.3}
-.prog-desc{font-size:clamp(16px,2.2vw,18px);color:var(--text-2);line-height:1.85;margin-bottom:32px}
-.step-list{display:flex;flex-direction:column;gap:12px}
-.step-item{display:flex;gap:16px;align-items:flex-start;background:var(--surface);border-radius:14px;padding:18px 20px}
-.stn{font-size:11px;font-weight:800;color:var(--primary);white-space:nowrap;padding-top:3px;letter-spacing:.05em;flex:0 0 auto;min-width:52px}
-.stt{font-size:15px;line-height:1.65}.stt strong{font-weight:700;display:block;margin-bottom:2px}
-.benefit-list{display:flex;flex-direction:column;gap:14px}
-.benefit-item{display:flex;gap:16px;align-items:flex-start;background:#fff;border-radius:14px;padding:20px 22px;box-shadow:var(--shadow)}
-.bnum{width:32px;height:32px;border-radius:9px;background:#EEE9FB;color:var(--primary);font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
-.btxt strong{display:block;font-size:16px;font-weight:700;margin-bottom:5px}
-.btxt p{font-size:14px;color:var(--text-2);line-height:1.65}
-.prep-cols{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:30px}
-@media(max-width:440px){.prep-cols{grid-template-columns:1fr}}
-.pcol{border-radius:16px;padding:22px 24px}
-.pcol.school{background:var(--surface)}.pcol.us{background:var(--navy);color:#fff}
-.pcol .pt{font-size:11px;font-weight:700;letter-spacing:.06em;margin-bottom:12px}
-.pcol.school .pt{color:var(--text-2)}.pcol.us .pt{color:var(--accent)}
-.pcol .pv{font-size:15px;font-weight:600;line-height:1.65}
-.cta-btns{display:flex;gap:12px;flex-wrap:wrap}
-.other-sec{padding:clamp(52px,8vw,80px) 0;background:var(--surface)}
-.other-h{font-size:clamp(18px,3vw,22px);font-weight:800;margin-bottom:22px}
-.other-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-@media(max-width:640px){.other-grid{grid-template-columns:repeat(2,1fr)}}
-.ocard{display:block;border-radius:var(--rc);overflow:hidden;transition:.18s;color:var(--text);background:#fff;box-shadow:0 2px 12px rgba(24,20,46,.07)}
-.ocard:hover{transform:translateY(-4px)}
-.ocard-poster{position:relative;height:clamp(110px,18vw,150px)}
-.ocard-poster .onum{position:absolute;left:10px;bottom:-4px;font-size:50px;font-weight:800;color:rgba(255,255,255,.85);line-height:1}
-.ocard-poster .ottl{position:absolute;right:12px;bottom:12px;color:#fff;font-weight:800;font-size:14px;text-align:right;line-height:1.25}
-.ocard-poster .otag{position:absolute;top:10px;left:10px;font-size:10px;font-weight:600;background:rgba(255,255,255,.9);color:#C9521F;padding:3px 8px;border-radius:999px}
-.ocard-body{padding:14px 16px}
-.ocard-body h4{font-size:14px;font-weight:700;margin-bottom:3px}
-.ocard-body p{font-size:12px;color:var(--text-2)}
-footer{background:#0F0C20;color:#B5B1C9;padding:44px 0;font-size:14px}footer p{margin-bottom:4px}
+
+/* ── 토큰 ── */
+:root {
+  --blue:   #1F2392;
+  --yellow: #FFD84D;
+  --navy:   #14142B;
+  --gray:   #6F7287;
+  --warm:   #FFFDF7;
+  --white:  #fff;
+  --border: #E8E8F0;
+  --maxw:   1180px;
+  --pad-x:  clamp(18px,5vw,40px);
+  --rc:     16px;
+  --shadow: 0 4px 20px rgba(20,20,43,.08);
+  --sec-y:  clamp(72px,10vw,104px);
+}
+
+/* ── 리셋 ── */
+*,*::before,*::after { margin:0; padding:0; box-sizing:border-box }
+html { scroll-behavior:smooth; -webkit-text-size-adjust:100% }
+body {
+  font-family:'Pretendard',-apple-system,sans-serif;
+  color:var(--navy); background:var(--warm);
+  font-weight:400; line-height:1.7;
+  -webkit-font-smoothing:antialiased; overflow-x:hidden;
+}
+a { color:inherit; text-decoration:none }
+img { max-width:100%; height:auto; display:block }
+h1,h2,h3 { letter-spacing:-.03em }
+.wrap { max-width:var(--maxw); margin:0 auto; padding:0 var(--pad-x) }
+
+/* ── 헤더 ── */
+header {
+  position:sticky; top:0; z-index:100;
+  background:rgba(255,255,255,.96); backdrop-filter:blur(16px);
+}
+.nav {
+  display:flex; align-items:center; gap:16px; height:72px;
+  background:#fff; border-radius:0 0 20px 20px;
+  box-shadow:0 4px 20px rgba(0,0,0,.08);
+  padding:0 clamp(20px,3vw,36px);
+  max-width:var(--maxw); margin:0 auto;
+}
+.nav-logo { margin-right:auto; display:flex; align-items:center }
+.nav-links {
+  display:flex; align-items:center; gap:4px;
+  font-size:15px; font-weight:500; color:var(--gray);
+}
+.nav-links a { padding:7px 14px; border-radius:999px; transition:color .15s, background .15s; white-space:nowrap }
+.nav-links a:hover { color:var(--navy) }
+.nav-links a.nav-active { background:var(--navy); color:#fff; font-weight:700 }
+.nav-cta {
+  display:inline-flex; align-items:center; font-family:inherit; font-weight:700;
+  background:var(--blue); color:#fff; font-size:14px;
+  padding:9px 18px; border-radius:999px; white-space:nowrap; border:none; cursor:pointer;
+}
+.menu-toggle,.menu-btn { display:none }
+.menu-btn { font-size:22px; background:none; border:none; cursor:pointer; color:var(--navy); padding:4px }
+@media(max-width:860px) {
+  .menu-btn { display:block; order:3 }
+  .nav-cta { order:2 }
+  .nav-links {
+    position:absolute; top:72px; left:0; right:0;
+    flex-direction:column; align-items:flex-start; gap:0;
+    background:#fff; border-radius:24px;
+    box-shadow:0 8px 28px rgba(0,0,0,.12);
+    max-height:0; overflow:hidden; transition:max-height .28s; font-size:16px; z-index:200;
+  }
+  .nav-links a { width:100%; padding:14px clamp(20px,5vw,24px); border-radius:0; border-top:1px solid var(--border) }
+  .menu-toggle:checked ~ .nav-links { max-height:360px }
+}
+
+/* ── 브레드크럼 ── */
+.crumb-bar { background:var(--white); border-bottom:1px solid var(--border); padding:12px 0 }
+.crumb { font-size:13px; color:var(--gray); display:flex; align-items:center; gap:6px }
+.crumb a:hover { color:var(--blue) }
+.crumb-sep { opacity:.4 }
+
+/* ══════════════════════════════════
+   01. HERO
+══════════════════════════════════ */
+.hero-sec {
+  background:var(--white);
+  padding:clamp(52px,8vw,88px) 0 clamp(44px,7vw,72px);
+  border-bottom:1px solid var(--border);
+}
+.hero-grid {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:clamp(40px,6vw,80px); align-items:center;
+}
+.hero-chip {
+  display:inline-flex; align-items:center; gap:6px;
+  background:rgba(31,35,146,.07); color:var(--blue);
+  border:1px solid rgba(31,35,146,.14);
+  font-size:11px; font-weight:700; letter-spacing:.12em;
+  padding:5px 13px; border-radius:999px; margin-bottom:18px;
+}
+.hero-chip::before {
+  content:''; width:5px; height:5px; border-radius:50%;
+  background:var(--blue); flex-shrink:0;
+}
+.hero-title {
+  font-size:clamp(34px,5vw,56px); font-weight:800;
+  line-height:1.15; color:var(--navy);
+  margin-bottom:16px; white-space:pre-line;
+}
+.hero-desc {
+  font-size:clamp(15px,1.8vw,17px); color:var(--gray);
+  line-height:1.9; margin-bottom:32px; white-space:pre-line;
+  max-width:34em;
+}
+.info-grid {
+  display:grid; grid-template-columns:repeat(4,1fr); gap:10px;
+}
+.info-item {
+  background:var(--warm); border:1px solid var(--border);
+  border-radius:12px; padding:14px 16px;
+}
+.info-label {
+  font-size:11px; font-weight:700; color:var(--gray);
+  letter-spacing:.06em; margin-bottom:5px;
+}
+.info-value {
+  font-size:clamp(13px,1.5vw,15px); font-weight:700; color:var(--navy);
+  line-height:1.4;
+}
+.hero-img-wrap {
+  border-radius:24px; overflow:hidden;
+  aspect-ratio:4/3; background:var(--warm);
+  box-shadow:0 8px 40px rgba(20,20,43,.12);
+}
+.hero-img-wrap img {
+  width:100%; height:100%; object-fit:cover; display:block;
+}
+@media(max-width:760px) {
+  .hero-grid { grid-template-columns:1fr }
+  .hero-img-wrap { aspect-ratio:16/9 }
+  .info-grid { grid-template-columns:repeat(2,1fr) }
+}
+
+/* ══════════════════════════════════
+   02. PROGRAM POINT
+══════════════════════════════════ */
+.point-sec {
+  background:var(--warm);
+  padding:var(--sec-y) 0;
+  border-bottom:1px solid var(--border);
+}
+.sec-chip {
+  display:inline-flex; align-items:center; gap:6px;
+  background:rgba(31,35,146,.07); color:var(--blue);
+  border:1px solid rgba(31,35,146,.14);
+  font-size:11px; font-weight:700; letter-spacing:.12em;
+  padding:5px 13px; border-radius:999px; margin-bottom:18px;
+}
+.sec-chip::before {
+  content:''; width:5px; height:5px; border-radius:50%;
+  background:var(--blue); flex-shrink:0;
+}
+.sec-h2 {
+  font-size:clamp(24px,3.5vw,38px); font-weight:800;
+  line-height:1.25; color:var(--navy); margin-bottom:14px;
+  white-space:pre-line;
+}
+.sec-desc {
+  font-size:clamp(14px,1.7vw,16px); color:var(--gray);
+  line-height:1.95; max-width:38em; margin-bottom:clamp(32px,5vw,48px);
+  white-space:pre-line;
+}
+.xp-grid {
+  display:grid; grid-template-columns:repeat(4,1fr); gap:14px;
+}
+.xp-card {
+  background:var(--white); border:1px solid var(--border);
+  border-radius:var(--rc); padding:24px 20px;
+  display:flex; flex-direction:column; gap:14px;
+}
+.xp-icon {
+  width:40px; height:40px; border-radius:10px;
+  background:var(--yellow); display:flex; align-items:center;
+  justify-content:center;
+}
+.xp-icon svg { width:20px; height:20px }
+.xp-card p {
+  font-size:clamp(14px,1.6vw,15px); font-weight:700;
+  color:var(--navy); line-height:1.5;
+}
+@media(max-width:760px) { .xp-grid { grid-template-columns:repeat(2,1fr) } }
+@media(max-width:480px) { .xp-grid { grid-template-columns:1fr } }
+
+/* ══════════════════════════════════
+   03. USE CASES
+══════════════════════════════════ */
+.usecase-sec {
+  background:var(--white);
+  padding:var(--sec-y) 0;
+  border-bottom:1px solid var(--border);
+}
+.uc-grid {
+  display:grid; grid-template-columns:repeat(2,1fr); gap:16px;
+}
+.uc-card {
+  background:var(--warm); border:1px solid var(--border);
+  border-radius:var(--rc); padding:26px 28px;
+}
+.uc-card-title {
+  font-size:16px; font-weight:800; color:var(--navy); margin-bottom:10px;
+  display:flex; align-items:center; gap:8px;
+}
+.uc-card-title::before {
+  content:''; width:6px; height:6px; border-radius:50%;
+  background:var(--blue); flex-shrink:0;
+}
+.uc-card p {
+  font-size:14px; color:var(--gray); line-height:1.75;
+}
+@media(max-width:620px) { .uc-grid { grid-template-columns:1fr } }
+
+/* ══════════════════════════════════
+   04. PROCESS
+══════════════════════════════════ */
+.process-sec {
+  background:var(--warm);
+  padding:var(--sec-y) 0;
+  border-bottom:1px solid var(--border);
+}
+/* PC: 가로 타임라인 */
+.proc-row {
+  display:flex; align-items:flex-start;
+  gap:0; position:relative;
+  padding-top:2px;
+}
+.proc-row::before {
+  content:''; position:absolute;
+  top:23px; left:calc(10% + 24px); right:calc(10% + 24px);
+  height:2px; background:var(--border); z-index:0;
+}
+.proc-step {
+  flex:1; display:flex; flex-direction:column;
+  align-items:center; text-align:center; gap:16px;
+  padding:0 8px;
+}
+.proc-num {
+  width:48px; height:48px; border-radius:50%;
+  background:var(--blue); color:#fff;
+  font-size:15px; font-weight:800;
+  display:flex; align-items:center; justify-content:center;
+  flex-shrink:0; position:relative; z-index:1;
+}
+.proc-step:first-child .proc-num { background:var(--blue) }
+.proc-title {
+  font-size:clamp(13px,1.5vw,15px); font-weight:800;
+  color:var(--navy); line-height:1.4;
+}
+.proc-desc {
+  font-size:clamp(12px,1.3vw,13px); color:var(--gray);
+  line-height:1.65;
+}
+/* 모바일: 세로 카드 */
+@media(max-width:720px) {
+  .proc-row { flex-direction:column; gap:12px }
+  .proc-row::before { display:none }
+  .proc-step {
+    flex-direction:row; align-items:flex-start;
+    text-align:left; gap:16px; width:100%;
+    background:var(--white); border:1px solid var(--border);
+    border-radius:var(--rc); padding:18px 20px;
+  }
+  .proc-num { flex-shrink:0; width:40px; height:40px; font-size:14px }
+  .proc-body { display:flex; flex-direction:column; gap:4px }
+  .proc-title { font-size:15px }
+  .proc-desc { font-size:13px }
+}
+
+/* ══════════════════════════════════
+   05. GALLERY
+══════════════════════════════════ */
+.gallery-sec {
+  background:var(--white);
+  padding:var(--sec-y) 0;
+}
+.gallery-grid {
+  display:grid; grid-template-columns:repeat(4,1fr); gap:12px;
+}
+.g-item {
+  display:flex; flex-direction:column; gap:10px;
+}
+.g-img {
+  aspect-ratio:3/4; border-radius:14px; overflow:hidden;
+  background:var(--warm);
+}
+.g-img img {
+  width:100%; height:100%; object-fit:cover; display:block;
+  transition:transform .32s;
+}
+.g-item:hover .g-img img { transform:scale(1.04) }
+.g-caption {
+  font-size:13px; color:var(--gray); text-align:center;
+}
+@media(max-width:760px) {
+  .gallery-grid { grid-template-columns:repeat(2,1fr) }
+  .g-img { aspect-ratio:4/3 }
+}
+@media(max-width:420px) { .gallery-grid { grid-template-columns:1fr } }
+
+/* ── 푸터 ── */
+footer { background:#0F0C20; color:#B5B1C9; padding:44px 0; font-size:13px; text-align:center }
+footer img { margin:0 auto 14px }
+footer div { margin-bottom:4px }
 </style>
 </head>
 <body>
+
 <header>
   <div class="nav">
-    <a href="/" style="margin-right:auto"><img src="/assets/images/logo.png" alt="아이덴티치" style="height:48px;display:block;"></a>
+    <a href="/" class="nav-logo">
+      <img src="/assets/images/logo.png" alt="아이덴티치" style="height:48px;">
+    </a>
     <input type="checkbox" id="nav-toggle" class="menu-toggle">
-    <nav class="nav-links"><a href="/together">어울림 프로그램</a><a href="/career">진로 프로그램</a><a href="/about">회사소개</a></nav>
-    <a href="/request" class="btn btn-primary nav-cta">무료 맞춤 요청</a>
+    <nav class="nav-links" id="nav-links"></nav>
+    <a href="/request" class="nav-cta">무료 맞춤 요청</a>
     <label for="nav-toggle" class="menu-btn" aria-label="메뉴">☰</label>
   </div>
 </header>
 
 <div class="crumb-bar">
-  <div class="wrap"><nav class="crumb"><a href="/">홈</a> › <a href="/together">어울림 프로그램</a> › 도미노 챌린지</nav></div>
+  <div class="wrap">
+    <nav class="crumb" id="pg-crumb"></nav>
+  </div>
 </div>
 
-<main>
-  <section class="prog-hero" style="background:#3A2F66">
-    <div class="wrap">
-      <span class="prog-tag">어울림 · 학년 단위 체험</span>
-      <h1>도미노 챌린지</h1>
-      <div class="spec-row">
-        <div class="sitem"><div class="sl">대상</div><div class="sv">초·중·고 전학년</div></div>
-        <div class="sitem"><div class="sl">시간</div><div class="sv">3교시 · 150분</div></div>
-        <div class="sitem"><div class="sl">인원</div><div class="sv">학년 단위</div></div>
-        <div class="sitem"><div class="sl">장소</div><div class="sv">강당 · 교실</div></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="prog-sec">
-    <div class="wrap">
-      <span class="sec-lbl">PROGRAM</span>
-      <h2>어떤 프로그램인가요?</h2>
-      <p class="prog-desc">팀별로 도미노를 설계하고 설치한 뒤, 모든 팀의 도미노를 연결해 함께 쓰러뜨리는 학년 단위 협력 챌린지입니다.</p>
-      <div class="step-list">
-        <div class="step-item">
-          <span class="stn">STEP 1</span>
-          <div class="stt"><strong>설계·설치</strong>각 팀이 구간을 맡아 도미노를 세워요</div>
-        </div>
-        <div class="step-item">
-          <span class="stn">STEP 2</span>
-          <div class="stt"><strong>연결·점검</strong>팀 간 도미노를 이어 최종 점검해요</div>
-        </div>
-        <div class="step-item">
-          <span class="stn">STEP 3</span>
-          <div class="stt"><strong>챌린지</strong>모두 모여 함께 쓰러뜨려요</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="prog-sec prog-sec--surface">
-    <div class="wrap">
-      <span class="sec-lbl">TEACHER</span>
-      <h2>선생님이 편한 이유</h2>
-      <div class="benefit-list">
-        <div class="benefit-item">
-          <span class="bnum">1</span>
-          <div class="btxt"><strong>선생님이 챙길 게 없어요</strong><p>기획·도구·인력·정리까지 전부 저희가 합니다</p></div>
-        </div>
-        <div class="benefit-item">
-          <span class="bnum">2</span>
-          <div class="btxt"><strong>소외되는 아이가 없어요</strong><p>모든 팀원에게 역할이 있어 누구도 구경만 하지 않아요</p></div>
-        </div>
-        <div class="benefit-item">
-          <span class="bnum">3</span>
-          <div class="btxt"><strong>학생들이 알아서 빠져들어요</strong><p>쓰러지는 순간 학년 전체가 하나가 되는 경험이 강렬합니다</p></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="prog-sec">
-    <div class="wrap">
-      <span class="sec-lbl">READY</span>
-      <h2>준비는 저희가 합니다</h2>
-      <div class="prep-cols">
-        <div class="pcol school"><div class="pt">학교 준비</div><div class="pv">빔프로젝터<br>공간 정리</div></div>
-        <div class="pcol us"><div class="pt">아이덴티치 제공</div><div class="pv">도미노 세트 · 음향<br>진행 인력 일체</div></div>
-      </div>
-      <div class="cta-btns">
-        <a href="/request" class="btn btn-primary">무료 맞춤 요청</a>
-        <a href="/proposal.pdf" download class="btn btn-ghost">제안서 다운로드</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="other-sec">
-    <div class="wrap">
-      <h2 class="other-h">다른 프로그램도 있어요</h2>
-      <div class="other-grid">
-        <a href="/together/brumarble" class="ocard"><div class="ocard-poster" style="background:#6C47D6"><span class="otag">어울림</span><span class="onum">2</span><span class="ottl">협동<br>브루마블</span></div><div class="ocard-body"><h4>협동 브루마블</h4><p>학급 협동 보드게임</p></div></a>
-        <a href="/together/schoolping" class="ocard"><div class="ocard-poster" style="background:#2E5A7A"><span class="otag">어울림</span><span class="onum">3</span><span class="ottl">스쿨핑</span></div><div class="ocard-body"><h4>스쿨핑</h4><p>실내 캠핑 체험</p></div></a>
-        <a href="/together/facilitation" class="ocard"><div class="ocard-poster" style="background:#2A2342"><span class="otag">어울림</span><span class="onum">4</span><span class="ottl">미션<br>퍼실리테이션</span></div><div class="ocard-body"><h4>미션 퍼실리테이션</h4><p>리더십·소통 교육</p></div></a>
-        <a href="/together/violence-prevention" class="ocard"><div class="ocard-poster" style="background:#C24A22"><span class="otag">어울림</span><span class="onum">5</span><span class="ottl">학교폭력예방<br>레크리에이션</span></div><div class="ocard-body"><h4>학교폭력예방 레크</h4><p>전교생 화합</p></div></a>
-      </div>
-    </div>
-  </section>
-</main>
+<main id="pg-root"></main>
 
 <footer>
-  <div class="wrap">
-    <div><img src="/assets/images/logo.png" alt="아이덴티치" style="height:28px;display:block;margin-bottom:14px;opacity:.85;filter:invert(1);"></div>
-    <p>경험을 설계하는 진로·어울림 전문 교육기획사 · 대표 진성재</p>
-    <p>010-4084-8962 · idengroup@naver.com</p>
-    <p style="margin-top:16px;color:#6E6A85">© 2026 IDenTeach (아이덴티치).</p>
-  </div>
+  <img src="/assets/images/logo.png" alt="아이덴티치" style="height:28px;opacity:.85;filter:invert(1);">
+  <div>경험을 설계하는 진로·어울림 전문 콘텐츠 기획사</div>
+  <div style="margin-top:6px">010-4084-8962 · idengroup@naver.com</div>
+  <div style="margin-top:14px;color:#6E6A85">© 2026 IDenTeach (아이덴티치).</div>
 </footer>
+
+<script>
+/* ══════════════════════════════════════════════════════════
+   ✅ 프로그램 데이터 — 이 객체만 수정하면 페이지가 바뀝니다.
+   ✅ 새 프로그램 추가 시 이 객체를 복사해 내용만 교체하세요.
+══════════════════════════════════════════════════════════ */
+const programData = {
+
+  /* 페이지 메타 */
+  pageTitle:   "도미노 챌린지 | 어울림 프로그램 · 아이덴티치",
+  pageDesc:    "팀별로 도미노를 설계·설치하고 함께 쓰러뜨리며 협력을 경험하는 학년 단위 체험.",
+  canonicalUrl:"https://identeach.co.kr/together/domino",
+
+  /* 브레드크럼 */
+  crumbs: [
+    { label:"홈", href:"/" },
+    { label:"어울림 프로그램", href:"/together" },
+    { label:"도미노 챌린지", href:null }
+  ],
+
+  /* 네비게이션 현재 위치 */
+  navActive: "/together",
+
+  /* ──────────────────────────────
+     01. HERO
+  ────────────────────────────── */
+  category: "어울림 프로그램",
+
+  /* ✅ title: 프로그램명 */
+  title: "도미노 챌린지",
+
+  /* ✅ headline: 메인 카피 (\n으로 줄바꿈) */
+  headline: "하나가 무너지면,\n모두가 다시 맞춰가는 협력 활동",
+
+  /* ✅ description: 2~3줄 설명 */
+  description: "학생들이 팀별로 도미노 구조를 설계하고 연결하며\n협력과 소통의 과정을 경험하는 공동체 프로그램입니다.",
+
+  /* ✅ info: 기본 정보 4개 */
+  info: [
+    { label:"대상",  value:"초등 고학년\n~ 고등학생" },
+    { label:"시간",  value:"2~3교시" },
+    { label:"인원",  value:"30명\n~ 학년 단위" },
+    { label:"장소",  value:"강당, 체육관\n넓은 교실" }
+  ],
+
+  /* ✅ heroImage: 대표 이미지 (없으면 src를 빈 문자열로) */
+  heroImage: {
+    src: "/assets/images/programs/together/domino-vertical.png",
+    alt: "학생들이 도미노 챌린지 활동에 참여하는 모습"
+  },
+
+  /* ──────────────────────────────
+     02. 프로그램 포인트
+  ────────────────────────────── */
+  point: {
+    /* ✅ 섹션 제목 */
+    title: "협력은 설명보다\n함께 해보는 과정에서 배웁니다",
+
+    /* ✅ 섹션 설명 (3줄 이내) */
+    description: "도미노는 혼자 완성할 수 없습니다.\n역할을 나누고, 의견을 맞추고, 무너진 구간을 다시 세우며\n학생들은 자연스럽게 협력 방식을 배웁니다.",
+
+    /* ✅ 경험 카드 4개 (짧은 문장) */
+    experiences: [
+      "역할을 나눕니다",
+      "의견을 조율합니다",
+      "실패 후 다시 시도합니다",
+      "함께 만든 결과를 확인합니다"
+    ]
+  },
+
+  /* ──────────────────────────────
+     03. 활용 장면
+  ────────────────────────────── */
+  useCases: {
+    /* ✅ 섹션 제목 */
+    title: "필요한 교육 장면에 맞춰\n다양하게 활용할 수 있습니다",
+
+    /* ✅ 활용 카드 4개 */
+    cards: [
+      {
+        title: "신학기 관계 형성",
+        desc:  "처음 만난 친구들과 자연스럽게 대화하고 협력하는 활동입니다."
+      },
+      {
+        title: "공동체·어울림 활동",
+        desc:  "함께 목표를 세우고 역할을 나누며 협력의 의미를 경험합니다."
+      },
+      {
+        title: "리더십·자치활동 연계",
+        desc:  "역할 분담과 의사결정을 통해 책임감을 자연스럽게 경험합니다."
+      },
+      {
+        title: "진로·자기이해 연계",
+        desc:  "내가 맡는 역할과 협력 방식을 통해 자신을 돌아볼 수 있습니다."
+      }
+    ]
+  },
+
+  /* ──────────────────────────────
+     04. 진행 흐름
+  ────────────────────────────── */
+  process: {
+    /* ✅ 섹션 제목 */
+    title: "설계하고, 만들고,\n연결하며 마무리합니다",
+
+    /* ✅ 단계 5개 (각 title + desc) */
+    steps: [
+      {
+        title: "오리엔테이션",
+        desc:  "프로그램 목적을 안내하고 팀을 구성합니다."
+      },
+      {
+        title: "미션 설계",
+        desc:  "팀별로 역할을 나누고 구조를 설계합니다."
+      },
+      {
+        title: "협동 제작",
+        desc:  "도미노를 세우며 문제를 함께 해결합니다."
+      },
+      {
+        title: "연결 챌린지",
+        desc:  "팀별 결과물을 하나의 흐름으로 연결합니다."
+      },
+      {
+        title: "회고",
+        desc:  "활동 속에서 발견한 협력 방식을 함께 정리합니다."
+      }
+    ]
+  },
+
+  /* ──────────────────────────────
+     05. 갤러리
+  ────────────────────────────── */
+  gallery: {
+    /* ✅ 섹션 제목 */
+    title: "학생들이 직접 만들고\n함께 연결합니다",
+
+    /* ✅ 사진 4장 (src + alt + caption) */
+    images: [
+      {
+        src:     "/assets/images/gallery/g1.jpg",
+        alt:     "도미노 챌린지 전체 활동 장면",
+        caption: "전체 활동 장면"
+      },
+      {
+        src:     "/assets/images/gallery/g2.jpg",
+        alt:     "학생들이 팀별로 도미노를 제작하는 모습",
+        caption: "팀별 제작 활동"
+      },
+      {
+        src:     "/assets/images/gallery/g3.jpg",
+        alt:     "완성된 도미노 결과물을 연결하는 모습",
+        caption: "연결 챌린지"
+      },
+      {
+        src:     "/assets/images/gallery/g4.jpg",
+        alt:     "강사가 학생들과 활동을 회고하는 모습",
+        caption: "활동 회고"
+      }
+    ]
+  }
+
+}; /* ← programData 끝 */
+
+
+/* ══════════════════════════════════════════════════════
+   렌더링 엔진 — 수정 불필요
+══════════════════════════════════════════════════════ */
+
+/* 네비 링크 */
+const NAV_ITEMS = [
+  { label:"어울림 프로그램", href:"/together" },
+  { label:"진로 프로그램",  href:"/career" },
+  { label:"교내 행사",      href:"/events" },
+  { label:"회사소개",       href:"/about" }
+];
+
+/* SVG 아이콘 (경험 카드용) — 4개 순환 */
+const XP_ICONS = [
+  `<svg viewBox="0 0 20 20" fill="none" stroke="#14142B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2L12.5 7.5H18L13.5 11L15.5 17L10 13.5L4.5 17L6.5 11L2 7.5H7.5L10 2Z"/></svg>`,
+  `<svg viewBox="0 0 20 20" fill="none" stroke="#14142B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="8"/><path d="M10 6v4l3 2"/></svg>`,
+  `<svg viewBox="0 0 20 20" fill="none" stroke="#14142B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 12.5A7 7 0 116 3.5M9 7l1 2 2 .5"/></svg>`,
+  `<svg viewBox="0 0 20 20" fill="none" stroke="#14142B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 10l4 4 6-7"/></svg>`
+];
+
+function nl(str) { return (str||'').replace(/\n/g,'<br>') }
+
+function renderNav(active) {
+  const el = document.getElementById('nav-links');
+  el.innerHTML = NAV_ITEMS.map(item =>
+    `<a href="${item.href}"${item.href===active?' class="nav-active"':''}>${item.label}</a>`
+  ).join('');
+}
+
+function renderCrumb(crumbs) {
+  const el = document.getElementById('pg-crumb');
+  el.innerHTML = crumbs.map((c,i) =>
+    i < crumbs.length-1
+      ? `<a href="${c.href}">${c.label}</a><span class="crumb-sep">›</span>`
+      : `<span>${c.label}</span>`
+  ).join('');
+}
+
+function renderMeta(d) {
+  document.getElementById('pg-title').textContent  = d.pageTitle;
+  document.getElementById('pg-desc').content       = d.pageDesc;
+  document.getElementById('pg-canonical').href     = d.canonicalUrl;
+}
+
+function renderHero(d) {
+  const imgHtml = d.heroImage.src
+    ? `<div class="hero-img-wrap"><img src="${d.heroImage.src}" alt="${d.heroImage.alt}" loading="eager"></div>`
+    : `<div class="hero-img-wrap" style="background:var(--border)"></div>`;
+
+  return `
+<section class="hero-sec">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="hero-chip">${d.category}</span>
+        <h1 class="hero-title">${nl(d.headline)}</h1>
+        <p class="hero-desc">${nl(d.description)}</p>
+        <div class="info-grid">
+          ${d.info.map(item=>`
+          <div class="info-item">
+            <div class="info-label">${item.label}</div>
+            <div class="info-value">${nl(item.value)}</div>
+          </div>`).join('')}
+        </div>
+      </div>
+      ${imgHtml}
+    </div>
+  </div>
+</section>`;
+}
+
+function renderPoint(p) {
+  return `
+<section class="point-sec">
+  <div class="wrap">
+    <span class="sec-chip">PROGRAM POINT</span>
+    <h2 class="sec-h2">${nl(p.title)}</h2>
+    <p class="sec-desc">${nl(p.description)}</p>
+    <div class="xp-grid">
+      ${p.experiences.map((xp,i)=>`
+      <div class="xp-card">
+        <div class="xp-icon">${XP_ICONS[i%4]}</div>
+        <p>${xp}</p>
+      </div>`).join('')}
+    </div>
+  </div>
+</section>`;
+}
+
+function renderUseCases(u) {
+  return `
+<section class="usecase-sec">
+  <div class="wrap">
+    <span class="sec-chip">활용 장면</span>
+    <h2 class="sec-h2">${nl(u.title)}</h2>
+    <div class="uc-grid">
+      ${u.cards.map(c=>`
+      <div class="uc-card">
+        <div class="uc-card-title">${c.title}</div>
+        <p>${c.desc}</p>
+      </div>`).join('')}
+    </div>
+  </div>
+</section>`;
+}
+
+function renderProcess(proc) {
+  return `
+<section class="process-sec">
+  <div class="wrap">
+    <span class="sec-chip">진행 흐름</span>
+    <h2 class="sec-h2" style="margin-bottom:clamp(36px,5vw,52px)">${nl(proc.title)}</h2>
+    <div class="proc-row">
+      ${proc.steps.map((s,i)=>`
+      <div class="proc-step">
+        <div class="proc-num">${i+1}</div>
+        <div class="proc-body">
+          <div class="proc-title">${s.title}</div>
+          <div class="proc-desc">${s.desc}</div>
+        </div>
+      </div>`).join('')}
+    </div>
+  </div>
+</section>`;
+}
+
+function renderGallery(g) {
+  return `
+<section class="gallery-sec">
+  <div class="wrap">
+    <span class="sec-chip">활동 모습</span>
+    <h2 class="sec-h2" style="margin-bottom:clamp(32px,4vw,44px)">${nl(g.title)}</h2>
+    <div class="gallery-grid">
+      ${g.images.map(img=>`
+      <div class="g-item">
+        <div class="g-img">
+          <img src="${img.src}" alt="${img.alt}" loading="lazy">
+        </div>
+        <p class="g-caption">${img.caption}</p>
+      </div>`).join('')}
+    </div>
+  </div>
+</section>`;
+}
+
+/* ── 페이지 진입점 ── */
+function renderPage(data) {
+  renderMeta(data);
+  renderNav(data.navActive);
+  renderCrumb(data.crumbs);
+
+  document.getElementById('pg-root').innerHTML =
+    renderHero(data) +
+    renderPoint(data.point) +
+    renderUseCases(data.useCases) +
+    renderProcess(data.process) +
+    renderGallery(data.gallery);
+}
+
+renderPage(programData);
+</script>
+
 </body>
 </html>
-
-
-
-
-
-
-
