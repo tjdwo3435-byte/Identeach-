@@ -3,32 +3,57 @@
 ## 📁 폴더 구조
 
 ```
-Folder. try/
-├── index.html              ← 메인 홈페이지
-├── about.html              ← 회사소개 페이지
-├── CNAME                   ← 도메인 설정 (identeach.co.kr)
-├── identeach-brand-config.md ← 브랜드 설정 원본
-├── SYSTEM.md               ← 이 파일 (관리 가이드)
+Folder. identeach/
+├── index.html                  ← 메인 홈페이지
+├── about/index.html            ← 회사소개 페이지
+├── request/index.html          ← 문의 페이지
+├── career/                     ← 진로 프로그램 상세 페이지들
+│   ├── index.html
+│   ├── talkshow/index.html
+│   ├── job-lab/index.html
+│   ├── touching-voice/index.html
+│   └── ceo-talk/index.html
+├── together/                   ← 어울림 프로그램 상세 페이지들
+│   ├── index.html
+│   ├── domino/index.html
+│   ├── brumarble/index.html
+│   ├── schoolping/index.html
+│   ├── facilitation/index.html
+│   └── violence-prevention/index.html
+├── logo-intro.html             ← 브랜드 오프닝 애니메이션
+├── CNAME                       ← 도메인 설정 (identeach.co.kr)
+├── identeach-brand-config.md   ← 브랜드 토큰/색상 설정 원본
+├── SYSTEM.md                   ← 이 파일 (관리 가이드)
 │
 └── assets/
+    ├── documents/              ← 다운로드 파일
+    │   ├── identeach-program-guide.pdf  ← 프로그램 소개서
+    │   └── proposal.pdf                 ← 제안서
     ├── images/
-    │   ├── LOgo.png            ← 로고
-    │   ├── team/
-    │   │   └── CEO.png         ← 대표 사진
+    │   ├── logo.png / logo-white.png    ← 로고
+    │   ├── hero/               ← 메인 슬라이드 이미지
+    │   ├── gallery/            ← 갤러리 이미지 (g1~g8.jpg)
+    │   ├── team/               ← 팀/대표 사진
+    │   ├── characters/         ← 브랜드 캐릭터 PNG
+    │   ├── objects/            ← 아이콘 오브젝트 PNG
+    │   ├── activity/           ← 활동 현장 사진
+    │   │   └── field-photos/   ← 현장 변형 사진
     │   ├── programs/           ← 프로그램별 이미지
-    │   │   └── (프로그램명.jpg)
-    │   └── activity/           ← 활동 현장 사진 (캐러셀용)
-    │       └── (activity1.jpg, activity2.jpg ...)
-    └── files/                  ← PDF 제안서 등 다운로드 파일
-        └── (proposal.pdf 등)
+    │   │   ├── career/
+    │   │   ├── together/
+    │   │   └── _source/        ← 소스/참고 이미지 (미사용)
+    │   ├── eyebrow/            ← 섹션 타이틀 이미지
+    │   └── reference/          ← 참고 이미지
+    ├── characters/             ← 캐릭터 PNG (별도 루트)
+    ├── music/                  ← 배경음악
+    └── objects/                ← 오브젝트 PNG
 ```
 
 ---
 
 ## 🖼️ 이미지 추가 방법
 
-구글 드라이브에서 파일 공유 후 링크를 Claude에게 전달하거나
-직접 해당 폴더에 파일을 넣어주세요.
+파일을 해당 폴더에 직접 넣고 Claude에게 경로를 알려주세요.
 
 | 용도 | 저장 위치 | 권장 크기 |
 |------|-----------|-----------|
@@ -36,7 +61,7 @@ Folder. try/
 | 대표 사진 | `assets/images/team/` | 세로 600px 이상 |
 | 프로그램 사진 | `assets/images/programs/` | 가로 800px, 16:9 비율 |
 | 활동 현장 사진 | `assets/images/activity/` | 가로 1200px 이상 |
-| PDF 파일 | `assets/files/` | - |
+| PDF 다운로드 파일 | `assets/documents/` | - |
 
 ---
 
@@ -59,7 +84,7 @@ Folder. try/
 | `[프로그램-커스텀]` | 커스텀 프로그램 카드 |
 | `[철학]` | 교육 철학 섹션 |
 | `[문의]` | 하단 문의 섹션 |
-| `[회사소개]` | about.html 전체 |
+| `[회사소개]` | about/index.html 전체 |
 | `[CEO]` | 대표 소개 |
 | `[전체]` | 공통 적용 (색상, 폰트 등) |
 
@@ -86,7 +111,7 @@ Folder. try/
 | 항목 | 값 |
 |------|-----|
 | 도메인 | identeach.co.kr |
-| GitHub | github.com/tjdwo3435-byte/testweb |
+| GitHub | github.com/tjdwo3435-byte/Identeach- |
 | 이메일 | idengroup@naver.com |
 | 전화 | 010-4084-8962 |
 | Formspree ID | mlgondpj |

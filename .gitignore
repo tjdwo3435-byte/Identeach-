@@ -1,0 +1,11 @@
+# 별도 프로젝트 (입소문 MVP - Next.js)
+ipsomun/
+
+# Claude Code 작업 폴더
+.claude/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
