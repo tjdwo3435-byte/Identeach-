@@ -60,12 +60,17 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdr
 .ev-tag{font-size:12px;font-weight:600;padding:4px 11px;border-radius:999px;background:var(--warm);color:var(--gray);border:1px solid var(--border)}
 @media(max-width:640px){.ev-grid{grid-template-columns:1fr}}
 
-/* 갤러리 사진 */
-.photo-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:32px}
-.photo-strip .p-frame{aspect-ratio:1;border-radius:12px;overflow:hidden;background:var(--warm)}
-.photo-strip .p-frame img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
-.photo-strip .p-frame:hover img{transform:scale(1.06)}
-@media(max-width:640px){.photo-strip{grid-template-columns:repeat(2,1fr)}}
+/* 갤러리 슬라이더 */
+.gallery-marquee{overflow:hidden;position:relative}
+.gallery-marquee::before,.gallery-marquee::after{content:"";position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none}
+.gallery-marquee::before{left:0;background:linear-gradient(to right,#fff,transparent)}
+.gallery-marquee::after{right:0;background:linear-gradient(to left,#fff,transparent)}
+.g-track{display:flex;gap:10px;animation:gMarquee 32s linear infinite;width:max-content}
+.g-track:hover{animation-play-state:paused}
+.g-frame{width:280px;aspect-ratio:4/3;flex-shrink:0;border-radius:12px;overflow:hidden;background:var(--warm)}
+.g-frame img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.g-frame:hover img{transform:scale(1.06)}
+@keyframes gMarquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
 /* 섹션 공통 */
 .sec-label{display:inline-flex;align-items:center;gap:5px;background:rgba(31,35,146,.07);color:var(--blue);border:1px solid rgba(31,35,146,.14);font-size:11px;font-weight:700;letter-spacing:.1em;padding:4px 12px;border-radius:999px;margin-bottom:14px}
@@ -289,15 +294,26 @@ footer{background:#0F0C20;color:#B5B1C9;padding:44px 0;font-size:13px;text-align
   <div class="wrap">
     <span class="sec-label">GALLERY</span>
     <h2 class="sec-h2">현장 모습</h2>
-    <div class="photo-strip">
-      <div class="p-frame"><img src="/assets/images/gallery/g1.jpg" alt="행사 현장 1" loading="lazy"></div>
-      <div class="p-frame"><img src="/assets/images/gallery/g2.jpg" alt="행사 현장 2" loading="lazy"></div>
-      <div class="p-frame"><img src="/assets/images/gallery/g3.jpg" alt="행사 현장 3" loading="lazy"></div>
-      <div class="p-frame"><img src="/assets/images/gallery/g4.jpg" alt="행사 현장 4" loading="lazy"></div>
-      <div class="p-frame"><img src="/assets/images/gallery/g5.jpg" alt="행사 현장 5" loading="lazy"></div>
-      <div class="p-frame"><img src="/assets/images/gallery/g6.jpg" alt="행사 현장 6" loading="lazy"></div>
-      <div class="p-frame"><img src="/assets/images/gallery/g7.jpg" alt="행사 현장 7" loading="lazy"></div>
-      <div class="p-frame"><img src="/assets/images/gallery/g8.jpg" alt="행사 현장 8" loading="lazy"></div>
+  </div>
+  <div class="gallery-marquee" style="margin-top:28px">
+    <div class="g-track">
+      <div class="g-frame"><img src="/assets/images/gallery/g1.jpg" alt="행사 현장 1" loading="lazy"></div>
+      <div class="g-frame"><img src="/assets/images/gallery/g2.jpg" alt="행사 현장 2" loading="lazy"></div>
+      <div class="g-frame"><img src="/assets/images/gallery/g3.jpg" alt="행사 현장 3" loading="lazy"></div>
+      <div class="g-frame"><img src="/assets/images/gallery/g4.jpg" alt="행사 현장 4" loading="lazy"></div>
+      <div class="g-frame"><img src="/assets/images/gallery/g5.jpg" alt="행사 현장 5" loading="lazy"></div>
+      <div class="g-frame"><img src="/assets/images/gallery/g6.jpg" alt="행사 현장 6" loading="lazy"></div>
+      <div class="g-frame"><img src="/assets/images/gallery/g7.jpg" alt="행사 현장 7" loading="lazy"></div>
+      <div class="g-frame"><img src="/assets/images/gallery/g8.jpg" alt="행사 현장 8" loading="lazy"></div>
+      <!-- 무한 루프용 복제 -->
+      <div class="g-frame"><img src="/assets/images/gallery/g1.jpg" alt="" loading="lazy"></div>
+      <div class="g-frame"><img src="/assets/images/gallery/g2.jpg" alt="" loading="lazy"></div>
+      <div class="g-frame"><img src="/assets/images/gallery/g3.jpg" alt="" loading="lazy"></div>
+      <div class="g-frame"><img src="/assets/images/gallery/g4.jpg" alt="" loading="lazy"></div>
+      <div class="g-frame"><img src="/assets/images/gallery/g5.jpg" alt="" loading="lazy"></div>
+      <div class="g-frame"><img src="/assets/images/gallery/g6.jpg" alt="" loading="lazy"></div>
+      <div class="g-frame"><img src="/assets/images/gallery/g7.jpg" alt="" loading="lazy"></div>
+      <div class="g-frame"><img src="/assets/images/gallery/g8.jpg" alt="" loading="lazy"></div>
     </div>
   </div>
 </section>
