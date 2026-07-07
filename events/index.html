@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>교내 행사 | 체육대회·학교축제·찾아가는 공연 · 아이덴티치</title>
+<meta name="description" content="아이덴티치가 기획하고 운영합니다. 레크리에이션 체육대회·학교축제·찾아가는 공연·골든벨 행사까지 교내 행사 전문.">
+<meta name="keywords" content="교내행사,체육대회,학교축제,찾아가는공연,골든벨,레크리에이션,학교행사기획,아이덴티치">
+<meta property="og:type" content="website">
+<meta property="og:title" content="교내 행사 | 아이덴티치">
+<meta property="og:url" content="https://identeach.co.kr/events">
+<meta property="og:locale" content="ko_KR">
+<link rel="canonical" href="https://identeach.co.kr/events">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<style>
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@1.3.9/dist/web/static/pretendard.css');
+:root{--blue:#1F2392;--blue-d:#171980;--yellow:#FFD84D;--navy:#14142B;--gray:#6F7287;--warm:#F4F4F6;--border:#E8E8F0;--white:#fff;--maxw:1080px;--rc:16px;--pad-x:clamp(20px,5vw,24px);--sec-y:clamp(52px,8vw,80px)}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'Pretendard',-apple-system,sans-serif;color:var(--navy);background:var(--white);font-weight:500;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}img{display:block;max-width:100%}h1,h2,h3{letter-spacing:-.03em}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad-x)}section{padding:var(--sec-y) 0}
+
+/* 헤더 */
+header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdrop-filter:blur(16px)}
+.nav{display:flex;align-items:center;gap:16px;height:72px;background:#fff;border-radius:0 0 20px 20px;box-shadow:0 4px 20px rgba(0,0,0,.08);padding:0 clamp(20px,3vw,36px);max-width:var(--maxw);margin:0 auto}
+.nav-logo{margin-right:auto;display:flex;align-items:center}.nav-links{display:flex;align-items:center;gap:4px;font-size:15px;font-weight:500;color:var(--gray)}
+.nav-links a{padding:7px 14px;border-radius:999px;transition:color .15s,background .15s;white-space:nowrap}.nav-links a:hover{color:var(--navy)}.nav-links a.nav-active{background:var(--navy);color:#fff;font-weight:700}
+.nav-cta{display:inline-flex;align-items:center;font-family:inherit;font-weight:700;background:var(--blue);color:#fff;font-size:14px;padding:9px 18px;border-radius:999px;white-space:nowrap;border:none;cursor:pointer}
+.menu-toggle,.menu-btn{display:none}.menu-btn{font-size:22px;background:none;border:none;cursor:pointer;color:var(--navy);padding:4px}
+@media(max-width:860px){.menu-btn{display:block;order:3}.nav-cta{order:2}.nav-links{position:absolute;top:72px;left:0;right:0;flex-direction:column;align-items:flex-start;gap:0;background:#fff;border-radius:24px;box-shadow:0 8px 28px rgba(0,0,0,.12);max-height:0;overflow:hidden;transition:max-height .28s;font-size:16px;z-index:200}.nav-links a{width:100%;padding:14px clamp(20px,5vw,24px);border-radius:0;border-top:1px solid var(--border)}.menu-toggle:checked~.nav-links{max-height:360px}}
+
+/* 빵부스러기 */
+.crumb-bar{background:var(--white);border-bottom:1px solid var(--border);padding:11px 0}.crumb{font-size:12px;color:var(--gray);display:flex;align-items:center;gap:5px}.crumb a:hover{color:var(--blue)}.crumb-sep{opacity:.35}
+
+/* 히어로 */
+.hero{position:relative;min-height:clamp(340px,48vw,520px);display:flex;align-items:flex-end;overflow:hidden;background:#0a0e3a}
+.hero-bg{position:absolute;inset:0;object-fit:cover;width:100%;height:100%;opacity:.55}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,14,58,.85) 0%,rgba(10,14,58,.25) 60%,transparent 100%)}
+.hero-body{position:relative;z-index:1;padding:clamp(36px,5vw,64px) var(--pad-x) clamp(40px,5vw,68px);max-width:var(--maxw);margin:0 auto;width:100%}
+.hero-tag{display:inline-flex;align-items:center;gap:6px;background:var(--yellow);color:var(--navy);font-size:12px;font-weight:800;letter-spacing:.05em;padding:5px 14px;border-radius:999px;margin-bottom:14px}
+.hero-h1{font-size:clamp(28px,5vw,52px);font-weight:900;color:#fff;line-height:1.12;margin-bottom:12px}
+.hero-sub{font-size:clamp(14px,2vw,17px);color:rgba(255,255,255,.78);max-width:36em;line-height:1.65;margin-bottom:28px}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:inherit;font-weight:700;font-size:clamp(14px,2vw,15px);padding:13px 24px;border-radius:var(--rc);transition:.18s;cursor:pointer;border:none;white-space:nowrap}
+.btn-yellow{background:var(--yellow);color:var(--navy)}.btn-yellow:hover{filter:brightness(1.05);transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.38)}.btn-ghost:hover{background:rgba(255,255,255,.1);transform:translateY(-2px)}
+
+/* 행사 유형 카드 */
+.ev-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:36px}
+.ev-card{border-radius:var(--rc);overflow:hidden;background:var(--white);border:1px solid var(--border);box-shadow:0 4px 20px rgba(20,20,43,.06);transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column}
+.ev-card:hover{transform:translateY(-4px);box-shadow:0 10px 36px rgba(20,20,43,.12)}
+.ev-img{aspect-ratio:16/9;overflow:hidden;background:var(--warm)}.ev-img img{width:100%;height:100%;object-fit:cover;transition:transform .35s}.ev-card:hover .ev-img img{transform:scale(1.04)}
+.ev-img-empty{aspect-ratio:16/9;background:linear-gradient(135deg,#1a1f5e 0%,#2d3494 100%);display:flex;align-items:center;justify-content:center;font-size:28px}
+.ev-body{padding:22px 22px 24px;flex:1;display:flex;flex-direction:column;gap:10px}
+.ev-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(31,35,146,.07);color:var(--blue);border:1px solid rgba(31,35,146,.14);font-size:11px;font-weight:700;letter-spacing:.08em;padding:4px 11px;border-radius:999px;width:fit-content}
+.ev-name{font-size:clamp(17px,2.2vw,20px);font-weight:800;color:var(--navy);line-height:1.3}
+.ev-desc{font-size:clamp(13px,1.6vw,14px);color:var(--gray);line-height:1.65;flex:1}
+.ev-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.ev-tag{font-size:12px;font-weight:600;padding:4px 11px;border-radius:999px;background:var(--warm);color:var(--gray);border:1px solid var(--border)}
+@media(max-width:640px){.ev-grid{grid-template-columns:1fr}}
+
+/* 갤러리 사진 */
+.photo-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:32px}
+.photo-strip .p-frame{aspect-ratio:1;border-radius:12px;overflow:hidden;background:var(--warm)}
+.photo-strip .p-frame img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.photo-strip .p-frame:hover img{transform:scale(1.06)}
+@media(max-width:640px){.photo-strip{grid-template-columns:repeat(2,1fr)}}
+
+/* 섹션 공통 */
+.sec-label{display:inline-flex;align-items:center;gap:5px;background:rgba(31,35,146,.07);color:var(--blue);border:1px solid rgba(31,35,146,.14);font-size:11px;font-weight:700;letter-spacing:.1em;padding:4px 12px;border-radius:999px;margin-bottom:14px}
+.sec-label::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--blue);flex-shrink:0}
+.sec-h2{font-size:clamp(22px,3.2vw,32px);font-weight:800;color:var(--navy);line-height:1.2}
+.sec-sub{font-size:clamp(14px,1.8vw,16px);color:var(--gray);margin-top:10px;max-width:38em;line-height:1.65}
+
+/* 문의 CTA 섹션 */
+.cta-sec{background:linear-gradient(135deg,#1a1f5e 0%,var(--blue) 100%);padding:clamp(52px,7vw,80px) 0}
+.cta-wrap{display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
+.cta-text{color:#fff}.cta-text h2{font-size:clamp(22px,3.5vw,36px);font-weight:900;line-height:1.2;margin-bottom:12px}
+.cta-text p{font-size:clamp(14px,1.8vw,16px);color:rgba(255,255,255,.75);line-height:1.65;max-width:34em}
+.cta-actions{display:flex;flex-direction:column;gap:10px;align-items:flex-end;flex-shrink:0}
+@media(max-width:680px){.cta-wrap{flex-direction:column;align-items:flex-start}.cta-actions{align-items:flex-start;width:100%}}
+
+/* 제안서 체크 박스 섹션 */
+.proposal-sec{background:var(--warm);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.proposal-inner{display:flex;align-items:center;gap:20px;flex-wrap:wrap;padding:clamp(28px,4vw,40px) 0}
+.proposal-icon{width:52px;height:52px;border-radius:14px;background:var(--yellow);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
+.proposal-text{flex:1}.proposal-text h3{font-size:clamp(16px,2.2vw,18px);font-weight:800;color:var(--navy);margin-bottom:4px}
+.proposal-text p{font-size:13px;color:var(--gray);line-height:1.55}
+.proposal-dl{display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:#fff;font-family:inherit;font-weight:700;font-size:14px;padding:13px 22px;border-radius:var(--rc);cursor:pointer;white-space:nowrap;text-decoration:none;transition:.18s;border:none}
+.proposal-dl:hover{background:#0d0d20;transform:translateY(-2px)}
+@media(max-width:580px){.proposal-inner{flex-direction:column;align-items:flex-start}}
+
+/* 운영 흐름 */
+.flow-row{display:flex;align-items:flex-start;gap:0;position:relative;margin-top:32px}
+.flow-row::before{content:'';position:absolute;top:22px;left:calc(10% + 20px);right:calc(10% + 20px);height:2px;background:var(--border);z-index:0}
+.flow-step{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;padding:0 4px}
+.flow-num{width:44px;height:44px;border-radius:50%;background:var(--blue);color:#fff;font-size:14px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;z-index:1}
+.flow-title{font-size:clamp(12px,1.5vw,13px);font-weight:800;color:var(--navy);line-height:1.4}
+.flow-desc{font-size:11px;color:var(--gray);line-height:1.5}
+@media(max-width:600px){.flow-row{flex-direction:column;gap:8px}.flow-row::before{display:none}.flow-step{flex-direction:row;align-items:flex-start;text-align:left;gap:14px;width:100%;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:14px 16px}.flow-num{flex-shrink:0;width:36px;height:36px;font-size:13px}.flow-body{display:flex;flex-direction:column;gap:2px}.flow-title{font-size:14px}}
+
+/* 고정 말풍선 CTA */
+.bubble-cta{position:fixed;bottom:24px;right:24px;z-index:999;display:flex;flex-direction:column;align-items:flex-end}
+.bubble-btn{display:inline-flex;align-items:center;gap:8px;background:var(--yellow);color:var(--navy);font-family:inherit;font-weight:800;font-size:14px;padding:13px 22px;border-radius:18px 18px 0 18px;text-decoration:none;box-shadow:0 6px 24px rgba(20,20,43,.28);white-space:nowrap;border:none;cursor:pointer}
+.bubble-tail{width:0;height:0;border-style:solid;border-width:12px 12px 0 0;border-color:var(--yellow) transparent transparent transparent}
+
+/* 푸터 */
+footer{background:#0F0C20;color:#B5B1C9;padding:44px 0;font-size:13px;text-align:center}footer img{margin:0 auto 14px}footer div{margin-bottom:4px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="/" class="nav-logo"><img src="/assets/images/logo.png" alt="아이덴티치" style="height:48px;"></a>
+    <input type="checkbox" id="nav-toggle" class="menu-toggle">
+    <nav class="nav-links" id="nav-links"></nav>
+    <a href="/request" class="nav-cta">무료 맞춤 요청</a>
+    <label for="nav-toggle" class="menu-btn" aria-label="메뉴">☰</label>
+  </div>
+</header>
+
+<div class="crumb-bar">
+  <div class="wrap">
+    <nav class="crumb">
+      <a href="/">홈</a><span class="crumb-sep">›</span><span>교내 행사</span>
+    </nav>
+  </div>
+</div>
+
+<!-- 히어로 -->
+<section class="hero" style="padding:0">
+  <img class="hero-bg" src="/assets/images/activity/act-concert.jpg" alt="교내 행사 현장" loading="eager">
+  <div class="hero-overlay"></div>
+  <div class="hero-body">
+    <div class="hero-tag">🎉 교내 행사 전문</div>
+    <h1 class="hero-h1">학교의 특별한 날,<br>아이덴티치가 함께합니다</h1>
+    <p class="hero-sub">체육대회·학교축제·찾아가는 공연·골든벨까지.<br>기획부터 강사 파견·현장 운영까지 한 번에 맡깁니다.</p>
+    <div class="hero-btns">
+      <a href="/request" class="btn btn-yellow">📞 행사 문의하기</a>
+      <a href="/assets/documents/proposal.pdf" download class="btn btn-ghost">📋 체육대회 제안서 받기</a>
+    </div>
+  </div>
+</section>
+
+<!-- 제안서 배너 -->
+<div class="proposal-sec">
+  <div class="wrap">
+    <div class="proposal-inner">
+      <div class="proposal-icon">📋</div>
+      <div class="proposal-text">
+        <h3>체육대회 제안서 받기</h3>
+        <p>프로그램 구성·운영 방식·비용 안내가 담긴 제안서를 바로 다운로드 하실 수 있어요.</p>
+      </div>
+      <a href="/assets/documents/proposal.pdf" download class="proposal-dl">⬇ PDF 다운로드</a>
+    </div>
+  </div>
+</div>
+
+<!-- 행사 유형 -->
+<section style="padding:var(--sec-y) 0;background:#fff">
+  <div class="wrap">
+    <span class="sec-label">EVENTS</span>
+    <h2 class="sec-h2">어떤 행사를 준비하고 계신가요?</h2>
+    <p class="sec-sub">학교 상황에 맞게 행사를 설계하고 직접 현장을 운영합니다.</p>
+    <div class="ev-grid">
+
+      <!-- 레크리에이션 체육대회 -->
+      <div class="ev-card">
+        <div class="ev-img">
+          <img src="/assets/images/programs/together/학교폭력사진1.jpg" alt="레크리에이션 체육대회" loading="lazy">
+        </div>
+        <div class="ev-body">
+          <span class="ev-badge">SPORTS DAY</span>
+          <h3 class="ev-name">레크리에이션 체육대회</h3>
+          <p class="ev-desc">체육대회에 레크리에이션 요소를 더해 운동을 못하는 학생도 신나게 참여하는 체육대회. 학급별 대항전부터 전교생 단체 게임까지 구성합니다.</p>
+          <div class="ev-tags">
+            <span class="ev-tag">전교생</span>
+            <span class="ev-tag">운동장·강당</span>
+            <span class="ev-tag">반나절~하루</span>
+            <span class="ev-tag">학급 단합</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 학교축제 -->
+      <div class="ev-card">
+        <div class="ev-img">
+          <img src="/assets/images/activity/act-concert.jpg" alt="학교축제" loading="lazy">
+        </div>
+        <div class="ev-body">
+          <span class="ev-badge">FESTIVAL</span>
+          <h3 class="ev-name">학교축제</h3>
+          <p class="ev-desc">학생들이 주인공이 되는 축제. MC 진행·무대 연출·게임 코너 기획까지 축제 전반을 함께 설계하고 운영합니다.</p>
+          <div class="ev-tags">
+            <span class="ev-tag">전교생</span>
+            <span class="ev-tag">강당·운동장</span>
+            <span class="ev-tag">반일~종일</span>
+            <span class="ev-tag">MC 진행</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 찾아가는 공연 -->
+      <div class="ev-card">
+        <div class="ev-img">
+          <img src="/assets/images/activity/act-concert.jpg" alt="찾아가는 공연" loading="lazy" style="object-position:center 30%">
+        </div>
+        <div class="ev-body">
+          <span class="ev-badge">CONCERT</span>
+          <h3 class="ev-name">찾아가는 공연</h3>
+          <p class="ev-desc">학교로 직접 찾아가는 버스킹·마술·퍼포먼스 공연. 점심시간·쉬는시간을 활용해 일상 속 특별한 경험을 선물합니다.</p>
+          <div class="ev-tags">
+            <span class="ev-tag">전학년</span>
+            <span class="ev-tag">강당·복도·운동장</span>
+            <span class="ev-tag">1~2시간</span>
+            <span class="ev-tag">이벤트 공연</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 골든벨 행사 -->
+      <div class="ev-card">
+        <div class="ev-img-empty">🔔</div>
+        <div class="ev-body">
+          <span class="ev-badge">GOLDEN BELL</span>
+          <h3 class="ev-name">골든벨 행사</h3>
+          <p class="ev-desc">퀴즈 형식으로 전교생이 함께 참여하는 골든벨 대회. 학교 특색에 맞는 문항 구성과 현장 진행을 담당합니다.</p>
+          <div class="ev-tags">
+            <span class="ev-tag">전교생</span>
+            <span class="ev-tag">강당</span>
+            <span class="ev-tag">2~3시간</span>
+            <span class="ev-tag">퀴즈 대회</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 운영 흐름 -->
+<section style="padding:var(--sec-y) 0;background:var(--warm);border-top:1px solid var(--border)">
+  <div class="wrap">
+    <span class="sec-label">PROCESS</span>
+    <h2 class="sec-h2">이렇게 진행됩니다</h2>
+    <div class="flow-row">
+      <div class="flow-step">
+        <div class="flow-num">1</div>
+        <div class="flow-body">
+          <div class="flow-title">문의·상담</div>
+          <div class="flow-desc">행사 규모·날짜·예산 확인</div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">2</div>
+        <div class="flow-body">
+          <div class="flow-title">맞춤 기획안 제출</div>
+          <div class="flow-desc">학교 상황에 맞는 구성안 전달</div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">3</div>
+        <div class="flow-body">
+          <div class="flow-title">협의·확정</div>
+          <div class="flow-desc">세부 내용 조율 및 계약</div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">4</div>
+        <div class="flow-body">
+          <div class="flow-title">사전 준비</div>
+          <div class="flow-desc">장비·도구·강사 배정</div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">5</div>
+        <div class="flow-body">
+          <div class="flow-title">현장 운영</div>
+          <div class="flow-desc">당일 설치·진행·마무리</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 현장 사진 -->
+<section style="padding:var(--sec-y) 0;background:#fff;border-top:1px solid var(--border)">
+  <div class="wrap">
+    <span class="sec-label">GALLERY</span>
+    <h2 class="sec-h2">현장 모습</h2>
+    <div class="photo-strip">
+      <div class="p-frame"><img src="/assets/images/gallery/g1.jpg" alt="행사 현장 1" loading="lazy"></div>
+      <div class="p-frame"><img src="/assets/images/gallery/g2.jpg" alt="행사 현장 2" loading="lazy"></div>
+      <div class="p-frame"><img src="/assets/images/gallery/g3.jpg" alt="행사 현장 3" loading="lazy"></div>
+      <div class="p-frame"><img src="/assets/images/gallery/g4.jpg" alt="행사 현장 4" loading="lazy"></div>
+      <div class="p-frame"><img src="/assets/images/gallery/g5.jpg" alt="행사 현장 5" loading="lazy"></div>
+      <div class="p-frame"><img src="/assets/images/gallery/g6.jpg" alt="행사 현장 6" loading="lazy"></div>
+      <div class="p-frame"><img src="/assets/images/gallery/g7.jpg" alt="행사 현장 7" loading="lazy"></div>
+      <div class="p-frame"><img src="/assets/images/gallery/g8.jpg" alt="행사 현장 8" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 문의 CTA -->
+<section class="cta-sec">
+  <div class="wrap">
+    <div class="cta-wrap">
+      <div class="cta-text">
+        <h2>행사 일정이 잡히셨나요?<br>지금 바로 문의해 주세요.</h2>
+        <p>전화 한 통이면 행사 규모·예산·날짜에 맞는 구성을 제안해 드립니다.<br>010-4084-8962 · idengroup@naver.com</p>
+      </div>
+      <div class="cta-actions">
+        <a href="/request" class="btn btn-yellow" style="font-size:16px;padding:16px 30px">📞 행사 문의하기</a>
+        <a href="/assets/documents/proposal.pdf" download class="btn" style="background:rgba(255,255,255,.12);color:#fff;font-size:14px;padding:12px 24px">📋 체육대회 제안서 받기</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <img src="/assets/images/logo.png" alt="아이덴티치" style="height:28px;opacity:.85;filter:invert(1);">
+  <div>경험을 설계하는 진로·어울림 전문 콘텐츠 기획사</div>
+  <div style="margin-top:6px">010-4084-8962 · idengroup@naver.com</div>
+  <div style="margin-top:14px;color:#6E6A85">© 2026 IDenTeach (아이덴티치).</div>
+</footer>
+
+<!-- 고정 말풍선: 체육대회 제안서 받기 -->
+<div class="bubble-cta">
+  <a href="/assets/documents/proposal.pdf" download class="bubble-btn">📋 체육대회 제안서 받기</a>
+  <div class="bubble-tail"></div>
+</div>
+
+<script>
+const NAV_ITEMS=[{label:"어울림 프로그램",href:"/together"},{label:"진로 프로그램",href:"/career"},{label:"교내 행사",href:"/events"},{label:"회사소개",href:"/about"}];
+document.getElementById('nav-links').innerHTML=NAV_ITEMS.map(item=>`<a href="${item.href}"${item.href==='/events'?' class="nav-active"':''}>${item.label}</a>`).join('');
+</script>
+</body>
+</html>
