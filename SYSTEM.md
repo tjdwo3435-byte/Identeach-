@@ -1,4 +1,4 @@
-# IDenTeach 홈페이지 관리 시스템
+﻿# IDenTeach 홈페이지 관리 시스템
 
 ## 📁 폴더 구조
 
@@ -16,7 +16,6 @@ Folder. identeach/
 ├── together/                   ← 어울림 프로그램 상세 페이지들
 │   ├── index.html
 │   ├── domino/index.html
-│   ├── brumarble/index.html
 │   ├── schoolping/index.html
 │   ├── facilitation/index.html
 │   └── violence-prevention/index.html
