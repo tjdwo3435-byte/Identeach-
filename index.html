@@ -455,53 +455,6 @@ header {
   .ev-card { width:120px; height:72px; flex:0 0 120px }
 }
 
-/* ===== IDENTITY METHOD ===== */
-.method-sec {
-  position:relative; overflow:hidden;
-  background:#0d1a2b url('/assets/images/method-bg.jpg') center/cover no-repeat;
-  padding:clamp(48px,6vw,64px) 0;
-}
-.method-sec::before {
-  content:''; position:absolute; inset:0;
-  background:rgba(10,15,35,.72); pointer-events:none;
-}
-.method-wrap { position:relative; z-index:1 }
-.method-sec .sec-head h2 { color:#fff }
-.method-sec .sec-head p  { color:rgba(255,255,255,.65) }
-.method-sec .sec-eyebrow-img { filter:invert(1) brightness(2) }
-.method-grid {
-  display:grid; grid-template-columns:repeat(4,1fr); gap:16px;
-}
-.method-card {
-  background:rgba(255,255,255,.08); border:1.5px solid rgba(255,255,255,.16);
-  border-radius:var(--rc); padding:28px 22px; transition:all .22s;
-  text-align:center; backdrop-filter:blur(4px);
-}
-.method-card:hover {
-  border-color:rgba(255,255,255,.5);
-  transform:translateY(-4px); box-shadow:0 8px 32px rgba(0,0,0,.35);
-}
-.method-card.highlight {
-  border-color:var(--yellow); background:rgba(255,216,77,.1);
-}
-.method-badge {
-  width:44px; height:44px; border-radius:50%;
-  font-size:18px; font-weight:800;
-  display:flex; align-items:center; justify-content:center;
-  margin:0 auto 20px;
-  background:rgba(255,255,255,.15); color:#fff;
-}
-.method-card.highlight .method-badge { background:var(--yellow); color:var(--navy) }
-.method-step {
-  display:block; font-size:11px; font-weight:700;
-  color:rgba(255,255,255,.5); letter-spacing:.1em; margin-bottom:8px;
-}
-.method-card.highlight .method-step { color:var(--yellow) }
-.method-card h3 { font-size:18px; font-weight:700; color:#fff; margin-bottom:10px }
-.method-card p  { font-size:14px; color:rgba(255,255,255,.65); line-height:1.7 }
-@media(max-width:860px) { .method-grid { grid-template-columns:repeat(2,1fr) } }
-@media(max-width:480px) { .method-grid { grid-template-columns:1fr } }
-
 
 /* ===== GALLERY ===== */
 .gallery-grid { columns:3; gap:12px }
@@ -846,42 +799,6 @@ footer p { line-height:1.7; margin-bottom:4px }
 </section>
 
 
-<!-- ========== IDENTITY METHOD ========== -->
-<section class="method-sec">
-  <div class="wrap method-wrap">
-    <div class="sec-head center">
-      <img src="/assets/images/eyebrow/identity-method.png" alt="IDENTITY METHOD" class="sec-eyebrow-img">
-      <h2>경험이 정체성이 되는 과정</h2>
-      <p>아이덴티치의 모든 프로그램은 이 4단계 흐름으로 설계됩니다.</p>
-    </div>
-    <div class="method-grid">
-      <div class="method-card">
-        <div class="method-badge">1</div>
-        <span class="method-step">STEP 01</span>
-        <h3>경험하다</h3>
-        <p>다양한 활동에 직접 참여하고 새로운 경험을 만납니다.</p>
-      </div>
-      <div class="method-card highlight">
-        <div class="method-badge">2</div>
-        <span class="method-step">STEP 02</span>
-        <h3>표현하다</h3>
-        <p>느낀 점과 생각을 말하고 나누어 나를 표현합니다.</p>
-      </div>
-      <div class="method-card">
-        <div class="method-badge">3</div>
-        <span class="method-step">STEP 03</span>
-        <h3>발견하다</h3>
-        <p>나의 성향, 강점, 관계 방식을 알아차립니다.</p>
-      </div>
-      <div class="method-card">
-        <div class="method-badge">4</div>
-        <span class="method-step">STEP 04</span>
-        <h3>연결하다</h3>
-        <p>경험을 진로와 학교생활의 변화로 이어갑니다.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
 
 
