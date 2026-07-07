@@ -88,14 +88,21 @@ footer .logo{font-size:18px;color:#fff;margin-bottom:10px;display:inline-block}
 
       <div class="field">
         <label class="q" for="program">진행 희망 프로그램</label>
-        <p class="note">- 희망 프로그램이 있으면 선택해 주세요.<br>- 선택하지 않으면 담당자가 학교 상황을 고려해 추천해 드립니다.<br>- 진로 프로그램은 현재 준비 중이에요.</p>
+        <p class="note">- 희망 프로그램이 있으면 선택해 주세요.<br>- 선택하지 않으면 담당자가 학교 상황을 고려해 추천해 드립니다.</p>
         <select id="program">
           <option value="" selected>(선택 안 함 · 추천받기)</option>
-          <option>도미노 챌린지</option>
-          <option>협동 브루마블</option>
-          <option>스쿨핑</option>
-          <option>미션 퍼실리테이션</option>
-          <option>학교폭력예방 레크리에이션</option>
+          <optgroup label="어울림 프로그램">
+            <option>도미노 챌린지</option>
+            <option>스쿨핑</option>
+            <option>미션 퍼실리테이션</option>
+            <option>학교폭력예방 레크리에이션</option>
+          </optgroup>
+          <optgroup label="진로 프로그램">
+            <option>진로 토크쇼</option>
+            <option>미래직업연구소</option>
+            <option>터칭보이스</option>
+            <option>아이덴티치 CEO 토크</option>
+          </optgroup>
         </select>
       </div>
 

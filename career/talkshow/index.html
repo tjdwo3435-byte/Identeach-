@@ -69,18 +69,15 @@ footer{background:#0F0C20;color:#B5B1C9;padding:44px 0;font-size:13px;text-align
   </style>
 </head>
 <body>
-  <header>
-    <nav class="nav">
-      <a class="nav-logo" href="/">
-        <img src="/assets/images/logo.svg" alt="아이덴티치" height="32" onerror="this.style.display='none'">
-        <span style="font-size:18px;font-weight:800;color:var(--navy);margin-left:4px">아이덴티치</span>
-      </a>
-      <input class="menu-toggle" type="checkbox" id="menu-toggle" hidden>
-      <div class="nav-links" id="nav-links"></div>
-      <a class="nav-cta" href="/contact">문의하기</a>
-      <label class="menu-btn" for="menu-toggle">&#9776;</label>
-    </nav>
-  </header>
+<header>
+  <div class="nav">
+    <a href="/" class="nav-logo"><img src="/assets/images/logo.png" alt="아이덴티치" style="height:48px;"></a>
+    <input type="checkbox" id="nav-toggle" class="menu-toggle">
+    <nav class="nav-links" id="nav-links"></nav>
+    <a href="/request" class="nav-cta">무료 맞춤 요청</a>
+    <label for="nav-toggle" class="menu-btn" aria-label="메뉴">☰</label>
+  </div>
+</header>
 
   <div class="crumb-bar">
     <div class="wrap">
@@ -90,13 +87,12 @@ footer{background:#0F0C20;color:#B5B1C9;padding:44px 0;font-size:13px;text-align
 
   <main id="pg-root"></main>
 
-  <footer>
-    <div class="wrap">
-      <div style="font-weight:800;font-size:16px;color:#fff;margin-bottom:8px">아이덴티치</div>
-      <div>학교 교육 전문 프로그램 · 진로 · 어울림 · 교내 행사</div>
-      <div style="margin-top:12px;opacity:.5">© 2024 IDenTeach. All rights reserved.</div>
-    </div>
-  </footer>
+<footer>
+  <img src="/assets/images/logo.png" alt="아이덴티치" style="height:28px;opacity:.85;filter:invert(1);">
+  <div>경험을 설계하는 진로·어울림 전문 콘텐츠 기획사</div>
+  <div style="margin-top:6px">010-4084-8962 · idengroup@naver.com</div>
+  <div style="margin-top:14px;color:#6E6A85">© 2026 IDenTeach (아이덴티치).</div>
+</footer>
 
   <script>
 const programData = {
