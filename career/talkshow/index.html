@@ -50,7 +50,7 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdr
 @media(max-width:900px){.xp-grid{grid-template-columns:repeat(3,1fr)}}@media(max-width:560px){.xp-grid{grid-template-columns:repeat(2,1fr)}}
 .proc-row{display:flex;align-items:flex-start;position:relative;margin-top:36px}.proc-row::before{content:'';position:absolute;top:23px;left:calc(10% + 24px);right:calc(10% + 24px);height:2px;background:var(--border);z-index:0}
 .proc-step{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;padding:0 6px}
-.proc-num{width:48px;height:48px;border-radius:50%;background:var(--blue);color:#fff;font-size:15px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;z-index:1}
+.proc-num{width:52px;height:52px;border-radius:50%;background:var(--white);border:2px solid var(--border);font-size:22px;display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;z-index:1;box-shadow:0 2px 10px rgba(20,20,43,.07)}
 .proc-title{font-size:clamp(12px,1.5vw,14px);font-weight:800;color:var(--navy);line-height:1.4}.proc-desc{font-size:clamp(11px,1.3vw,12px);color:var(--gray);line-height:1.55}
 @media(max-width:700px){.proc-row{flex-direction:column;gap:10px}.proc-row::before{display:none}.proc-step{flex-direction:row;align-items:flex-start;text-align:left;gap:16px;width:100%;background:var(--white);border:1px solid var(--border);border-radius:var(--rc);padding:16px 18px}.proc-num{flex-shrink:0;width:38px;height:38px;font-size:13px}.proc-body{display:flex;flex-direction:column;gap:3px}.proc-title{font-size:14px}.proc-desc{font-size:12px}}
 .struct-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:32px}
@@ -140,11 +140,11 @@ const programData = {
   ],
   process:{
     steps:[
-      {title:"사전 준비",desc:"직업 탐색·질문 준비"},
-      {title:"강연자 소개",desc:"직업인 배경 소개"},
-      {title:"토크쇼 진행",desc:"이야기·경험 나눔"},
-      {title:"Q&A",desc:"학생 질문·답변"},
-      {title:"소감 나누기",desc:"느낀 점 정리·공유"}
+      {icon:"📝",title:"사전 준비",desc:"직업 탐색·질문 준비"},
+      {icon:"👤",title:"강연자 소개",desc:"직업인 배경 소개"},
+      {icon:"🎤",title:"토크쇼 진행",desc:"이야기·경험 나눔"},
+      {icon:"❓",title:"Q&A",desc:"학생 질문·답변"},
+      {icon:"💭",title:"소감 나누기",desc:"느낀 점 정리·공유"}
     ]
   },
   structuresSection:{
@@ -182,11 +182,11 @@ function renderHero(d){const b=d.heroImage.src?`<div class="hero-banner"><img sr
 function renderActivity(a){const img=a.image.src?`<img src="${a.image.src}" alt="${a.image.alt}" loading="lazy">`:'';return`<section class="sec sec--warm"><div class="wrap"><div class="activity-grid"><div class="activity-photo">${img}</div><div><span class="activity-eyebrow">PROGRAM OVERVIEW</span><h2 class="activity-h2">${nl(a.headline)}</h2><div class="bullet-list">${a.bullets.map(b=>`<div class="bullet-item"><div class="bullet-dot"></div><span>${b}</span></div>`).join('')}</div></div></div></div></section>`}
 function renderKeywords(kws){return`<section class="sec sec--white"><div class="wrap"><div class="kw-sec-title">활용 장면</div><h2 class="kw-h2">어디서, 언제 쓸 수 있나요?</h2><div class="kw-wrap">${kws.map(k=>`<span class="kw-chip kw-chip--${k.type}">${k.label}</span>`).join('')}</div></div></section>`}
 function renderStudentXP(items){return`<section class="sec sec--warm"><div class="wrap"><span class="sec-label">이 활동에서 학생들은</span><div class="xp-grid">${items.map((x,i)=>`<div class="xp-card"><div class="xp-num">${String(i+1).padStart(2,'0')}</div><div class="xp-action">${nl(x.action)}</div><div class="xp-detail">${x.detail}</div></div>`).join('')}</div></div></section>`}
-function renderProcess(proc){return`<section class="sec sec--white"><div class="wrap"><span class="sec-label">진행 흐름</span><h2 class="sec-h2">이렇게 진행됩니다</h2><div class="proc-row">${proc.steps.map((s,i)=>`<div class="proc-step"><div class="proc-num">${i+1}</div><div class="proc-body"><div class="proc-title">${s.title}</div><div class="proc-desc">${s.desc}</div></div></div>`).join('')}</div></div></section>`}
+function renderProcess(proc){return`<section class="sec sec--white"><div class="wrap"><span class="sec-label">진행 흐름</span><h2 class="sec-h2">이렇게 진행됩니다</h2><div class="proc-row">${proc.steps.map((s,i)=>`<div class="proc-step"><div class="proc-num">${s.icon||i+1}</div><div class="proc-body"><div class="proc-title">${s.title}</div><div class="proc-desc">${s.desc}</div></div></div>`).join('')}</div></div></section>`}
 function renderStructures(d){const sec=d.structuresSection;return`<section class="sec sec--warm"><div class="wrap"><span class="sec-label">${sec.label}</span><h2 class="sec-h2">${sec.title}</h2><div class="struct-grid">${sec.items.map((s,i)=>`<div class="struct-card"><div class="struct-vis">${structVis(s.type,i)}</div><div class="struct-name">${s.name}</div><div class="struct-desc">${s.desc}</div></div>`).join('')}</div></div></section>`}
 function renderGallery(g){return`<section class="sec sec--white"><div class="wrap"><span class="sec-label">활동 모습</span><h2 class="sec-h2" style="margin-bottom:0">현장 사진</h2><div class="gallery-grid">${g.images.map(img=>`<div class="g-item"><div class="g-frame">${img.src?`<img src="${img.src}" alt="${img.alt}" loading="lazy">`:''}  </div><p class="g-cap">${img.caption}</p></div>`).join('')}</div></div></section>`}
 function renderCTA(){return`<div style="position:fixed;bottom:24px;right:24px;z-index:999;display:flex;flex-direction:column;align-items:flex-end"><a href="/assets/documents/identeach-program-guide.pdf" download style="display:inline-flex;align-items:center;gap:8px;background:var(--yellow);color:var(--navy);font-family:inherit;font-weight:800;font-size:14px;padding:13px 22px;border-radius:18px 18px 0 18px;text-decoration:none;box-shadow:0 6px 24px rgba(20,20,43,.28);white-space:nowrap">📄 프로그램 소개서 받기</a><div style="width:0;height:0;border-style:solid;border-width:12px 12px 0 0;border-color:var(--yellow) transparent transparent transparent"></div></div>`}
-function renderPage(d){renderMeta(d);renderNav(d.navActive);renderCrumb(d.crumbs);document.getElementById('pg-root').innerHTML=renderHero(d)+renderActivity(d.activity)+renderKeywords(d.keywords)+renderStudentXP(d.studentExperiences)+renderProcess(d.process)+renderStructures(d)+renderGallery(d.gallery)+renderCTA()}
+function renderPage(d){renderMeta(d);renderNav(d.navActive);renderCrumb(d.crumbs);document.getElementById('pg-root').innerHTML=renderHero(d)+renderActivity(d.activity)+renderKeywords(d.keywords)+renderStudentXP(d.studentExperiences)+renderProcess(d.process)+renderGallery(d.gallery)+renderCTA()}
 renderPage(programData);
   </script>
 </body>

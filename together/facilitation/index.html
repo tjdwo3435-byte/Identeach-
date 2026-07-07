@@ -74,7 +74,7 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdr
 .proc-row{display:flex;align-items:flex-start;position:relative;margin-top:36px}
 .proc-row::before{content:'';position:absolute;top:23px;left:calc(10% + 24px);right:calc(10% + 24px);height:2px;background:var(--border);z-index:0}
 .proc-step{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;padding:0 6px}
-.proc-num{width:48px;height:48px;border-radius:50%;background:var(--blue);color:#fff;font-size:15px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;z-index:1}
+.proc-num{width:52px;height:52px;border-radius:50%;background:var(--white);border:2px solid var(--border);font-size:22px;display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;z-index:1;box-shadow:0 2px 10px rgba(20,20,43,.07)}
 .proc-title{font-size:clamp(12px,1.5vw,14px);font-weight:800;color:var(--navy);line-height:1.4}
 .proc-desc{font-size:clamp(11px,1.3vw,12px);color:var(--gray);line-height:1.55}
 @media(max-width:700px){.proc-row{flex-direction:column;gap:10px}.proc-row::before{display:none}.proc-step{flex-direction:row;align-items:flex-start;text-align:left;gap:16px;width:100%;background:var(--white);border:1px solid var(--border);border-radius:var(--rc);padding:16px 18px}.proc-num{flex-shrink:0;width:38px;height:38px;font-size:13px}.proc-body{display:flex;flex-direction:column;gap:3px}.proc-title{font-size:14px}.proc-desc{font-size:12px}}
@@ -182,11 +182,11 @@ const programData = {
   ],
   process: {
     steps: [
-      { title:"아이스브레이킹",    desc:"팀 빌딩 게임으로 분위기 오픈" },
-      { title:"퍼실리테이션 소개", desc:"기법 개념·목적 이해" },
-      { title:"ORID 실습",        desc:"주제 선정 후 토론 체험" },
-      { title:"협동 미션",         desc:"팀원이 함께 풀어내는 협력 게임" },
-      { title:"회고·발표",         desc:"과정 돌아보기 + 공유" }
+      { icon:"🎯", title:"아이스브레이킹",    desc:"팀 빌딩 게임으로 분위기 오픈" },
+      { icon:"📚", title:"퍼실리테이션 소개", desc:"기법 개념·목적 이해" },
+      { icon:"💬", title:"ORID 실습",        desc:"주제 선정 후 토론 체험" },
+      { icon:"🤝", title:"협동 미션",         desc:"팀원이 함께 풀어내는 협력 게임" },
+      { icon:"🎤", title:"회고·발표",         desc:"과정 돌아보기 + 공유" }
     ]
   },
   structuresSection: {
@@ -413,7 +413,7 @@ function renderGallery(g) {
 }
 
 function renderCTA(){return`<div style="position:fixed;bottom:24px;right:24px;z-index:999;display:flex;flex-direction:column;align-items:flex-end"><a href="/assets/documents/identeach-program-guide.pdf" download style="display:inline-flex;align-items:center;gap:8px;background:var(--yellow);color:var(--navy);font-family:inherit;font-weight:800;font-size:14px;padding:13px 22px;border-radius:18px 18px 0 18px;text-decoration:none;box-shadow:0 6px 24px rgba(20,20,43,.28);white-space:nowrap">📄 프로그램 소개서 받기</a><div style="width:0;height:0;border-style:solid;border-width:12px 12px 0 0;border-color:var(--yellow) transparent transparent transparent"></div></div>`}
-function renderPage(d){renderMeta(d);renderNav(d.navActive);renderCrumb(d.crumbs);document.getElementById('pg-root').innerHTML=renderHero(d)+renderActivity(d.activity)+renderKeywords(d.keywords)+renderStudentXP(d.studentExperiences)+renderProcess(d.process)+renderStructures(d)+renderGallery(d.gallery)+renderCTA()}
+function renderPage(d){renderMeta(d);renderNav(d.navActive);renderCrumb(d.crumbs);document.getElementById('pg-root').innerHTML=renderHero(d)+renderActivity(d.activity)+renderKeywords(d.keywords)+renderStudentXP(d.studentExperiences)+renderProcess(d.process)+renderGallery(d.gallery)+renderCTA()}
 renderPage(programData);
 </script>
 
