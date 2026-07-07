@@ -93,9 +93,9 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdr
 
 /* 운영 흐름 */
 .flow-row{display:flex;align-items:flex-start;gap:0;position:relative;margin-top:32px}
-.flow-row::before{content:'';position:absolute;top:22px;left:calc(10% + 20px);right:calc(10% + 20px);height:2px;background:var(--border);z-index:0}
+.flow-row::before{content:'';position:absolute;top:26px;left:calc(10% + 26px);right:calc(10% + 26px);height:2px;background:var(--border);z-index:0}
 .flow-step{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;padding:0 4px}
-.flow-num{width:44px;height:44px;border-radius:50%;background:var(--blue);color:#fff;font-size:14px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;z-index:1}
+.flow-num{width:52px;height:52px;border-radius:50%;background:var(--white);border:2px solid var(--border);font-size:22px;display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;z-index:1;box-shadow:0 2px 10px rgba(20,20,43,.07)}
 .flow-title{font-size:clamp(12px,1.5vw,13px);font-weight:800;color:var(--navy);line-height:1.4}
 .flow-desc{font-size:11px;color:var(--gray);line-height:1.5}
 @media(max-width:600px){.flow-row{flex-direction:column;gap:8px}.flow-row::before{display:none}.flow-step{flex-direction:row;align-items:flex-start;text-align:left;gap:14px;width:100%;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:14px 16px}.flow-num{flex-shrink:0;width:36px;height:36px;font-size:13px}.flow-body{display:flex;flex-direction:column;gap:2px}.flow-title{font-size:14px}}
@@ -247,35 +247,35 @@ footer{background:#0F0C20;color:#B5B1C9;padding:44px 0;font-size:13px;text-align
     <h2 class="sec-h2">이렇게 진행됩니다</h2>
     <div class="flow-row">
       <div class="flow-step">
-        <div class="flow-num">1</div>
+        <div class="flow-num">📞</div>
         <div class="flow-body">
           <div class="flow-title">문의·상담</div>
           <div class="flow-desc">행사 규모·날짜·예산 확인</div>
         </div>
       </div>
       <div class="flow-step">
-        <div class="flow-num">2</div>
+        <div class="flow-num">📋</div>
         <div class="flow-body">
           <div class="flow-title">맞춤 기획안 제출</div>
           <div class="flow-desc">학교 상황에 맞는 구성안 전달</div>
         </div>
       </div>
       <div class="flow-step">
-        <div class="flow-num">3</div>
+        <div class="flow-num">🤝</div>
         <div class="flow-body">
           <div class="flow-title">협의·확정</div>
           <div class="flow-desc">세부 내용 조율 및 계약</div>
         </div>
       </div>
       <div class="flow-step">
-        <div class="flow-num">4</div>
+        <div class="flow-num">⚙️</div>
         <div class="flow-body">
           <div class="flow-title">사전 준비</div>
           <div class="flow-desc">장비·도구·강사 배정</div>
         </div>
       </div>
       <div class="flow-step">
-        <div class="flow-num">5</div>
+        <div class="flow-num">🎉</div>
         <div class="flow-body">
           <div class="flow-title">현장 운영</div>
           <div class="flow-desc">당일 설치·진행·마무리</div>
