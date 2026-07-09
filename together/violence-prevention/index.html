@@ -71,6 +71,33 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdr
 .sec-label::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--blue);flex-shrink:0}
 .sec-h2{font-size:clamp(20px,3vw,28px);font-weight:800;color:var(--navy);line-height:1.25;white-space:pre-line}
 footer{background:#0F0C20;color:#B5B1C9;padding:44px 0;font-size:13px;text-align:center}footer img{margin:0 auto 14px}footer div{margin-bottom:4px}
+.use-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:32px}
+.use-box{border-radius:12px;padding:20px 18px 18px;display:flex;flex-direction:column;gap:8px;border:2px solid transparent;transition:transform .2s,box-shadow .2s}.use-box:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(20,20,43,.10)}
+.use-box--rec{background:var(--yellow);border-color:rgba(255,216,77,.4)}.use-box--norm{background:var(--white);border-color:var(--border)}
+.use-rec-badge{display:inline-flex;align-items:center;gap:4px;background:var(--navy);color:#fff;font-size:10px;font-weight:800;padding:3px 10px;border-radius:4px;letter-spacing:.04em;width:fit-content}
+.use-icon{font-size:24px;line-height:1}.use-title{font-size:14px;font-weight:800;color:var(--navy);line-height:1.3}
+.use-desc{font-size:12px;line-height:1.55}.use-box--norm .use-desc{color:var(--gray)}
+@media(max-width:860px){.use-grid{grid-template-columns:repeat(3,1fr)}}@media(max-width:560px){.use-grid{grid-template-columns:repeat(2,1fr)}}
+.flow-section{padding:clamp(52px,7vw,80px) 0;background:var(--warm);border-top:1px solid var(--border)}
+.flow-dual-label{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+.flow-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;letter-spacing:.08em;padding:4px 12px;border-radius:999px}
+.flow-badge--proc{background:rgba(31,35,146,.07);color:var(--blue);border:1px solid rgba(31,35,146,.14)}
+.flow-badge--xp{background:rgba(255,216,77,.2);color:#7A6200;border:1px solid rgba(255,216,77,.5)}
+.flow-timeline{display:flex;flex-direction:column;gap:0;position:relative}
+.flow-timeline::before{content:'';position:absolute;left:34px;top:0;bottom:0;width:2px;background:var(--border);z-index:0}
+.flow-item{display:grid;grid-template-columns:72px 1fr;gap:0;position:relative;padding-bottom:28px}.flow-item:last-child{padding-bottom:0}
+.flow-num-wrap{width:68px;height:68px;border-radius:50%;background:var(--white);border:2.5px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;z-index:1;box-shadow:0 3px 14px rgba(20,20,43,.09)}
+.flow-emoji{font-size:26px;line-height:1}
+.flow-right{padding:10px 0 0 22px;display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:start}
+.flow-proc{background:var(--white);border-radius:12px;padding:14px 16px;border:1px solid var(--border)}
+.flow-proc-step{font-size:10px;font-weight:700;letter-spacing:.08em;color:var(--blue);margin-bottom:4px;text-transform:uppercase}
+.flow-proc-title{font-size:14px;font-weight:800;color:var(--navy);margin-bottom:3px}
+.flow-proc-desc{font-size:12px;color:var(--gray);line-height:1.55}
+.flow-xp{background:rgba(255,216,77,.08);border-radius:12px;padding:14px 16px;border:1px solid rgba(255,216,77,.3)}
+.flow-xp-step{font-size:10px;font-weight:700;letter-spacing:.08em;color:#7A6200;margin-bottom:4px;text-transform:uppercase}
+.flow-xp-action{font-size:13px;font-weight:700;color:var(--navy);line-height:1.45;margin-bottom:3px}
+.flow-xp-detail{font-size:12px;color:var(--gray)}
+@media(max-width:700px){.flow-right{grid-template-columns:1fr;gap:8px}.flow-timeline::before{left:28px}.flow-num-wrap{width:56px;height:56px}.flow-item{grid-template-columns:58px 1fr}}
 </style>
 </head>
 <body>
@@ -101,8 +128,8 @@ const programData = {
   heroImage:{src:"/assets/images/programs/together/violence-prevention/학교폭력사진1.jpg",alt:"단합 레크리에이션 활동 전체 장면"},
   category:"어울림 프로그램",
   title:"단합 레크리에이션",
-  tagline:"레크리에이션에 학교폭력예방 교육 목표를 담은 활동",
-  description:"레크리에이션 활동에 '학교폭력예방'이라는 교육적 목표를 담아\n진행하는 활동",
+  tagline:"어울림 프로그램",
+  description:"단순한 게임을 넘어서 원하는 교육적 스타일로 자유롭게 변경이 가능하여\n즐기고 느끼면서 배우는 활동",
   info:[
     {label:"대상",value:"초중고 전학년"},
     {label:"시간",value:"2교시 [100분]"},
@@ -111,39 +138,48 @@ const programData = {
   ],
   activity:{
     image:{src:"/assets/images/programs/together/violence-prevention/학교폭력사진2.jpg",alt:"학생들이 관계 형성 활동에 참여하는 장면"},
-    headline:"즐겁게 웃으며\n관계와 배려를 배웁니다",
+    headline:"레크리에이션 전공 청소년지도사가\n직접 진행하는 진짜 레크리에이션!",
     bullets:[
-      "아이들과 함께 즐기는 레크리에이션 활동으로 진행됩니다",
-      "10년 이상 경력의 레크리에이션 강사가 분위기를 이끌어갑니다",
-      "선생님과 아이들이 함께 마무리하는 무대로 화합의 분위기를 조성합니다"
+      "레크리에이션 전공 청소년지도사가 직접 기획·진행합니다",
+      "단순한 게임을 넘어 원하는 교육적 스타일로 자유롭게 변경 가능합니다",
+      "즐기고 느끼면서 자연스럽게 배우는 체험형 활동입니다",
+      "학교폭력예방·인성교육 등 다양한 교육 목표와 자유롭게 연계됩니다"
     ]
   },
-  keywords:[
-    {label:"학교폭력 예방",type:"a"},
-    {label:"관계·협력",type:"a"},
-    {label:"공동체 활동",type:"a"},
-    {label:"레크리에이션",type:"b"},
-    {label:"교내 행사",type:"b"},
-    {label:"전교생 활동",type:"b"},
-    {label:"화합 분위기",type:"c"},
-    {label:"인성교육",type:"c"}
+  useCases:[
+    {icon:"🛡️",rec:false,title:"학교폭력예방",desc:"레크리에이션으로 관계와 배려를 자연스럽게 체험하는 예방 활동입니다."},
+    {icon:"🤝",rec:false,title:"관계 협력",desc:"팀 게임과 협동 활동으로 학급 내 관계 형성을 돕습니다."},
+    {icon:"🏫",rec:false,title:"공동체 활동",desc:"전교생이 함께 웃으며 화합하는 공동체 경험을 만들어냅니다."},
+    {icon:"🎉",rec:true, title:"교내 행사",desc:"체육대회·학교 행사 등 교내 이벤트의 핵심 프로그램으로 활용됩니다."},
+    {icon:"💛",rec:false,title:"인성 교육",desc:"즐기고 느끼면서 자연스럽게 배우는 체험형 인성 교육 활동입니다."}
   ],
-  studentExperiences:[
-    {action:"아이스브레이킹으로\n분위기를 풀어냅니다",detail:"즐겁게"},
-    {action:"리더게임에\n함께 참여합니다",detail:"함께 웃으며"},
-    {action:"무대게임으로\n주목받는 경험을 합니다",detail:"신나게"},
-    {action:"팀 게임으로\n협력을 경험합니다",detail:"힘을 합쳐"},
-    {action:"기차놀이·원진놀이로\n하나가 됩니다",detail:"화합하며"}
+  flowSteps:[
+    {
+      icon:"⚙️",
+      proc:{title:"세팅 · 조 편성",desc:"공간 정리와 도구 점검 후 팀을 나누고 자리를 잡습니다."},
+      xp:{action:"새 팀원들과\n처음 마주합니다",detail:"설레며"}
+    },
+    {
+      icon:"🎯",
+      proc:{title:"아이스브레이킹",desc:"리더게임·무대게임으로 분위기를 자연스럽게 열어갑니다."},
+      xp:{action:"웃음 속에\n경계가 무너집니다",detail:"함께 웃으며"}
+    },
+    {
+      icon:"🎮",
+      proc:{title:"팀 게임",desc:"기차놀이·원진놀이 등 팀별 신체 게임으로 협력을 경험합니다."},
+      xp:{action:"팀원과 함께\n협력을 경험합니다",detail:"힘을 합쳐"}
+    },
+    {
+      icon:"🎉",
+      proc:{title:"협동 레크리에이션",desc:"선생님과 학생이 함께하는 무대로 화합의 분위기를 완성합니다."},
+      xp:{action:"전체가 하나가 되는\n순간을 경험합니다",detail:"신나게"}
+    },
+    {
+      icon:"📸",
+      proc:{title:"기념촬영 · 마무리",desc:"팀별·전체 기념사진으로 오늘의 추억을 마무리합니다."},
+      xp:{action:"함께한 추억을\n사진으로 남깁니다",detail:"뿌듯하게"}
+    }
   ],
-  process:{
-    steps:[
-      {icon:"⚙️",title:"세팅·조 편성",desc:"공간 정리·도구 점검"},
-      {icon:"🎯",title:"아이스브레이킹",desc:"리더게임 + 무대게임"},
-      {icon:"🎮",title:"팀 게임",desc:"기차놀이·원진놀이"},
-      {icon:"🎉",title:"협동 레크리에이션",desc:"화합 분위기 조성"},
-      {icon:"📸",title:"기념촬영·마무리",desc:"사진 촬영 및 마무리"}
-    ]
-  },
   structuresSection:{
     label:"활동 유형 예시",
     title:"활동 유형 예시",
@@ -177,14 +213,13 @@ function renderCrumb(c){document.getElementById('pg-crumb').innerHTML=c.map((x,i
 function renderMeta(d){document.getElementById('pg-title').textContent=d.pageTitle;document.getElementById('pg-desc').content=d.pageDesc;document.getElementById('pg-canonical').href=d.canonicalUrl}
 function renderHero(d){const b=d.heroImage.src?`<div class="hero-banner"><img src="${d.heroImage.src}" alt="${d.heroImage.alt}" loading="eager"></div>`:`<div class="hero-banner"><div class="hero-banner-empty">활동 사진을 넣어주세요</div></div>`;return`${b}<div class="hero-info"><div class="wrap"><div class="hero-tagline">${d.tagline}</div><h1 class="hero-h1">${d.title}</h1><p class="hero-sub">${nl(d.description)}</p><div class="info-strip">${d.info.map(x=>`<div class="info-chip"><div><div class="info-chip-label">${x.label}</div><div class="info-chip-val">${x.value}</div></div></div>`).join('')}</div></div></div>`}
 function renderActivity(a){const img=a.image.src?`<img src="${a.image.src}" alt="${a.image.alt}" loading="lazy">`:'';return`<section class="sec sec--warm"><div class="wrap"><div class="activity-grid"><div class="activity-photo">${img}</div><div><span class="activity-eyebrow">PROGRAM OVERVIEW</span><h2 class="activity-h2">${nl(a.headline)}</h2><div class="bullet-list">${a.bullets.map(b=>`<div class="bullet-item"><div class="bullet-dot"></div><span>${b}</span></div>`).join('')}</div></div></div></div></section>`}
-function renderKeywords(kws){return`<section class="sec sec--white"><div class="wrap"><div class="kw-sec-title">활용 장면</div><h2 class="kw-h2">어디서, 언제 쓸 수 있나요?</h2><div class="kw-wrap">${kws.map(k=>`<span class="kw-chip kw-chip--${k.type}">${k.label}</span>`).join('')}</div></div></section>`}
-function renderStudentXP(items){return`<section class="sec sec--warm"><div class="wrap"><span class="sec-label">이 활동에서 학생들은</span><div class="xp-grid">${items.map((x,i)=>`<div class="xp-card"><div class="xp-num">${String(i+1).padStart(2,'0')}</div><div class="xp-action">${nl(x.action)}</div><div class="xp-detail">${x.detail}</div></div>`).join('')}</div></div></section>`}
-function renderProcess(proc){return`<section class="sec sec--white"><div class="wrap"><span class="sec-label">진행 흐름</span><h2 class="sec-h2">이렇게 진행됩니다</h2><div class="proc-row">${proc.steps.map((s,i)=>`<div class="proc-step"><div class="proc-num">${s.icon||i+1}</div><div class="proc-body"><div class="proc-title">${s.title}</div><div class="proc-desc">${s.desc}</div></div></div>`).join('')}</div></div></section>`}
+function renderUseCases(cases){const boxes=cases.map(c=>`<div class="use-box${c.rec?' use-box--rec':' use-box--norm'}">${c.rec?'<span class="use-rec-badge">⭐ 추천</span>':''}<div class="use-icon">${c.icon}</div><div class="use-title">${c.title}</div><div class="use-desc">${c.desc}</div></div>`).join('');return`<section class="sec sec--white"><div class="wrap"><span class="sec-label">활용 장면</span><h2 class="sec-h2" style="margin-bottom:0">어디서, 언제 쓸 수 있나요?</h2><div class="use-grid">${boxes}</div></div></section>`}
+function renderFlowSection(steps){const items=steps.map((s,i)=>`<div class="flow-item"><div class="flow-left"><div class="flow-num-wrap"><span class="flow-emoji">${s.icon}</span></div></div><div class="flow-right"><div class="flow-proc"><div class="flow-proc-step">STEP ${String(i+1).padStart(2,'0')} · 진행 흐름</div><div class="flow-proc-title">${s.proc.title}</div><div class="flow-proc-desc">${s.proc.desc}</div></div><div class="flow-xp"><div class="flow-xp-step">이 순간 학생들은</div><div class="flow-xp-action">${nl(s.xp.action)}</div><div class="flow-xp-detail">${s.xp.detail}</div></div></div></div>`).join('');return`<section class="flow-section"><div class="wrap"><div class="flow-dual-label"><span class="flow-badge flow-badge--proc">진행 흐름</span><span class="flow-badge flow-badge--xp">이 활동에서 학생들은</span></div><h2 class="sec-h2" style="margin-bottom:40px">활동이 이렇게 흘러갑니다</h2><div class="flow-timeline">${items}</div></div></section>`}
 function renderStructures(d){const sec=d.structuresSection;return`<section class="sec sec--warm"><div class="wrap"><span class="sec-label">${sec.label}</span><h2 class="sec-h2">${sec.title}</h2><div class="struct-grid">${sec.items.map((s,i)=>`<div class="struct-card"><div class="struct-vis">${structVis(s.type,i)}</div><div class="struct-name">${s.name}</div><div class="struct-desc">${s.desc}</div></div>`).join('')}</div></div></section>`}
 function renderGallery(g){const imgs=g.images.map(img=>`<div class="g-frame"><img src="${img.src}" alt="${img.alt}" loading="lazy"></div>`).join("");return`<section class="sec sec--white"><div class="wrap"><span class="sec-label">활동 모습</span><h2 class="sec-h2" style="margin-bottom:0">현장 사진</h2></div><div class="gallery-marquee"><div class="g-track">${imgs}${imgs}</div></div></section>`}
 
 function renderCTA(){return`<div style="position:fixed;bottom:24px;right:24px;z-index:999;display:flex;flex-direction:column;align-items:flex-end"><a href="/assets/documents/identeach-program-guide.pdf" download style="display:inline-flex;align-items:center;gap:8px;background:var(--yellow);color:var(--navy);font-family:inherit;font-weight:800;font-size:14px;padding:13px 22px;border-radius:18px 18px 0 18px;text-decoration:none;box-shadow:0 6px 24px rgba(20,20,43,.28);white-space:nowrap">📄 프로그램 소개서 받기</a><div style="width:0;height:0;border-style:solid;border-width:12px 12px 0 0;border-color:var(--yellow) transparent transparent transparent"></div></div>`}
-function renderPage(d){renderMeta(d);renderNav(d.navActive);renderCrumb(d.crumbs);document.getElementById('pg-root').innerHTML=renderHero(d)+renderActivity(d.activity)+renderKeywords(d.keywords)+renderStudentXP(d.studentExperiences)+renderProcess(d.process)+renderGallery(d.gallery)+renderCTA()}
+function renderPage(d){renderMeta(d);renderNav(d.navActive);renderCrumb(d.crumbs);document.getElementById('pg-root').innerHTML=renderHero(d)+renderActivity(d.activity)+renderUseCases(d.useCases)+renderFlowSection(d.flowSteps)+renderGallery(d.gallery)+renderCTA()}
 renderPage(programData);
 </script>
 </body>
