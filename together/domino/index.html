@@ -318,6 +318,34 @@ header { position:sticky; top:0; z-index:100; background:rgba(255,255,255,.96); 
 footer { background:#0F0C20; color:#B5B1C9; padding:44px 0; font-size:13px; text-align:center }
 footer img { margin:0 auto 14px }
 footer div { margin-bottom:4px }
+
+.use-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:32px}
+.use-box{border-radius:12px;padding:20px 18px 18px;display:flex;flex-direction:column;gap:8px;border:2px solid transparent;transition:transform .2s,box-shadow .2s}.use-box:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(20,20,43,.10)}
+.use-box--rec{background:var(--yellow);border-color:rgba(255,216,77,.4)}.use-box--norm{background:var(--white);border-color:var(--border)}
+.use-rec-badge{display:inline-flex;align-items:center;gap:4px;background:var(--navy);color:#fff;font-size:10px;font-weight:800;padding:3px 10px;border-radius:4px;letter-spacing:.04em;width:fit-content}
+.use-icon{font-size:24px;line-height:1}.use-title{font-size:14px;font-weight:800;color:var(--navy);line-height:1.3}
+.use-desc{font-size:12px;line-height:1.55}.use-box--norm .use-desc{color:var(--gray)}
+@media(max-width:860px){.use-grid{grid-template-columns:repeat(3,1fr)}}@media(max-width:560px){.use-grid{grid-template-columns:repeat(2,1fr)}}
+.flow-section{padding:clamp(52px,7vw,80px) 0;background:var(--warm);border-top:1px solid var(--border)}
+.flow-dual-label{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+.flow-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;letter-spacing:.08em;padding:4px 12px;border-radius:999px}
+.flow-badge--proc{background:rgba(31,35,146,.07);color:var(--blue);border:1px solid rgba(31,35,146,.14)}
+.flow-badge--xp{background:rgba(255,216,77,.2);color:#7A6200;border:1px solid rgba(255,216,77,.5)}
+.flow-timeline{display:flex;flex-direction:column;gap:0;position:relative}
+.flow-timeline::before{content:'';position:absolute;left:34px;top:0;bottom:0;width:2px;background:var(--border);z-index:0}
+.flow-item{display:grid;grid-template-columns:72px 1fr;gap:0;position:relative;padding-bottom:28px}.flow-item:last-child{padding-bottom:0}
+.flow-num-wrap{width:68px;height:68px;border-radius:50%;background:var(--white);border:2.5px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;z-index:1;box-shadow:0 3px 14px rgba(20,20,43,.09)}
+.flow-emoji{font-size:26px;line-height:1}
+.flow-right{padding:10px 0 0 22px;display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:start}
+.flow-proc{background:var(--white);border-radius:12px;padding:14px 16px;border:1px solid var(--border)}
+.flow-proc-step{font-size:10px;font-weight:700;letter-spacing:.08em;color:var(--blue);margin-bottom:4px;text-transform:uppercase}
+.flow-proc-title{font-size:14px;font-weight:800;color:var(--navy);margin-bottom:3px}
+.flow-proc-desc{font-size:12px;color:var(--gray);line-height:1.55}
+.flow-xp{background:rgba(255,216,77,.08);border-radius:12px;padding:14px 16px;border:1px solid rgba(255,216,77,.3)}
+.flow-xp-step{font-size:10px;font-weight:700;letter-spacing:.08em;color:#7A6200;margin-bottom:4px;text-transform:uppercase}
+.flow-xp-action{font-size:13px;font-weight:700;color:var(--navy);line-height:1.45;margin-bottom:3px}
+.flow-xp-detail{font-size:12px;color:var(--gray)}
+@media(max-width:700px){.flow-right{grid-template-columns:1fr;gap:8px}.flow-timeline::before{left:28px}.flow-num-wrap{width:56px;height:56px}.flow-item{grid-template-columns:58px 1fr}}
 </style>
 </head>
 <body>
@@ -388,7 +416,7 @@ const programData = {
 
   /* ✅ info: 기본 정보 4개 */
   info: [
-    { label:"대상",  value:"초중고 전학년" },
+    { label:"대상",  value:"초5 – 고2" },
     { label:"시간",  value:"3교시 [150분]" },
     { label:"인원",  value:"최대 한 학년" },
     { label:"장소",  value:"강당 / 교실" }
@@ -412,65 +440,44 @@ const programData = {
   },
 
   /* ──────────────────────────────────────────
-     [C] 활용 키워드
-     ✅ type: "a"(파랑) | "b"(기본) | "c"(노랑)
+     [C] 활용 장면
   ────────────────────────────────────────── */
-  keywords: [
-    { label:"창체 자율활동",    type:"a" },
-    { label:"관계·협력",        type:"a" },
-    { label:"신학기 어울림",    type:"a" },
-    { label:"예술 체육활동",    type:"b" },
-    { label:"공동체 활동",      type:"b" },
-    { label:"교내 행사",        type:"b" },
-    { label:"학교폭력 예방",    type:"c" },
-    { label:"학년 전체 활동",   type:"c" }
+  useCases: [
+    { rec:true,  icon:"🌱", title:"신학기 어울림",  desc:"새 학기 첫 만남, 낯선 친구들과 함께 몰입하며 자연스럽게 팀워크가 쌓입니다." },
+    { rec:false, icon:"🎨", title:"창체 자율활동",  desc:"교과 연계 없이 운영 가능. 창의적 설계와 협력 역량을 자연스럽게 키웁니다." },
+    { rec:false, icon:"🤝", title:"관계·협력 활동", desc:"역할 배분과 공동 목표 수행으로 관계를 쌓는 팀빌딩 프로그램에 최적입니다." },
+    { rec:false, icon:"🏫", title:"공동체 활동",    desc:"학급·학년 단위 공동체 역량 강화에 적합한 체험형 활동입니다." },
+    { rec:false, icon:"🛡️", title:"학교폭력 예방",  desc:"공동 미션 성취 과정에서 배려와 소통을 경험하며 예방 교육과 연계됩니다." }
   ],
 
   /* ──────────────────────────────────────────
-     [D] 이 활동에서 학생들은
-     ✅ 5개 이내, 짧은 행동 문장
+     [D+E] 진행 흐름 + 이 활동에서 학생들은
   ────────────────────────────────────────── */
-  studentExperiences: [
-    { action:"팀을 구성하고\n역할을 나눕니다",       detail:"자연스럽게" },
-    { action:"도면을 그리고\n구조를 설계합니다",     detail:"창의적으로" },
-    { action:"도미노를 조심스럽게\n세워갑니다",      detail:"집중하며" },
-    { action:"팀 구간을\n하나로 연결합니다",         detail:"협력하며" },
-    { action:"함께 쓰러뜨리고\n성취감을 나눕니다",  detail:"감동적으로" }
-  ],
-
-  /* ──────────────────────────────────────────
-     [E] 이렇게 진행됩니다
-     ✅ 5단계, 각 title + desc
-  ────────────────────────────────────────── */
-  process: {
-    steps: [
-      { icon:"🎯", title:"아이스브레이킹",  desc:"팀 구성 및 역할 배분" },
-      { icon:"📐", title:"도미노 설계",     desc:"구간 레이아웃·도면 작업" },
-      { icon:"🔧", title:"도미노 설치",     desc:"안전 체크하며 협동 제작" },
-      { icon:"🎬", title:"도미노 SHOW",     desc:"팀별 연결 후 전체 쇼" },
-      { icon:"📸", title:"기념촬영",        desc:"완성 작품 앞에서 단체 사진" }
-    ]
-  },
-
-  /* ──────────────────────────────────────────
-     [F] 도미노 구조 예시
-     ✅ type: "line" | "corner" | "zones"
-  ────────────────────────────────────────── */
-  structures: [
+  flowSteps: [
     {
-      name: "일자 연결형",
-      type: "line",
-      desc: "팀별 직선 구조를 순서대로 연결합니다. 가장 기본적인 구성."
+      icon:"🎯",
+      proc:{ title:"아이스브레이킹", desc:"팀 구성 및 역할 배분으로 활동을 시작합니다." },
+      xp:{ action:"팀을 구성하고 역할을 나눕니다", detail:"자연스럽게" }
     },
     {
-      name: "ㄱ자 꺾임형",
-      type: "corner",
-      desc: "방향을 전환하며 공간을 활용합니다. 복도·강당에 적합."
+      icon:"📐",
+      proc:{ title:"도미노 설계", desc:"구간 레이아웃과 도면을 직접 작성합니다." },
+      xp:{ action:"도면을 그리고 구조를 설계합니다", detail:"창의적으로" }
     },
     {
-      name: "팀 통합형",
-      type: "zones",
-      desc: "3개 이상 팀이 하나의 흐름으로 합쳐집니다. 전체 연결에 활용."
+      icon:"🔧",
+      proc:{ title:"도미노 설치", desc:"안전을 확인하며 팀원과 함께 도미노를 세웁니다." },
+      xp:{ action:"도미노를 조심스럽게 세워갑니다", detail:"집중하며" }
+    },
+    {
+      icon:"🎬",
+      proc:{ title:"도미노 SHOW", desc:"팀별 구간을 연결하고 전체 쇼를 펼칩니다." },
+      xp:{ action:"팀 구간을 하나로 연결합니다", detail:"협력하며" }
+    },
+    {
+      icon:"📸",
+      proc:{ title:"기념촬영", desc:"완성한 작품 앞에서 함께 성취를 기념합니다." },
+      xp:{ action:"함께 쓰러뜨리고 성취감을 나눕니다", detail:"감동적으로" }
     }
   ],
 
@@ -612,76 +619,16 @@ function renderActivity(a) {
 </section>`;
 }
 
-/* ─ [C] 활용 키워드 ─ */
-function renderKeywords(kws) {
-  return `
-<section class="sec sec--white">
-  <div class="wrap">
-    <div class="kw-sec-title">활용 장면</div>
-    <h2 class="kw-h2">어디서, 언제 쓸 수 있나요?</h2>
-    <div class="kw-wrap">
-      ${kws.map(k=>`<span class="kw-chip kw-chip--${k.type}">${k.label}</span>`).join('')}
-    </div>
-  </div>
-</section>`;
+/* ─ [C] 활용 장면 ─ */
+function renderUseCases(cases){
+  const boxes=cases.map(c=>`<div class="use-box${c.rec?' use-box--rec':' use-box--norm'}">${c.rec?'<span class="use-rec-badge">⭐ 추천</span>':''}<div class="use-icon">${c.icon}</div><div class="use-title">${c.title}</div><div class="use-desc">${c.desc}</div></div>`).join('');
+  return`<section class="sec sec--white"><div class="wrap"><span class="sec-label">활용 장면</span><h2 class="sec-h2" style="margin-bottom:0">어디서, 언제 쓸 수 있나요?</h2><div class="use-grid">${boxes}</div></div></section>`
 }
 
-/* ─ [D] 이 활동에서 학생들은 ─ */
-function renderStudentXP(items) {
-  return `
-<section class="sec sec--warm">
-  <div class="wrap">
-    <span class="sec-label">이 활동에서 학생들은</span>
-    <div class="xp-grid">
-      ${items.map((x,i)=>`
-      <div class="xp-card">
-        <div class="xp-num">${String(i+1).padStart(2,'0')}</div>
-        <div class="xp-action">${nl(x.action)}</div>
-        <div class="xp-detail">${x.detail}</div>
-      </div>`).join('')}
-    </div>
-  </div>
-</section>`;
-}
-
-/* ─ [E] 이렇게 진행됩니다 ─ */
-function renderProcess(proc) {
-  return `
-<section class="sec sec--white">
-  <div class="wrap">
-    <span class="sec-label">진행 흐름</span>
-    <h2 class="sec-h2">이렇게 진행됩니다</h2>
-    <div class="proc-row">
-      ${proc.steps.map((s,i)=>`
-      <div class="proc-step">
-        <div class="proc-num">${i+1}</div>
-        <div class="proc-body">
-          <div class="proc-title">${s.title}</div>
-          <div class="proc-desc">${s.desc}</div>
-        </div>
-      </div>`).join('')}
-    </div>
-  </div>
-</section>`;
-}
-
-/* ─ [F] 도미노 구조 예시 ─ */
-function renderStructures(structs) {
-  return `
-<section class="sec sec--warm">
-  <div class="wrap">
-    <span class="sec-label">구조 예시</span>
-    <h2 class="sec-h2">도미노 구조 예시</h2>
-    <div class="struct-grid">
-      ${structs.map(s=>`
-      <div class="struct-card">
-        <div class="struct-vis">${structVis(s.type)}</div>
-        <div class="struct-name">${s.name}</div>
-        <div class="struct-desc">${s.desc}</div>
-      </div>`).join('')}
-    </div>
-  </div>
-</section>`;
+/* ─ [D+E] 진행 흐름 + 학생 경험 ─ */
+function renderFlowSection(steps){
+  const items=steps.map((s,i)=>`<div class="flow-item"><div class="flow-left"><div class="flow-num-wrap"><span class="flow-emoji">${s.icon}</span></div></div><div class="flow-right"><div class="flow-proc"><div class="flow-proc-step">STEP ${String(i+1).padStart(2,'0')} · 진행 흐름</div><div class="flow-proc-title">${s.proc.title}</div><div class="flow-proc-desc">${s.proc.desc}</div></div><div class="flow-xp"><div class="flow-xp-step">이 순간 학생들은</div><div class="flow-xp-action">${nl(s.xp.action)}</div><div class="flow-xp-detail">${s.xp.detail}</div></div></div></div>`).join('');
+  return`<section class="flow-section"><div class="wrap"><div class="flow-dual-label"><span class="flow-badge flow-badge--proc">진행 흐름</span><span class="flow-badge flow-badge--xp">이 활동에서 학생들은</span></div><h2 class="sec-h2" style="margin-bottom:40px">활동이 이렇게 흘러갑니다</h2><div class="flow-timeline">${items}</div></div></section>`
 }
 
 /* ─ [G] 갤러리 ─ */
@@ -698,10 +645,8 @@ function renderPage(d) {
   document.getElementById('pg-root').innerHTML =
     renderHero(d) +
     renderActivity(d.activity) +
-    renderKeywords(d.keywords) +
-    renderStudentXP(d.studentExperiences) +
-    renderProcess(d.process) +
-    renderStructures(d.structures) +
+    renderUseCases(d.useCases) +
+    renderFlowSection(d.flowSteps) +
     renderGallery(d.gallery) +
     renderCTA();
 }
