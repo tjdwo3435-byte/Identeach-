@@ -48,7 +48,7 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdr
 
 /* 행사 유형 카드 */
 .ev-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:36px}
-.ev-card{border-radius:var(--rc);overflow:hidden;background:var(--white);border:1px solid var(--border);box-shadow:0 4px 20px rgba(20,20,43,.06);transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column}
+.ev-card{border-radius:var(--rc);overflow:hidden;background:var(--white);border:1px solid var(--border);box-shadow:0 4px 20px rgba(20,20,43,.06);transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column;cursor:pointer}
 .ev-card:hover{transform:translateY(-4px);box-shadow:0 10px 36px rgba(20,20,43,.12)}
 .ev-img{aspect-ratio:16/9;overflow:hidden;background:var(--warm)}.ev-img img{width:100%;height:100%;object-fit:cover;transition:transform .35s}.ev-card:hover .ev-img img{transform:scale(1.04)}
 .ev-img-empty{aspect-ratio:16/9;background:linear-gradient(135deg,#1a1f5e 0%,#2d3494 100%);display:flex;align-items:center;justify-content:center;font-size:28px}
@@ -110,6 +110,41 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdr
 .bubble-btn{display:inline-flex;align-items:center;gap:8px;background:var(--yellow);color:var(--navy);font-family:inherit;font-weight:800;font-size:14px;padding:13px 22px;border-radius:18px 18px 0 18px;text-decoration:none;box-shadow:0 6px 24px rgba(20,20,43,.28);white-space:nowrap;border:none;cursor:pointer}
 .bubble-tail{width:0;height:0;border-style:solid;border-width:12px 12px 0 0;border-color:var(--yellow) transparent transparent transparent}
 
+/* 모달 오버레이 */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.62);backdrop-filter:blur(5px);z-index:2000;display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:opacity .25s}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal-box{background:#fff;border-radius:20px;width:100%;max-width:840px;max-height:92vh;overflow-y:auto;overflow-x:hidden;position:relative;transform:translateY(24px);transition:transform .28s cubic-bezier(.4,0,.2,1);scrollbar-width:thin}
+.modal-overlay.open .modal-box{transform:translateY(0)}
+.modal-close{position:absolute;top:14px;right:14px;width:38px;height:38px;border-radius:50%;background:rgba(0,0,0,.1);border:none;cursor:pointer;font-size:20px;display:flex;align-items:center;justify-content:center;z-index:3;transition:background .18s;line-height:1}
+.modal-close:hover{background:rgba(0,0,0,.2)}
+/* 슬라이더 */
+.ms-wrap{position:relative;aspect-ratio:16/9;background:var(--navy);overflow:hidden;border-radius:20px 20px 0 0}
+.ms-track{display:flex;transition:transform .6s cubic-bezier(.4,0,.2,1);height:100%;width:100%}
+.ms-slide{flex-shrink:0;width:100%;height:100%}
+.ms-slide img{width:100%;height:100%;object-fit:cover}
+.ms-empty{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:64px}
+.ms-arr{position:absolute;top:50%;transform:translateY(-50%);width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.88);border:none;cursor:pointer;font-size:20px;display:flex;align-items:center;justify-content:center;z-index:2;box-shadow:0 2px 12px rgba(0,0,0,.18);transition:background .18s;line-height:1}
+.ms-arr:hover{background:#fff}
+.ms-prev{left:14px}.ms-next{right:14px}
+.ms-dots{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:7px;z-index:2}
+.ms-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.45);border:none;padding:0;cursor:pointer;transition:background .22s,transform .22s}
+.ms-dot.active{background:#fff;transform:scale(1.35)}
+/* 모달 폼 */
+.modal-body{padding:26px 28px 32px}
+.modal-ev-hd{display:flex;align-items:center;gap:10px;margin-bottom:22px;flex-wrap:wrap}
+.modal-ev-name{font-size:clamp(18px,2.5vw,22px);font-weight:800;color:var(--navy)}
+.mf{display:flex;flex-direction:column;gap:13px}
+.mf-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.mf-col{display:flex;flex-direction:column;gap:5px}
+.mf-lbl{font-size:12px;font-weight:700;color:var(--gray);letter-spacing:.04em}
+.mf-req{color:#e53e3e;margin-left:2px}
+.mf-inp,.mf-ta{width:100%;font-family:inherit;font-size:14px;color:var(--navy);background:var(--warm);border:1.5px solid var(--border);border-radius:10px;padding:11px 14px;outline:none;transition:border-color .18s,background .18s}
+.mf-inp:focus,.mf-ta:focus{border-color:var(--blue);background:#fff}
+.mf-ta{resize:vertical;min-height:80px;line-height:1.6}
+.mf-submit{width:100%;padding:15px;font-family:inherit;font-size:15px;font-weight:800;background:var(--blue);color:#fff;border:none;border-radius:12px;cursor:pointer;transition:background .18s,transform .18s;margin-top:2px}
+.mf-submit:hover{background:#171980;transform:translateY(-2px)}
+.mf-hint{font-size:11px;color:var(--gray);text-align:center;margin-top:8px;line-height:1.6}
+@media(max-width:560px){.mf-row{grid-template-columns:1fr}.modal-body{padding:18px 16px 24px}}
 /* 푸터 */
 footer{background:#0F0C20;color:#B5B1C9;padding:44px 0;font-size:13px;text-align:center}footer img{margin:0 auto 14px}footer div{margin-bottom:4px}
 </style>
@@ -171,7 +206,7 @@ footer{background:#0F0C20;color:#B5B1C9;padding:44px 0;font-size:13px;text-align
     <div class="ev-grid">
 
       <!-- 레크리에이션 체육대회 -->
-      <div class="ev-card">
+      <div class="ev-card" onclick="openEventModal('sports')" role="button" tabindex="0">
         <div class="ev-img">
           <img src="/assets/images/programs/together/학교폭력사진1.jpg" alt="레크리에이션 체육대회" loading="lazy">
         </div>
@@ -189,7 +224,7 @@ footer{background:#0F0C20;color:#B5B1C9;padding:44px 0;font-size:13px;text-align
       </div>
 
       <!-- 학교축제 -->
-      <div class="ev-card">
+      <div class="ev-card" onclick="openEventModal('festival')" role="button" tabindex="0">
         <div class="ev-img">
           <img src="/assets/images/activity/act-concert.webp" alt="학교축제" loading="lazy">
         </div>
@@ -207,7 +242,7 @@ footer{background:#0F0C20;color:#B5B1C9;padding:44px 0;font-size:13px;text-align
       </div>
 
       <!-- 현장학습 대체 행사 -->
-      <div class="ev-card">
+      <div class="ev-card" onclick="openEventModal('fieldtrip')" role="button" tabindex="0">
         <div class="ev-img">
           <img src="/assets/images/activity/act-concert.webp" alt="현장학습 대체 행사" loading="lazy" style="object-position:center 30%">
         </div>
@@ -225,7 +260,7 @@ footer{background:#0F0C20;color:#B5B1C9;padding:44px 0;font-size:13px;text-align
       </div>
 
       <!-- 골든벨 행사 -->
-      <div class="ev-card">
+      <div class="ev-card" onclick="openEventModal('goldenbell')" role="button" tabindex="0">
         <div class="ev-img-empty">🔔</div>
         <div class="ev-body">
           <span class="ev-badge">GOLDEN BELL</span>
@@ -363,6 +398,61 @@ footer{background:#0F0C20;color:#B5B1C9;padding:44px 0;font-size:13px;text-align
   <div style="margin-top:14px;color:#6E6A85">© 2026 IDenTeach (아이덴티치).</div>
 </footer>
 
+<!-- 행사 문의 팝업 -->
+<div class="modal-overlay" id="ev-modal-overlay" onclick="handleOverlayClick(event)">
+  <div class="modal-box" id="ev-modal-box">
+    <button class="modal-close" onclick="closeEventModal()" aria-label="닫기">×</button>
+    <!-- 이미지 슬라이더 -->
+    <div class="ms-wrap" id="ms-wrap"></div>
+    <!-- 본문 -->
+    <div class="modal-body">
+      <div class="modal-ev-hd">
+        <span class="ev-badge" id="modal-badge"></span>
+        <span class="modal-ev-name" id="modal-ev-name"></span>
+      </div>
+      <form class="mf" id="ev-inquiry-form" onsubmit="submitInquiry(event)">
+        <input type="hidden" id="mf-type" name="type">
+        <div class="mf-row">
+          <div class="mf-col">
+            <label class="mf-lbl">학교명<span class="mf-req">*</span></label>
+            <input class="mf-inp" name="school" placeholder="○○초등학교" required>
+          </div>
+          <div class="mf-col">
+            <label class="mf-lbl">담당 선생님 성함<span class="mf-req">*</span></label>
+            <input class="mf-inp" name="teacher" placeholder="홍길동 선생님" required>
+          </div>
+        </div>
+        <div class="mf-row">
+          <div class="mf-col">
+            <label class="mf-lbl">연락처<span class="mf-req">*</span></label>
+            <input class="mf-inp" type="tel" name="phone" placeholder="010-0000-0000" required>
+          </div>
+          <div class="mf-col">
+            <label class="mf-lbl">이메일</label>
+            <input class="mf-inp" type="email" name="email" placeholder="example@school.kr">
+          </div>
+        </div>
+        <div class="mf-row">
+          <div class="mf-col">
+            <label class="mf-lbl">희망 행사 일시</label>
+            <input class="mf-inp" name="date" placeholder="2026년 9월 중순">
+          </div>
+          <div class="mf-col">
+            <label class="mf-lbl">예상 인원</label>
+            <input class="mf-inp" type="number" name="count" placeholder="200" min="1">
+          </div>
+        </div>
+        <div class="mf-col">
+          <label class="mf-lbl">기타 문의 사항</label>
+          <textarea class="mf-ta" name="note" placeholder="행사 관련 요청이나 궁금한 점을 자유롭게 적어주세요."></textarea>
+        </div>
+        <button type="submit" class="mf-submit">📧 문의 메일 보내기</button>
+        <p class="mf-hint">버튼 클릭 시 이메일 앱이 열립니다 · idengroup@naver.com으로 발송됩니다</p>
+      </form>
+    </div>
+  </div>
+</div>
+
 <!-- 고정 말풍선: 체육대회 제안서 받기 -->
 <div class="bubble-cta">
   <a href="/assets/documents/proposal.pdf" download class="bubble-btn">📋 체육대회 제안서 받기</a>
@@ -372,6 +462,103 @@ footer{background:#0F0C20;color:#B5B1C9;padding:44px 0;font-size:13px;text-align
 <script>
 const NAV_ITEMS=[{label:"어울림 프로그램",href:"/together"},{label:"진로 프로그램",href:"/career"},{label:"교내 행사",href:"/events"},{label:"회사소개",href:"/about"}];
 document.getElementById('nav-links').innerHTML=NAV_ITEMS.map(item=>`<a href="${item.href}"${item.href==='/events'?' class="nav-active"':''}>${item.label}</a>`).join('');
+
+/* ── 행사 데이터 ── */
+const EV_DATA={
+  sports:{
+    badge:'SPORTS DAY',name:'레크리에이션 체육대회',
+    images:[
+      {src:'/assets/images/programs/together/학교폭력사진1.jpg',alt:'체육대회 현장 1'},
+      {src:'/assets/images/activity/act-concert.webp',alt:'체육대회 현장 2'}
+    ]
+  },
+  festival:{
+    badge:'FESTIVAL',name:'학교축제',
+    images:[
+      {src:'/assets/images/activity/act-concert.webp',alt:'학교축제 현장'}
+    ]
+  },
+  fieldtrip:{
+    badge:'FIELD TRIP ALT',name:'현장학습 대체 행사',
+    images:[
+      {src:'/assets/images/activity/act-concert.webp',alt:'현장학습 대체 행사 현장'}
+    ]
+  },
+  goldenbell:{
+    badge:'GOLDEN BELL',name:'골든벨 행사',
+    images:[]
+  }
+};
+
+let _cur=0,_total=0,_timer=null;
+
+function openEventModal(id){
+  const ev=EV_DATA[id]; if(!ev)return;
+  /* 슬라이더 빌드 */
+  const wrap=document.getElementById('ms-wrap');
+  if(ev.images.length===0){
+    wrap.innerHTML='<div class="ms-empty">🔔</div>';
+  } else {
+    const slides=ev.images.map(img=>`<div class="ms-slide"><img src="${img.src}" alt="${img.alt}" loading="lazy"></div>`).join('');
+    const dots=ev.images.length>1?ev.images.map((_,i)=>`<button class="ms-dot${i===0?' active':''}" onclick="msGo(${i})"></button>`).join(''):'';
+    const nav=ev.images.length>1?`<button class="ms-arr ms-prev" onclick="msGo(_cur-1)">&#8249;</button><button class="ms-arr ms-next" onclick="msGo(_cur+1)">&#8250;</button><div class="ms-dots">${dots}</div>`:'';
+    wrap.innerHTML=`<div class="ms-track" id="ms-track">${slides}</div>${nav}`;
+  }
+  /* 헤더·폼 */
+  document.getElementById('modal-badge').textContent=ev.badge;
+  document.getElementById('modal-ev-name').textContent=ev.name;
+  document.getElementById('mf-type').value=ev.name;
+  document.getElementById('ev-inquiry-form').reset();
+  document.getElementById('mf-type').value=ev.name;
+  /* 슬라이더 초기화 */
+  _cur=0; _total=ev.images.length;
+  clearInterval(_timer);
+  if(_total>1) _timer=setInterval(()=>msGo(_cur+1),4500);
+  /* 오픈 */
+  document.getElementById('ev-modal-overlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function closeEventModal(){
+  document.getElementById('ev-modal-overlay').classList.remove('open');
+  document.body.style.overflow='';
+  clearInterval(_timer);
+}
+
+function handleOverlayClick(e){
+  if(e.target===document.getElementById('ev-modal-overlay')) closeEventModal();
+}
+
+function msGo(n){
+  const track=document.getElementById('ms-track'); if(!track)return;
+  _cur=((n%_total)+_total)%_total;
+  track.style.transform=`translateX(-${_cur*100}%)`;
+  document.querySelectorAll('.ms-dot').forEach((d,i)=>d.classList.toggle('active',i===_cur));
+}
+
+function submitInquiry(e){
+  e.preventDefault();
+  const f=e.target;
+  const lines=[
+    `[교내행사 문의] ${f.type.value}`,
+    ``,
+    `학교명: ${f.school.value}`,
+    `담당 선생님: ${f.teacher.value}`,
+    `연락처: ${f.phone.value}`,
+    `이메일: ${f.email.value||'(미입력)'}`,
+    `희망 일시: ${f.date.value||'(미입력)'}`,
+    `예상 인원: ${f.count.value?f.count.value+'명':'(미입력)'}`,
+    ``,
+    `문의 내용:`,
+    f.note.value||'(없음)'
+  ];
+  const subject=encodeURIComponent(`[아이덴티치 교내행사 문의] ${f.type.value} - ${f.school.value}`);
+  const body=encodeURIComponent(lines.join('\n'));
+  window.location.href=`mailto:idengroup@naver.com?subject=${subject}&body=${body}`;
+}
+
+/* ESC 키로 닫기 */
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeEventModal()});
 </script>
 </body>
 </html>
