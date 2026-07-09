@@ -104,6 +104,39 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdr
 footer{background:#0F0C20;color:#B5B1C9;padding:44px 0;font-size:13px;text-align:center}
 footer img{margin:0 auto 14px}
 footer div{margin-bottom:4px}
+/* 직사각형 활용장면 */
+.use-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:32px}
+.use-box{border-radius:12px;padding:20px 18px 18px;display:flex;flex-direction:column;gap:8px;border:2px solid transparent;transition:transform .2s,box-shadow .2s}.use-box:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(20,20,43,.10)}
+.use-box--rec{background:var(--yellow);border-color:rgba(255,216,77,.4)}.use-box--norm{background:var(--white);border-color:var(--border)}
+.use-rec-badge{display:inline-flex;align-items:center;gap:4px;background:var(--navy);color:#fff;font-size:10px;font-weight:800;padding:3px 10px;border-radius:4px;letter-spacing:.04em;width:fit-content}
+.use-icon{font-size:24px;line-height:1}
+.use-title{font-size:14px;font-weight:800;color:var(--navy);line-height:1.3}
+.use-desc{font-size:12px;line-height:1.55}
+.use-box--norm .use-desc{color:var(--gray)}
+@media(max-width:860px){.use-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:560px){.use-grid{grid-template-columns:repeat(2,1fr)}}
+/* 통합 플로우 */
+.flow-section{padding:clamp(52px,7vw,80px) 0;background:var(--warm);border-top:1px solid var(--border)}
+.flow-dual-label{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+.flow-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;letter-spacing:.08em;padding:4px 12px;border-radius:999px}
+.flow-badge--proc{background:rgba(31,35,146,.07);color:var(--blue);border:1px solid rgba(31,35,146,.14)}
+.flow-badge--xp{background:rgba(255,216,77,.2);color:#7A6200;border:1px solid rgba(255,216,77,.5)}
+.flow-timeline{display:flex;flex-direction:column;gap:0;position:relative}
+.flow-timeline::before{content:'';position:absolute;left:34px;top:0;bottom:0;width:2px;background:var(--border);z-index:0}
+.flow-item{display:grid;grid-template-columns:72px 1fr;gap:0;position:relative;padding-bottom:28px}
+.flow-item:last-child{padding-bottom:0}
+.flow-num-wrap{width:68px;height:68px;border-radius:50%;background:var(--white);border:2.5px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;z-index:1;box-shadow:0 3px 14px rgba(20,20,43,.09)}
+.flow-emoji{font-size:26px;line-height:1}
+.flow-right{padding:10px 0 0 22px;display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:start}
+.flow-proc{background:var(--white);border-radius:12px;padding:14px 16px;border:1px solid var(--border)}
+.flow-proc-step{font-size:10px;font-weight:700;letter-spacing:.08em;color:var(--blue);margin-bottom:4px;text-transform:uppercase}
+.flow-proc-title{font-size:14px;font-weight:800;color:var(--navy);margin-bottom:3px}
+.flow-proc-desc{font-size:12px;color:var(--gray);line-height:1.55}
+.flow-xp{background:rgba(255,216,77,.08);border-radius:12px;padding:14px 16px;border:1px solid rgba(255,216,77,.3)}
+.flow-xp-step{font-size:10px;font-weight:700;letter-spacing:.08em;color:#7A6200;margin-bottom:4px;text-transform:uppercase}
+.flow-xp-action{font-size:13px;font-weight:700;color:var(--navy);line-height:1.45;margin-bottom:3px}
+.flow-xp-detail{font-size:12px;color:var(--gray)}
+@media(max-width:700px){.flow-right{grid-template-columns:1fr;gap:8px}.flow-timeline::before{left:28px}.flow-num-wrap{width:56px;height:56px}.flow-item{grid-template-columns:58px 1fr}}
 </style>
 </head>
 <body>
@@ -149,49 +182,58 @@ const programData = {
   heroImage: { src:"/assets/images/programs/together/schoolping/스쿨핑사진1.jpg", alt:"스쿨핑 활동 전체 장면" },
   category: "어울림 프로그램",
   title: "스쿨핑",
-  tagline: "야외 캠핑과 체육활동을 실내에서 즐기다!",
-  description: "신체활동·협동 미션으로 체육과 공동체 역량을 함께 기르는\n통합 체험 프로그램",
+  tagline: "어울림 프로그램 · 초등학생 추천",
+  description: "선생님과 아이들 모두\n학교에서 안전하게 추억을 만들 수 있는 스쿨핑 체험",
   info: [
-    { label:"대상",  value:"초중고 전학년" },
+    { label:"대상",  value:"초등학생 추천" },
     { label:"시간",  value:"4교시 [150분]" },
     { label:"인원",  value:"최대 한 학년" },
     { label:"장소",  value:"강당 / 교실" }
   ],
   activity: {
     image: { src:"/assets/images/programs/together/schoolping/스쿨핑사진2.jpg", alt:"학생들이 스쿨핑 게임에 참여하는 모습" },
-    headline: "몸으로 움직이며\n공동체 역량을 기릅니다",
+    headline: "선생님과 아이들 모두\n학교에서 안전하게 추억을 만드는\n스쿨핑 체험",
     bullets: [
-      "신체활동 참여로 도전 정신·건강 습관을 기릅니다",
-      "모둠 협력으로 협력적 소통·공동체 역량을 함양합니다",
-      "안전 수칙 준수로 자기관리 역량을 익힙니다"
+      "캠핑 장비를 활용하여 실제 텐트 설치·체험 진행",
+      "팀별 텐트 꾸미기로 단합력과 창의력을 동시에 키웁니다",
+      "안전 교육 · 공동체교육 · 리더십 교육 등 연계 운영 가능",
+      "체험형 신체 팀빌딩 게임으로 역동적인 신체활동을 진행합니다"
     ]
   },
-  keywords: [
-    { label:"창체 자율활동",    type:"a" },
-    { label:"관계·협력",        type:"a" },
-    { label:"체육대회 연계",    type:"a" },
-    { label:"예술 체육활동",    type:"b" },
-    { label:"신체활동",         type:"b" },
-    { label:"교내 행사",        type:"b" },
-    { label:"학교폭력 예방",    type:"c" },
-    { label:"타 프로그램 연계", type:"c" }
+  useCases: [
+    { icon:"🛡️", rec:false, title:"학교폭력예방", desc:"안전한 관계 형성을 체험으로 배우는 예방 중심 프로그램입니다." },
+    { icon:"🏕️", rec:true,  title:"리더십 캠프",  desc:"실내 캠핑 체험으로 리더십과 협동심을 함께 키웁니다." },
+    { icon:"✅", rec:false, title:"안전 교육",    desc:"텐트 설치·도구 사용 과정에서 안전 습관을 자연스럽게 익힙니다." },
+    { icon:"🏃", rec:false, title:"신체 활동",    desc:"팀빌딩 게임으로 체육과 공동체 활동을 하나로 묶습니다." },
+    { icon:"🚌", rec:false, title:"현장체험 대체", desc:"야외 현장체험의 실내 대체 프로그램으로 안전하게 운영됩니다." }
   ],
-  studentExperiences: [
-    { action:"텐트를 꾸미며\n팀 화합을 만들어갑니다",   detail:"창의적으로" },
-    { action:"바운드볼로\n협동 미션에 도전합니다",       detail:"힘을 합쳐" },
-    { action:"로프챌린지로\n소통을 경험합니다",          detail:"협력하며" },
-    { action:"파이프라인으로\n릴레이 협력을 합니다",     detail:"집중하며" },
-    { action:"협동 미션으로\n우승팀을 겨룹니다",         detail:"즐겁게" }
+  flowSteps: [
+    {
+      icon:"⛺",
+      proc:{ title:"텐트 설치 · 꾸미기", desc:"팀별 텐트를 직접 설치하고 꾸미기 도구로 팀 공간을 만듭니다." },
+      xp:{ action:"우리 팀만의 텐트를\n함께 완성합니다", detail:"창의적으로" }
+    },
+    {
+      icon:"🤝",
+      proc:{ title:"아이스브레이킹 미션", desc:"팀 이름·구호를 정하고 가벼운 공동체 미션으로 마음을 엽니다." },
+      xp:{ action:"낯선 팀원과\n금세 친해집니다", detail:"자연스럽게" }
+    },
+    {
+      icon:"🎮",
+      proc:{ title:"팀빌딩 게임", desc:"바운드볼·파이프라인·로프챌린지 등 협동 신체 게임을 진행합니다." },
+      xp:{ action:"몸으로 부딪히며\n협동을 경험합니다", detail:"힘을 합쳐" }
+    },
+    {
+      icon:"🏆",
+      proc:{ title:"협동 미션 대결", desc:"풍선탑·음악퀴즈 등 팀 대항 미션으로 흥미와 긴장감을 높입니다." },
+      xp:{ action:"팀이 하나가 되어\n우승을 노립니다", detail:"즐겁게" }
+    },
+    {
+      icon:"📸",
+      proc:{ title:"마무리 · 기념촬영", desc:"텐트 정리 후 팀별·전체 기념사진을 찍으며 마무리합니다." },
+      xp:{ action:"함께 만든 추억을\n사진으로 남깁니다", detail:"뿌듯하게" }
+    }
   ],
-  process: {
-    steps: [
-      { icon:"⛺", title:"텐트 꾸미기",      desc:"아이스브레이킹 + 팀 이름·구호" },
-      { icon:"🎮", title:"레크리에이션 게임", desc:"바운드볼·파이프라인 등 공동체 도구" },
-      { icon:"🏆", title:"협동 미션",        desc:"풍선탑·음악퀴즈·우승팀 선정" },
-      { icon:"✅", title:"마무리",           desc:"텐트 정리 + 설문" },
-      { icon:"📸", title:"기념촬영",         desc:"팀별·전체 기념사진" }
-    ]
-  },
   structuresSection: {
     label: "활동 구성 예시",
     title: "활동 구성 예시",
@@ -330,54 +372,14 @@ function renderActivity(a) {
 </section>`;
 }
 
-function renderKeywords(kws) {
-  return `
-<section class="sec sec--white">
-  <div class="wrap">
-    <div class="kw-sec-title">활용 장면</div>
-    <h2 class="kw-h2">어디서, 언제 쓸 수 있나요?</h2>
-    <div class="kw-wrap">
-      ${kws.map(k=>`<span class="kw-chip kw-chip--${k.type}">${k.label}</span>`).join('')}
-    </div>
-  </div>
-</section>`;
+function renderUseCases(cases){
+  const boxes=cases.map(c=>`<div class="use-box${c.rec?' use-box--rec':' use-box--norm'}">${c.rec?'<span class="use-rec-badge">⭐ 추천</span>':''}<div class="use-icon">${c.icon}</div><div class="use-title">${c.title}</div><div class="use-desc">${c.desc}</div></div>`).join('');
+  return`<section class="sec sec--white"><div class="wrap"><span class="sec-label">활용 장면</span><h2 class="sec-h2" style="margin-bottom:0">어디서, 언제 쓸 수 있나요?</h2><div class="use-grid">${boxes}</div></div></section>`
 }
 
-function renderStudentXP(items) {
-  return `
-<section class="sec sec--warm">
-  <div class="wrap">
-    <span class="sec-label">이 활동에서 학생들은</span>
-    <div class="xp-grid">
-      ${items.map((x,i)=>`
-      <div class="xp-card">
-        <div class="xp-num">${String(i+1).padStart(2,'0')}</div>
-        <div class="xp-action">${nl(x.action)}</div>
-        <div class="xp-detail">${x.detail}</div>
-      </div>`).join('')}
-    </div>
-  </div>
-</section>`;
-}
-
-function renderProcess(proc) {
-  return `
-<section class="sec sec--white">
-  <div class="wrap">
-    <span class="sec-label">진행 흐름</span>
-    <h2 class="sec-h2">이렇게 진행됩니다</h2>
-    <div class="proc-row">
-      ${proc.steps.map((s,i)=>`
-      <div class="proc-step">
-        <div class="proc-num">${i+1}</div>
-        <div class="proc-body">
-          <div class="proc-title">${s.title}</div>
-          <div class="proc-desc">${s.desc}</div>
-        </div>
-      </div>`).join('')}
-    </div>
-  </div>
-</section>`;
+function renderFlowSection(steps){
+  const items=steps.map((s,i)=>`<div class="flow-item"><div class="flow-left"><div class="flow-num-wrap"><span class="flow-emoji">${s.icon}</span></div></div><div class="flow-right"><div class="flow-proc"><div class="flow-proc-step">STEP ${String(i+1).padStart(2,'0')} · 진행 흐름</div><div class="flow-proc-title">${s.proc.title}</div><div class="flow-proc-desc">${s.proc.desc}</div></div><div class="flow-xp"><div class="flow-xp-step">이 순간 학생들은</div><div class="flow-xp-action">${nl(s.xp.action)}</div><div class="flow-xp-detail">${s.xp.detail}</div></div></div></div>`).join('');
+  return`<section class="flow-section"><div class="wrap"><div class="flow-dual-label"><span class="flow-badge flow-badge--proc">진행 흐름</span><span class="flow-badge flow-badge--xp">이 활동에서 학생들은</span></div><h2 class="sec-h2" style="margin-bottom:40px">활동이 이렇게 흘러갑니다</h2><div class="flow-timeline">${items}</div></div></section>`
 }
 
 function renderStructures(d) {
@@ -401,7 +403,7 @@ function renderStructures(d) {
 function renderGallery(g){const imgs=g.images.map(img=>`<div class="g-frame"><img src="${img.src}" alt="${img.alt}" loading="lazy"></div>`).join("");return`<section class="sec sec--white"><div class="wrap"><span class="sec-label">활동 모습</span><h2 class="sec-h2" style="margin-bottom:0">현장 사진</h2></div><div class="gallery-marquee"><div class="g-track">${imgs}${imgs}</div></div></section>`}
 
 function renderCTA(){return`<div style="position:fixed;bottom:24px;right:24px;z-index:999;display:flex;flex-direction:column;align-items:flex-end"><a href="/assets/documents/identeach-program-guide.pdf" download style="display:inline-flex;align-items:center;gap:8px;background:var(--yellow);color:var(--navy);font-family:inherit;font-weight:800;font-size:14px;padding:13px 22px;border-radius:18px 18px 0 18px;text-decoration:none;box-shadow:0 6px 24px rgba(20,20,43,.28);white-space:nowrap">📄 프로그램 소개서 받기</a><div style="width:0;height:0;border-style:solid;border-width:12px 12px 0 0;border-color:var(--yellow) transparent transparent transparent"></div></div>`}
-function renderPage(d){renderMeta(d);renderNav(d.navActive);renderCrumb(d.crumbs);document.getElementById('pg-root').innerHTML=renderHero(d)+renderActivity(d.activity)+renderKeywords(d.keywords)+renderStudentXP(d.studentExperiences)+renderProcess(d.process)+renderGallery(d.gallery)+renderCTA()}
+function renderPage(d){renderMeta(d);renderNav(d.navActive);renderCrumb(d.crumbs);document.getElementById('pg-root').innerHTML=renderHero(d)+renderActivity(d.activity)+renderUseCases(d.useCases)+renderFlowSection(d.flowSteps)+renderGallery(d.gallery)+renderCTA()}
 renderPage(programData);
 </script>
 
