@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
@@ -13,45 +13,168 @@
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <style>
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@1.3.9/dist/web/static/pretendard.css');
-:root{
-  --primary:#6C47D6;--primary-deep:#5836C0;--navy:#18142E;--accent:#FF7A4D;
-  --bg:#fff;--surface:#F6F4FB;--text:#18142E;--text-2:#6B6880;--border:#E0DDEA;--red:#E5484D;
-  --maxw:640px;--rc:14px;--rb:12px;--shadow:0 8px 30px rgba(24,20,46,.08);--pad-x:clamp(20px,5vw,24px);
+
+:root {
+  --blue:   #1F2392;
+  --blue-d: #171980;
+  --yellow: #FFD84D;
+  --navy:   #14142B;
+  --gray:   #6F7287;
+  --warm:   #F4F4F6;
+  --border: #E8E8F0;
+  --white:  #fff;
+  --red:    #E5484D;
+  --maxw:   1080px;
+  --form-w: 640px;
+  --rc:     16px;
+  --shadow: 0 8px 30px rgba(20,20,43,.08);
+  --pad-x:  clamp(20px,5vw,24px);
 }
-*{margin:0;padding:0;box-sizing:border-box}html{-webkit-text-size-adjust:100%}
-body{font-family:'Pretendard',-apple-system,sans-serif;color:var(--text);background:var(--surface);font-weight:500;line-height:1.7;-webkit-font-smoothing:antialiased}
-a{color:inherit;text-decoration:none}.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad-x)}
-h1{letter-spacing:-.03em}
-header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
-.nav{display:flex;align-items:center;height:96px;max-width:1080px;margin:0 auto;padding:0 var(--pad-x)}
-.logo{font-size:22px;font-weight:800;letter-spacing:-.04em}.logo span{color:var(--primary)}
-.nav .back{margin-left:auto;font-size:14px;color:var(--text-2)}.nav .back:hover{color:var(--text)}
-.hero{text-align:center;padding:clamp(38px,7vw,60px) 0 clamp(24px,4vw,34px)}
-.eyebrow{display:inline-block;font-size:13px;font-weight:600;color:var(--primary);background:#EAE4F8;padding:6px 13px;border-radius:999px;margin-bottom:16px}
-.hero h1{font-size:clamp(24px,5.4vw,34px);font-weight:800;line-height:1.25}.hero p{font-size:clamp(15px,3vw,16px);color:var(--text-2);margin-top:12px}
-.card{background:#fff;border:1px solid var(--border);border-radius:var(--rc);padding:clamp(22px,5vw,34px);margin-bottom:34px;box-shadow:var(--shadow)}
-.field{margin-bottom:26px}
-label.q{display:block;font-size:15px;font-weight:700;margin-bottom:6px}
-.req{color:var(--red);font-size:13px;vertical-align:top}
-.note{font-size:13px;color:var(--text-2);margin:0 0 10px;line-height:1.55}.note.tight{margin-bottom:12px}
-select,input[type=text],textarea{width:100%;font-family:inherit;font-size:15px;color:var(--text);border:1.5px solid var(--border);border-radius:var(--rb);padding:13px 14px;background:#fff;transition:.15s}
-select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%236B6880' stroke-width='1.6' fill='none' stroke-linecap='round'/></svg>");background-repeat:no-repeat;background-position:right 16px center;padding-right:38px;cursor:pointer}
-select:focus,input[type=text]:focus,textarea:focus{outline:none;border-color:var(--primary)}
-select:invalid{color:var(--text-2)}
-.checks{display:flex;flex-wrap:wrap;gap:8px}
-.checks label{position:relative}.checks input{position:absolute;opacity:0;pointer-events:none}
-.checks span{display:block;font-size:14px;padding:10px 16px;border:1.5px solid var(--border);border-radius:999px;cursor:pointer;transition:.15s;background:#fff}
-.checks input:checked + span{border-color:var(--primary);background:#F1ECFC;color:var(--primary);font-weight:600}
-.phone{display:grid;grid-template-columns:1fr 16px 1fr 16px 1fr;align-items:center;gap:4px}
-.phone .dash{text-align:center;color:var(--text-2)}
-.policy{height:150px;overflow-y:auto;border:1.5px solid var(--border);border-radius:var(--rb);padding:16px;font-size:13px;color:var(--text-2);background:#FBFAFE;line-height:1.65}
-.policy b{color:var(--text)}
-.agree{display:flex;align-items:center;gap:10px;margin-top:14px;font-size:15px;cursor:pointer}
-.agree input{width:18px;height:18px;accent-color:var(--primary);cursor:pointer}
-.submit{width:100%;font-family:inherit;font-weight:700;font-size:16px;color:#fff;background:var(--primary);border:none;border-radius:var(--rb);padding:16px;cursor:pointer;transition:.18s;margin-top:6px}
-.submit:hover{background:var(--primary-deep)}
-.hint{font-size:13px;color:var(--text-2);text-align:center;margin-top:12px}
-.alt{text-align:center;margin-bottom:50px;font-size:14px;color:var(--text-2)}.alt a{color:var(--primary);font-weight:600}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box }
+html { scroll-behavior:smooth; -webkit-text-size-adjust:100% }
+body {
+  font-family:'Pretendard',-apple-system,sans-serif;
+  color:var(--navy); background:var(--warm);
+  font-weight:500; line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+a { color:inherit; text-decoration:none }
+img { display:block; max-width:100% }
+h1,h2,h3 { letter-spacing:-.03em }
+.wrap { max-width:var(--maxw); margin:0 auto; padding:0 var(--pad-x) }
+.form-wrap { max-width:var(--form-w); margin:0 auto; padding:0 var(--pad-x) }
+
+/* ── 헤더 ── */
+header {
+  position:sticky; top:0; z-index:100;
+  background:rgba(255,255,255,.96);
+  backdrop-filter:blur(16px);
+}
+.nav {
+  display:flex; align-items:center; gap:16px; height:96px;
+  background:#fff;
+  border-radius:0 0 28px 28px;
+  box-shadow:0 4px 20px rgba(0,0,0,.08);
+  padding:0 clamp(20px,3vw,36px);
+  max-width:var(--maxw); margin:0 auto;
+}
+.nav-logo { margin-right:auto; display:flex; align-items:center }
+.nav-links {
+  display:flex; align-items:center; gap:4px;
+  font-size:15px; font-weight:500; color:var(--gray);
+}
+.nav-links a { padding:7px 14px; border-radius:999px; transition:color .15s, background .15s; white-space:nowrap }
+.nav-links a:hover { color:var(--navy) }
+.nav-links a.nav-active { background:var(--navy); color:#fff; font-weight:700 }
+.nav-cta {
+  display:inline-flex; align-items:center; justify-content:center;
+  font-family:inherit; font-weight:700; font-size:14px; cursor:pointer;
+  background:var(--blue); color:#fff; padding:10px 20px;
+  border-radius:999px; border:none; white-space:nowrap;
+  transition:background .18s;
+}
+.nav-cta:hover { background:var(--blue-d) }
+.menu-toggle, .menu-btn { display:none }
+.menu-btn { font-size:22px; background:none; border:none; cursor:pointer; color:var(--navy); padding:4px }
+@media(max-width:860px) {
+  .menu-btn { display:block; order:3 }
+  .nav-cta { order:2 }
+  .nav-links {
+    position:absolute; top:96px; left:0; right:0;
+    flex-direction:column; align-items:flex-start; gap:0;
+    background:#fff; border-radius:24px;
+    box-shadow:0 8px 28px rgba(0,0,0,.12);
+    max-height:0; overflow:hidden; transition:max-height .28s; font-size:16px; z-index:200;
+  }
+  .nav-links a { width:100%; padding:16px var(--pad-x); border-top:1px solid var(--border) }
+  .menu-toggle:checked ~ .nav-links { max-height:360px }
+}
+
+/* ── 히어로 ── */
+.hero {
+  text-align:center;
+  padding:clamp(48px,8vw,72px) 0 clamp(28px,4vw,40px);
+}
+.eyebrow {
+  display:inline-flex; align-items:center; gap:6px;
+  background:var(--yellow); color:var(--navy);
+  font-size:13px; font-weight:800; letter-spacing:.04em;
+  padding:8px 18px; border-radius:18px; margin-bottom:22px;
+}
+.hero h1 {
+  font-size:clamp(26px,5.5vw,38px); font-weight:800;
+  line-height:1.22; margin-bottom:14px;
+}
+.hero h1 em { font-style:normal; color:var(--blue) }
+.hero p { font-size:clamp(15px,2.5vw,16.5px); color:var(--gray); max-width:36em; margin:0 auto; line-height:1.7 }
+
+/* ── 폼 카드 ── */
+.card {
+  background:#fff; border:1px solid var(--border);
+  border-radius:20px; padding:clamp(24px,5vw,36px);
+  margin-bottom:28px; box-shadow:var(--shadow);
+}
+.field { margin-bottom:24px }
+.field:last-child { margin-bottom:0 }
+label.q { display:block; font-size:15px; font-weight:700; margin-bottom:7px; color:var(--navy) }
+.req { color:var(--red); font-size:12px; vertical-align:super; margin-left:2px }
+.note { font-size:13px; color:var(--gray); margin:0 0 10px; line-height:1.6 }
+.note.tight { margin-bottom:10px }
+
+select, input[type=text] {
+  width:100%; font-family:inherit; font-size:15px; color:var(--navy);
+  border:1.5px solid var(--border); border-radius:12px;
+  padding:13px 16px; background:#fff; transition:.15s; outline:none;
+}
+select {
+  appearance:none; -webkit-appearance:none;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%236F7287' stroke-width='1.6' fill='none' stroke-linecap='round'/></svg>");
+  background-repeat:no-repeat; background-position:right 16px center;
+  padding-right:40px; cursor:pointer;
+}
+select:invalid { color:var(--gray) }
+select:focus, input[type=text]:focus { border-color:var(--blue); background:#fff; box-shadow:0 0 0 3px rgba(31,35,146,.08) }
+
+/* 연락처 */
+.phone { display:grid; grid-template-columns:1fr 20px 1fr 20px 1fr; align-items:center; gap:4px }
+.phone .dash { text-align:center; color:var(--gray); font-size:18px; font-weight:300 }
+
+/* 개인정보 박스 */
+.policy {
+  height:144px; overflow-y:auto; border:1.5px solid var(--border);
+  border-radius:12px; padding:16px; font-size:13px; color:var(--gray);
+  background:var(--warm); line-height:1.7;
+}
+.policy b { color:var(--navy) }
+.agree {
+  display:flex; align-items:center; gap:10px;
+  margin-top:14px; font-size:15px; cursor:pointer; user-select:none;
+}
+.agree input { width:18px; height:18px; accent-color:var(--blue); cursor:pointer; flex-shrink:0 }
+
+/* 구분선 */
+.divider {
+  border:none; border-top:1.5px solid var(--border);
+  margin:28px 0;
+}
+
+/* 제출 버튼 */
+.submit {
+  width:100%; font-family:inherit; font-weight:800; font-size:16px;
+  color:#fff; background:var(--blue); border:none; border-radius:14px;
+  padding:17px; cursor:pointer; transition:background .18s, transform .18s;
+  margin-top:6px; letter-spacing:.01em;
+}
+.submit:hover { background:var(--blue-d); transform:translateY(-2px) }
+.hint { font-size:13px; color:var(--gray); text-align:center; margin-top:10px; line-height:1.6 }
+
+/* 하단 링크 */
+.alt { text-align:center; margin-bottom:60px; font-size:14px; color:var(--gray) }
+.alt a { color:var(--blue); font-weight:700 }
+.alt a:hover { text-decoration:underline }
+
+/* ── 푸터 ── */
 .site-footer{background:#0C0A1E;padding:56px 0 28px}
 .ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:40px}
 .ft-logo{height:34px;filter:invert(1);opacity:.82;display:block;margin-bottom:18px}
@@ -74,25 +197,37 @@ select:invalid{color:var(--text-2)}
 <body>
 <header>
   <div class="nav">
-    <a href="/" class="logo"><img src="/assets/images/logo.webp" alt="아이덴티치" style="height:96px;display:block;"></a>
-    <a href="/" class="back">← 홈으로</a>
+    <a href="/" class="nav-logo">
+      <img src="/assets/images/logo.webp" alt="아이덴티치" style="height:96px;display:block;">
+    </a>
+    <input type="checkbox" id="nav-toggle" class="menu-toggle">
+    <nav class="nav-links">
+      <a href="/together">어울림 프로그램</a>
+      <a href="/career">진로 프로그램</a>
+      <a href="/events">교내행사</a>
+      <a href="/about">회사소개</a>
+    </nav>
+    <a href="/request" class="nav-cta nav-active" style="background:var(--navy)">무료 맞춤 요청</a>
+    <label for="nav-toggle" class="menu-btn" aria-label="메뉴">☰</label>
   </div>
 </header>
+
 <main>
   <section class="hero">
-    <div class="wrap">
-      <span class="eyebrow">무료 · 부담 없이</span>
-      <h1>우리 학교 맞춤 프로그램<br>무료로 요청하기</h1>
-      <p>상황만 알려주시면 맞는 프로그램과 제안서·견적을 보내드려요.</p>
+    <div class="form-wrap">
+      <div class="eyebrow">✉️ 무료 · 부담 없이</div>
+      <h1>우리 학교 맞춤 프로그램<br><em>무료로 요청하기</em></h1>
+      <p>학교 상황만 알려주시면 맞는 프로그램과<br>제안서·견적을 영업일 기준 1~2일 내 보내드립니다.</p>
     </div>
   </section>
 
-  <div class="wrap">
+  <div class="form-wrap">
     <div class="card">
+
       <div class="field">
-        <label class="q" for="route">유입경로 <span class="req">●</span></label>
+        <label class="q" for="route">어떻게 알게 되셨나요? <span class="req">*</span></label>
         <select id="route" required>
-          <option value="" selected disabled>(선택)</option>
+          <option value="" selected disabled>(선택해 주세요)</option>
           <option>네이버·구글 검색</option>
           <option>지인·동료 추천</option>
           <option>SNS·블로그</option>
@@ -103,7 +238,7 @@ select:invalid{color:var(--text-2)}
 
       <div class="field">
         <label class="q" for="program">진행 희망 프로그램</label>
-        <p class="note">- 희망 프로그램이 있으면 선택해 주세요.<br>- 선택하지 않으면 담당자가 학교 상황을 고려해 추천해 드립니다.</p>
+        <p class="note">희망 프로그램이 있으면 선택해 주세요. 없으시면 담당자가 추천해 드립니다.</p>
         <select id="program">
           <option value="" selected>(선택 안 함 · 추천받기)</option>
           <optgroup label="어울림 프로그램">
@@ -127,9 +262,9 @@ select:invalid{color:var(--text-2)}
       </div>
 
       <div class="field">
-        <label class="q" for="when">진행 희망 시기 <span class="req">●</span></label>
+        <label class="q" for="when">진행 희망 시기 <span class="req">*</span></label>
         <select id="when" required>
-          <option value="" selected disabled>(선택)</option>
+          <option value="" selected disabled>(선택해 주세요)</option>
           <option>신학기 (3월)</option>
           <option>1학기 (3~7월)</option>
           <option>2학기 (9~12월)</option>
@@ -139,25 +274,27 @@ select:invalid{color:var(--text-2)}
       </div>
 
       <div class="field">
-        <label class="q" for="school">학교명 / 지역 / 학급 수 <span class="req">●</span></label>
-        <p class="note tight">- 예: 아이덴티치중학교 / 인천 / 5학급</p>
+        <label class="q" for="school">학교명 / 지역 / 학급 수 <span class="req">*</span></label>
+        <p class="note tight">예: 아이덴티치중학교 / 인천 / 5학급</p>
         <input type="text" id="school" placeholder="학교명 / 지역 / 학급 수">
       </div>
 
+      <hr class="divider">
+
       <div class="field">
-        <label class="q" for="name">성함 <span class="req">●</span></label>
-        <input type="text" id="name" placeholder="성함">
+        <label class="q" for="name">성함 <span class="req">*</span></label>
+        <input type="text" id="name" placeholder="담당 선생님 성함">
       </div>
 
       <div class="field">
-        <label class="q" for="email">이메일 <span class="req">●</span></label>
-        <p class="note tight">- 영업일 기준 1~2일 내 이메일로 제안서와 견적을 보내드립니다.</p>
+        <label class="q" for="email">이메일 <span class="req">*</span></label>
+        <p class="note tight">제안서와 견적을 이메일로 보내드립니다.</p>
         <input type="text" id="email" placeholder="이메일 주소">
       </div>
 
       <div class="field">
         <label class="q">연락처</label>
-        <p class="note tight">- 연락처·이메일은 안내 연락 용도 외에 사용되지 않습니다.</p>
+        <p class="note tight">안내 연락 용도 외에 사용되지 않습니다.</p>
         <div class="phone">
           <input type="text" id="p1" inputmode="numeric" placeholder="010">
           <span class="dash">-</span>
@@ -167,11 +304,12 @@ select:invalid{color:var(--text-2)}
         </div>
       </div>
 
+      <hr class="divider">
+
       <div class="field">
-        <label class="q">개인정보 수집 및 이용 동의 <span class="req">●</span></label>
+        <label class="q">개인정보 수집 및 이용 동의 <span class="req">*</span></label>
         <div class="policy">
           <b>아이덴티치는 '맞춤 요청' 접수 시 아래와 같이 개인정보를 수집·이용합니다.</b><br><br>
-          <b>&lt;개인정보 수집 및 이용 동의&gt;</b><br>
           ① 수집 항목: 이름, 이메일, 연락처, 학교명/지역<br>
           ② 수집 및 이용 목적: 문의 답변 및 프로그램 안내<br>
           ③ 보유 및 이용 기간: 수집·이용 목적 관련 업무 완료 시까지<br><br>
@@ -180,8 +318,8 @@ select:invalid{color:var(--text-2)}
         <label class="agree"><input type="checkbox" id="agree"> 개인정보 수집 및 이용에 동의합니다.</label>
       </div>
 
-      <button class="submit" id="submit">신청하기</button>
-      <p class="hint">신청 시 작성한 내용이 담긴 이메일이 열립니다.</p>
+      <button class="submit" id="submit">📬 맞춤 요청 보내기</button>
+      <p class="hint">버튼 클릭 시 이메일 앱이 열립니다 · idengroup@naver.com 으로 전달됩니다</p>
     </div>
 
     <p class="alt">제안서를 먼저 보고 싶다면 <a href="/assets/documents/proposal.pdf" download>제안서 다운로드 →</a></p>
@@ -233,7 +371,7 @@ select:invalid{color:var(--text-2)}
 <script>
 document.getElementById('submit').addEventListener('click', function(){
   var v = function(id){ return (document.getElementById(id).value||'').trim(); };
-  if(!v('route')){ alert('유입경로를 선택해 주세요.'); return; }
+  if(!v('route')){ alert('어떻게 알게 되셨는지 선택해 주세요.'); return; }
   if(!v('when')){ alert('진행 희망 시기를 선택해 주세요.'); return; }
   if(!v('school')){ alert('학교명 / 지역을 입력해 주세요.'); return; }
   if(!v('name')){ alert('성함을 입력해 주세요.'); return; }
@@ -257,11 +395,3 @@ document.getElementById('submit').addEventListener('click', function(){
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
