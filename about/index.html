@@ -129,25 +129,27 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdr
 .phil-author{font-size:13px;color:rgba(255,255,255,.4);margin-top:28px}
 
 /* 05 FLOW */
-.flow-sec{padding:var(--sec-y) 0}
-.flow-sec-hd{margin-bottom:clamp(40px,5vw,60px)}
-.flow-sec-hd h2{font-size:clamp(26px,3.8vw,40px);font-weight:800;line-height:1.25;color:var(--navy);margin-bottom:12px}
-.flow-sec-hd p{font-size:clamp(14px,1.6vw,16px);color:var(--gray);max-width:44em;line-height:1.9}
-.flow-track{display:flex;align-items:flex-start}
-@media(max-width:680px){.flow-track{flex-direction:column;gap:0}}
-.flow-node{flex:1;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center}
-@media(max-width:680px){
-  .flow-node{flex-direction:row;text-align:left;gap:18px;padding:14px 0;border-bottom:1px solid var(--border)}
-  .flow-node:last-child{border-bottom:none}
-}
-.flow-circle{width:clamp(80px,9vw,108px);height:clamp(80px,9vw,108px);border-radius:50%;border:2px solid rgba(31,35,146,.18);background:rgba(31,35,146,.04);display:flex;align-items:center;justify-content:center;font-size:clamp(11px,1.2vw,13px);font-weight:800;color:var(--navy);text-align:center;padding:12px;line-height:1.5;flex-shrink:0}
-.flow-circle--last{background:var(--blue);color:#fff;border-color:var(--blue);box-shadow:0 8px 28px rgba(31,35,146,.28)}
-.flow-sep{flex-shrink:0;align-self:flex-start;padding-top:calc(clamp(80px,9vw,108px)/2 - 12px);color:rgba(31,35,146,.25);font-size:clamp(14px,1.8vw,20px);padding-left:2px;padding-right:2px}
-@media(max-width:680px){.flow-sep{display:none}}
-.flow-desc{font-size:clamp(11px,1.1vw,13px);color:var(--gray);line-height:1.65;max-width:90px}
-@media(max-width:680px){.flow-desc{max-width:none;padding-top:4px}}
-.flow-quote{margin-top:clamp(44px,6vw,60px);background:rgba(31,35,146,.04);border-left:4px solid var(--yellow);border-radius:0 14px 14px 0;padding:22px 26px}
-.flow-quote p{font-size:clamp(15px,1.8vw,18px);font-weight:700;color:var(--navy);line-height:1.7}
+.flow-sec{background:#0C0A1E;padding:clamp(80px,11vw,120px) 0}
+.flow-sec-hd{margin-bottom:clamp(44px,6vw,68px)}
+.flow-sec-hd h2{font-size:clamp(28px,4.5vw,52px);font-weight:800;line-height:1.15;color:#fff;margin-bottom:14px;letter-spacing:-.04em}
+.flow-sec-hd p{font-size:clamp(15px,1.8vw,18px);color:rgba(255,255,255,.55);line-height:1.8;max-width:38em}
+.id-strip{display:flex;align-items:stretch;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.1)}
+@media(max-width:680px){.id-strip{flex-direction:column}}
+.id-card{flex:1;padding:clamp(28px,3.5vw,48px) clamp(20px,2.8vw,36px);border-right:1px solid rgba(255,255,255,.08);position:relative;overflow:hidden;transition:background .2s}
+.id-card:last-child{border-right:none;background:var(--blue)}
+.id-card:hover:not(:last-child){background:rgba(255,255,255,.04)}
+@media(max-width:680px){.id-card{border-right:none;border-bottom:1px solid rgba(255,255,255,.08)}.id-card:last-child{border-bottom:none}}
+.id-card-arrow{position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:18px;color:rgba(255,255,255,.18);font-weight:300;pointer-events:none}
+.id-card:last-child .id-card-arrow{display:none}
+@media(max-width:680px){.id-card-arrow{display:none}}
+.id-card-num{font-size:clamp(52px,8vw,88px);font-weight:900;color:rgba(255,255,255,.06);line-height:1;letter-spacing:-.06em;margin-bottom:clamp(14px,2.5vw,26px);user-select:none}
+.id-card:last-child .id-card-num{color:rgba(255,255,255,.1)}
+.id-card-title{font-size:clamp(19px,2.3vw,30px);font-weight:800;color:#fff;line-height:1.25;margin-bottom:12px;letter-spacing:-.02em}
+.id-card:last-child .id-card-title{color:var(--yellow)}
+.id-card-desc{font-size:clamp(12.5px,1.3vw,14px);color:rgba(255,255,255,.4);line-height:1.75}
+.id-card:last-child .id-card-desc{color:rgba(255,255,255,.78)}
+.flow-quote{margin-top:clamp(36px,5vw,52px);border-left:3px solid var(--yellow);padding:20px 26px;background:rgba(255,255,255,.04);border-radius:0 12px 12px 0}
+.flow-quote p{font-size:clamp(14px,1.7vw,17px);font-weight:600;color:rgba(255,255,255,.68);line-height:1.75}
 
 /* 06 CTA */
 .cta-sec{background:var(--navy);padding:clamp(64px,9vw,100px) 0;text-align:center}
@@ -331,31 +333,35 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdr
 <!-- 05 IDENTITY FLOW -->
 <section class="flow-sec">
   <div class="wrap reveal">
-    <span class="chip">IDENTITY + TEACH</span>
+    <span class="chip chip--w">IDENTITY + TEACH</span>
     <div class="flow-sec-hd">
       <h2>IDENTITY + TEACH</h2>
       <p>결국 모든 경험은 나의 정체성을 찾기 위한 재료입니다.</p>
     </div>
 
-    <div class="flow-track">
-      <div class="flow-node">
-        <div class="flow-circle">경험</div>
-        <p class="flow-desc">직접 해보고 느끼고 선택하는 모든 순간</p>
+    <div class="id-strip">
+      <div class="id-card">
+        <div class="id-card-arrow">→</div>
+        <div class="id-card-num">01</div>
+        <div class="id-card-title">경험</div>
+        <p class="id-card-desc">직접 해보고 느끼고 선택하는 모든 순간</p>
       </div>
-      <div class="flow-sep">→</div>
-      <div class="flow-node">
-        <div class="flow-circle">나와 맞는<br>경험</div>
-        <p class="flow-desc">수많은 경험 중 나를 살아있게 하는 것들</p>
+      <div class="id-card">
+        <div class="id-card-arrow">→</div>
+        <div class="id-card-num">02</div>
+        <div class="id-card-title">나와 맞는<br>경험</div>
+        <p class="id-card-desc">수많은 경험 중 나를 살아있게 하는 것들</p>
       </div>
-      <div class="flow-sep">→</div>
-      <div class="flow-node">
-        <div class="flow-circle">나의 행복의<br>기준</div>
-        <p class="flow-desc">내가 언제 가장 나답고 행복한지 알게 된다</p>
+      <div class="id-card">
+        <div class="id-card-arrow">→</div>
+        <div class="id-card-num">03</div>
+        <div class="id-card-title">나의 행복의<br>기준</div>
+        <p class="id-card-desc">내가 언제 가장 나답고 행복한지 알게 된다</p>
       </div>
-      <div class="flow-sep">→</div>
-      <div class="flow-node">
-        <div class="flow-circle flow-circle--last">나라는<br>사람의 기준</div>
-        <p class="flow-desc">그것이 모여 나만의 정체성이 된다</p>
+      <div class="id-card">
+        <div class="id-card-num">04</div>
+        <div class="id-card-title">나라는<br>사람의 기준</div>
+        <p class="id-card-desc">그것이 모여 나만의 정체성이 된다</p>
       </div>
     </div>
 
@@ -364,30 +370,6 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdr
     </div>
   </div>
 </section>
-
-<!-- GPT PLACEHOLDER 3 : 팀·현장 사진 -->
-<div style="padding:clamp(32px,5vw,52px) 0;background:var(--warm);border-top:1px solid var(--border)">
-  <div class="wrap reveal">
-    <div class="gpt-zone">
-      <div class="gpt-zone-inner">
-        <div class="gpt-zone-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        </div>
-        <div class="gpt-zone-title">👥 팀 소개 / 현장 사진 자리</div>
-        <p class="gpt-zone-desc">아이덴티치 팀의 실제 모습 또는 프로그램 운영 현장 컷이 들어갈 공간입니다.<br>신뢰감과 진정성을 높이는 데 가장 효과적인 요소입니다. 실제 사진 사용을 강력 권장합니다.</p>
-        <div class="gpt-zone-label">활용 방향 (실제 사진 우선 권장)</div>
-        <div class="gpt-zone-prompt">실제 팀 사진 또는 강사 현장 사진이 있으면 여기에 배치하세요.
-2~4컷 그리드 또는 와이드 단독컷 모두 가능합니다.
-
-AI 생성이 필요한 경우:
-"Small Korean education startup team in their 20s-30s, casually planning
-in a bright workspace. Warm natural light, genuine candid smiles.
-Whiteboard with colorful sticky notes in background. No stock-photo feel."</div>
-        <p class="gpt-zone-spec">권장 비율 16:9 (그리드 시 1:1) · 최소 1200×675px</p>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- 06 CTA -->
 <section class="cta-sec">
