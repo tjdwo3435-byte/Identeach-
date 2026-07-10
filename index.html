@@ -901,7 +901,7 @@ header {
 </footer>
 
 <script>
-/* ── 인트로 오버레이 (첫 외부 방문에만 재생) ─────────────────── */
+/* ── 인트로 오버레이 (탭 세션에서 최초 1회만) ─────────────────── */
 (function(){
   if (sessionStorage.getItem('iden_intro')) {
     document.getElementById('intro').style.display = 'none';
@@ -914,37 +914,41 @@ header {
   var lIden = document.getElementById('l-iden');
 
   function set(el, op, tx) {
-    el.style.opacity   = op;
-    el.style.transform = 'translateX(' + tx + 'px)';
     el.style.transition = 'none';
+    el.style.opacity    = op;
+    el.style.transform  = 'translateX(' + tx + 'px)';
   }
   function anim(el, op, tx, dur, delay) {
     setTimeout(function(){
-      el.style.transition = 'opacity ' + dur + 'ms ease, transform ' + dur + 'ms ease';
+      el.style.transition = 'opacity ' + dur + 'ms cubic-bezier(.4,0,.2,1), transform ' + dur + 'ms cubic-bezier(.4,0,.2,1)';
       el.style.opacity    = op;
       el.style.transform  = 'translateX(' + tx + 'px)';
-    }, delay || 0);
+    }, delay);
   }
 
-  set(lDo,   0, -60);
-  set(lIt,   0,  60);
-  set(lIden, 0,  60);
+  /* 초기 상태 */
+  set(lDo,   0, -50);
+  set(lIt,   0,  50);
+  set(lIden, 0,  50);
 
-  /* Stage 1: Do + it 등장 */
-  anim(lDo,  1,  0, 320, 200);
-  anim(lIt,  1,  0, 320, 260);
+  /* Stage 1 (200ms): "Do it" — Do 왼쪽에서, it 오른쪽에서 등장 */
+  anim(lDo, 1,  0, 340, 200);
+  anim(lIt, 1,  0, 340, 300);
 
-  /* Stage 2 (1200ms): it 오른쪽 퇴장 → identeach 등장 = "Do IdentEach" */
-  anim(lIt,   0,  55, 260, 1200);
-  anim(lIden, 1,   0, 300, 1340);
+  /* Stage 2 (1400ms): "DO identeach" — it 오른쪽 퇴장, identeach 오른쪽에서 등장 */
+  anim(lIt,   0,  60, 280, 1400);
+  anim(lIden, 1,   0, 320, 1520);
 
-  /* Stage 3 (2600ms): 오버레이 페이드아웃 */
+  /* Stage 3 (2700ms): "identeach" — Do 왼쪽 퇴장, identeach만 남음 */
+  anim(lDo, 0, -60, 280, 2700);
+
+  /* Stage 4 (3700ms): 오버레이 페이드아웃 */
   setTimeout(function(){
     var intro = document.getElementById('intro');
-    intro.style.transition = 'opacity .7s ease';
+    intro.style.transition = 'opacity .75s ease';
     intro.style.opacity    = '0';
-    setTimeout(function(){ intro.style.display = 'none'; }, 750);
-  }, 2600);
+    setTimeout(function(){ intro.style.display = 'none'; }, 800);
+  }, 3700);
 })();
 
 function switchProg(tab) {
