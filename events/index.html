@@ -117,18 +117,6 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdr
 .modal-overlay.open .modal-box{transform:translateY(0)}
 .modal-close{position:absolute;top:14px;right:14px;width:38px;height:38px;border-radius:50%;background:rgba(0,0,0,.1);border:none;cursor:pointer;font-size:20px;display:flex;align-items:center;justify-content:center;z-index:3;transition:background .18s;line-height:1}
 .modal-close:hover{background:rgba(0,0,0,.2)}
-/* 슬라이더 */
-.ms-wrap{position:relative;aspect-ratio:16/9;background:var(--navy);overflow:hidden;border-radius:20px 20px 0 0}
-.ms-track{display:flex;transition:transform .6s cubic-bezier(.4,0,.2,1);height:100%;width:100%}
-.ms-slide{flex-shrink:0;width:100%;height:100%}
-.ms-slide img{width:100%;height:100%;object-fit:cover}
-.ms-empty{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:64px}
-.ms-arr{position:absolute;top:50%;transform:translateY(-50%);width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.88);border:none;cursor:pointer;font-size:20px;display:flex;align-items:center;justify-content:center;z-index:2;box-shadow:0 2px 12px rgba(0,0,0,.18);transition:background .18s;line-height:1}
-.ms-arr:hover{background:#fff}
-.ms-prev{left:14px}.ms-next{right:14px}
-.ms-dots{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:7px;z-index:2}
-.ms-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.45);border:none;padding:0;cursor:pointer;transition:background .22s,transform .22s}
-.ms-dot.active{background:#fff;transform:scale(1.35)}
 /* 모달 폼 */
 .modal-body{padding:26px 28px 32px}
 .modal-ev-hd{display:flex;align-items:center;gap:10px;margin-bottom:22px;flex-wrap:wrap}
@@ -382,9 +370,6 @@ footer{background:#0F0C20;color:#B5B1C9;padding:44px 0;font-size:13px;text-align
 <div class="modal-overlay" id="ev-modal-overlay" onclick="handleOverlayClick(event)">
   <div class="modal-box" id="ev-modal-box">
     <button class="modal-close" onclick="closeEventModal()" aria-label="닫기">×</button>
-    <!-- 이미지 슬라이더 -->
-    <div class="ms-wrap" id="ms-wrap"></div>
-    <!-- 본문 -->
     <div class="modal-body">
       <div class="modal-ev-hd">
         <span class="ev-badge" id="modal-badge"></span>
@@ -470,31 +455,12 @@ const EV_DATA={
   }
 };
 
-let _cur=0,_total=0,_timer=null;
-
 function openEventModal(id){
   const ev=EV_DATA[id]; if(!ev)return;
-  /* 슬라이더 빌드 */
-  const wrap=document.getElementById('ms-wrap');
-  if(ev.images.length===0){
-    wrap.innerHTML='<div class="ms-empty">🔔</div>';
-  } else {
-    const slides=ev.images.map(img=>`<div class="ms-slide"><img src="${img.src}" alt="${img.alt}" loading="lazy"></div>`).join('');
-    const dots=ev.images.length>1?ev.images.map((_,i)=>`<button class="ms-dot${i===0?' active':''}" onclick="msGo(${i})"></button>`).join(''):'';
-    const nav=ev.images.length>1?`<button class="ms-arr ms-prev" onclick="msGo(_cur-1)">&#8249;</button><button class="ms-arr ms-next" onclick="msGo(_cur+1)">&#8250;</button><div class="ms-dots">${dots}</div>`:'';
-    wrap.innerHTML=`<div class="ms-track" id="ms-track">${slides}</div>${nav}`;
-  }
-  /* 헤더·폼 */
   document.getElementById('modal-badge').textContent=ev.badge;
   document.getElementById('modal-ev-name').textContent=ev.name;
-  document.getElementById('mf-type').value=ev.name;
   document.getElementById('ev-inquiry-form').reset();
   document.getElementById('mf-type').value=ev.name;
-  /* 슬라이더 초기화 */
-  _cur=0; _total=ev.images.length;
-  clearInterval(_timer);
-  if(_total>1) _timer=setInterval(()=>msGo(_cur+1),4500);
-  /* 오픈 */
   document.getElementById('ev-modal-overlay').classList.add('open');
   document.body.style.overflow='hidden';
 }
@@ -502,18 +468,10 @@ function openEventModal(id){
 function closeEventModal(){
   document.getElementById('ev-modal-overlay').classList.remove('open');
   document.body.style.overflow='';
-  clearInterval(_timer);
 }
 
 function handleOverlayClick(e){
   if(e.target===document.getElementById('ev-modal-overlay')) closeEventModal();
-}
-
-function msGo(n){
-  const track=document.getElementById('ms-track'); if(!track)return;
-  _cur=((n%_total)+_total)%_total;
-  track.style.transform=`translateX(-${_cur*100}%)`;
-  document.querySelectorAll('.ms-dot').forEach((d,i)=>d.classList.toggle('active',i===_cur));
 }
 
 function submitInquiry(e){
