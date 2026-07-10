@@ -70,7 +70,23 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdr
 .sec-label{display:inline-flex;align-items:center;gap:5px;background:rgba(31,35,146,.07);color:var(--blue);border:1px solid rgba(31,35,146,.14);font-size:11px;font-weight:700;letter-spacing:.1em;padding:4px 12px;border-radius:999px;margin-bottom:14px}
 .sec-label::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--blue);flex-shrink:0}
 .sec-h2{font-size:clamp(20px,3vw,28px);font-weight:800;color:var(--navy);line-height:1.25;white-space:pre-line}
-footer{background:#0F0C20;color:#B5B1C9;padding:44px 0;font-size:13px;text-align:center}footer img{margin:0 auto 14px}footer div{margin-bottom:4px}
+.site-footer{background:#0C0A1E;padding:56px 0 28px}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:40px}
+.ft-logo{height:34px;filter:invert(1);opacity:.82;display:block;margin-bottom:18px}
+.ft-tagline{font-size:14px;line-height:1.75;color:rgba(255,255,255,.6);margin-bottom:18px}
+.ft-biz{font-size:12.5px;line-height:1.9;color:rgba(255,255,255,.35)}
+.ft-col{display:flex;flex-direction:column}
+.ft-col-title{font-size:12px;font-weight:700;letter-spacing:.07em;color:rgba(255,255,255,.9);margin-bottom:14px}
+.ft-col a{color:rgba(255,255,255,.5);text-decoration:none;font-size:14px;margin-bottom:12px;transition:color .18s}
+.ft-col a:hover{color:#fff}
+.ft-contact-row{display:flex;align-items:flex-start;gap:10px;margin-bottom:14px}
+.ft-contact-icon{font-size:15px;flex-shrink:0;margin-top:2px}
+.ft-contact-val{font-size:14px;color:rgba(255,255,255,.72);font-weight:600;line-height:1.4}
+.ft-contact-sub{font-size:11.5px;color:rgba(255,255,255,.35);margin-top:3px}
+.ft-divider{border:none;border-top:1px solid rgba(255,255,255,.08);margin:0 0 22px}
+.ft-copy{font-size:12px;color:rgba(255,255,255,.22);text-align:center}
+@media(max-width:780px){.ft-grid{grid-template-columns:1fr 1fr;gap:32px 24px}.ft-brand{grid-column:1/-1}}
+@media(max-width:480px){.ft-grid{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
@@ -92,11 +108,46 @@ footer{background:#0F0C20;color:#B5B1C9;padding:44px 0;font-size:13px;text-align
 
   <main id="pg-root"></main>
 
-<footer>
-  <img src="/assets/images/logo.webp" alt="아이덴티치" style="height:28px;opacity:.85;filter:invert(1);">
-  <div>경험을 설계하는 진로·어울림 전문 콘텐츠 기획사</div>
-  <div style="margin-top:6px">010-4084-8962 · idengroup@naver.com</div>
-  <div style="margin-top:14px;color:#6E6A85">© 2026 IDenTeach (아이덴티치).</div>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <img src="/assets/images/logo.webp" alt="아이덴티치" class="ft-logo">
+        <p class="ft-tagline">경험을 설계하는<br>진로·어울림 전문 교육기획사</p>
+        <div class="ft-biz">
+          <div>대표 : 진성재</div>
+          <div>이메일 : idengroup@naver.com</div>
+        </div>
+      </div>
+      <div class="ft-col">
+        <div class="ft-col-title">프로그램</div>
+        <a href="/together">어울림 프로그램</a>
+        <a href="/career">진로 프로그램</a>
+        <a href="/events">교내행사</a>
+      </div>
+      <div class="ft-col">
+        <div class="ft-col-title">바로가기</div>
+        <a href="/about">회사소개</a>
+        <a href="/request">문의하기</a>
+      </div>
+      <div class="ft-col">
+        <div class="ft-col-title">연락처</div>
+        <div class="ft-contact-row">
+          <span class="ft-contact-icon">📞</span>
+          <div>
+            <div class="ft-contact-val">010-4084-8962</div>
+            <div class="ft-contact-sub">평일 09:00 ~ 18:00</div>
+          </div>
+        </div>
+        <div class="ft-contact-row">
+          <span class="ft-contact-icon">✉️</span>
+          <div class="ft-contact-val">idengroup@naver.com</div>
+        </div>
+      </div>
+    </div>
+    <hr class="ft-divider">
+    <p class="ft-copy">© 2026 IDenTeach (아이덴티치). All rights reserved.</p>
+  </div>
 </footer>
 
   <script>
