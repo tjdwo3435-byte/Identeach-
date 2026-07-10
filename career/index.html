@@ -182,12 +182,12 @@ header {
 /* 미래직업연구소 사전대기 모달 */
 .jl-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);z-index:2000;display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:opacity .25s}
 .jl-overlay.open{opacity:1;pointer-events:all}
-.jl-box{background:#fff;border-radius:20px;width:100%;max-width:460px;overflow:hidden;position:relative;transform:translateY(20px);transition:transform .28s cubic-bezier(.4,0,.2,1)}
+.jl-box{background:#fff;border-radius:20px;width:100%;max-width:460px;max-height:92vh;overflow-y:auto;position:relative;transform:translateY(20px);transition:transform .28s cubic-bezier(.4,0,.2,1)}
 .jl-overlay.open .jl-box{transform:translateY(0)}
 .jl-close{position:absolute;top:12px;right:12px;width:36px;height:36px;border-radius:50%;background:rgba(0,0,0,.18);border:none;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;z-index:3;color:#fff;line-height:1;transition:background .18s}
 .jl-close:hover{background:rgba(0,0,0,.32)}
-.jl-img{height:210px;overflow:hidden;background:#eee}
-.jl-img img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.jl-img{overflow:hidden;background:#eee}
+.jl-img img{width:100%;height:auto;display:block}
 .jl-body{padding:26px 26px 30px}
 .jl-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(31,35,146,.07);color:var(--blue);border:1px solid rgba(31,35,146,.15);font-size:11px;font-weight:700;letter-spacing:.06em;padding:4px 12px;border-radius:999px;margin-bottom:14px}
 .jl-title{font-size:clamp(18px,3vw,22px);font-weight:800;color:var(--navy);line-height:1.3;margin-bottom:8px;letter-spacing:-.02em}
