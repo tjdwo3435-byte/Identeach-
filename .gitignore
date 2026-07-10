@@ -11,6 +11,11 @@ update-img-refs.js
 # Claude Code 작업 폴더
 .claude/
 
+# 모자이크 원본 백업
+**/_original/
+mosaic_faces.py
+face_detection_yunet.onnx
+
 # macOS
 .DS_Store
 
