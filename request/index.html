@@ -23,7 +23,7 @@ body{font-family:'Pretendard',-apple-system,sans-serif;color:var(--text);backgro
 a{color:inherit;text-decoration:none}.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad-x)}
 h1{letter-spacing:-.03em}
 header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
-.nav{display:flex;align-items:center;height:64px;max-width:1080px;margin:0 auto;padding:0 var(--pad-x)}
+.nav{display:flex;align-items:center;height:96px;max-width:1080px;margin:0 auto;padding:0 var(--pad-x)}
 .logo{font-size:22px;font-weight:800;letter-spacing:-.04em}.logo span{color:var(--primary)}
 .nav .back{margin-left:auto;font-size:14px;color:var(--text-2)}.nav .back:hover{color:var(--text)}
 .hero{text-align:center;padding:clamp(38px,7vw,60px) 0 clamp(24px,4vw,34px)}
@@ -74,7 +74,7 @@ select:invalid{color:var(--text-2)}
 <body>
 <header>
   <div class="nav">
-    <a href="/" class="logo"><img src="/assets/images/logo.webp" alt="아이덴티치" style="height:48px;display:block;"></a>
+    <a href="/" class="logo"><img src="/assets/images/logo.webp" alt="아이덴티치" style="height:96px;display:block;"></a>
     <a href="/" class="back">← 홈으로</a>
   </div>
 </header>
@@ -107,16 +107,15 @@ select:invalid{color:var(--text-2)}
         <select id="program">
           <option value="" selected>(선택 안 함 · 추천받기)</option>
           <optgroup label="어울림 프로그램">
+            <option>미니 스포츠데이</option>
             <option>도미노 챌린지</option>
             <option>스쿨핑</option>
             <option>미션 퍼실리테이션</option>
-            <option>단합 레크리에이션</option>
+            <option>학교폭력예방 프로그램</option>
           </optgroup>
           <optgroup label="진로 프로그램">
-            <option>진로 토크쇼</option>
-            <option>미래직업연구소</option>
             <option>터칭보이스</option>
-            <option>아이덴티치 CEO 토크</option>
+            <option>미래직업연구소 (7월 말 오픈)</option>
           </optgroup>
           <optgroup label="교내 행사">
             <option>레크리에이션 체육대회</option>
@@ -143,20 +142,6 @@ select:invalid{color:var(--text-2)}
         <label class="q" for="school">학교명 / 지역 / 학급 수 <span class="req">●</span></label>
         <p class="note tight">- 예: 아이덴티치중학교 / 인천 / 5학급</p>
         <input type="text" id="school" placeholder="학교명 / 지역 / 학급 수">
-      </div>
-
-      <div class="field">
-        <label class="q">진행 희망 학년 <span class="req">●</span></label>
-        <p class="note tight">- 해당하는 학년을 모두 선택해 주세요.</p>
-        <div class="checks" id="grades">
-          <label><input type="checkbox" value="1학년"><span>1학년</span></label>
-          <label><input type="checkbox" value="2학년"><span>2학년</span></label>
-          <label><input type="checkbox" value="3학년"><span>3학년</span></label>
-          <label><input type="checkbox" value="4학년"><span>4학년</span></label>
-          <label><input type="checkbox" value="5학년"><span>5학년</span></label>
-          <label><input type="checkbox" value="6학년"><span>6학년</span></label>
-          <label><input type="checkbox" value="전교생"><span>전교생</span></label>
-        </div>
       </div>
 
       <div class="field">
@@ -248,11 +233,9 @@ select:invalid{color:var(--text-2)}
 <script>
 document.getElementById('submit').addEventListener('click', function(){
   var v = function(id){ return (document.getElementById(id).value||'').trim(); };
-  var grades = Array.from(document.querySelectorAll('#grades input:checked')).map(function(i){return i.value;});
   if(!v('route')){ alert('유입경로를 선택해 주세요.'); return; }
   if(!v('when')){ alert('진행 희망 시기를 선택해 주세요.'); return; }
   if(!v('school')){ alert('학교명 / 지역을 입력해 주세요.'); return; }
-  if(grades.length===0){ alert('진행 희망 학년을 선택해 주세요.'); return; }
   if(!v('name')){ alert('성함을 입력해 주세요.'); return; }
   if(!v('email')){ alert('이메일을 입력해 주세요.'); return; }
   if(!document.getElementById('agree').checked){ alert('개인정보 수집 및 이용에 동의해 주세요.'); return; }
@@ -263,7 +246,6 @@ document.getElementById('submit').addEventListener('click', function(){
     '희망 프로그램: ' + (v('program') || '추천 희망'),
     '희망 시기: ' + v('when'),
     '학교명/지역/학급 수: ' + v('school'),
-    '희망 학년: ' + grades.join(', '),
     '','---',
     '성함: ' + v('name'),
     '이메일: ' + v('email'),
