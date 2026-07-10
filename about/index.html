@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>회사소개 | 아이덴티치</title>
-<meta name="description" content="아이덴티치는 학교 현장에서 학생들이 더 많이 해보고, 말하고, 함께 움직일 수 있도록 프로그램을 기획하고 운영하는 경험 콘텐츠 기획사입니다.">
+<meta name="description" content="아이덴티치는 문화·예술·체육·체험·콘텐츠·사람 등 다양한 경험을 교과과정에 맞게 기획해 학교 현장으로 가져갑니다.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="회사소개 | 아이덴티치">
 <meta property="og:url" content="https://identeach.co.kr/about">
@@ -103,7 +103,7 @@ header {
   .menu-toggle:checked ~ .nav-links { max-height:360px }
 }
 
-/* ── 공통 라벨 chip ── */
+/* ── chip ── */
 .chip {
   display:inline-flex; align-items:center; gap:6px;
   background:rgba(31,35,146,.07); color:var(--blue);
@@ -122,283 +122,246 @@ header {
 .chip--white::before { background:var(--yellow) }
 
 /* ════════════════════════════════════════
-   01. ABOUT HERO
+   01. HERO
 ════════════════════════════════════════ */
-.about-hero {
+.hero {
   background:var(--warm);
   padding:clamp(72px,10vw,116px) 0 clamp(64px,9vw,104px);
   border-bottom:1px solid var(--border);
 }
-.hero-grid {
-  display:grid; grid-template-columns:1.05fr 0.95fr;
-  gap:clamp(48px,7vw,96px); align-items:center;
-}
-.hero-text h1 {
-  font-size:clamp(36px,5.2vw,60px); font-weight:800; line-height:1.15;
+.hero h1 {
+  font-size:clamp(36px,5.5vw,64px); font-weight:800; line-height:1.13;
   color:var(--navy); margin:16px 0 28px; letter-spacing:-.04em;
 }
-.hero-body > p {
-  font-size:clamp(15px,1.7vw,17px); color:var(--gray);
-  line-height:2; margin-bottom:14px; max-width:38em;
-}
-.hero-body > p:last-child { margin-bottom:0 }
-.hero-questions {
-  border-left:3px solid var(--blue);
-  padding:18px 22px; margin:26px 0;
-  display:flex; flex-direction:column; gap:10px;
-}
-.hero-questions p {
-  color:var(--navy); font-weight:700;
-  font-size:clamp(14px,1.6vw,16px); line-height:1.6;
-}
-
-/* 우측 시각 요소 */
-.hero-visual {
-  display:flex; flex-direction:column; gap:14px;
-}
-.hv-card {
-  background:var(--white); border:1px solid var(--border);
-  border-radius:14px; padding:20px 24px;
-}
-.hv-card-num {
-  font-size:11px; font-weight:700; color:var(--blue);
-  letter-spacing:.1em; margin-bottom:8px;
-}
-.hv-card-q {
-  font-size:clamp(14px,1.8vw,16px); font-weight:700;
-  color:var(--navy); line-height:1.5;
-}
-.hv-card-a {
-  font-size:13px; color:var(--gray); margin-top:8px; line-height:1.65;
-}
-.hv-card:last-child {
-  background:var(--blue);
-}
-.hv-card:last-child .hv-card-num { color:rgba(255,255,255,.55) }
-.hv-card:last-child .hv-card-q { color:#fff }
-.hv-card:last-child .hv-card-a { color:rgba(255,255,255,.65) }
-
-@media(max-width:780px) {
-  .hero-grid { grid-template-columns:1fr }
-  .hero-visual { display:none }
+.hero-sub {
+  font-size:clamp(15px,1.8vw,18px); color:var(--gray);
+  line-height:2; max-width:36em;
 }
 
 /* ════════════════════════════════════════
-   02. OUR VIEW
+   02. TWO VIEWS
 ════════════════════════════════════════ */
-.view-sec {
+.views-sec {
   background:var(--white);
   padding:var(--sec-y) 0;
 }
-.view-inner { max-width:680px }
-.view-inner h2 {
+.views-sec > .wrap > h2 {
   font-size:clamp(26px,3.8vw,40px); font-weight:800;
-  line-height:1.25; color:var(--navy); margin-bottom:32px;
-}
-.view-inner p {
-  font-size:clamp(15px,1.7vw,17px); color:var(--gray);
-  line-height:2; margin-bottom:16px;
-}
-.view-inner p:last-child { margin-bottom:0 }
-.view-quote {
-  border-left:3px solid var(--yellow);
-  padding:18px 24px; margin:36px 0;
-  background:rgba(255,216,77,.06); border-radius:0 12px 12px 0;
-}
-.view-quote p {
-  font-size:clamp(16px,2vw,19px); font-weight:700;
-  color:var(--navy); line-height:1.65; margin-bottom:0;
-}
-
-/* ════════════════════════════════════════
-   03. WHAT WE DO
-════════════════════════════════════════ */
-.wwd-sec {
-  background:var(--warm);
-  padding:var(--sec-y) 0;
-  border-top:1px solid var(--border);
-  border-bottom:1px solid var(--border);
-}
-.wwd-grid {
-  display:grid; grid-template-columns:1fr 1fr;
-  gap:clamp(40px,6vw,80px); align-items:start;
-}
-.wwd-text h2 {
-  font-size:clamp(26px,3.5vw,38px); font-weight:800;
-  line-height:1.25; color:var(--navy); margin-bottom:28px;
-}
-.wwd-text p {
-  font-size:clamp(14px,1.6vw,16px); color:var(--gray);
-  line-height:2; margin-bottom:14px;
-}
-.wwd-text p:last-child { margin-bottom:0 }
-.wwd-steps { display:flex; flex-direction:column; gap:16px; padding-top:4px }
-.step-item {
-  display:flex; gap:20px; align-items:flex-start;
-  background:var(--white); border:1px solid var(--border);
-  border-radius:14px; padding:22px 24px;
-}
-.step-num {
-  flex-shrink:0; width:36px; height:36px; border-radius:50%;
-  background:var(--blue); color:#fff;
-  font-size:13px; font-weight:800;
-  display:flex; align-items:center; justify-content:center;
-  margin-top:1px;
-}
-.step-body h3 {
-  font-size:clamp(14px,1.7vw,16px); font-weight:800;
-  color:var(--navy); margin-bottom:5px;
-}
-.step-body p {
-  font-size:13px; color:var(--gray); line-height:1.65; margin:0;
-}
-@media(max-width:720px) { .wwd-grid { grid-template-columns:1fr } }
-
-/* ════════════════════════════════════════
-   04. IDENTEACH SHAPE (도형 사용 섹션)
-════════════════════════════════════════ */
-.shape-sec {
-  background:var(--white);
-  padding:var(--sec-y) 0;
-}
-.shape-sec h2 {
-  font-size:clamp(24px,3.2vw,36px); font-weight:800;
-  line-height:1.25; color:var(--navy); margin-bottom:14px;
-}
-.shape-intro {
-  font-size:clamp(14px,1.6vw,16px); color:var(--gray);
-  line-height:1.9; max-width:560px; margin-bottom:clamp(44px,6vw,64px);
-}
-.flow {
-  display:flex; align-items:flex-start; gap:0;
-}
-.flow-node {
-  flex:1; display:flex; flex-direction:column;
-  align-items:center; text-align:center; gap:16px;
-}
-.flow-circle {
-  width:clamp(90px,11vw,128px); height:clamp(90px,11vw,128px);
-  border-radius:50%;
-  border:1.5px solid rgba(31,35,146,.22);
-  background:rgba(31,35,146,.05);
-  display:flex; align-items:center; justify-content:center;
-  font-size:clamp(11px,1.2vw,13px); font-weight:700;
-  color:var(--navy); text-align:center;
-  padding:14px; line-height:1.45;
-}
-.flow-circle--hl {
-  background:var(--blue); color:#fff;
-  border-color:var(--blue);
-}
-.flow-desc {
-  font-size:clamp(12px,1.3vw,13px); color:var(--gray);
-  line-height:1.7; max-width:112px;
-}
-.flow-arrow {
-  flex-shrink:0; align-self:flex-start;
-  padding-top:calc(clamp(90px,11vw,128px) / 2 - 12px);
-  color:rgba(31,35,146,.3); font-size:clamp(16px,2vw,22px);
-  padding-left:4px; padding-right:4px;
-}
-
-@media(max-width:620px) {
-  .flow { flex-direction:column; align-items:stretch; gap:0 }
-  .flow-node {
-    flex-direction:row; text-align:left; align-items:flex-start;
-    gap:18px; padding:12px 0;
-  }
-  .flow-circle {
-    flex-shrink:0;
-    width:68px; height:68px;
-    font-size:11px; padding:10px;
-  }
-  .flow-desc { max-width:none; padding-top:6px }
-  .flow-arrow {
-    padding:2px 0 2px 34px;
-    color:rgba(31,35,146,.3); font-size:16px;
-  }
-  .flow-arrow::before { content:'↓' }
-  .flow-arrow span { display:none }
-}
-
-/* ════════════════════════════════════════
-   05. TWO DIRECTIONS
-════════════════════════════════════════ */
-.two-sec {
-  background:var(--warm);
-  padding:var(--sec-y) 0;
-  border-top:1px solid var(--border);
-  border-bottom:1px solid var(--border);
-}
-.two-sec h2 {
-  font-size:clamp(26px,3.5vw,38px); font-weight:800;
-  line-height:1.25; color:var(--navy); margin-bottom:10px;
-}
-.two-lead {
-  font-size:clamp(14px,1.6vw,16px); color:var(--gray);
+  line-height:1.25; color:var(--navy);
   margin-bottom:clamp(36px,5vw,52px);
 }
-.two-grid {
-  display:grid; grid-template-columns:1fr 1fr;
-  gap:clamp(16px,3vw,28px);
+.views-grid {
+  display:grid; grid-template-columns:1fr 1fr; gap:clamp(16px,3vw,28px);
 }
-.two-card {
-  background:var(--white); border:1px solid var(--border);
+.view-card {
   border-radius:20px; padding:clamp(28px,4vw,44px);
-  border-top:3px solid var(--yellow);
+  border:1px solid var(--border);
+  border-top:4px solid var(--yellow);
 }
-.two-card--alt { border-top-color:var(--blue) }
-.two-tag {
-  display:inline-block; font-size:11px; font-weight:700;
+.view-card--alt { border-top-color:var(--blue) }
+.view-tag {
+  display:inline-flex; align-items:center; gap:8px;
+  font-size:11px; font-weight:700; letter-spacing:.08em;
   color:var(--navy); background:rgba(255,216,77,.25);
-  padding:4px 12px; border-radius:999px; margin-bottom:18px;
-  letter-spacing:.04em;
+  padding:5px 14px; border-radius:999px; margin-bottom:20px;
 }
-.two-card--alt .two-tag {
+.view-card--alt .view-tag {
   background:rgba(31,35,146,.08); color:var(--blue);
 }
-.two-card h3 {
-  font-size:clamp(22px,2.8vw,30px); font-weight:800;
-  line-height:1.25; color:var(--navy); margin-bottom:20px;
+.view-icon {
+  font-size:36px; margin-bottom:14px; line-height:1;
 }
-.two-card p {
+.view-card h3 {
+  font-size:clamp(17px,2.2vw,22px); font-weight:800;
+  color:var(--navy); line-height:1.35; margin-bottom:16px;
+}
+.view-card p {
   font-size:clamp(14px,1.6vw,15px); color:var(--gray);
-  line-height:1.95; margin-bottom:14px;
+  line-height:1.95;
 }
-.two-card p:last-child { margin-bottom:0 }
-.two-card-quote {
-  border-top:1px solid var(--border);
-  padding-top:18px; margin-top:20px;
-  font-size:clamp(13px,1.5vw,14px); color:var(--navy);
-  font-weight:600; line-height:1.7;
-}
-@media(max-width:680px) { .two-grid { grid-template-columns:1fr } }
+@media(max-width:660px) { .views-grid { grid-template-columns:1fr } }
 
 /* ════════════════════════════════════════
-   06. OUR ROLE
+   03. WHAT WE BRING
 ════════════════════════════════════════ */
-.role-sec {
+.bring-sec {
+  background:var(--warm);
+  padding:var(--sec-y) 0;
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+}
+.bring-sec > .wrap > h2 {
+  font-size:clamp(26px,3.8vw,40px); font-weight:800;
+  line-height:1.25; color:var(--navy); margin-bottom:14px;
+}
+.bring-lead {
+  font-size:clamp(14px,1.7vw,17px); color:var(--gray);
+  line-height:1.9; max-width:44em; margin-bottom:clamp(44px,6vw,64px);
+}
+.cat-grid {
+  display:grid; grid-template-columns:repeat(6,1fr);
+  gap:12px; margin-bottom:clamp(36px,5vw,52px);
+}
+.cat-item {
+  background:var(--white); border:1px solid var(--border);
+  border-radius:14px; padding:20px 12px;
+  display:flex; flex-direction:column; align-items:center;
+  gap:10px; text-align:center;
+}
+.cat-item-icon { font-size:28px; line-height:1 }
+.cat-item-label {
+  font-size:13px; font-weight:700; color:var(--navy);
+  line-height:1.3;
+}
+@media(max-width:720px) { .cat-grid { grid-template-columns:repeat(3,1fr) } }
+@media(max-width:400px) { .cat-grid { grid-template-columns:repeat(2,1fr) } }
+
+.bring-flow {
+  display:flex; align-items:center;
+  background:var(--white); border:1px solid var(--border);
+  border-radius:16px; padding:clamp(20px,3vw,32px) clamp(20px,4vw,40px);
+  flex-wrap:wrap; gap:clamp(8px,2vw,16px);
+}
+.bf-pill {
+  flex:1; min-width:fit-content;
+  background:rgba(31,35,146,.07); color:var(--blue);
+  border:1px solid rgba(31,35,146,.16);
+  border-radius:999px; padding:10px 20px;
+  font-size:clamp(13px,1.5vw,15px); font-weight:700;
+  text-align:center; white-space:nowrap;
+}
+.bf-arrow {
+  color:rgba(31,35,146,.3); font-size:18px; flex-shrink:0;
+}
+.bf-pill--end {
+  background:var(--blue); color:#fff; border-color:var(--blue);
+}
+
+/* ════════════════════════════════════════
+   04. PHILOSOPHY
+════════════════════════════════════════ */
+.phil-sec {
   background:var(--blue);
   padding:clamp(80px,12vw,130px) 0;
 }
-.role-inner { max-width:640px }
-.role-sec h2 {
-  font-size:clamp(28px,4vw,46px); font-weight:800;
-  line-height:1.2; color:#fff; margin:18px 0 32px;
-  letter-spacing:-.04em;
+.phil-inner { max-width:660px }
+.phil-sec h2 {
+  font-size:clamp(30px,4.5vw,52px); font-weight:800;
+  line-height:1.18; color:#fff;
+  margin:18px 0 36px; letter-spacing:-.04em;
 }
-.role-body p {
-  font-size:clamp(15px,1.7vw,17px); color:rgba(255,255,255,.7);
-  line-height:2; margin-bottom:18px;
+.phil-sec h2 em {
+  font-style:normal; color:var(--yellow);
 }
-.role-body p:last-child { margin-bottom:0 }
-.role-emphasis {
-  font-size:clamp(16px,2vw,19px) !important;
-  color:rgba(255,255,255,.92) !important;
-  font-weight:600; line-height:2 !important;
+.phil-body p {
+  font-size:clamp(15px,1.8vw,18px); color:rgba(255,255,255,.72);
+  line-height:2; margin-bottom:20px;
+}
+.phil-body p:last-child { margin-bottom:0 }
+.phil-hl {
+  font-size:clamp(16px,2vw,20px) !important;
+  color:rgba(255,255,255,.93) !important;
+  font-weight:700; line-height:1.75 !important;
   border-left:3px solid var(--yellow);
-  padding-left:20px; margin:28px 0 !important;
+  padding-left:22px; margin:32px 0 !important;
 }
+
+/* ════════════════════════════════════════
+   05. IDENTITY FLOW
+════════════════════════════════════════ */
+.flow-sec {
+  background:var(--white);
+  padding:var(--sec-y) 0;
+}
+.flow-sec > .wrap > h2 {
+  font-size:clamp(26px,3.8vw,40px); font-weight:800;
+  line-height:1.25; color:var(--navy); margin-bottom:14px;
+}
+.flow-lead {
+  font-size:clamp(14px,1.6vw,16px); color:var(--gray);
+  line-height:1.9; max-width:44em; margin-bottom:clamp(44px,6vw,60px);
+}
+.id-flow {
+  display:flex; align-items:flex-start; gap:0;
+}
+.id-node {
+  flex:1; display:flex; flex-direction:column;
+  align-items:center; text-align:center; gap:14px;
+}
+.id-circle {
+  width:clamp(88px,10vw,124px); height:clamp(88px,10vw,124px);
+  border-radius:50%;
+  border:2px solid rgba(31,35,146,.2);
+  background:rgba(31,35,146,.05);
+  display:flex; align-items:center; justify-content:center;
+  font-size:clamp(11px,1.2vw,13px); font-weight:800;
+  color:var(--navy); text-align:center; padding:14px; line-height:1.45;
+}
+.id-circle--hl {
+  background:var(--blue); color:#fff;
+  border-color:var(--blue);
+  box-shadow:0 8px 28px rgba(31,35,146,.3);
+}
+.id-desc {
+  font-size:clamp(11px,1.2vw,13px); color:var(--gray);
+  line-height:1.65; max-width:100px;
+}
+.id-arrow {
+  flex-shrink:0; align-self:flex-start;
+  padding-top:calc(clamp(88px,10vw,124px) / 2 - 11px);
+  color:rgba(31,35,146,.3); font-size:clamp(14px,1.8vw,20px);
+  padding-left:2px; padding-right:2px;
+}
+
+.flow-quote {
+  margin-top:clamp(44px,6vw,60px);
+  background:rgba(31,35,146,.05);
+  border-left:4px solid var(--yellow);
+  border-radius:0 14px 14px 0;
+  padding:24px 28px;
+}
+.flow-quote p {
+  font-size:clamp(15px,1.8vw,18px); font-weight:700;
+  color:var(--navy); line-height:1.7;
+}
+
+@media(max-width:620px) {
+  .id-flow { flex-direction:column; align-items:stretch; gap:0 }
+  .id-node {
+    flex-direction:row; text-align:left; align-items:flex-start;
+    gap:18px; padding:10px 0;
+  }
+  .id-circle {
+    flex-shrink:0;
+    width:64px; height:64px;
+    font-size:11px; padding:10px;
+  }
+  .id-desc { max-width:none; padding-top:6px }
+  .id-arrow {
+    padding:2px 0 2px 32px;
+    font-size:14px;
+  }
+  .id-arrow span { display:none }
+  .id-arrow::before { content:'↓' }
+}
+
+/* ════════════════════════════════════════
+   06. CTA
+════════════════════════════════════════ */
+.cta-sec {
+  background:var(--navy);
+  padding:clamp(64px,9vw,100px) 0;
+  text-align:center;
+}
+.cta-sec h2 {
+  font-size:clamp(22px,3.5vw,36px); font-weight:800;
+  color:#fff; margin-bottom:14px;
+}
+.cta-sec p {
+  font-size:clamp(14px,1.7vw,17px); color:#B5B1C9;
+  margin-bottom:32px;
+}
+.cta-row { display:flex; gap:12px; justify-content:center; flex-wrap:wrap }
 
 /* ── 푸터 ── */
 footer {
@@ -431,43 +394,42 @@ footer div { margin-bottom:4px }
 <main>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  01. ABOUT HERO
+  01. HERO
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-<section class="about-hero">
+<section class="hero">
   <div class="wrap">
-    <div class="hero-grid">
+    <span class="chip">ABOUT IDENTEACH</span>
+    <h1>학교 안으로<br>새로운 경험을<br>끌고 갑니다</h1>
+    <p class="hero-sub">
+      아이덴티치는 문화·예술·체육·체험·콘텐츠·사람 등<br>
+      다양한 경험을 교과과정에 맞게 기획하고,<br>
+      학교 현장으로 직접 가져갑니다.
+    </p>
+  </div>
+</section>
 
-      <div class="hero-text">
-        <span class="chip">ABOUT IDENTEACH</span>
-        <h1>학교 안에<br>더 많은 경험의<br>장면을 만듭니다</h1>
-        <div class="hero-body">
-          <p>아이덴티치는 학교 현장에서 학생들이 더 많이 해보고, 말하고, 함께 움직일 수 있도록 프로그램을 기획하고 운영합니다.</p>
-          <p>선생님들이 교실 안에서 아이들을 가장 잘 이해한다면, 아이덴티치는 그 아이들이 새로운 방식으로 자신과 친구를 만나볼 수 있는 경험의 판을 설계합니다.</p>
-          <div class="hero-questions">
-            <p>"나는 어떤 사람인가?"</p>
-            <p>"친구는 어떤 사람인가?"</p>
-            <p>"우리는 어떻게 함께할 수 있을까?"</p>
-          </div>
-          <p>아이덴티치는 이 질문들이 말로만 남지 않도록 학생들이 직접 경험하고 느끼고 표현할 수 있는 콘텐츠를 만듭니다.</p>
-        </div>
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  02. TWO VIEWS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<section class="views-sec">
+  <div class="wrap">
+    <span class="chip">WHY WE'RE HERE</span>
+    <h2>학생도, 선생님도<br>같은 걸 원하고 있었습니다</h2>
+
+    <div class="views-grid">
+
+      <div class="view-card">
+        <span class="view-tag">학생의 목소리</span>
+        <div class="view-icon">✨</div>
+        <h3>"즐겁고, 재미있고,<br>새로운 게 있으면 좋겠어요"</h3>
+        <p>아이들은 교과서 밖의 경험을 원합니다. 처음 해보는 것, 몸으로 움직이는 것, 스스로 선택하는 것 — 그 순간에 가장 몰입합니다.</p>
       </div>
 
-      <div class="hero-visual">
-        <div class="hv-card">
-          <p class="hv-card-num">QUESTION 01</p>
-          <p class="hv-card-q">나는 어떤 사람인가?</p>
-          <p class="hv-card-a">자신의 관심과 강점, 성향을 직접 경험 속에서 발견합니다.</p>
-        </div>
-        <div class="hv-card">
-          <p class="hv-card-num">QUESTION 02</p>
-          <p class="hv-card-q">친구는 어떤 사람인가?</p>
-          <p class="hv-card-a">함께 움직이는 활동 속에서 서로를 이해하는 감각이 생깁니다.</p>
-        </div>
-        <div class="hv-card">
-          <p class="hv-card-num">QUESTION 03</p>
-          <p class="hv-card-q">우리는 어떻게 함께할 수 있을까?</p>
-          <p class="hv-card-a">공동의 경험이 관계의 언어를 만들어냅니다.</p>
-        </div>
+      <div class="view-card view-card--alt">
+        <span class="view-tag">선생님의 바람</span>
+        <div class="view-icon">🧭</div>
+        <h3>"교실 밖 경험을<br>학교에서도 줄 수 있다면"</h3>
+        <p>선생님들은 아이들에게 더 다양한 경험을 주고 싶지만, 교내에서 준비하기 어려운 게 현실입니다. 전문적인 콘텐츠, 인적 자원, 운영 경험이 필요합니다.</p>
       </div>
 
     </div>
@@ -475,156 +437,140 @@ footer div { margin-bottom:4px }
 </section>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  02. OUR VIEW
+  03. WHAT WE BRING
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-<section class="view-sec">
+<section class="bring-sec">
   <div class="wrap">
-    <div class="view-inner">
-      <span class="chip">OUR VIEW</span>
-      <h2>경험이 많아질수록<br>아이들은 자신을 더 선명하게 이해합니다</h2>
+    <span class="chip">WHAT WE BRING</span>
+    <h2>경험을, 학교로 끌고 갑니다</h2>
+    <p class="bring-lead">
+      아이덴티치는 학교 밖에 있는 경험들을 교과 목적에 맞게 재설계하여 학교로 가져갑니다.<br>
+      정해진 프로그램을 그대로 가져다 놓는 것이 아니라, 학교의 목적과 학년·시간에 맞게 새롭게 기획합니다.
+    </p>
 
-      <p>학생들은 설명만으로 자신을 알기 어렵습니다.</p>
-      <p>직접 해보고, 선택하고, 실패하고, 다시 시도하고, 친구와 역할을 나누는 과정 속에서 자신이 어떤 사람인지 조금씩 알아갑니다.</p>
+    <div class="cat-grid">
+      <div class="cat-item">
+        <div class="cat-item-icon">🎭</div>
+        <div class="cat-item-label">문화예술</div>
+      </div>
+      <div class="cat-item">
+        <div class="cat-item-icon">🎵</div>
+        <div class="cat-item-label">음악·공연</div>
+      </div>
+      <div class="cat-item">
+        <div class="cat-item-icon">⚽</div>
+        <div class="cat-item-label">체육·스포츠</div>
+      </div>
+      <div class="cat-item">
+        <div class="cat-item-icon">🔬</div>
+        <div class="cat-item-label">체험·실험</div>
+      </div>
+      <div class="cat-item">
+        <div class="cat-item-icon">📱</div>
+        <div class="cat-item-label">콘텐츠·미디어</div>
+      </div>
+      <div class="cat-item">
+        <div class="cat-item-icon">🤝</div>
+        <div class="cat-item-label">사람·스토리</div>
+      </div>
+    </div>
 
-      <blockquote class="view-quote">
-        <p>"아이들은 경험 속에서<br>자신의 모습을 조금씩 발견합니다."</p>
-      </blockquote>
+    <div class="bring-flow">
+      <div class="bf-pill">이 모든 경험을</div>
+      <div class="bf-arrow">→</div>
+      <div class="bf-pill">교과과정에 맞게</div>
+      <div class="bf-arrow">→</div>
+      <div class="bf-pill bf-pill--end">학교로</div>
+    </div>
 
-      <p>어떤 활동에서 몰입하는지, 어떤 역할을 맡을 때 자연스러운지, 친구와 어떻게 협력하는지, 무엇을 중요하게 여기는지.</p>
-      <p>아이덴티치는 이런 작은 장면들이 쌓여 학생의 자기이해와 관계이해로 이어진다고 믿습니다.</p>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  04. PHILOSOPHY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<section class="phil-sec">
+  <div class="wrap">
+    <div class="phil-inner">
+      <span class="chip chip--white">OUR PHILOSOPHY</span>
+      <h2>단 <em>한 명</em>의<br>아이라도</h2>
+      <div class="phil-body">
+        <p>아이덴티치가 프로그램을 만드는 이유는 하나입니다.</p>
+        <p class="phil-hl">
+          수십 명의 학생 중 단 한 명이라도 —<br>
+          오늘 경험한 것이 인생에서 처음 느끼는<br>
+          '이거다!' 하는 순간이 될 수 있다면.
+        </p>
+        <p>그 절정의 순간이 한 아이의 인생에서 방향이 되고, 자신감이 되고, 기억이 됩니다.</p>
+        <p>그 한 명을 위해 더 새롭고, 더 즐겁고, 더 의미 있는 경험을 학교에 만들고 싶습니다.</p>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  03. WHAT WE DO
+  05. IDENTITY FLOW
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-<section class="wwd-sec">
-  <div class="wrap">
-    <div class="wwd-grid">
-
-      <div class="wwd-text">
-        <span class="chip">WHAT WE DO</span>
-        <h2>학교의 목적에 맞게<br>경험을 기획하고 바꿉니다</h2>
-        <p>아이덴티치는 정해진 프로그램을 그대로 가져다 놓는 방식보다 학교의 목적, 학년, 분위기, 운영 시간을 먼저 살핍니다.</p>
-        <p>같은 팀빌딩 활동이라도 학년 초 관계 형성이 필요한 학교와 학교폭력예방 주간에 활용하려는 학교의 흐름은 달라야 합니다.</p>
-        <p>아이덴티치는 학교의 상황에 맞춰 경험을 새롭게 기획하고, 조정하고, 운영합니다.</p>
-      </div>
-
-      <div class="wwd-steps">
-        <div class="step-item">
-          <div class="step-num">01</div>
-          <div class="step-body">
-            <h3>목적을 듣습니다</h3>
-            <p>학교가 원하는 목적과 학년·상황을 먼저 파악합니다</p>
-          </div>
-        </div>
-        <div class="step-item">
-          <div class="step-num">02</div>
-          <div class="step-body">
-            <h3>흐름을 설계합니다</h3>
-            <p>학년과 시간, 목적에 맞게 활동의 구조를 설계합니다</p>
-          </div>
-        </div>
-        <div class="step-item">
-          <div class="step-num">03</div>
-          <div class="step-body">
-            <h3>현장에 맞게 운영합니다</h3>
-            <p>설계한 흐름대로 현장에서 직접 기획하고 운영합니다</p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  04. IDENTEACH SHAPE (도형 섹션)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-<section class="shape-sec">
+<section class="flow-sec">
   <div class="wrap">
     <span class="chip">IDENTEACH SHAPE</span>
-    <h2>아이덴티치가 만드는 경험의 구조</h2>
-    <p class="shape-intro">아이덴티치의 프로그램은 이 흐름을 기준으로 설계됩니다. 먼저 학교가 원하는 목적을 듣고, 학생들이 참여할 수 있는 활동 구조를 만들고, 그 경험이 자신과 친구를 이해하는 장면으로 이어지도록 구성합니다.</p>
+    <h2>경험이 만드는 것들</h2>
+    <p class="flow-lead">아이덴티치는 경험이 아이들의 아이덴티티를 만드는 과정이라고 믿습니다.</p>
 
-    <div class="flow">
+    <div class="id-flow">
 
-      <div class="flow-node">
-        <div class="flow-circle">학교의<br>목적</div>
-        <p class="flow-desc">학교가 원하는 방향과 학생들의 상황을 파악합니다</p>
+      <div class="id-node">
+        <div class="id-circle">경험한다</div>
+        <p class="id-desc">직접 해보고 움직이고 선택한다</p>
       </div>
 
-      <div class="flow-arrow"><span>→</span></div>
+      <div class="id-arrow"><span>→</span></div>
 
-      <div class="flow-node">
-        <div class="flow-circle">학생의<br>참여 경험</div>
-        <p class="flow-desc">학생들이 직접 움직이고 참여하는 활동을 설계합니다</p>
+      <div class="id-node">
+        <div class="id-circle">나를 안다</div>
+        <p class="id-desc">내가 무엇에 몰입하는지 발견한다</p>
       </div>
 
-      <div class="flow-arrow"><span>→</span></div>
+      <div class="id-arrow"><span>→</span></div>
 
-      <div class="flow-node">
-        <div class="flow-circle">자기이해와<br>관계이해</div>
-        <p class="flow-desc">경험을 통해 자신과 서로를 발견하는 장면이 생깁니다</p>
+      <div class="id-node">
+        <div class="id-circle">나의 미래를<br>안다</div>
+        <p class="id-desc">내가 어디로 가야 할지 보이기 시작한다</p>
       </div>
 
-      <div class="flow-arrow"><span>→</span></div>
+      <div class="id-arrow"><span>→</span></div>
 
-      <div class="flow-node">
-        <div class="flow-circle flow-circle--hl">학교 안에<br>남는 경험</div>
-        <p class="flow-desc">그 경험은 학교 안에서 기억으로 남습니다</p>
+      <div class="id-node">
+        <div class="id-circle">남을 안다</div>
+        <p class="id-desc">나를 알면 타인도 이해하게 된다</p>
+      </div>
+
+      <div class="id-arrow"><span>→</span></div>
+
+      <div class="id-node">
+        <div class="id-circle id-circle--hl">아이덴티티가<br>생긴다</div>
+        <p class="id-desc">이 모든 과정이 나다움을 만든다</p>
       </div>
 
     </div>
+
+    <div class="flow-quote">
+      <p>"경험이 아이들의 아이덴티티를 만드는 과정 —<br>그것이 아이덴티치가 하는 일입니다."</p>
+    </div>
+
   </div>
 </section>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  05. TWO DIRECTIONS
+  06. CTA
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-<section class="two-sec">
+<section class="cta-sec">
   <div class="wrap">
-    <span class="chip">TWO DIRECTIONS</span>
-    <h2>나를 이해하는 경험,<br>서로를 이해하는 경험</h2>
-    <p class="two-lead">아이덴티치는 크게 두 가지 방향의 프로그램을 만듭니다.</p>
-
-    <div class="two-grid">
-
-      <div class="two-card">
-        <span class="two-tag">진로캠프 · 자기이해</span>
-        <h3>나를 이해하는<br>경험</h3>
-        <p>진로캠프, 직업체험, 진로탐색 활동을 통해 학생들이 자신의 관심, 강점, 성향, 가능성을 발견하도록 돕습니다.</p>
-        <p>어떤 상황에서 에너지를 얻는지, 무엇에 몰입하는지, 어떤 가치를 중요하게 여기는지 경험 속에서 알아갑니다.</p>
-        <p class="two-card-quote">진로는 직업을 빨리 정하는 일이 아니라 내가 어떤 사람인지 이해하며 선택의 기준을 만들어가는 과정입니다.</p>
-      </div>
-
-      <div class="two-card two-card--alt">
-        <span class="two-tag">팀빌딩 · 관계이해</span>
-        <h3>서로를 이해하는<br>경험</h3>
-        <p>팀빌딩, 공동체 활동, 학급단합, 학교폭력예방 프로그램을 통해 학생들이 친구와 함께 움직이고 관계를 새롭게 경험하도록 돕습니다.</p>
-        <p>어떤 역할을 맡을 때 자연스러운지, 친구와 어떻게 협력하는지 함께하는 장면 속에서 알아갑니다.</p>
-        <p class="two-card-quote">관계는 설명만으로 좋아지지 않습니다. 함께 해보는 경험 속에서 서로를 이해하는 감각이 생깁니다.</p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  06. OUR ROLE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-<section class="role-sec">
-  <div class="wrap">
-    <div class="role-inner">
-      <span class="chip chip--white">OUR ROLE</span>
-      <h2>아이덴티치는<br>학교 경험을 설계하는<br>콘텐츠 기획사입니다</h2>
-      <div class="role-body">
-        <p>아이덴티치는 선생님의 역할을 대신하려는 곳이 아닙니다.</p>
-        <p>선생님들이 아이들을 가장 가까이에서 보고 있다면, 아이덴티치는 그 아이들이 교과 안에서 쉽게 만나기 어려운 경험을 할 수 있도록 학교 현장에 맞는 프로그램의 흐름을 설계합니다.</p>
-        <p class="role-emphasis">학생들이 더 많이 움직이고,<br>더 많이 말하고,<br>더 많이 자신을 발견할 수 있도록.</p>
-        <p>아이덴티치는 학교 안의 시간을 학생들이 자신과 친구를 이해하는 경험으로 바꾸고자 합니다.</p>
-      </div>
+    <h2>학교에 새로운 경험이 필요하다면</h2>
+    <p>학년·목적·시간에 맞게 무료로 맞춤 기획해드립니다.</p>
+    <div class="cta-row">
+      <a href="/request" class="btn-blue">무료 맞춤 상담 신청</a>
+      <a href="/together" class="btn-outline-w">어울림 프로그램 보기</a>
     </div>
   </div>
 </section>
