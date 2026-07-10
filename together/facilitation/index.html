@@ -34,8 +34,13 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdr
 .crumb-bar{background:var(--white);border-bottom:1px solid var(--border);padding:11px 0}
 .crumb{font-size:12px;color:var(--gray);display:flex;align-items:center;gap:5px}
 .crumb a:hover{color:var(--blue)} .crumb-sep{opacity:.35}
-.hero-banner{width:100%;overflow:hidden;background:var(--navy);border-bottom:1px solid var(--border)}
-.hero-banner img{width:100%;display:block;aspect-ratio:16/7;object-fit:cover;max-height:520px}
+.hero-slider{width:100%;overflow:hidden;background:var(--navy);border-bottom:1px solid var(--border);position:relative}
+.hs-track{display:flex;transition:transform .75s cubic-bezier(.4,0,.2,1);will-change:transform}
+.hs-slide{flex-shrink:0;width:100%}
+.hs-slide img{width:100%;display:block;aspect-ratio:16/7;object-fit:cover;max-height:520px}
+.hs-dots{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:2}
+.hs-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.45);border:none;cursor:pointer;padding:0;transition:background .25s,transform .25s}
+.hs-dot.active{background:#fff;transform:scale(1.3)}
 .hero-banner-empty{aspect-ratio:16/7;max-height:520px;background:linear-gradient(135deg,#1a1f5e 0%,#2d3494 100%);display:flex;align-items:center;justify-content:center;font-size:14px;color:rgba(255,255,255,.4)}
 .hero-info{background:var(--white);padding:clamp(28px,4vw,44px) 0 clamp(32px,4vw,48px);border-bottom:3px solid var(--border)}
 .hero-tagline{display:inline-flex;align-items:center;gap:6px;background:var(--yellow);color:var(--navy);font-size:12px;font-weight:800;letter-spacing:.05em;padding:5px 14px;border-radius:999px;margin-bottom:14px}
@@ -176,7 +181,11 @@ const programData = {
     { label:"어울림 프로그램", href:"/together" },
     { label:"미션 퍼실리테이션", href:null }
   ],
-  heroImage: { src:"/assets/images/programs/together/facilitation/퍼실리테이션사진1.jpg", alt:"미션 퍼실리테이션 활동 전체 장면" },
+  heroImages: [
+    { src:"/assets/images/programs/together/facilitation/퍼실리테이션사진1.webp", alt:"미션 퍼실리테이션 활동 전체 장면" },
+    { src:"/assets/images/programs/together/facilitation/퍼실리테이션사진2.webp", alt:"팀이 함께 미션을 논의하는 장면" },
+    { src:"/assets/images/programs/together/facilitation/퍼실리테이션사진3.webp", alt:"퍼실리테이션 활동 현장" }
+  ],
   category: "어울림 프로그램",
   title: "미션 퍼실리테이션",
   tagline: "어울림 프로그램",
@@ -320,10 +329,17 @@ function renderMeta(d) {
 }
 
 function renderHero(d) {
-  const banner = d.heroImage.src
-    ? `<div class="hero-banner"><img src="${d.heroImage.src}" alt="${d.heroImage.alt}" loading="eager"></div>`
-    : `<div class="hero-banner"><div class="hero-banner-empty">활동 사진을 넣어주세요</div></div>`;
-
+  const imgs = d.heroImages || (d.heroImage ? [d.heroImage] : []);
+  let banner;
+  if (imgs.length === 0) {
+    banner = `<div class="hero-slider"><div class="hero-banner-empty">활동 사진을 넣어주세요</div></div>`;
+  } else if (imgs.length === 1) {
+    banner = `<div class="hero-slider"><div class="hs-track"><div class="hs-slide"><img src="${imgs[0].src}" alt="${imgs[0].alt}" loading="eager"></div></div></div>`;
+  } else {
+    const slides = imgs.map(img=>`<div class="hs-slide"><img src="${img.src}" alt="${img.alt}" loading="eager"></div>`).join('');
+    const dots   = imgs.map((_,i)=>`<button class="hs-dot${i===0?' active':''}" aria-label="슬라이드 ${i+1}"></button>`).join('');
+    banner = `<div class="hero-slider"><div class="hs-track">${slides}</div><div class="hs-dots">${dots}</div></div>`;
+  }
   return `
 ${banner}
 <div class="hero-info">
@@ -342,6 +358,20 @@ ${banner}
     </div>
   </div>
 </div>`;
+}
+function initHeroSlider() {
+  const track = document.querySelector('.hs-track');
+  const dots  = document.querySelectorAll('.hs-dot');
+  if (!track || track.children.length < 2) return;
+  const total = track.children.length;
+  let cur = 0;
+  function go(n) {
+    cur = (n + total) % total;
+    track.style.transform = `translateX(-${cur * 100}%)`;
+    dots.forEach((d, i) => d.classList.toggle('active', i === cur));
+  }
+  dots.forEach((d, i) => d.addEventListener('click', () => go(i)));
+  setInterval(() => go(cur + 1), 5000);
 }
 
 function renderActivity(a) {
@@ -400,7 +430,7 @@ function renderStructures(d) {
 function renderGallery(g){const imgs=g.images.map(img=>`<div class="g-frame"><img src="${img.src}" alt="${img.alt}" loading="lazy"></div>`).join("");return`<section class="sec sec--white"><div class="wrap"><span class="sec-label">활동 모습</span><h2 class="sec-h2" style="margin-bottom:0">현장 사진</h2></div><div class="gallery-marquee"><div class="g-track">${imgs}${imgs}</div></div></section>`}
 
 function renderCTA(){return`<div style="position:fixed;bottom:24px;right:24px;z-index:999;display:flex;flex-direction:column;align-items:flex-end"><a href="/assets/documents/identeach-program-guide.pdf" download style="display:inline-flex;align-items:center;gap:8px;background:var(--yellow);color:var(--navy);font-family:inherit;font-weight:800;font-size:14px;padding:13px 22px;border-radius:18px 18px 0 18px;text-decoration:none;box-shadow:0 6px 24px rgba(20,20,43,.28);white-space:nowrap">📄 프로그램 소개서 받기</a><div style="width:0;height:0;border-style:solid;border-width:12px 12px 0 0;border-color:var(--yellow) transparent transparent transparent"></div></div>`}
-function renderPage(d){renderMeta(d);renderNav(d.navActive);renderCrumb(d.crumbs);document.getElementById('pg-root').innerHTML=renderHero(d)+renderActivity(d.activity)+renderUseCases(d.useCases)+renderFlowSection(d.flowSteps)+renderGallery(d.gallery)+renderCTA()}
+function renderPage(d){renderMeta(d);renderNav(d.navActive);renderCrumb(d.crumbs);document.getElementById('pg-root').innerHTML=renderHero(d)+renderActivity(d.activity)+renderUseCases(d.useCases)+renderFlowSection(d.flowSteps)+renderGallery(d.gallery)+renderCTA();initHeroSlider();}
 renderPage(programData);
 </script>
 

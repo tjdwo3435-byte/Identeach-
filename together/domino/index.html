@@ -87,24 +87,16 @@ header { position:sticky; top:0; z-index:100; background:rgba(255,255,255,.96); 
 .crumb-sep { opacity:.35 }
 
 /* ══════════════════════════════════
-   [A] 히어로 배너 이미지 (전체 폭)
+   [A] 히어로 슬라이더
 ══════════════════════════════════ */
-.hero-banner {
-  width:100%; overflow:hidden;
-  background:var(--navy);
-  border-bottom:1px solid var(--border);
-}
-.hero-banner img {
-  width:100%; display:block;
-  aspect-ratio:16/7; object-fit:cover;
-  max-height:520px;
-}
-.hero-banner-empty {
-  aspect-ratio:16/7; max-height:520px;
-  background:linear-gradient(135deg,#1a1f5e 0%,#2d3494 100%);
-  display:flex; align-items:center; justify-content:center;
-  font-size:14px; color:rgba(255,255,255,.4);
-}
+.hero-slider{width:100%;overflow:hidden;background:var(--navy);border-bottom:1px solid var(--border);position:relative}
+.hs-track{display:flex;transition:transform .75s cubic-bezier(.4,0,.2,1);will-change:transform}
+.hs-slide{flex-shrink:0;width:100%}
+.hs-slide img{width:100%;display:block;aspect-ratio:16/7;object-fit:cover;max-height:520px}
+.hs-dots{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:2}
+.hs-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.45);border:none;cursor:pointer;padding:0;transition:background .25s,transform .25s}
+.hs-dot.active{background:#fff;transform:scale(1.3)}
+.hero-banner-empty{aspect-ratio:16/7;max-height:520px;background:linear-gradient(135deg,#1a1f5e 0%,#2d3494 100%);display:flex;align-items:center;justify-content:center;font-size:14px;color:rgba(255,255,255,.4)}
 
 /* ── 히어로 텍스트 영역 ── */
 .hero-info {
@@ -400,10 +392,11 @@ const programData = {
      heroImage.src: 전체 폭 활동 이미지 (16:7 가로형 권장)
      ✅ 실제 활동 사진으로 교체하세요
   ────────────────────────────────────────── */
-  heroImage: {
-    src: "/assets/images/programs/together/domino/도미노사진1.jpg",
-    alt: "학생들이 도미노 챌린지에 참여하는 전체 활동 장면"
-  },
+  heroImages: [
+    { src: "/assets/images/programs/together/domino/도미노사진1.webp", alt: "도미노 챌린지 활동 전체 장면" },
+    { src: "/assets/images/programs/together/domino/도미노사진2.webp", alt: "도미노 제작 활동 장면" },
+    { src: "/assets/images/programs/together/domino/도미노사진3.webp", alt: "도미노 완성 및 도전 장면" }
+  ],
 
   category: "어울림 프로그램",
   title:    "도미노 챌린지",
@@ -569,10 +562,17 @@ function renderMeta(d) {
 
 /* ─ [A] 히어로 ─ */
 function renderHero(d) {
-  const banner = d.heroImage.src
-    ? `<div class="hero-banner"><img src="${d.heroImage.src}" alt="${d.heroImage.alt}" loading="eager"></div>`
-    : `<div class="hero-banner"><div class="hero-banner-empty">활동 사진을 넣어주세요</div></div>`;
-
+  const imgs = d.heroImages || (d.heroImage ? [d.heroImage] : []);
+  let banner;
+  if (imgs.length === 0) {
+    banner = `<div class="hero-slider"><div class="hero-banner-empty">활동 사진을 넣어주세요</div></div>`;
+  } else if (imgs.length === 1) {
+    banner = `<div class="hero-slider"><div class="hs-track"><div class="hs-slide"><img src="${imgs[0].src}" alt="${imgs[0].alt}" loading="eager"></div></div></div>`;
+  } else {
+    const slides = imgs.map(img=>`<div class="hs-slide"><img src="${img.src}" alt="${img.alt}" loading="eager"></div>`).join('');
+    const dots   = imgs.map((_,i)=>`<button class="hs-dot${i===0?' active':''}" aria-label="슬라이드 ${i+1}"></button>`).join('');
+    banner = `<div class="hero-slider"><div class="hs-track">${slides}</div><div class="hs-dots">${dots}</div></div>`;
+  }
   return `
 ${banner}
 <div class="hero-info">
@@ -591,6 +591,20 @@ ${banner}
     </div>
   </div>
 </div>`;
+}
+function initHeroSlider() {
+  const track = document.querySelector('.hs-track');
+  const dots  = document.querySelectorAll('.hs-dot');
+  if (!track || track.children.length < 2) return;
+  const total = track.children.length;
+  let cur = 0;
+  function go(n) {
+    cur = (n + total) % total;
+    track.style.transform = `translateX(-${cur * 100}%)`;
+    dots.forEach((d, i) => d.classList.toggle('active', i === cur));
+  }
+  dots.forEach((d, i) => d.addEventListener('click', () => go(i)));
+  setInterval(() => go(cur + 1), 5000);
 }
 
 /* ─ [B] 활동 이미지 + 요약 ─ */
@@ -649,6 +663,7 @@ function renderPage(d) {
     renderFlowSection(d.flowSteps) +
     renderGallery(d.gallery) +
     renderCTA();
+  initHeroSlider();
 }
 
 renderPage(programData);
