@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>무료 프로그램 맞춤 요청 | 아이덴티치</title>
-<meta name="description" content="우리 학교 상황만 알려주시면 맞는 어울림 프로그램과 제안서·견적을 무료로 보내드립니다. 영업일 기준 1~2일 내 회신.">
+<title>학교 맞춤 교육 프로그램 제안받기 | 아이덴티치</title>
+<meta name="description" content="학교급, 학년, 인원, 교육목표와 일정을 입력하면 학교폭력예방교육, 진로교육, 리더십교육과 학교행사 프로그램을 제안합니다.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="무료 프로그램 맞춤 요청 | 아이덴티치">
+<meta property="og:title" content="학교 맞춤 교육 프로그램 제안받기 | 아이덴티치">
 <meta property="og:url" content="https://identeach.co.kr/request">
 <meta property="og:locale" content="ko_KR">
 <link rel="canonical" href="https://identeach.co.kr/request">
@@ -202,12 +202,12 @@ select:focus, input[type=text]:focus { border-color:var(--blue); background:#fff
     </a>
     <input type="checkbox" id="nav-toggle" class="menu-toggle">
     <nav class="nav-links">
-      <a href="/together">어울림 프로그램</a>
-      <a href="/career">진로 프로그램</a>
-      <a href="/events">교내행사</a>
+      <a href="/together">학교폭력·리더십</a>
+      <a href="/career">진로교육·체험</a>
+      <a href="/events">학교행사</a>
       <a href="/about">회사소개</a>
     </nav>
-    <a href="/request" class="nav-cta nav-active" style="background:var(--navy)">무료 맞춤 요청</a>
+    <a href="/request" class="nav-cta nav-active" style="background:var(--navy)">학교 맞춤 제안받기</a>
     <label for="nav-toggle" class="menu-btn" aria-label="메뉴">☰</label>
   </div>
 </header>
@@ -215,9 +215,10 @@ select:focus, input[type=text]:focus { border-color:var(--blue); background:#fff
 <main>
   <section class="hero">
     <div class="form-wrap">
-      <div class="eyebrow">✉️ 무료 · 부담 없이</div>
-      <h1>우리 학교 맞춤 프로그램<br><em>무료로 요청하기</em></h1>
-      <p>학교 상황만 알려주시면 맞는 프로그램과<br>제안서·견적을 영업일 기준 1~2일 내 보내드립니다.</p>
+      <div class="eyebrow">✉️ 학교 맞춤 교육 상담</div>
+      <h1>우리 학교 맞춤 교육<br><em>프로그램 제안받기</em></h1>
+      <p>학교급, 학년, 인원, 교육목표와 희망 일정을 알려주시면<br>학교 상황에 맞는 프로그램 구성안과 견적을 안내합니다.</p>
+      <!-- [확인 필요] 실제 회신 소요 기간 확인 후 안내 문구 추가 (v2 §9) -->
     </div>
   </section>
 
@@ -241,18 +242,18 @@ select:focus, input[type=text]:focus { border-color:var(--blue); background:#fff
         <p class="note">희망 프로그램이 있으면 선택해 주세요. 없으시면 담당자가 추천해 드립니다.</p>
         <select id="program">
           <option value="" selected>(선택 안 함 · 추천받기)</option>
-          <optgroup label="어울림 프로그램">
+          <optgroup label="학교폭력·리더십">
             <option>미니 스포츠데이</option>
             <option>도미노 챌린지</option>
             <option>스쿨핑</option>
             <option>미션 퍼실리테이션</option>
             <option>학교폭력예방 프로그램</option>
           </optgroup>
-          <optgroup label="진로 프로그램">
+          <optgroup label="진로교육·체험">
             <option>터칭보이스</option>
-            <option>미래직업연구소 (7월 말 오픈)</option>
+            <option>미래직업연구소 (준비 중)</option>
           </optgroup>
-          <optgroup label="교내 행사">
+          <optgroup label="학교행사">
             <option>레크리에이션 체육대회</option>
             <option>학교축제</option>
             <option>현장학습 대체 행사</option>
@@ -318,7 +319,7 @@ select:focus, input[type=text]:focus { border-color:var(--blue); background:#fff
         <label class="agree"><input type="checkbox" id="agree"> 개인정보 수집 및 이용에 동의합니다.</label>
       </div>
 
-      <button class="submit" id="submit">📬 맞춤 요청 보내기</button>
+      <button class="submit" id="submit">학교 맞춤 제안 요청하기</button>
       <p class="hint">버튼 클릭 시 이메일 앱이 열립니다 · idengroup@naver.com 으로 전달됩니다</p>
     </div>
 
@@ -331,7 +332,7 @@ select:focus, input[type=text]:focus { border-color:var(--blue); background:#fff
     <div class="ft-grid">
       <div class="ft-brand">
         <img src="/assets/images/logo.webp" alt="아이덴티치" class="ft-logo">
-        <p class="ft-tagline">경험을 설계하는<br>진로·어울림 전문 교육기획사</p>
+        <p class="ft-tagline">학교로 찾아가는<br>교육 콘텐츠 기획·운영사</p>
         <div class="ft-biz">
           <div>대표 : 진성재</div>
           <div>이메일 : idengroup@naver.com</div>
@@ -339,9 +340,9 @@ select:focus, input[type=text]:focus { border-color:var(--blue); background:#fff
       </div>
       <div class="ft-col">
         <div class="ft-col-title">프로그램</div>
-        <a href="/together">어울림 프로그램</a>
-        <a href="/career">진로 프로그램</a>
-        <a href="/events">교내행사</a>
+        <a href="/together">학교폭력·리더십</a>
+        <a href="/career">진로교육·체험</a>
+        <a href="/events">학교행사</a>
       </div>
       <div class="ft-col">
         <div class="ft-col-title">바로가기</div>

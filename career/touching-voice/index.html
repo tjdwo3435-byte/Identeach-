@@ -1,11 +1,11 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title id="pg-title">터칭보이스 | 진로 프로그램 · 아이덴티치</title>
-  <meta id="pg-desc" name="description" content="">
-  <link id="pg-canonical" rel="canonical" href="">
+  <title id="pg-title">자기이해 진로교육 터칭보이스 | 아이덴티치</title>
+  <meta id="pg-desc" name="description" content="음악과 이야기, 참여 활동을 통해 자신의 감정과 성향을 이해하고 진로 방향을 탐색하는 찾아가는 진로콘서트입니다.">
+  <link id="pg-canonical" rel="canonical" href="https://identeach.co.kr/career/touching-voice">
   <style>
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@1.3.9/dist/web/static/pretendard.css');
 :root{--blue:#1F2392;--yellow:#FFD84D;--navy:#14142B;--gray:#6F7287;--warm:#F7F7FA;--white:#fff;--border:#E8E8F0;--maxw:1140px;--pad-x:clamp(18px,5vw,40px);--rc:14px}
@@ -115,6 +115,9 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdr
 .flow-xp-detail{font-size:12px;color:var(--gray)}
 @media(max-width:700px){.flow-right{grid-template-columns:1fr;gap:8px}.flow-timeline::before{left:28px}.flow-num-wrap{width:56px;height:56px}.flow-item{grid-template-columns:58px 1fr}}
   </style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"https://identeach.co.kr/"},{"@type":"ListItem","position":2,"name":"진로교육·체험","item":"https://identeach.co.kr/career"},{"@type":"ListItem","position":3,"name":"터칭보이스","item":"https://identeach.co.kr/career/touching-voice"}]}
+</script>
 </head>
 <body>
 <header>
@@ -122,18 +125,21 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdr
     <a href="/" class="nav-logo"><img src="/assets/images/logo.webp" alt="아이덴티치" style="height:96px;"></a>
     <input type="checkbox" id="nav-toggle" class="menu-toggle">
     <nav class="nav-links" id="nav-links"></nav>
-    <a href="/request" class="nav-cta">무료 맞춤 요청</a>
+    <a href="/request" class="nav-cta">학교 맞춤 제안받기</a>
     <label for="nav-toggle" class="menu-btn" aria-label="메뉴">☰</label>
   </div>
 </header>
 <div class="crumb-bar"><div class="wrap"><nav class="crumb" id="pg-crumb"></nav></div></div>
-<main id="pg-root"></main>
+<main id="pg-root"><div class="hero-info"><div class="wrap">
+  <h1 class="hero-h1">음악과 이야기로 만나는 자기이해 진로교육</h1>
+  <p class="hero-sub">터칭보이스는 음악과 이야기, 학생 참여 활동을 통해 자신의 감정과 성향을 이해하고 진로 방향을 탐색하는 진로콘서트형 교육입니다.</p>
+</div></div></main>
 <footer class="site-footer">
   <div class="wrap">
     <div class="ft-grid">
       <div class="ft-brand">
         <img src="/assets/images/logo.webp" alt="아이덴티치" class="ft-logo">
-        <p class="ft-tagline">경험을 설계하는<br>진로·어울림 전문 교육기획사</p>
+        <p class="ft-tagline">학교로 찾아가는<br>교육 콘텐츠 기획·운영사</p>
         <div class="ft-biz">
           <div>대표 : 진성재</div>
           <div>이메일 : idengroup@naver.com</div>
@@ -141,9 +147,9 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdr
       </div>
       <div class="ft-col">
         <div class="ft-col-title">프로그램</div>
-        <a href="/together">어울림 프로그램</a>
-        <a href="/career">진로 프로그램</a>
-        <a href="/events">교내행사</a>
+        <a href="/together">학교폭력·리더십</a>
+        <a href="/career">진로교육·체험</a>
+        <a href="/events">학교행사</a>
       </div>
       <div class="ft-col">
         <div class="ft-col-title">바로가기</div>
@@ -240,7 +246,7 @@ const programData = {
   }
 };
 
-const NAV_ITEMS=[{label:"어울림 프로그램",href:"/together"},{label:"진로 프로그램",href:"/career"},{label:"교내 행사",href:"/events"},{label:"회사소개",href:"/about"}];
+const NAV_ITEMS=[{label:"학교폭력·리더십",href:"/together"},{label:"진로교육·체험",href:"/career"},{label:"학교행사",href:"/events"},{label:"회사소개",href:"/about"}];
 function nl(s){return(s||'').replace(/\n/g,'<br>')}
 function dp(n,yellow){const c=yellow?'dp dp-y':'dp';return Array.from({length:n},()=>`<div class="${c}"></div>`).join('')}
 function structVis(type,i){
