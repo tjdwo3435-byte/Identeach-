@@ -12,6 +12,9 @@
   <url><loc>https://identeach.co.kr/together/leadership</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://identeach.co.kr/together/violence-prevention</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://identeach.co.kr/career/touching-voice</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://identeach.co.kr/career/talkshow</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://identeach.co.kr/career/ceo-talk</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://identeach.co.kr/career/job-lab</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
 
   <url><loc>https://identeach.co.kr/about</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://identeach.co.kr/request</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
