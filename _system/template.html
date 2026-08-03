@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title id="pg-title">도미노 챌린지 | 학교폭력·리더십 · 아이덴티치</title>
-<meta id="pg-desc" name="description" content="팀별로 도미노를 설계·설치하고 함께 쓰러뜨리는 협력 체험 프로그램.">
-<link id="pg-canonical" rel="canonical" href="https://identeach.co.kr/together/domino">
+<title id="pg-title">{{PAGE_TITLE}}</title>
+<meta id="pg-desc" name="description" content="{{PAGE_DESC}}">
+<link id="pg-canonical" rel="canonical" href="{{CANONICAL}}">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="아이덴티치">
-<meta property="og:title" content="도미노 챌린지 | 학교폭력·리더십 · 아이덴티치">
-<meta property="og:description" content="팀별로 도미노를 설계·설치하고 함께 쓰러뜨리는 협력 체험 프로그램.">
-<meta property="og:url" content="https://identeach.co.kr/together/domino">
-<meta property="og:image" content="https://identeach.co.kr/assets/images/programs/together/domino/도미노사진1.webp">
+<meta property="og:title" content="{{PAGE_TITLE_ATTR}}">
+<meta property="og:description" content="{{PAGE_DESC}}">
+<meta property="og:url" content="{{CANONICAL}}">
+<meta property="og:image" content="{{OG_IMAGE}}">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <style>
@@ -131,7 +131,7 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdr
 @media(max-width:700px){.flow-right{grid-template-columns:1fr;gap:8px}.flow-timeline::before{left:28px}.flow-num-wrap{width:56px;height:56px}.flow-item{grid-template-columns:58px 1fr}}
 </style>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"https://identeach.co.kr/"},{"@type":"ListItem","position":2,"name":"학교폭력·리더십","item":"https://identeach.co.kr/together"},{"@type":"ListItem","position":3,"name":"도미노 챌린지","item":"https://identeach.co.kr/together/domino"}]}
+{{BREADCRUMB_JSON}}
 </script>
 </head>
 <body>
@@ -145,10 +145,7 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdr
   </div>
 </header>
 <div class="crumb-bar"><div class="wrap"><nav class="crumb" id="pg-crumb"></nav></div></div>
-<main id="pg-root"><div class="hero-info"><div class="wrap">
-  <h1 class="hero-h1">도미노 챌린지</h1>
-  <p class="hero-sub">팀별로 도미노를 설계·설치하고 함께 쓰러뜨리며 협력의 성취감을 경험하는 학년 단위 체험 챌린지</p>
-</div></div></main>
+<main id="pg-root">{{MAIN_FALLBACK}}</main>
 <footer class="site-footer">
   <div class="wrap">
     <div class="ft-grid">
@@ -191,177 +188,7 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdr
   </div>
 </footer>
 <script>
-const programData = {
-  "pageTitle": "도미노 챌린지 | 학교폭력·리더십 · 아이덴티치",
-  "pageDesc": "팀별로 도미노를 설계·설치하고 함께 쓰러뜨리는 협력 체험 프로그램.",
-  "canonicalUrl": "https://identeach.co.kr/together/domino",
-  "navActive": "/together",
-  "crumbs": [
-    {
-      "label": "홈",
-      "href": "/"
-    },
-    {
-      "label": "학교폭력·리더십",
-      "href": "/together"
-    },
-    {
-      "label": "도미노 챌린지",
-      "href": null
-    }
-  ],
-  "category": "학교폭력·리더십",
-  "title": "도미노 챌린지",
-  "tagline": "협력 중심 관계형성 프로그램",
-  "description": "팀별로 도미노를 설계·설치하고 함께 쓰러뜨리며\n협력의 성취감을 경험하는 학년 단위 체험 챌린지",
-  "heroImages": [
-    {
-      "src": "/assets/images/programs/together/domino/도미노사진1.webp",
-      "alt": "도미노 챌린지 활동 전체 장면"
-    },
-    {
-      "src": "/assets/images/programs/together/domino/도미노사진2.webp",
-      "alt": "도미노 제작 활동 장면"
-    },
-    {
-      "src": "/assets/images/programs/together/domino/도미노사진3.webp",
-      "alt": "도미노 완성 및 도전 장면"
-    }
-  ],
-  "info": [
-    {
-      "label": "대상",
-      "value": "초5 – 고2"
-    },
-    {
-      "label": "시간",
-      "value": "3교시 [150분]"
-    },
-    {
-      "label": "인원",
-      "value": "최대 한 학년"
-    },
-    {
-      "label": "장소",
-      "value": "강당 / 교실"
-    }
-  ],
-  "activity": {
-    "image": {
-      "src": "/assets/images/programs/together/domino/도미노사진2.jpg",
-      "alt": "학생들이 팀별로 도미노 구조를 제작하는 장면"
-    },
-    "headline": "설계하고, 세우고\n함께 쓰러뜨립니다",
-    "bullets": [
-      "역할 분담과 책임 수행으로 자기관리 역량을 기릅니다",
-      "공동 목표 달성을 위한 협력적 소통과 공동체 역량을 함양합니다",
-      "창의적 설계·문제 해결 경험으로 창의적 사고 역량을 신장합니다"
-    ]
-  },
-  "useCases": [
-    {
-      "icon": "🌱",
-      "rec": true,
-      "title": "신학기 어울림",
-      "desc": "새 학기 첫 만남, 낯선 친구들과 함께 몰입하며 자연스럽게 팀워크가 쌓입니다."
-    },
-    {
-      "icon": "🎨",
-      "rec": false,
-      "title": "창체 자율활동",
-      "desc": "교과 연계 없이 운영 가능. 창의적 설계와 협력 역량을 자연스럽게 키웁니다."
-    },
-    {
-      "icon": "🤝",
-      "rec": false,
-      "title": "관계·협력 활동",
-      "desc": "역할 배분과 공동 목표 수행으로 관계를 쌓는 팀빌딩 프로그램에 최적입니다."
-    },
-    {
-      "icon": "🏫",
-      "rec": false,
-      "title": "공동체 활동",
-      "desc": "학급·학년 단위 공동체 역량 강화에 적합한 체험형 활동입니다."
-    },
-    {
-      "icon": "🛡️",
-      "rec": false,
-      "title": "학교폭력 예방",
-      "desc": "공동 미션 성취 과정에서 배려와 소통을 경험하며 예방 교육과 연계됩니다."
-    }
-  ],
-  "flowSteps": [
-    {
-      "icon": "🎯",
-      "proc": {
-        "title": "아이스브레이킹",
-        "desc": "팀 구성 및 역할 배분으로 활동을 시작합니다."
-      }
-    },
-    {
-      "icon": "📐",
-      "proc": {
-        "title": "도미노 설계",
-        "desc": "구간 레이아웃과 도면을 직접 작성합니다."
-      }
-    },
-    {
-      "icon": "🔧",
-      "proc": {
-        "title": "도미노 설치",
-        "desc": "안전을 확인하며 팀원과 함께 도미노를 세웁니다."
-      }
-    },
-    {
-      "icon": "🎬",
-      "proc": {
-        "title": "도미노 SHOW",
-        "desc": "팀별 구간을 연결하고 전체 쇼를 펼칩니다."
-      }
-    },
-    {
-      "icon": "📸",
-      "proc": {
-        "title": "기념촬영",
-        "desc": "완성한 작품 앞에서 함께 성취를 기념합니다."
-      }
-    }
-  ],
-  "gallery": {
-    "images": [
-      {
-        "src": "/assets/images/programs/together/domino/도미노사진3.jpg",
-        "alt": "도미노 제작 활동",
-        "caption": "팀별 제작"
-      },
-      {
-        "src": "/assets/images/programs/together/domino/도미노사진4.jpg",
-        "alt": "연결 챌린지 장면",
-        "caption": "연결 챌린지"
-      },
-      {
-        "src": "/assets/images/programs/together/domino/도미노사진5.jpg",
-        "alt": "전체 연결 성공 장면",
-        "caption": "전체 연결 성공"
-      },
-      {
-        "src": "/assets/images/programs/together/domino/도미노사진6.jpg",
-        "alt": "활동 회고 장면",
-        "caption": "활동 회고"
-      }
-    ]
-  },
-  "_card": {
-    "카드썸네일": "/assets/images/programs/together/domino.webp",
-    "카드썸네일설명": "도미노 챌린지",
-    "카드배지": "신학기 어울림",
-    "카드배지색": "",
-    "카드제목": "도미노 챌린지",
-    "카드설명": "팀별 설계와 공동 미션을 통해 협력과 관계형성을 경험하는 학년 단위 프로그램.",
-    "카드태그": "신학기 학급단합, 학교폭력예방",
-    "준비중": ""
-  }
-};
+const programData = {{PROGRAM_DATA}};
 
 const NAV_ITEMS=[{label:"학교폭력·리더십",href:"/together"},{label:"진로교육·체험",href:"/career"},{label:"학교행사",href:"/events"},{label:"회사소개",href:"/about"}];
 function nl(s){return(s||'').replace(/\n/g,'<br>')}

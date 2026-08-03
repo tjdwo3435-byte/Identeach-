@@ -1,0 +1,7 @@
+{
+  "_설명": "구글 시트에서 [파일 > 공유 > 웹에 게시 > 전체 문서 > Microsoft Excel(.xlsx) > 게시] 한 뒤, 나오는 주소를 아래 '게시주소' 에 붙여넣으세요.",
+  "_왜하나만": "전체 문서를 xlsx 로 게시하면 주소 하나로 모든 탭을 받아옵니다. 그래서 프로그램(탭)을 새로 만들어도 여기를 다시 손댈 필요가 없습니다.",
+  "_시트위치": "구글 드라이브 > 기억x아이덴티치 쉐어 폴더 > 4.홈페이지 프로그램 마스터",
+
+  "게시주소": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRZJ5jo1zcgXHH4BdnUPm8oP9P_IeUVma4pUFaKCS_8CsnCuSTeWSOLUeAoSFxCkg/pub?output=xlsx"
+}

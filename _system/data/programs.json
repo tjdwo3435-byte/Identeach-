@@ -1,0 +1,1786 @@
+{
+  "together/leadership": {
+    "pageTitle": "미니 스포츠데이 | 학교폭력·리더십 · 아이덴티치",
+    "pageDesc": "리더십캠프·단합프로그램에 최적화된 스포츠 미션 프로그램. 문제 창의적 설계와 리더십 역량을 동시에 키웁니다.",
+    "canonicalUrl": "https://identeach.co.kr/together/leadership",
+    "navActive": "/together",
+    "crumbs": [
+      {
+        "label": "홈",
+        "href": "/"
+      },
+      {
+        "label": "학교폭력·리더십",
+        "href": "/together"
+      },
+      {
+        "label": "미니 스포츠데이",
+        "href": "/together/leadership"
+      }
+    ],
+    "tagline": "학생 리더십·단합 활동",
+    "title": "미니 스포츠데이",
+    "description": "팀 단합 / 공동체 프로그램에 최적화된 스포츠 미션 프로젝트\n임원 프로그램 · 소규모 학교 | 학기 초 추천",
+    "heroImages": [
+      {
+        "src": "/assets/images/programs/together/mini-sports/미니스포츠데이1.jpg",
+        "alt": "미니 스포츠데이 활동 전체 장면"
+      },
+      {
+        "src": "/assets/images/programs/together/mini-sports/미니스포츠데이2.jpg",
+        "alt": "미니 스포츠데이 팀 경기 장면"
+      },
+      {
+        "src": "/assets/images/programs/together/mini-sports/미니스포츠데이3.jpg",
+        "alt": "미니 스포츠데이 마무리 장면"
+      }
+    ],
+    "info": [
+      {
+        "label": "인원",
+        "value": "100명 이내"
+      },
+      {
+        "label": "시간",
+        "value": "2 – 3시간"
+      },
+      {
+        "label": "대상",
+        "value": "중·고등학교"
+      },
+      {
+        "label": "장소",
+        "value": "체육관·운동장"
+      }
+    ],
+    "activity": {
+      "image": {
+        "src": "/assets/images/programs/together/mini-sports/미니스포츠데이2.jpg",
+        "alt": "미니 스포츠데이 활동 전경"
+      },
+      "headline": "팀 단합 / 공동체 프로그램에\n최적화된 스포츠 미션 프로젝트",
+      "bullets": [
+        "경쟁과 협력, 단합과 관계 형성을 중심으로 팀을 하나로 만듭니다",
+        "몸을 쓰는 것뿐 아니라 팀 빌딩의 화합이 합쳐진 게임들로 구성됩니다",
+        "임원 프로그램 및 소규모 학교에 최적화된 체험형 프로그램입니다",
+        "학기 초 관계 형성과 공동체 의식을 만드는 데 특히 효과적입니다"
+      ]
+    },
+    "useCases": [
+      {
+        "icon": "📅",
+        "rec": true,
+        "title": "학기 초 추천",
+        "desc": "새 학기 시작과 함께 팀 관계와 공동체 의식을 빠르게 만드는 데 가장 효과적입니다."
+      },
+      {
+        "icon": "🎖️",
+        "rec": false,
+        "title": "임원 프로그램",
+        "desc": "리더 역할을 맡은 학생들이 단합과 소통을 경험하는 임원 특화 활동입니다."
+      },
+      {
+        "icon": "🏫",
+        "rec": false,
+        "title": "소규모 학교",
+        "desc": "소수 인원에서도 팀 빌딩 효과를 극대화할 수 있는 유연한 구성으로 운영됩니다."
+      }
+    ],
+    "flowSteps": [
+      {
+        "icon": "🏃",
+        "proc": {
+          "title": "준비운동 & 리더 선출",
+          "desc": "팀을 구성하고 리더를 선출합니다. 본격 활동 전 몸을 풀며 팀의 분위기를 만들어갑니다."
+        },
+        "xp": {
+          "action": "팀의 첫 페이지를\n함께 씁니다",
+          "detail": "설레며"
+        }
+      },
+      {
+        "icon": "🎯",
+        "proc": {
+          "title": "아이스브레이킹 미션 게임",
+          "desc": "팀원과 자연스럽게 친해지는 가벼운 미션 게임으로 어색함을 웃음으로 바꿉니다."
+        },
+        "xp": {
+          "action": "낯선 팀원과\n마음을 엽니다",
+          "detail": "자연스럽게"
+        }
+      },
+      {
+        "icon": "⚽",
+        "proc": {
+          "title": "스포츠 경기",
+          "desc": "공굴리기 · 미션게임 · 파도를 넘어라 · 파이프라인 등 단순히 몸을 쓰는 것뿐 아니라 팀 빌딩의 화합이 합쳐진 게임들로 진행됩니다."
+        },
+        "xp": {
+          "action": "경쟁과 협력 속에서\n팀이 하나가 됩니다",
+          "detail": "신나게"
+        }
+      },
+      {
+        "icon": "🎉",
+        "proc": {
+          "title": "승부 결정 & 마무리",
+          "desc": "결과를 발표하고 교육적으로 마무리합니다. 이긴 팀은 성공의 뿌듯함을, 진 팀은 다시 할 수 있다는 용기를 얻어갑니다."
+        },
+        "xp": {
+          "action": "결과보다 함께한\n과정을 기억합니다",
+          "detail": "뿌듯하게"
+        }
+      }
+    ],
+    "gallery": {
+      "images": [
+        {
+          "src": "/assets/images/programs/together/mini-sports/미니스포츠데이3.jpg",
+          "alt": "미니 스포츠데이 활동 1"
+        },
+        {
+          "src": "/assets/images/programs/together/mini-sports/미니스포츠데이4.jpg",
+          "alt": "미니 스포츠데이 활동 2"
+        },
+        {
+          "src": "/assets/images/programs/together/mini-sports/미니스포츠데이5.jpg",
+          "alt": "미니 스포츠데이 활동 3"
+        },
+        {
+          "src": "/assets/images/programs/together/mini-sports/미니스포츠데이6.jpg",
+          "alt": "미니 스포츠데이 활동 4"
+        },
+        {
+          "src": "/assets/images/programs/together/mini-sports/미니스포츠데이7.jpg",
+          "alt": "미니 스포츠데이 활동 5"
+        },
+        {
+          "src": "/assets/images/programs/together/mini-sports/미니스포츠데이8.jpg",
+          "alt": "미니 스포츠데이 활동 6"
+        }
+      ]
+    },
+    "_card": {
+      "카드썸네일": "/assets/images/programs/together/mini-sports.webp",
+      "카드썸네일설명": "미니 스포츠데이",
+      "카드배지": "학기초 추천",
+      "카드배지색": "주황",
+      "카드제목": "미니|스포츠데이",
+      "카드설명": "팀 스포츠 미션을 통해 협력과 학생 리더십을 경험하는 활동형 프로그램.",
+      "카드태그": "리더십캠프, 단합활동",
+      "준비중": ""
+    },
+    "_order": 0
+  },
+  "together/domino": {
+    "pageTitle": "도미노 챌린지 | 학교폭력·리더십 · 아이덴티치",
+    "pageDesc": "팀별로 도미노를 설계·설치하고 함께 쓰러뜨리는 협력 체험 프로그램.",
+    "canonicalUrl": "https://identeach.co.kr/together/domino",
+    "navActive": "/together",
+    "crumbs": [
+      {
+        "label": "홈",
+        "href": "/"
+      },
+      {
+        "label": "학교폭력·리더십",
+        "href": "/together"
+      },
+      {
+        "label": "도미노 챌린지",
+        "href": null
+      }
+    ],
+    "heroImages": [
+      {
+        "src": "/assets/images/programs/together/domino/도미노사진1.webp",
+        "alt": "도미노 챌린지 활동 전체 장면"
+      },
+      {
+        "src": "/assets/images/programs/together/domino/도미노사진2.webp",
+        "alt": "도미노 제작 활동 장면"
+      },
+      {
+        "src": "/assets/images/programs/together/domino/도미노사진3.webp",
+        "alt": "도미노 완성 및 도전 장면"
+      }
+    ],
+    "category": "학교폭력·리더십",
+    "title": "도미노 챌린지",
+    "tagline": "협력 중심 관계형성 프로그램",
+    "description": "팀별로 도미노를 설계·설치하고 함께 쓰러뜨리며\n협력의 성취감을 경험하는 학년 단위 체험 챌린지",
+    "info": [
+      {
+        "label": "대상",
+        "value": "초5 – 고2"
+      },
+      {
+        "label": "시간",
+        "value": "3교시 [150분]"
+      },
+      {
+        "label": "인원",
+        "value": "최대 한 학년"
+      },
+      {
+        "label": "장소",
+        "value": "강당 / 교실"
+      }
+    ],
+    "activity": {
+      "image": {
+        "src": "/assets/images/programs/together/domino/도미노사진2.jpg",
+        "alt": "학생들이 팀별로 도미노 구조를 제작하는 장면"
+      },
+      "headline": "설계하고, 세우고\n함께 쓰러뜨립니다",
+      "bullets": [
+        "역할 분담과 책임 수행으로 자기관리 역량을 기릅니다",
+        "공동 목표 달성을 위한 협력적 소통과 공동체 역량을 함양합니다",
+        "창의적 설계·문제 해결 경험으로 창의적 사고 역량을 신장합니다"
+      ]
+    },
+    "useCases": [
+      {
+        "rec": true,
+        "icon": "🌱",
+        "title": "신학기 어울림",
+        "desc": "새 학기 첫 만남, 낯선 친구들과 함께 몰입하며 자연스럽게 팀워크가 쌓입니다."
+      },
+      {
+        "rec": false,
+        "icon": "🎨",
+        "title": "창체 자율활동",
+        "desc": "교과 연계 없이 운영 가능. 창의적 설계와 협력 역량을 자연스럽게 키웁니다."
+      },
+      {
+        "rec": false,
+        "icon": "🤝",
+        "title": "관계·협력 활동",
+        "desc": "역할 배분과 공동 목표 수행으로 관계를 쌓는 팀빌딩 프로그램에 최적입니다."
+      },
+      {
+        "rec": false,
+        "icon": "🏫",
+        "title": "공동체 활동",
+        "desc": "학급·학년 단위 공동체 역량 강화에 적합한 체험형 활동입니다."
+      },
+      {
+        "rec": false,
+        "icon": "🛡️",
+        "title": "학교폭력 예방",
+        "desc": "공동 미션 성취 과정에서 배려와 소통을 경험하며 예방 교육과 연계됩니다."
+      }
+    ],
+    "flowSteps": [
+      {
+        "icon": "🎯",
+        "proc": {
+          "title": "아이스브레이킹",
+          "desc": "팀 구성 및 역할 배분으로 활동을 시작합니다."
+        },
+        "xp": {
+          "action": "팀을 구성하고 역할을 나눕니다",
+          "detail": "자연스럽게"
+        }
+      },
+      {
+        "icon": "📐",
+        "proc": {
+          "title": "도미노 설계",
+          "desc": "구간 레이아웃과 도면을 직접 작성합니다."
+        },
+        "xp": {
+          "action": "도면을 그리고 구조를 설계합니다",
+          "detail": "창의적으로"
+        }
+      },
+      {
+        "icon": "🔧",
+        "proc": {
+          "title": "도미노 설치",
+          "desc": "안전을 확인하며 팀원과 함께 도미노를 세웁니다."
+        },
+        "xp": {
+          "action": "도미노를 조심스럽게 세워갑니다",
+          "detail": "집중하며"
+        }
+      },
+      {
+        "icon": "🎬",
+        "proc": {
+          "title": "도미노 SHOW",
+          "desc": "팀별 구간을 연결하고 전체 쇼를 펼칩니다."
+        },
+        "xp": {
+          "action": "팀 구간을 하나로 연결합니다",
+          "detail": "협력하며"
+        }
+      },
+      {
+        "icon": "📸",
+        "proc": {
+          "title": "기념촬영",
+          "desc": "완성한 작품 앞에서 함께 성취를 기념합니다."
+        },
+        "xp": {
+          "action": "함께 쓰러뜨리고 성취감을 나눕니다",
+          "detail": "감동적으로"
+        }
+      }
+    ],
+    "gallery": {
+      "images": [
+        {
+          "src": "/assets/images/programs/together/domino/도미노사진3.jpg",
+          "alt": "도미노 제작 활동",
+          "caption": "팀별 제작"
+        },
+        {
+          "src": "/assets/images/programs/together/domino/도미노사진4.jpg",
+          "alt": "연결 챌린지 장면",
+          "caption": "연결 챌린지"
+        },
+        {
+          "src": "/assets/images/programs/together/domino/도미노사진5.jpg",
+          "alt": "전체 연결 성공 장면",
+          "caption": "전체 연결 성공"
+        },
+        {
+          "src": "/assets/images/programs/together/domino/도미노사진6.jpg",
+          "alt": "활동 회고 장면",
+          "caption": "활동 회고"
+        }
+      ]
+    },
+    "_card": {
+      "카드썸네일": "/assets/images/programs/together/domino.webp",
+      "카드썸네일설명": "도미노 챌린지",
+      "카드배지": "신학기 어울림",
+      "카드배지색": "",
+      "카드제목": "도미노 챌린지",
+      "카드설명": "팀별 설계와 공동 미션을 통해 협력과 관계형성을 경험하는 학년 단위 프로그램.",
+      "카드태그": "신학기 학급단합, 학교폭력예방",
+      "준비중": ""
+    },
+    "_order": 1
+  },
+  "together/schoolping": {
+    "pageTitle": "스쿨핑 | 학교폭력·리더십 · 아이덴티치",
+    "pageDesc": "신체활동과 협동 미션을 결합한 학급 공동체·팀빌딩 프로그램입니다.",
+    "canonicalUrl": "https://identeach.co.kr/together/schoolping",
+    "navActive": "/together",
+    "crumbs": [
+      {
+        "label": "홈",
+        "href": "/"
+      },
+      {
+        "label": "학교폭력·리더십",
+        "href": "/together"
+      },
+      {
+        "label": "스쿨핑",
+        "href": null
+      }
+    ],
+    "heroImages": [
+      {
+        "src": "/assets/images/programs/together/schoolping/스쿨핑사진1.jpg",
+        "alt": "스쿨핑 활동 전체 장면"
+      },
+      {
+        "src": "/assets/images/programs/together/schoolping/스쿨핑사진2.jpg",
+        "alt": "학생들이 스쿨핑 게임에 참여하는 모습"
+      },
+      {
+        "src": "/assets/images/programs/together/schoolping/스쿨핑사진3.jpg",
+        "alt": "스쿨핑 팀별 활동 장면"
+      }
+    ],
+    "category": "학교폭력·리더십",
+    "title": "스쿨핑",
+    "tagline": "학급 공동체·팀빌딩 프로그램",
+    "description": "선생님과 아이들 모두\n학교에서 안전하게 추억을 만들 수 있는 스쿨핑 체험",
+    "info": [
+      {
+        "label": "대상",
+        "value": "초등학생 추천"
+      },
+      {
+        "label": "시간",
+        "value": "4교시 [150분]"
+      },
+      {
+        "label": "인원",
+        "value": "최대 한 학년"
+      },
+      {
+        "label": "장소",
+        "value": "강당 / 교실"
+      }
+    ],
+    "activity": {
+      "image": {
+        "src": "/assets/images/programs/together/schoolping/스쿨핑사진2.jpg",
+        "alt": "학생들이 스쿨핑 게임에 참여하는 모습"
+      },
+      "headline": "선생님과 아이들 모두\n학교에서 안전하게 추억을 만드는\n스쿨핑 체험",
+      "bullets": [
+        "캠핑 장비를 활용하여 실제 텐트 설치·체험 진행",
+        "팀별 텐트 꾸미기로 단합력과 창의력을 동시에 키웁니다",
+        "안전 교육 · 공동체교육 · 리더십 교육 등 연계 운영 가능",
+        "체험형 신체 팀빌딩 게임으로 역동적인 신체활동을 진행합니다"
+      ]
+    },
+    "useCases": [
+      {
+        "icon": "🛡️",
+        "rec": false,
+        "title": "학교폭력예방",
+        "desc": "안전한 관계 형성을 체험으로 배우는 예방 중심 프로그램입니다."
+      },
+      {
+        "icon": "🏕️",
+        "rec": true,
+        "title": "리더십 캠프",
+        "desc": "실내 캠핑 체험으로 리더십과 협동심을 함께 키웁니다."
+      },
+      {
+        "icon": "✅",
+        "rec": false,
+        "title": "안전 교육",
+        "desc": "텐트 설치·도구 사용 과정에서 안전 습관을 자연스럽게 익힙니다."
+      },
+      {
+        "icon": "🏃",
+        "rec": false,
+        "title": "신체 활동",
+        "desc": "팀빌딩 게임으로 체육과 공동체 활동을 하나로 묶습니다."
+      },
+      {
+        "icon": "🚌",
+        "rec": false,
+        "title": "현장체험 대체",
+        "desc": "야외 현장체험의 실내 대체 프로그램으로 안전하게 운영됩니다."
+      }
+    ],
+    "flowSteps": [
+      {
+        "icon": "⛺",
+        "proc": {
+          "title": "텐트 설치 · 꾸미기",
+          "desc": "팀별 텐트를 직접 설치하고 꾸미기 도구로 팀 공간을 만듭니다."
+        },
+        "xp": {
+          "action": "우리 팀만의 텐트를\n함께 완성합니다",
+          "detail": "창의적으로"
+        }
+      },
+      {
+        "icon": "🤝",
+        "proc": {
+          "title": "아이스브레이킹 미션",
+          "desc": "팀 이름·구호를 정하고 가벼운 공동체 미션으로 마음을 엽니다."
+        },
+        "xp": {
+          "action": "낯선 팀원과\n금세 친해집니다",
+          "detail": "자연스럽게"
+        }
+      },
+      {
+        "icon": "🎮",
+        "proc": {
+          "title": "팀빌딩 게임",
+          "desc": "바운드볼·파이프라인·로프챌린지 등 협동 신체 게임을 진행합니다."
+        },
+        "xp": {
+          "action": "몸으로 부딪히며\n협동을 경험합니다",
+          "detail": "힘을 합쳐"
+        }
+      },
+      {
+        "icon": "🏆",
+        "proc": {
+          "title": "협동 미션 대결",
+          "desc": "풍선탑·음악퀴즈 등 팀 대항 미션으로 흥미와 긴장감을 높입니다."
+        },
+        "xp": {
+          "action": "팀이 하나가 되어\n우승을 노립니다",
+          "detail": "즐겁게"
+        }
+      },
+      {
+        "icon": "📸",
+        "proc": {
+          "title": "마무리 · 기념촬영",
+          "desc": "텐트 정리 후 팀별·전체 기념사진을 찍으며 마무리합니다."
+        },
+        "xp": {
+          "action": "함께 만든 추억을\n사진으로 남깁니다",
+          "detail": "뿌듯하게"
+        }
+      }
+    ],
+    "structuresSection": {
+      "label": "활동 구성 예시",
+      "title": "활동 구성 예시",
+      "items": [
+        {
+          "name": "텐트 꾸미기",
+          "type": "aspect",
+          "desc": "다양한 꾸미기 도구로 우리 조만의 텐트를 꾸미는 화합 활동입니다."
+        },
+        {
+          "name": "공동체 도구 게임",
+          "type": "aspect",
+          "desc": "바운드볼·로프챌린지·파이프라인 등 협동 신체활동으로 구성됩니다."
+        },
+        {
+          "name": "협동 미션",
+          "type": "aspect",
+          "desc": "음악퀴즈·협동 사진 미션 등을 통한 화합 활동으로 마무리합니다."
+        }
+      ]
+    },
+    "gallery": {
+      "images": [
+        {
+          "src": "/assets/images/programs/together/schoolping/스쿨핑사진1.jpg",
+          "alt": "스쿨핑 활동 전체",
+          "caption": "전체 활동"
+        },
+        {
+          "src": "/assets/images/programs/together/schoolping/스쿨핑사진2.jpg",
+          "alt": "게임 진행 장면",
+          "caption": "게임 진행"
+        },
+        {
+          "src": "/assets/images/programs/together/schoolping/스쿨핑사진3.jpg",
+          "alt": "팀 전략 장면",
+          "caption": "팀 전략 타임"
+        }
+      ]
+    },
+    "_card": {
+      "카드썸네일": "/assets/images/programs/together/schoolping.webp",
+      "카드썸네일설명": "스쿨핑",
+      "카드배지": "리더십 캠프",
+      "카드배지색": "",
+      "카드제목": "스쿨핑",
+      "카드설명": "신체활동과 협동 미션을 결합한 학급 공동체·팀빌딩 프로그램.",
+      "카드태그": "체육대회, 학급단합",
+      "준비중": ""
+    },
+    "_order": 2
+  },
+  "together/facilitation": {
+    "pageTitle": "학생 리더십교육 미션 퍼실리테이션 | 아이덴티치",
+    "pageDesc": "초4~중3 학생을 대상으로 소통·경청·학생 리더십을 활동과 퍼실리테이션으로 익히는 학생 리더십교육입니다.",
+    "canonicalUrl": "https://identeach.co.kr/together/facilitation",
+    "navActive": "/together",
+    "crumbs": [
+      {
+        "label": "홈",
+        "href": "/"
+      },
+      {
+        "label": "학교폭력·리더십",
+        "href": "/together"
+      },
+      {
+        "label": "미션 퍼실리테이션",
+        "href": null
+      }
+    ],
+    "heroImages": [
+      {
+        "src": "/assets/images/programs/together/facilitation/퍼실리테이션사진1.webp",
+        "alt": "미션 퍼실리테이션 활동 전체 장면"
+      },
+      {
+        "src": "/assets/images/programs/together/facilitation/퍼실리테이션사진2.webp",
+        "alt": "팀이 함께 미션을 논의하는 장면"
+      },
+      {
+        "src": "/assets/images/programs/together/facilitation/퍼실리테이션사진3.webp",
+        "alt": "퍼실리테이션 활동 현장"
+      }
+    ],
+    "category": "학교폭력·리더십",
+    "title": "미션 퍼실리테이션",
+    "tagline": "학생 리더십·소통교육",
+    "description": "퍼실리테이션을 활용하여\n합리적인 문제해결을 재미있게 배우는 협동 프로그램",
+    "info": [
+      {
+        "label": "대상",
+        "value": "초4 – 중3"
+      },
+      {
+        "label": "시간",
+        "value": "2교시 [100분]"
+      },
+      {
+        "label": "인원",
+        "value": "최대 한 학년"
+      },
+      {
+        "label": "장소",
+        "value": "강당 / 교실"
+      }
+    ],
+    "activity": {
+      "image": {
+        "src": "/assets/images/programs/together/facilitation/퍼실리테이션사진2.jpg",
+        "alt": "팀이 함께 미션을 논의하는 장면"
+      },
+      "headline": "단 하나의 잘못된\n아이디어는 없다!",
+      "bullets": [
+        "퍼실리테이션 기법으로 아이디어를 모아 민주적으로 결정합니다",
+        "경청과 발언 훈련을 통해 협력적 소통 역량을 키웁니다",
+        "재미있는 게임으로 합리적 문제해결 과정을 자연스럽게 체험합니다",
+        "금연·학교폭력예방 등 다양한 주제 교육과 자유롭게 연계 가능합니다"
+      ]
+    },
+    "useCases": [
+      {
+        "icon": "🎨",
+        "rec": false,
+        "title": "창체 자율활동",
+        "desc": "창의적 체험활동 시간에 바로 투입 가능한 참여형 프로그램입니다."
+      },
+      {
+        "icon": "💡",
+        "rec": true,
+        "title": "사고력 토론",
+        "desc": "아이디어를 내고 합의하는 퍼실리테이션 과정이 토론 역량 교육과 정확히 연결됩니다."
+      },
+      {
+        "icon": "🚭",
+        "rec": false,
+        "title": "금연 교육",
+        "desc": "금연을 주제로 퍼실리테이션 기법을 활용해 생각을 나눌 수 있습니다."
+      },
+      {
+        "icon": "🛡️",
+        "rec": false,
+        "title": "학교폭력예방교육",
+        "desc": "폭력 예방 주제를 민주적 토론 형식으로 체험하는 연계 프로그램입니다."
+      },
+      {
+        "icon": "🗣️",
+        "rec": false,
+        "title": "토론수업 연계",
+        "desc": "교과 토론 수업 전후 워밍업·심화 활동으로 자연스럽게 연계됩니다."
+      }
+    ],
+    "flowSteps": [
+      {
+        "icon": "🎯",
+        "proc": {
+          "title": "아이스브레이킹",
+          "desc": "팀 빌딩 게임으로 분위기를 열고 서로를 알아갑니다."
+        },
+        "xp": {
+          "action": "아이디어를 내는 것에\n두려움이 없어집니다",
+          "detail": "자연스럽게"
+        }
+      },
+      {
+        "icon": "📚",
+        "proc": {
+          "title": "퍼실리테이션 소개",
+          "desc": "퍼실리테이션 기법의 개념과 목적을 쉽고 재미있게 소개합니다."
+        },
+        "xp": {
+          "action": "어떻게 의견을 모으는지\n배웁니다",
+          "detail": "체험하며"
+        }
+      },
+      {
+        "icon": "💬",
+        "proc": {
+          "title": "ORID 실습",
+          "desc": "주제를 함께 정하고 ORID 회의기법으로 직접 토론을 체험합니다."
+        },
+        "xp": {
+          "action": "내 의견이 팀 결정에\n반영됩니다",
+          "detail": "민주적으로"
+        }
+      },
+      {
+        "icon": "🤝",
+        "proc": {
+          "title": "협동 미션",
+          "desc": "배운 퍼실리테이션 기법으로 팀원이 함께 협력 게임을 풀어냅니다."
+        },
+        "xp": {
+          "action": "퍼실리테이션으로\n미션을 해결합니다",
+          "detail": "협력하며"
+        }
+      },
+      {
+        "icon": "🎤",
+        "proc": {
+          "title": "회고 · 발표",
+          "desc": "활동 과정을 돌아보고 팀별로 배운 점을 공유합니다."
+        },
+        "xp": {
+          "action": "배운 것을 나누며\n한 단계 성장합니다",
+          "detail": "성장하며"
+        }
+      }
+    ],
+    "structuresSection": {
+      "label": "기법 구성 예시",
+      "title": "퍼실리테이션 기법 예시",
+      "items": [
+        {
+          "name": "아이스브레이킹",
+          "type": "aspect",
+          "desc": "팀 분위기를 여는 도입 활동 및 기초 퍼실리테이션 교육 소개입니다."
+        },
+        {
+          "name": "ORID 회의기법",
+          "type": "aspect",
+          "desc": "Object–Reflect–Interpret–Decide 토론 방법을 재미있는 주제와 함께 직접 체험합니다."
+        },
+        {
+          "name": "협동 미션",
+          "type": "aspect",
+          "desc": "팀원이 함께 풀어내는 협력 게임으로 마무리합니다."
+        }
+      ]
+    },
+    "gallery": {
+      "images": [
+        {
+          "src": "/assets/images/programs/together/facilitation/퍼실리테이션사진1.jpg",
+          "alt": "활동 전체 장면",
+          "caption": "전체 활동"
+        },
+        {
+          "src": "/assets/images/programs/together/facilitation/퍼실리테이션사진2.jpg",
+          "alt": "팀 논의 장면",
+          "caption": "팀 논의"
+        },
+        {
+          "src": "/assets/images/programs/together/facilitation/퍼실리테이션사진3.jpg",
+          "alt": "발표 장면",
+          "caption": "결과 발표"
+        }
+      ]
+    },
+    "_card": {
+      "카드썸네일": "/assets/images/programs/together/facilitation.webp",
+      "카드썸네일설명": "미션 퍼실리테이션",
+      "카드배지": "사고력 토론",
+      "카드배지색": "",
+      "카드제목": "미션 퍼실리테이션",
+      "카드설명": "퍼실리테이션과 활동을 접목해 소통·경청·학생 리더십을 익히는 교육.",
+      "카드태그": "리더십, 토론·소통",
+      "준비중": ""
+    },
+    "_order": 3
+  },
+  "together/violence-prevention": {
+    "pageTitle": "전교생 관계형성 레크리에이션 | 아이덴티치",
+    "pageDesc": "전교생이 놀이와 협력 활동에 참여하며 학급과 학년의 관계형성과 공동체 경험을 만드는 학교 레크리에이션 프로그램입니다.",
+    "canonicalUrl": "https://identeach.co.kr/together/violence-prevention",
+    "navActive": "/together",
+    "crumbs": [
+      {
+        "label": "홈",
+        "href": "/"
+      },
+      {
+        "label": "학교폭력·리더십",
+        "href": "/together"
+      },
+      {
+        "label": "단합 레크리에이션",
+        "href": null
+      }
+    ],
+    "heroImages": [
+      {
+        "src": "/assets/images/programs/together/violence-prevention/학교폭력사진1.webp",
+        "alt": "단합 레크리에이션 활동 전체 장면"
+      },
+      {
+        "src": "/assets/images/programs/together/violence-prevention/학교폭력사진2.webp",
+        "alt": "단합 레크리에이션 활동 장면 2"
+      },
+      {
+        "src": "/assets/images/programs/together/violence-prevention/학교폭력사진3.webp",
+        "alt": "단합 레크리에이션 활동 장면 3"
+      }
+    ],
+    "category": "학교폭력·리더십",
+    "title": "단합 레크리에이션",
+    "tagline": "전교생 관계형성 레크리에이션",
+    "description": "단순한 게임을 넘어서 원하는 교육적 스타일로 자유롭게 변경이 가능하여\n즐기고 느끼면서 배우는 활동",
+    "info": [
+      {
+        "label": "대상",
+        "value": "초중고 전학년"
+      },
+      {
+        "label": "시간",
+        "value": "2교시 [100분]"
+      },
+      {
+        "label": "인원",
+        "value": "최대 전교생"
+      },
+      {
+        "label": "장소",
+        "value": "강당 / 교실"
+      }
+    ],
+    "activity": {
+      "image": {
+        "src": "/assets/images/programs/together/violence-prevention/학교폭력사진2.jpg",
+        "alt": "학생들이 관계 형성 활동에 참여하는 장면"
+      },
+      "headline": "레크리에이션 전공 청소년지도사가\n직접 진행하는 진짜 레크리에이션!",
+      "bullets": [
+        "레크리에이션 전공 청소년지도사가 직접 기획·진행합니다",
+        "단순한 게임을 넘어 원하는 교육적 스타일로 자유롭게 변경 가능합니다",
+        "즐기고 느끼면서 자연스럽게 배우는 체험형 활동입니다",
+        "학교폭력예방·인성교육 등 다양한 교육 목표와 자유롭게 연계됩니다"
+      ]
+    },
+    "useCases": [
+      {
+        "icon": "🛡️",
+        "rec": false,
+        "title": "학교폭력예방",
+        "desc": "레크리에이션으로 관계와 배려를 자연스럽게 체험하는 예방 활동입니다."
+      },
+      {
+        "icon": "🤝",
+        "rec": false,
+        "title": "관계 협력",
+        "desc": "팀 게임과 협동 활동으로 학급 내 관계 형성을 돕습니다."
+      },
+      {
+        "icon": "🏫",
+        "rec": false,
+        "title": "공동체 활동",
+        "desc": "전교생이 함께 웃으며 화합하는 공동체 경험을 만들어냅니다."
+      },
+      {
+        "icon": "🎉",
+        "rec": true,
+        "title": "교내 행사",
+        "desc": "체육대회·학교 행사 등 교내 이벤트의 핵심 프로그램으로 활용됩니다."
+      },
+      {
+        "icon": "💛",
+        "rec": false,
+        "title": "인성 교육",
+        "desc": "즐기고 느끼면서 자연스럽게 배우는 체험형 인성 교육 활동입니다."
+      }
+    ],
+    "flowSteps": [
+      {
+        "icon": "⚙️",
+        "proc": {
+          "title": "세팅 · 조 편성",
+          "desc": "공간 정리와 도구 점검 후 팀을 나누고 자리를 잡습니다."
+        },
+        "xp": {
+          "action": "새 팀원들과\n처음 마주합니다",
+          "detail": "설레며"
+        }
+      },
+      {
+        "icon": "🎯",
+        "proc": {
+          "title": "아이스브레이킹",
+          "desc": "리더게임·무대게임으로 분위기를 자연스럽게 열어갑니다."
+        },
+        "xp": {
+          "action": "웃음 속에\n경계가 무너집니다",
+          "detail": "함께 웃으며"
+        }
+      },
+      {
+        "icon": "🎮",
+        "proc": {
+          "title": "팀 게임",
+          "desc": "기차놀이·원진놀이 등 팀별 신체 게임으로 협력을 경험합니다."
+        },
+        "xp": {
+          "action": "팀원과 함께\n협력을 경험합니다",
+          "detail": "힘을 합쳐"
+        }
+      },
+      {
+        "icon": "🎉",
+        "proc": {
+          "title": "협동 레크리에이션",
+          "desc": "선생님과 학생이 함께하는 무대로 화합의 분위기를 완성합니다."
+        },
+        "xp": {
+          "action": "전체가 하나가 되는\n순간을 경험합니다",
+          "detail": "신나게"
+        }
+      },
+      {
+        "icon": "📸",
+        "proc": {
+          "title": "기념촬영 · 마무리",
+          "desc": "팀별·전체 기념사진으로 오늘의 추억을 마무리합니다."
+        },
+        "xp": {
+          "action": "함께한 추억을\n사진으로 남깁니다",
+          "detail": "뿌듯하게"
+        }
+      }
+    ],
+    "structuresSection": {
+      "label": "활동 유형 예시",
+      "title": "활동 유형 예시",
+      "items": [
+        {
+          "name": "아이스브레이킹 게임",
+          "type": "aspect",
+          "desc": "분위기를 여는 리더게임·무대게임으로 자연스럽게 관계를 형성합니다."
+        },
+        {
+          "name": "팀 게임",
+          "type": "aspect",
+          "desc": "기차놀이·원진놀이 등 팀별 게임으로 협력을 경험합니다."
+        },
+        {
+          "name": "협동 레크리에이션",
+          "type": "aspect",
+          "desc": "선생님과 아이들이 함께 마무리하는 무대로 화합의 분위기를 완성합니다."
+        }
+      ]
+    },
+    "gallery": {
+      "images": [
+        {
+          "src": "/assets/images/programs/together/violence-prevention/학교폭력사진3.jpg",
+          "alt": "레크리에이션 활동 장면 1",
+          "caption": "공감 게임"
+        },
+        {
+          "src": "/assets/images/programs/together/violence-prevention/학교폭력사진4.jpg",
+          "alt": "레크리에이션 활동 장면 2",
+          "caption": "역할 체험"
+        },
+        {
+          "src": "/assets/images/programs/together/violence-prevention/학교폭력사진5.jpg",
+          "alt": "레크리에이션 활동 장면 3",
+          "caption": "관계 미션"
+        },
+        {
+          "src": "/assets/images/programs/together/violence-prevention/학교폭력사진6.jpg",
+          "alt": "레크리에이션 활동 장면 4",
+          "caption": "마무리 다짐"
+        }
+      ]
+    },
+    "_card": {
+      "카드썸네일": "/assets/images/programs/together/violence-prevention.webp",
+      "카드썸네일설명": "단합 레크리에이션",
+      "카드배지": "학교폭력예방",
+      "카드배지색": "",
+      "카드제목": "단합|레크리에이션",
+      "카드설명": "전교생이 함께 참여하는 관계형성·공동체 레크리에이션.",
+      "카드태그": "학교폭력예방, 전교생 화합",
+      "준비중": ""
+    },
+    "_order": 4
+  },
+  "career/touching-voice": {
+    "pageTitle": "자기이해 진로교육 터칭보이스 | 아이덴티치",
+    "pageDesc": "음악과 이야기, 참여 활동을 통해 자신의 감정과 성향을 이해하고 진로 방향을 탐색하는 찾아가는 진로콘서트입니다.",
+    "canonicalUrl": "https://identeach.co.kr/career/touching-voice",
+    "navActive": "/career",
+    "crumbs": [
+      {
+        "label": "홈",
+        "href": "/"
+      },
+      {
+        "label": "진로교육·체험",
+        "href": "/career"
+      },
+      {
+        "label": "터칭보이스",
+        "href": null
+      }
+    ],
+    "category": "진로교육·체험",
+    "title": "터칭보이스",
+    "tagline": "찾아가는 자기이해 진로콘서트",
+    "description": "전문 가수의 음악 콘서트와 '발성심리학'을 기반으로\n'노래'와 '음성'을 통해 나를 돌아보는 특별한 시간을 갖습니다!",
+    "info": [
+      {
+        "label": "대상",
+        "value": "초등 ~ 고등학교"
+      },
+      {
+        "label": "시간",
+        "value": "1~2교시"
+      },
+      {
+        "label": "인원",
+        "value": "학급 ~ 학년 단위"
+      },
+      {
+        "label": "장소",
+        "value": "강당 · 강의실"
+      }
+    ],
+    "activity": {
+      "image": {
+        "src": "/assets/images/programs/career/touching-voice/터칭보이스사진2.png",
+        "alt": "터칭보이스 강연 활동 장면"
+      },
+      "headline": "전문 가수의 음악 콘서트와\n'발성심리학'을 기반으로",
+      "bullets": [
+        "'노래'와 '음성'을 통해 나를 돌아보는 특별한 시간을 갖습니다",
+        "단순한 콘서트가 아닌, 실제 발성법을 배우며 자존감 향상에 도움이 되는 활동입니다",
+        "심리·교육적 접근으로 목소리를 통해 나다움을 발견합니다"
+      ]
+    },
+    "useCases": [
+      {
+        "rec": true,
+        "icon": "🎤",
+        "title": "콘서트형 강연",
+        "desc": "전문 가수의 라이브 퍼포먼스와 강연이 결합된, 몰입감 높은 특별 수업입니다."
+      },
+      {
+        "rec": false,
+        "icon": "🧭",
+        "title": "진로캠프",
+        "desc": "자신의 목소리와 감정을 탐색하며 진로 방향을 생각해보는 캠프 연계 활동입니다."
+      },
+      {
+        "rec": false,
+        "icon": "🎨",
+        "title": "문화예술 함양",
+        "desc": "음악·예술을 직접 경험하며 감수성과 표현력을 기르는 문화예술 교육입니다."
+      },
+      {
+        "rec": false,
+        "icon": "🪞",
+        "title": "자기이해 탐색",
+        "desc": "발성심리학 기반으로 목소리를 통해 자신의 감정과 성향을 이해합니다."
+      },
+      {
+        "rec": false,
+        "icon": "💛",
+        "title": "자존감 교육",
+        "desc": "실제 발성법을 배우며 자기 표현력과 자존감을 자연스럽게 높입니다."
+      }
+    ],
+    "flowSteps": [
+      {
+        "icon": "🎤",
+        "proc": {
+          "title": "아이스브레이킹",
+          "desc": "사회자가 등장해 분위기를 풀어주는 아이스브레이킹으로 마음을 엽니다."
+        },
+        "xp": {
+          "action": "낯선 분위기가 편안해집니다",
+          "detail": "자연스럽게"
+        }
+      },
+      {
+        "icon": "🎵",
+        "proc": {
+          "title": "음악 콘서트",
+          "desc": "전문 가수가 직접 무대에 올라 라이브 음악 공연을 펼칩니다."
+        },
+        "xp": {
+          "action": "음악에 빠져들며 감동을 느낍니다",
+          "detail": "감성적으로"
+        }
+      },
+      {
+        "icon": "🌟",
+        "proc": {
+          "title": "진로 콘서트",
+          "desc": "가수가 자신의 진로 이야기를 음악과 함께 강연 형식으로 나눕니다."
+        },
+        "xp": {
+          "action": "꿈을 향한 이야기에 공감합니다",
+          "detail": "진지하게"
+        }
+      },
+      {
+        "icon": "🗣️",
+        "proc": {
+          "title": "발성 체험 · 자기 탐색",
+          "desc": "발성심리학 기반으로 직접 발성을 체험하고 나의 목소리를 통해 자신을 돌아봅니다."
+        },
+        "xp": {
+          "action": "목소리로 나를 표현하고 발견합니다",
+          "detail": "진솔하게"
+        }
+      },
+      {
+        "icon": "🎶",
+        "proc": {
+          "title": "마무리 퍼포먼스 공연",
+          "desc": "가수와 함께하는 마무리 공연으로 활동을 감동적으로 마무리합니다."
+        },
+        "xp": {
+          "action": "스스로를 응원하며 마무리합니다",
+          "detail": "따뜻하게"
+        }
+      }
+    ],
+    "gallery": {
+      "images": [
+        {
+          "src": "/assets/images/programs/career/touching-voice/터칭보이스사진1.png",
+          "alt": "터칭보이스 활동 1",
+          "caption": "강연 시작"
+        },
+        {
+          "src": "/assets/images/programs/career/touching-voice/터칭보이스사진2.png",
+          "alt": "터칭보이스 활동 2",
+          "caption": "음악과 이야기"
+        },
+        {
+          "src": "/assets/images/programs/career/touching-voice/터칭보이스사진3.png",
+          "alt": "터칭보이스 활동 3",
+          "caption": "자기 탐색"
+        },
+        {
+          "src": "/assets/images/programs/career/touching-voice/터칭보이스사진4.png",
+          "alt": "터칭보이스 활동 4",
+          "caption": "마무리 퍼포먼스"
+        }
+      ]
+    },
+    "heroImages": [
+      {
+        "src": "/assets/images/programs/career/touching-voice/터칭보이스사진1.png",
+        "alt": "터칭보이스 콘서트형 강연 장면"
+      }
+    ],
+    "_card": {
+      "카드썸네일": "/assets/images/programs/career/touching-voice.webp",
+      "카드썸네일설명": "터칭보이스",
+      "카드배지": "진로 01",
+      "카드배지색": "",
+      "카드제목": "터칭보이스",
+      "카드설명": "음악과 이야기, 참여 활동을 통해 자신의 감정과 성향을 이해하고 진로 방향을 탐색하는 진로콘서트형 프로그램.",
+      "카드태그": "자기이해, 진로콘서트",
+      "준비중": ""
+    },
+    "_order": 5
+  },
+  "career/talkshow": {
+    "pageTitle": "진로 토크쇼 | 진로교육·체험 · 아이덴티치",
+    "pageDesc": "다양한 직업인의 이야기를 토크쇼 형식으로 듣는 진로 탐색 프로그램.",
+    "canonicalUrl": "https://identeach.co.kr/career/talkshow",
+    "navActive": "/career",
+    "crumbs": [
+      {
+        "label": "홈",
+        "href": "/"
+      },
+      {
+        "label": "진로교육·체험",
+        "href": "/career"
+      },
+      {
+        "label": "진로 토크쇼",
+        "href": null
+      }
+    ],
+    "category": "진로교육·체험",
+    "title": "진로 토크쇼",
+    "tagline": "다양한 직업인의 이야기를 토크쇼 형식으로 듣는 진로 탐색 프로그램",
+    "description": "직업 명칭이 아닌 일하는 사람의 이야기를 듣습니다.\n다양한 직업인과의 토크쇼로 진로를 현실감 있게 탐색합니다.",
+    "info": [
+      {
+        "label": "대상",
+        "value": "중학교 ~ 고등학교"
+      },
+      {
+        "label": "시간",
+        "value": "1~2교시"
+      },
+      {
+        "label": "인원",
+        "value": "학급 ~ 학년 단위"
+      },
+      {
+        "label": "장소",
+        "value": "강당 · 강의실"
+      }
+    ],
+    "activity": {
+      "image": {
+        "src": "",
+        "alt": ""
+      },
+      "headline": "직업인의 이야기로\n진로를 현실감 있게 봅니다",
+      "bullets": [
+        "실제 직업인이 강연자로 참여해 직접 이야기를 나눕니다",
+        "토크쇼 형식으로 편안하게 진로를 탐색합니다",
+        "Q&A를 통해 궁금한 것을 직접 질문할 수 있습니다"
+      ]
+    },
+    "keywords": [
+      {
+        "label": "직업 탐색",
+        "type": "a"
+      },
+      {
+        "label": "진로 탐구",
+        "type": "a"
+      },
+      {
+        "label": "강연 연계",
+        "type": "b"
+      },
+      {
+        "label": "자유학기 활동",
+        "type": "b"
+      },
+      {
+        "label": "진로캠프",
+        "type": "b"
+      },
+      {
+        "label": "학년 전체 활동",
+        "type": "b"
+      },
+      {
+        "label": "자기이해",
+        "type": "c"
+      },
+      {
+        "label": "미래 설계",
+        "type": "c"
+      }
+    ],
+    "studentExperiences": [
+      {
+        "action": "직업인의 실제\n이야기를 듣습니다",
+        "detail": "생생하게"
+      },
+      {
+        "action": "궁금한 것을\n직접 질문합니다",
+        "detail": "솔직하게"
+      },
+      {
+        "action": "다양한 삶의\n방식을 만납니다",
+        "detail": "다채롭게"
+      },
+      {
+        "action": "관심 분야를\n확인합니다",
+        "detail": "나를 알아가며"
+      },
+      {
+        "action": "진로의 시야를\n넓힙니다",
+        "detail": "현실감 있게"
+      }
+    ],
+    "process": {
+      "steps": [
+        {
+          "icon": "📝",
+          "title": "사전 준비",
+          "desc": "직업 탐색·질문 준비"
+        },
+        {
+          "icon": "👤",
+          "title": "강연자 소개",
+          "desc": "직업인 배경 소개"
+        },
+        {
+          "icon": "🎤",
+          "title": "토크쇼 진행",
+          "desc": "이야기·경험 나눔"
+        },
+        {
+          "icon": "❓",
+          "title": "Q&A",
+          "desc": "학생 질문·답변"
+        },
+        {
+          "icon": "💭",
+          "title": "소감 나누기",
+          "desc": "느낀 점 정리·공유"
+        }
+      ]
+    },
+    "structuresSection": {
+      "label": "강연자 유형 예시",
+      "title": "강연자 유형 예시",
+      "items": [
+        {
+          "name": "창작·예술 분야",
+          "type": "aspect",
+          "desc": "디자이너, 작가, 음악인 등 창의적 직업인입니다."
+        },
+        {
+          "name": "기술·IT 분야",
+          "type": "aspect",
+          "desc": "개발자, 데이터 분석가 등 기술 직업인입니다."
+        },
+        {
+          "name": "사회·서비스 분야",
+          "type": "aspect",
+          "desc": "교사, 사회복지사, 의료인 등 서비스 직업인입니다."
+        }
+      ]
+    },
+    "gallery": {
+      "images": [
+        {
+          "src": "",
+          "alt": "진로 토크쇼 활동 장면 1",
+          "caption": "토크쇼 진행"
+        },
+        {
+          "src": "",
+          "alt": "진로 토크쇼 활동 장면 2",
+          "caption": "Q&A 시간"
+        },
+        {
+          "src": "",
+          "alt": "진로 토크쇼 활동 장면 3",
+          "caption": "강연자 이야기"
+        },
+        {
+          "src": "",
+          "alt": "진로 토크쇼 활동 장면 4",
+          "caption": "소감 나누기"
+        }
+      ]
+    },
+    "heroImages": [
+      {
+        "src": "/assets/images/programs/career/career-talkshow.webp",
+        "alt": "진로 토크쇼 강연 장면"
+      }
+    ],
+    "_card": {
+      "카드썸네일": "/assets/images/programs/career/career-talkshow.webp",
+      "카드썸네일설명": "진로 토크쇼",
+      "카드배지": "진로 03",
+      "카드배지색": "",
+      "카드제목": "진로 토크쇼",
+      "카드설명": "다양한 직업인의 이야기를 토크쇼 형식으로 듣는 진로 탐색 프로그램.",
+      "카드태그": "직업탐색, 진로탐구",
+      "준비중": ""
+    },
+    "_order": 7
+  },
+  "career/job-lab": {
+    "pageTitle": "미래직업연구소 | 진로교육·체험 · 아이덴티치",
+    "pageDesc": "AI 시대의 변화하는 직업을 직접 탐구하는 진로 강연 프로그램.",
+    "canonicalUrl": "https://identeach.co.kr/career/job-lab",
+    "navActive": "/career",
+    "crumbs": [
+      {
+        "label": "홈",
+        "href": "/"
+      },
+      {
+        "label": "진로교육·체험",
+        "href": "/career"
+      },
+      {
+        "label": "미래직업연구소",
+        "href": null
+      }
+    ],
+    "category": "진로교육·체험",
+    "title": "미래직업연구소",
+    "tagline": "AI 시대 미래직업 탐색교육",
+    "description": "사라지는 직업, 새로 생기는 직업.\n변화하는 세계에서 자신의 방향을 스스로 탐구합니다.",
+    "info": [
+      {
+        "label": "대상",
+        "value": "중학교 ~ 고등학교"
+      },
+      {
+        "label": "시간",
+        "value": "1~2교시"
+      },
+      {
+        "label": "인원",
+        "value": "학급 ~ 학년 단위"
+      },
+      {
+        "label": "장소",
+        "value": "강당 · 강의실"
+      }
+    ],
+    "activity": {
+      "image": {
+        "src": "/assets/images/programs/career/job-lab.png",
+        "alt": "미래직업연구소 강연 활동"
+      },
+      "headline": "직업의 변화를 이해하고\n나만의 방향을 찾습니다",
+      "bullets": [
+        "AI 시대에 사라지는 직업과 새로 생기는 직업을 탐구합니다",
+        "나의 강점과 관심을 미래 직업과 연결해봅니다",
+        "나만의 미래 직업을 직접 설계하고 발표합니다"
+      ]
+    },
+    "keywords": [
+      {
+        "label": "미래직업 탐색",
+        "type": "a"
+      },
+      {
+        "label": "AI 시대 진로",
+        "type": "a"
+      },
+      {
+        "label": "직업 트렌드",
+        "type": "b"
+      },
+      {
+        "label": "자유학기 연계",
+        "type": "b"
+      },
+      {
+        "label": "진로캠프",
+        "type": "b"
+      },
+      {
+        "label": "미래 설계",
+        "type": "b"
+      },
+      {
+        "label": "자기이해",
+        "type": "c"
+      },
+      {
+        "label": "직업 변화",
+        "type": "c"
+      }
+    ],
+    "studentExperiences": [
+      {
+        "action": "미래에 사라질 직업을\n알아봅니다",
+        "detail": "트렌드 이해"
+      },
+      {
+        "action": "새롭게 생길 직업을\n탐구합니다",
+        "detail": "가능성 발견"
+      },
+      {
+        "action": "나의 강점과\n연결해봅니다",
+        "detail": "자기이해"
+      },
+      {
+        "action": "미래 직업을\n직접 설계합니다",
+        "detail": "창의적으로"
+      },
+      {
+        "action": "생각을 발표하고\n나눕니다",
+        "detail": "이야기 나누며"
+      }
+    ],
+    "process": {
+      "steps": [
+        {
+          "icon": "🔭",
+          "title": "직업 변화 이해",
+          "desc": "AI·미래 트렌드 파악"
+        },
+        {
+          "icon": "🔍",
+          "title": "직업 탐구",
+          "desc": "사라지는·생기는 직업"
+        },
+        {
+          "icon": "⚡",
+          "title": "강점 연결",
+          "desc": "나의 특성 매핑"
+        },
+        {
+          "icon": "✏️",
+          "title": "직업 설계",
+          "desc": "나만의 미래 직업"
+        },
+        {
+          "icon": "🙋",
+          "title": "발표·공유",
+          "desc": "결과물 나누기"
+        }
+      ]
+    },
+    "structuresSection": {
+      "label": "탐구 주제 예시",
+      "title": "탐구 주제 예시",
+      "items": [
+        {
+          "name": "사라지는 직업",
+          "type": "aspect",
+          "desc": "AI 자동화로 변화하는 직업군을 탐구합니다."
+        },
+        {
+          "name": "새로 생기는 직업",
+          "type": "aspect",
+          "desc": "기술 발전으로 등장하는 신규 직업을 탐구합니다."
+        },
+        {
+          "name": "나만의 미래 직업",
+          "type": "aspect",
+          "desc": "나의 강점과 관심을 바탕으로 직업을 설계합니다."
+        }
+      ]
+    },
+    "gallery": {
+      "images": [
+        {
+          "src": "/assets/images/programs/career/job-lab.png",
+          "alt": "미래직업연구소 활동 1",
+          "caption": "직업 변화 탐구"
+        },
+        {
+          "src": "/assets/images/programs/career/job-lab.png",
+          "alt": "미래직업연구소 활동 2",
+          "caption": "강점 연결"
+        },
+        {
+          "src": "/assets/images/programs/career/job-lab.png",
+          "alt": "미래직업연구소 활동 3",
+          "caption": "직업 설계"
+        },
+        {
+          "src": "/assets/images/programs/career/job-lab.png",
+          "alt": "미래직업연구소 활동 4",
+          "caption": "결과 발표"
+        }
+      ]
+    },
+    "heroImages": [
+      {
+        "src": "/assets/images/programs/career/job-lab.png",
+        "alt": "미래직업연구소 강연 장면"
+      }
+    ],
+    "_card": {
+      "카드썸네일": "/assets/images/programs/career/job-lab.webp",
+      "카드썸네일설명": "미래직업연구소",
+      "카드배지": "진로 02",
+      "카드배지색": "",
+      "카드제목": "미래직업연구소",
+      "카드설명": "AI 시대의 직업 변화와 다양한 직무를 탐구하고 나만의 미래 방향을 설계하는 진로교육 프로그램.",
+      "카드태그": "직업탐색, 미래교육",
+      "준비중": "O"
+    },
+    "_order": 6
+  },
+  "career/ceo-talk": {
+    "pageTitle": "내 인생의 CEO | 진로교육·체험 · 아이덴티치",
+    "pageDesc": "창업가의 이야기로 내 삶의 주인이 되는 힘을 키우는 진로 강연 프로그램.",
+    "canonicalUrl": "https://identeach.co.kr/career/ceo-talk",
+    "navActive": "/career",
+    "crumbs": [
+      {
+        "label": "홈",
+        "href": "/"
+      },
+      {
+        "label": "진로교육·체험",
+        "href": "/career"
+      },
+      {
+        "label": "내 인생의 CEO",
+        "href": null
+      }
+    ],
+    "category": "진로교육·체험",
+    "title": "내 인생의 CEO",
+    "tagline": "창업가의 이야기로 내 삶의 주인이 되는 힘을 키우는 진로 강연",
+    "description": "창업가의 이야기를 통해 내 인생을 돌아봅니다.\n내 인생의 대표는 나 자신임을 깨닫고\n주체적으로 선택하는 사람이 되는 강연입니다.",
+    "info": [
+      {
+        "label": "대상",
+        "value": "중학교 ~ 고등학교"
+      },
+      {
+        "label": "시간",
+        "value": "1~2교시"
+      },
+      {
+        "label": "인원",
+        "value": "학급 ~ 학년 단위"
+      },
+      {
+        "label": "장소",
+        "value": "강당 · 강의실"
+      }
+    ],
+    "activity": {
+      "image": {
+        "src": "/assets/images/programs/career/ceo-life-vertical.png",
+        "alt": "내 인생의 CEO 강연 활동"
+      },
+      "headline": "내 인생의 대표는\n나 자신입니다",
+      "bullets": [
+        "창업가가 직접 자신의 선택과 과정을 이야기합니다",
+        "내 인생의 주인이 나임을 깨닫는 시간을 갖습니다",
+        "주체적으로 선택하고 리더십을 키우는 방법을 배웁니다"
+      ]
+    },
+    "keywords": [
+      {
+        "label": "주체성",
+        "type": "a"
+      },
+      {
+        "label": "리더십",
+        "type": "a"
+      },
+      {
+        "label": "자기결정",
+        "type": "a"
+      },
+      {
+        "label": "창업가 정신",
+        "type": "b"
+      },
+      {
+        "label": "진로캠프",
+        "type": "b"
+      },
+      {
+        "label": "자기이해",
+        "type": "b"
+      },
+      {
+        "label": "자유학기 연계",
+        "type": "c"
+      },
+      {
+        "label": "학년 전체 활동",
+        "type": "c"
+      }
+    ],
+    "studentExperiences": [
+      {
+        "action": "창업가의 선택과\n과정을 듣습니다",
+        "detail": "생생하게"
+      },
+      {
+        "action": "내 인생의 주인이\n누구인지 생각합니다",
+        "detail": "진지하게"
+      },
+      {
+        "action": "스스로 결정하는\n연습을 합니다",
+        "detail": "주체적으로"
+      },
+      {
+        "action": "리더십을\n나에게 적용합니다",
+        "detail": "현실감 있게"
+      },
+      {
+        "action": "내 인생의 방향을\n스케치합니다",
+        "detail": "직접 써보며"
+      }
+    ],
+    "process": {
+      "steps": [
+        {
+          "icon": "👔",
+          "title": "강연자 소개",
+          "desc": "창업가 배경·가치관"
+        },
+        {
+          "icon": "🚀",
+          "title": "창업 이야기",
+          "desc": "선택·실패·성장 과정"
+        },
+        {
+          "icon": "✏️",
+          "title": "나에게 적용",
+          "desc": "내 인생 CEO 워크시트"
+        },
+        {
+          "icon": "❓",
+          "title": "질의응답",
+          "desc": "궁금한 것 직접 질문"
+        },
+        {
+          "icon": "💭",
+          "title": "소감 공유",
+          "desc": "결심·다짐 나누기"
+        }
+      ]
+    },
+    "structuresSection": {
+      "label": "핵심 메시지",
+      "title": "핵심 메시지",
+      "items": [
+        {
+          "name": "내가 결정의 주인",
+          "type": "aspect",
+          "desc": "내 삶의 선택은 나만이 할 수 있습니다."
+        },
+        {
+          "name": "실패도 내 이야기",
+          "type": "aspect",
+          "desc": "실패는 경험이고, 그것도 내 것입니다."
+        },
+        {
+          "name": "지금이 시작점",
+          "type": "aspect",
+          "desc": "지금 이 순간이 가장 좋은 시작입니다."
+        }
+      ]
+    },
+    "gallery": {
+      "images": [
+        {
+          "src": "/assets/images/programs/career/ceo-life.png",
+          "alt": "내 인생의 CEO 강연 1",
+          "caption": "강연 시작"
+        },
+        {
+          "src": "/assets/images/programs/career/ceo-life-vertical.png",
+          "alt": "내 인생의 CEO 강연 2",
+          "caption": "창업 이야기"
+        },
+        {
+          "src": "/assets/images/programs/career/ceo-life.png",
+          "alt": "내 인생의 CEO 강연 3",
+          "caption": "나에게 적용"
+        },
+        {
+          "src": "/assets/images/programs/career/ceo-life-vertical.png",
+          "alt": "내 인생의 CEO 강연 4",
+          "caption": "소감 공유"
+        }
+      ]
+    },
+    "heroImages": [
+      {
+        "src": "/assets/images/programs/career/ceo-life.png",
+        "alt": "내 인생의 CEO 강연 장면"
+      }
+    ],
+    "_card": {
+      "카드썸네일": "/assets/images/programs/career/ceo-life.webp",
+      "카드썸네일설명": "내 인생의 CEO",
+      "카드배지": "진로 04",
+      "카드배지색": "",
+      "카드제목": "내 인생의 CEO",
+      "카드설명": "창업가의 이야기로 내 삶의 주인이 되는 힘을 키우는 진로 강연 프로그램.",
+      "카드태그": "주체성, 리더십",
+      "준비중": ""
+    },
+    "_order": 8
+  }
+}

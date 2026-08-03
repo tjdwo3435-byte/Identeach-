@@ -16,6 +16,15 @@ update-img-refs.js
 mosaic_faces.py
 face_detection_yunet.onnx
 
+# 프로그램 입력 시스템 — 매번 새로 만들어지는 중간 파일들
+# (git 은 줄 끝 주석을 못 읽으므로 주석은 따로 줄을 잡는다)
+# 미리보기 결과
+_system/_build/
+# 시트에서 받아 푼 탭별 원본
+_system/data/tabs/
+# 시트에서 받아온 파일
+_system/data/_받아온시트.xlsx
+
 # macOS
 .DS_Store
 

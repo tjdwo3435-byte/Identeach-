@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title id="pg-title">자기이해 진로교육 터칭보이스 | 아이덴티치</title>
-  <meta id="pg-desc" name="description" content="음악과 이야기, 참여 활동을 통해 자신의 감정과 성향을 이해하고 진로 방향을 탐색하는 찾아가는 진로콘서트입니다.">
-  <link id="pg-canonical" rel="canonical" href="https://identeach.co.kr/career/touching-voice">
-  <style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title id="pg-title">자기이해 진로교육 터칭보이스 | 아이덴티치</title>
+<meta id="pg-desc" name="description" content="음악과 이야기, 참여 활동을 통해 자신의 감정과 성향을 이해하고 진로 방향을 탐색하는 찾아가는 진로콘서트입니다.">
+<link id="pg-canonical" rel="canonical" href="https://identeach.co.kr/career/touching-voice">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="아이덴티치">
+<meta property="og:title" content="자기이해 진로교육 터칭보이스 | 아이덴티치">
+<meta property="og:description" content="음악과 이야기, 참여 활동을 통해 자신의 감정과 성향을 이해하고 진로 방향을 탐색하는 찾아가는 진로콘서트입니다.">
+<meta property="og:url" content="https://identeach.co.kr/career/touching-voice">
+<meta property="og:image" content="https://identeach.co.kr/assets/images/programs/career/touching-voice/터칭보이스사진1.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<style>
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@1.3.9/dist/web/static/pretendard.css');
 :root{--blue:#1F2392;--yellow:#FFD84D;--navy:#14142B;--gray:#6F7287;--warm:#F7F7FA;--white:#fff;--border:#E8E8F0;--maxw:1140px;--pad-x:clamp(18px,5vw,40px);--rc:14px}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -23,7 +32,13 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdr
 .menu-toggle,.menu-btn{display:none}.menu-btn{font-size:22px;background:none;border:none;cursor:pointer;color:var(--navy);padding:4px}
 @media(max-width:860px){.menu-btn{display:block;order:3}.nav-cta{order:2}.nav-links{position:absolute;top:72px;left:0;right:0;flex-direction:column;align-items:flex-start;gap:0;background:#fff;border-radius:24px;box-shadow:0 8px 28px rgba(0,0,0,.12);max-height:0;overflow:hidden;transition:max-height .28s;font-size:16px;z-index:200}.nav-links a{width:100%;padding:14px clamp(20px,5vw,24px);border-radius:0;border-top:1px solid var(--border)}.menu-toggle:checked~.nav-links{max-height:360px}}
 .crumb-bar{background:var(--white);border-bottom:1px solid var(--border);padding:11px 0}.crumb{font-size:12px;color:var(--gray);display:flex;align-items:center;gap:5px}.crumb a:hover{color:var(--blue)}.crumb-sep{opacity:.35}
-.hero-banner{width:100%;overflow:hidden;background:var(--navy);border-bottom:1px solid var(--border)}.hero-banner img{width:100%;display:block;aspect-ratio:16/7;object-fit:cover;max-height:520px}
+.hero-slider{width:100%;overflow:hidden;background:var(--navy);border-bottom:1px solid var(--border);position:relative}
+.hs-track{display:flex;transition:transform .75s cubic-bezier(.4,0,.2,1);will-change:transform}
+.hs-slide{flex-shrink:0;width:100%}
+.hs-slide img{width:100%;display:block;aspect-ratio:16/7;object-fit:cover;max-height:520px}
+.hs-dots{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:2}
+.hs-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.45);border:none;cursor:pointer;padding:0;transition:background .25s,transform .25s}
+.hs-dot.active{background:#fff;transform:scale(1.3)}
 .hero-banner-empty{aspect-ratio:16/7;max-height:520px;background:linear-gradient(135deg,#1a1f5e 0%,#2d3494 100%);display:flex;align-items:center;justify-content:center;font-size:14px;color:rgba(255,255,255,.4)}
 .hero-info{background:var(--white);padding:clamp(28px,4vw,44px) 0 clamp(32px,4vw,48px);border-bottom:3px solid var(--border)}
 .hero-tagline{display:inline-flex;align-items:center;gap:6px;background:var(--yellow);color:var(--navy);font-size:12px;font-weight:800;letter-spacing:.05em;padding:5px 14px;border-radius:999px;margin-bottom:14px}
@@ -104,7 +119,7 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdr
 .flow-item{display:grid;grid-template-columns:72px 1fr;gap:0;position:relative;padding-bottom:28px}.flow-item:last-child{padding-bottom:0}
 .flow-num-wrap{width:68px;height:68px;border-radius:50%;background:var(--white);border:2.5px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;z-index:1;box-shadow:0 3px 14px rgba(20,20,43,.09)}
 .flow-emoji{font-size:26px;line-height:1}
-.flow-right{padding:10px 0 0 22px;display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:start}
+.flow-right{padding:10px 0 0 22px;display:grid;grid-template-columns:1fr;gap:10px;align-items:start}
 .flow-proc{background:var(--white);border-radius:12px;padding:14px 16px;border:1px solid var(--border)}
 .flow-proc-step{font-size:10px;font-weight:700;letter-spacing:.08em;color:var(--blue);margin-bottom:4px;text-transform:uppercase}
 .flow-proc-title{font-size:14px;font-weight:800;color:var(--navy);margin-bottom:3px}
@@ -114,7 +129,7 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdr
 .flow-xp-action{font-size:13px;font-weight:700;color:var(--navy);line-height:1.45;margin-bottom:3px}
 .flow-xp-detail{font-size:12px;color:var(--gray)}
 @media(max-width:700px){.flow-right{grid-template-columns:1fr;gap:8px}.flow-timeline::before{left:28px}.flow-num-wrap{width:56px;height:56px}.flow-item{grid-template-columns:58px 1fr}}
-  </style>
+</style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"https://identeach.co.kr/"},{"@type":"ListItem","position":2,"name":"진로교육·체험","item":"https://identeach.co.kr/career"},{"@type":"ListItem","position":3,"name":"터칭보이스","item":"https://identeach.co.kr/career/touching-voice"}]}
 </script>
@@ -131,8 +146,8 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdr
 </header>
 <div class="crumb-bar"><div class="wrap"><nav class="crumb" id="pg-crumb"></nav></div></div>
 <main id="pg-root"><div class="hero-info"><div class="wrap">
-  <h1 class="hero-h1">음악과 이야기로 만나는 자기이해 진로교육</h1>
-  <p class="hero-sub">터칭보이스는 음악과 이야기, 학생 참여 활동을 통해 자신의 감정과 성향을 이해하고 진로 방향을 탐색하는 진로콘서트형 교육입니다.</p>
+  <h1 class="hero-h1">터칭보이스</h1>
+  <p class="hero-sub">전문 가수의 음악 콘서트와 '발성심리학'을 기반으로 '노래'와 '음성'을 통해 나를 돌아보는 특별한 시간을 갖습니다!</p>
 </div></div></main>
 <footer class="site-footer">
   <div class="wrap">
@@ -177,72 +192,166 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdr
 </footer>
 <script>
 const programData = {
-  pageTitle:"자기이해 진로교육 터칭보이스 | 아이덴티치",
-  pageDesc:"음악과 이야기, 참여 활동을 통해 자신의 감정과 성향을 이해하고 진로 방향을 탐색하는 찾아가는 진로콘서트입니다.",
-  canonicalUrl:"https://identeach.co.kr/career/touching-voice",
-  navActive:"/career",
-  crumbs:[{label:"홈",href:"/"},{label:"진로교육·체험",href:"/career"},{label:"터칭보이스",href:null}],
-  heroImage:{src:"/assets/images/programs/career/touching-voice/터칭보이스사진1.png",alt:"터칭보이스 콘서트형 강연 장면"},
-  category:"진로교육·체험",
-  title:"터칭보이스",
-  tagline:"찾아가는 자기이해 진로콘서트",
-  description:"전문 가수의 음악 콘서트와 '발성심리학'을 기반으로\n'노래'와 '음성'을 통해 나를 돌아보는 특별한 시간을 갖습니다!",
-  info:[
-    {label:"대상",value:"초등 ~ 고등학교"},
-    {label:"시간",value:"1~2교시"},
-    {label:"인원",value:"학급 ~ 학년 단위"},
-    {label:"장소",value:"강당 · 강의실"}
+  "pageTitle": "자기이해 진로교육 터칭보이스 | 아이덴티치",
+  "pageDesc": "음악과 이야기, 참여 활동을 통해 자신의 감정과 성향을 이해하고 진로 방향을 탐색하는 찾아가는 진로콘서트입니다.",
+  "canonicalUrl": "https://identeach.co.kr/career/touching-voice",
+  "navActive": "/career",
+  "crumbs": [
+    {
+      "label": "홈",
+      "href": "/"
+    },
+    {
+      "label": "진로교육·체험",
+      "href": "/career"
+    },
+    {
+      "label": "터칭보이스",
+      "href": null
+    }
   ],
-  activity:{
-    image:{src:"/assets/images/programs/career/touching-voice/터칭보이스사진2.png",alt:"터칭보이스 강연 활동 장면"},
-    headline:"전문 가수의 음악 콘서트와\n'발성심리학'을 기반으로",
-    bullets:[
+  "category": "진로교육·체험",
+  "title": "터칭보이스",
+  "tagline": "찾아가는 자기이해 진로콘서트",
+  "description": "전문 가수의 음악 콘서트와 '발성심리학'을 기반으로\n'노래'와 '음성'을 통해 나를 돌아보는 특별한 시간을 갖습니다!",
+  "heroImages": [
+    {
+      "src": "/assets/images/programs/career/touching-voice/터칭보이스사진1.png",
+      "alt": "터칭보이스 콘서트형 강연 장면"
+    }
+  ],
+  "info": [
+    {
+      "label": "대상",
+      "value": "초등 ~ 고등학교"
+    },
+    {
+      "label": "시간",
+      "value": "1~2교시"
+    },
+    {
+      "label": "인원",
+      "value": "학급 ~ 학년 단위"
+    },
+    {
+      "label": "장소",
+      "value": "강당 · 강의실"
+    }
+  ],
+  "activity": {
+    "image": {
+      "src": "/assets/images/programs/career/touching-voice/터칭보이스사진2.png",
+      "alt": "터칭보이스 강연 활동 장면"
+    },
+    "headline": "전문 가수의 음악 콘서트와\n'발성심리학'을 기반으로",
+    "bullets": [
       "'노래'와 '음성'을 통해 나를 돌아보는 특별한 시간을 갖습니다",
       "단순한 콘서트가 아닌, 실제 발성법을 배우며 자존감 향상에 도움이 되는 활동입니다",
       "심리·교육적 접근으로 목소리를 통해 나다움을 발견합니다"
     ]
   },
-  useCases:[
-    {rec:true,  icon:"🎤", title:"콘서트형 강연",  desc:"전문 가수의 라이브 퍼포먼스와 강연이 결합된, 몰입감 높은 특별 수업입니다."},
-    {rec:false, icon:"🧭", title:"진로캠프",        desc:"자신의 목소리와 감정을 탐색하며 진로 방향을 생각해보는 캠프 연계 활동입니다."},
-    {rec:false, icon:"🎨", title:"문화예술 함양",   desc:"음악·예술을 직접 경험하며 감수성과 표현력을 기르는 문화예술 교육입니다."},
-    {rec:false, icon:"🪞", title:"자기이해 탐색",   desc:"발성심리학 기반으로 목소리를 통해 자신의 감정과 성향을 이해합니다."},
-    {rec:false, icon:"💛", title:"자존감 교육",     desc:"실제 발성법을 배우며 자기 표현력과 자존감을 자연스럽게 높입니다."}
-  ],
-  flowSteps:[
+  "useCases": [
     {
-      icon:"🎤",
-      proc:{title:"아이스브레이킹", desc:"사회자가 등장해 분위기를 풀어주는 아이스브레이킹으로 마음을 엽니다."},
-      xp:{action:"낯선 분위기가 편안해집니다", detail:"자연스럽게"}
+      "icon": "🎤",
+      "rec": true,
+      "title": "콘서트형 강연",
+      "desc": "전문 가수의 라이브 퍼포먼스와 강연이 결합된, 몰입감 높은 특별 수업입니다."
     },
     {
-      icon:"🎵",
-      proc:{title:"음악 콘서트", desc:"전문 가수가 직접 무대에 올라 라이브 음악 공연을 펼칩니다."},
-      xp:{action:"음악에 빠져들며 감동을 느낍니다", detail:"감성적으로"}
+      "icon": "🧭",
+      "rec": false,
+      "title": "진로캠프",
+      "desc": "자신의 목소리와 감정을 탐색하며 진로 방향을 생각해보는 캠프 연계 활동입니다."
     },
     {
-      icon:"🌟",
-      proc:{title:"진로 콘서트", desc:"가수가 자신의 진로 이야기를 음악과 함께 강연 형식으로 나눕니다."},
-      xp:{action:"꿈을 향한 이야기에 공감합니다", detail:"진지하게"}
+      "icon": "🎨",
+      "rec": false,
+      "title": "문화예술 함양",
+      "desc": "음악·예술을 직접 경험하며 감수성과 표현력을 기르는 문화예술 교육입니다."
     },
     {
-      icon:"🗣️",
-      proc:{title:"발성 체험 · 자기 탐색", desc:"발성심리학 기반으로 직접 발성을 체험하고 나의 목소리를 통해 자신을 돌아봅니다."},
-      xp:{action:"목소리로 나를 표현하고 발견합니다", detail:"진솔하게"}
+      "icon": "🪞",
+      "rec": false,
+      "title": "자기이해 탐색",
+      "desc": "발성심리학 기반으로 목소리를 통해 자신의 감정과 성향을 이해합니다."
     },
     {
-      icon:"🎶",
-      proc:{title:"마무리 퍼포먼스 공연", desc:"가수와 함께하는 마무리 공연으로 활동을 감동적으로 마무리합니다."},
-      xp:{action:"스스로를 응원하며 마무리합니다", detail:"따뜻하게"}
+      "icon": "💛",
+      "rec": false,
+      "title": "자존감 교육",
+      "desc": "실제 발성법을 배우며 자기 표현력과 자존감을 자연스럽게 높입니다."
     }
   ],
-  gallery:{
-    images:[
-      {src:"/assets/images/programs/career/touching-voice/터칭보이스사진1.png",alt:"터칭보이스 활동 1",caption:"강연 시작"},
-      {src:"/assets/images/programs/career/touching-voice/터칭보이스사진2.png",alt:"터칭보이스 활동 2",caption:"음악과 이야기"},
-      {src:"/assets/images/programs/career/touching-voice/터칭보이스사진3.png",alt:"터칭보이스 활동 3",caption:"자기 탐색"},
-      {src:"/assets/images/programs/career/touching-voice/터칭보이스사진4.png",alt:"터칭보이스 활동 4",caption:"마무리 퍼포먼스"}
+  "flowSteps": [
+    {
+      "icon": "🎤",
+      "proc": {
+        "title": "아이스브레이킹",
+        "desc": "사회자가 등장해 분위기를 풀어주는 아이스브레이킹으로 마음을 엽니다."
+      }
+    },
+    {
+      "icon": "🎵",
+      "proc": {
+        "title": "음악 콘서트",
+        "desc": "전문 가수가 직접 무대에 올라 라이브 음악 공연을 펼칩니다."
+      }
+    },
+    {
+      "icon": "🌟",
+      "proc": {
+        "title": "진로 콘서트",
+        "desc": "가수가 자신의 진로 이야기를 음악과 함께 강연 형식으로 나눕니다."
+      }
+    },
+    {
+      "icon": "🗣️",
+      "proc": {
+        "title": "발성 체험 · 자기 탐색",
+        "desc": "발성심리학 기반으로 직접 발성을 체험하고 나의 목소리를 통해 자신을 돌아봅니다."
+      }
+    },
+    {
+      "icon": "🎶",
+      "proc": {
+        "title": "마무리 퍼포먼스 공연",
+        "desc": "가수와 함께하는 마무리 공연으로 활동을 감동적으로 마무리합니다."
+      }
+    }
+  ],
+  "gallery": {
+    "images": [
+      {
+        "src": "/assets/images/programs/career/touching-voice/터칭보이스사진1.png",
+        "alt": "터칭보이스 활동 1",
+        "caption": "강연 시작"
+      },
+      {
+        "src": "/assets/images/programs/career/touching-voice/터칭보이스사진2.png",
+        "alt": "터칭보이스 활동 2",
+        "caption": "음악과 이야기"
+      },
+      {
+        "src": "/assets/images/programs/career/touching-voice/터칭보이스사진3.png",
+        "alt": "터칭보이스 활동 3",
+        "caption": "자기 탐색"
+      },
+      {
+        "src": "/assets/images/programs/career/touching-voice/터칭보이스사진4.png",
+        "alt": "터칭보이스 활동 4",
+        "caption": "마무리 퍼포먼스"
+      }
     ]
+  },
+  "_card": {
+    "카드썸네일": "/assets/images/programs/career/touching-voice.webp",
+    "카드썸네일설명": "터칭보이스",
+    "카드배지": "진로 01",
+    "카드배지색": "",
+    "카드제목": "터칭보이스",
+    "카드설명": "음악과 이야기, 참여 활동을 통해 자신의 감정과 성향을 이해하고 진로 방향을 탐색하는 진로콘서트형 프로그램.",
+    "카드태그": "자기이해, 진로콘서트",
+    "준비중": ""
   }
 };
 
@@ -252,20 +361,22 @@ function dp(n,yellow){const c=yellow?'dp dp-y':'dp';return Array.from({length:n}
 function structVis(type,i){
   if(type==='line')return`<div class="sv-row">${dp(10)}</div>`;
   if(type==='corner')return`<div class="sv-col">${dp(3)}<div class="sv-row">${dp(7)}</div></div>`;
-  if(type==='zones')return`<div style="display:flex;flex-direction:column;gap:8px;align-items:center"><div style="display:flex;gap:14px"><div style="text-align:center"><span style="font-size:9px;color:var(--gray);font-weight:700">팀A</span><br><div class="sv-row">${dp(3)}</div></div><div style="text-align:center"><span style="font-size:9px;color:var(--gray);font-weight:700">팀B</span><br><div class="sv-row">${dp(3)}</div></div><div style="text-align:center"><span style="font-size:9px;color:var(--gray);font-weight:700">팀C</span><br><div class="sv-row">${dp(3)}</div></div></div><div style="font-size:10px;color:var(--gray)">↓ 연결</div><div class="sv-row">${dp(7,true)}</div></div>`;
+  if(type==='zones')return`<div style="display:flex;flex-direction:column;gap:8px;align-items:center"><div style="display:flex;gap:14px;align-items:flex-end"><div style="display:flex;flex-direction:column;gap:2px;align-items:center"><span style="font-size:9px;color:var(--gray);font-weight:700;margin-bottom:3px">팀A</span><div class="sv-row">${dp(3)}</div></div><div style="display:flex;flex-direction:column;gap:2px;align-items:center"><span style="font-size:9px;color:var(--gray);font-weight:700;margin-bottom:3px">팀B</span><div class="sv-row">${dp(3)}</div></div><div style="display:flex;flex-direction:column;gap:2px;align-items:center"><span style="font-size:9px;color:var(--gray);font-weight:700;margin-bottom:3px">팀C</span><div class="sv-row">${dp(3)}</div></div></div><div style="font-size:10px;color:var(--gray)">↓ 연결</div><div class="sv-row">${dp(7,true)}</div></div>`;
   return`<div style="width:56px;height:56px;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:900">${i+1}</div>`;
 }
 function renderNav(a){document.getElementById('nav-links').innerHTML=NAV_ITEMS.map(item=>`<a href="${item.href}"${item.href===a?' class="nav-active"':''}>${item.label}</a>`).join('')}
 function renderCrumb(c){document.getElementById('pg-crumb').innerHTML=c.map((x,i)=>i<c.length-1?`<a href="${x.href}">${x.label}</a><span class="crumb-sep">›</span>`:`<span>${x.label}</span>`).join('')}
 function renderMeta(d){document.getElementById('pg-title').textContent=d.pageTitle;document.getElementById('pg-desc').content=d.pageDesc;document.getElementById('pg-canonical').href=d.canonicalUrl}
-function renderHero(d){const b=d.heroImage.src?`<div class="hero-banner"><img src="${d.heroImage.src}" alt="${d.heroImage.alt}" loading="eager"></div>`:`<div class="hero-banner"><div class="hero-banner-empty">활동 사진을 넣어주세요</div></div>`;return`${b}<div class="hero-info"><div class="wrap"><div class="hero-tagline">${d.tagline}</div><h1 class="hero-h1">${d.title}</h1><p class="hero-sub">${nl(d.description)}</p><div class="info-strip">${d.info.map(x=>`<div class="info-chip"><div><div class="info-chip-label">${x.label}</div><div class="info-chip-val">${x.value}</div></div></div>`).join('')}</div></div></div>`}
+function renderHero(d){const imgs=d.heroImages||(d.heroImage?[d.heroImage]:[]);let banner;if(imgs.length===0){banner=`<div class="hero-slider"><div class="hero-banner-empty">활동 사진을 넣어주세요</div></div>`;}else if(imgs.length===1){banner=`<div class="hero-slider"><div class="hs-track"><div class="hs-slide"><img src="${imgs[0].src}" alt="${imgs[0].alt}" loading="eager"></div></div></div>`;}else{const slides=imgs.map(img=>`<div class="hs-slide"><img src="${img.src}" alt="${img.alt}" loading="eager"></div>`).join('');const dots=imgs.map((_,i)=>`<button class="hs-dot${i===0?' active':''}" aria-label="슬라이드 ${i+1}"></button>`).join('');banner=`<div class="hero-slider"><div class="hs-track">${slides}</div><div class="hs-dots">${dots}</div></div>`;}return`${banner}<div class="hero-info"><div class="wrap"><div class="hero-tagline">${d.tagline}</div><h1 class="hero-h1">${d.title}</h1><p class="hero-sub">${nl(d.description)}</p><div class="info-strip">${d.info.map(x=>`<div class="info-chip"><div><div class="info-chip-label">${x.label}</div><div class="info-chip-val">${x.value}</div></div></div>`).join('')}</div></div></div>`}
+function initHeroSlider(){const track=document.querySelector('.hs-track');const dots=document.querySelectorAll('.hs-dot');if(!track||track.children.length<2)return;const total=track.children.length;let cur=0;function go(n){cur=(n+total)%total;track.style.transform=`translateX(-${cur*100}%)`;dots.forEach((d,i)=>d.classList.toggle('active',i===cur));}dots.forEach((d,i)=>d.addEventListener('click',()=>go(i)));setInterval(()=>go(cur+1),5000);}
 function renderActivity(a){const img=a.image.src?`<img src="${a.image.src}" alt="${a.image.alt}" loading="lazy">`:'';return`<section class="sec sec--warm"><div class="wrap"><div class="activity-grid"><div class="activity-photo">${img}</div><div><span class="activity-eyebrow">PROGRAM OVERVIEW</span><h2 class="activity-h2">${nl(a.headline)}</h2><div class="bullet-list">${a.bullets.map(b=>`<div class="bullet-item"><div class="bullet-dot"></div><span>${b}</span></div>`).join('')}</div></div></div></div></section>`}
 function renderUseCases(cases){const boxes=cases.map(c=>`<div class="use-box${c.rec?' use-box--rec':' use-box--norm'}">${c.rec?'<span class="use-rec-badge">⭐ 추천</span>':''}<div class="use-icon">${c.icon}</div><div class="use-title">${c.title}</div><div class="use-desc">${c.desc}</div></div>`).join('');return`<section class="sec sec--white"><div class="wrap"><span class="sec-label">활용 장면</span><h2 class="sec-h2" style="margin-bottom:0">어디서, 언제 쓸 수 있나요?</h2><div class="use-grid">${boxes}</div></div></section>`}
-function renderFlowSection(steps){const items=steps.map((s,i)=>`<div class="flow-item"><div class="flow-left"><div class="flow-num-wrap"><span class="flow-emoji">${s.icon}</span></div></div><div class="flow-right"><div class="flow-proc"><div class="flow-proc-step">STEP ${String(i+1).padStart(2,'0')} · 진행 흐름</div><div class="flow-proc-title">${s.proc.title}</div><div class="flow-proc-desc">${s.proc.desc}</div></div><div class="flow-xp"><div class="flow-xp-step">이 순간 학생들은</div><div class="flow-xp-action">${nl(s.xp.action)}</div><div class="flow-xp-detail">${s.xp.detail}</div></div></div></div>`).join('');return`<section class="flow-section"><div class="wrap"><div class="flow-dual-label"><span class="flow-badge flow-badge--proc">진행 흐름</span><span class="flow-badge flow-badge--xp">이 활동에서 학생들은</span></div><h2 class="sec-h2" style="margin-bottom:40px">활동이 이렇게 흘러갑니다</h2><div class="flow-timeline">${items}</div></div></section>`}
+function renderFlowSection(steps){const items=steps.map((s,i)=>`<div class="flow-item"><div class="flow-left"><div class="flow-num-wrap"><span class="flow-emoji">${s.icon}</span></div></div><div class="flow-right"><div class="flow-proc"><div class="flow-proc-step">STEP ${String(i+1).padStart(2,'0')} · 진행 흐름</div><div class="flow-proc-title">${s.proc.title}</div><div class="flow-proc-desc">${s.proc.desc}</div></div></div></div>`).join('');return`<section class="flow-section"><div class="wrap"><div class="flow-dual-label"><span class="flow-badge flow-badge--proc">진행 흐름</span></div><h2 class="sec-h2" style="margin-bottom:40px">활동이 이렇게 흘러갑니다</h2><div class="flow-timeline">${items}</div></div></section>`}
+function renderStructures(d){const sec=d.structuresSection;return`<section class="sec sec--warm"><div class="wrap"><span class="sec-label">${sec.label}</span><h2 class="sec-h2">${sec.title}</h2><div class="struct-grid">${sec.items.map((s,i)=>`<div class="struct-card"><div class="struct-vis">${structVis(s.type,i)}</div><div class="struct-name">${s.name}</div><div class="struct-desc">${s.desc}</div></div>`).join('')}</div></div></section>`}
 function renderGallery(g){const imgs=g.images.map(img=>`<div class="g-frame"><img src="${img.src}" alt="${img.alt}" loading="lazy"></div>`).join("");return`<section class="sec sec--white"><div class="wrap"><span class="sec-label">활동 모습</span><h2 class="sec-h2" style="margin-bottom:0">현장 사진</h2></div><div class="gallery-marquee"><div class="g-track">${imgs}${imgs}</div></div></section>`}
 
 function renderCTA(){return`<div style="position:fixed;bottom:24px;right:24px;z-index:999;display:flex;flex-direction:column;align-items:flex-end"><a href="/assets/documents/identeach-program-guide.pdf" download style="display:inline-flex;align-items:center;gap:8px;background:var(--yellow);color:var(--navy);font-family:inherit;font-weight:800;font-size:14px;padding:13px 22px;border-radius:18px 18px 0 18px;text-decoration:none;box-shadow:0 6px 24px rgba(20,20,43,.28);white-space:nowrap">📄 프로그램 소개서 받기</a><div style="width:0;height:0;border-style:solid;border-width:12px 12px 0 0;border-color:var(--yellow) transparent transparent transparent"></div></div>`}
-function renderPage(d){renderMeta(d);renderNav(d.navActive);renderCrumb(d.crumbs);document.getElementById('pg-root').innerHTML=renderHero(d)+renderActivity(d.activity)+renderUseCases(d.useCases)+renderFlowSection(d.flowSteps)+renderGallery(d.gallery)+renderCTA()}
+function renderPage(d){renderMeta(d);renderNav(d.navActive);renderCrumb(d.crumbs);document.getElementById('pg-root').innerHTML=renderHero(d)+renderActivity(d.activity)+renderUseCases(d.useCases)+renderFlowSection(d.flowSteps)+renderGallery(d.gallery)+renderCTA();initHeroSlider();}
 renderPage(programData);
 </script>
 </body>
