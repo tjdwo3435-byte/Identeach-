@@ -2,455 +2,963 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>학교 맞춤 교육 프로그램 제안받기 | 아이덴티치</title>
 <meta name="description" content="학교급, 학년, 인원, 교육목표와 일정을 입력하면 학교폭력예방교육, 진로교육, 리더십교육과 학교행사 프로그램을 제안합니다.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="학교 맞춤 교육 프로그램 제안받기 | 아이덴티치">
+<meta property="og:description" content="학교급, 학년, 인원, 교육목표와 일정을 입력하면 학교폭력예방교육, 진로교육, 리더십교육과 학교행사 프로그램을 제안합니다.">
 <meta property="og:url" content="https://identeach.co.kr/request">
 <meta property="og:locale" content="ko_KR">
 <link rel="canonical" href="https://identeach.co.kr/request">
-<link rel="preconnect" href="https://cdn.jsdelivr.net">
 <style>
-@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@1.3.9/dist/web/static/pretendard.css');
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 
+/* ═══ CSS Variables (Brand: IDenTeach) ═══ */
 :root {
-  --blue:   #1F2392;
-  --blue-d: #171980;
+  --accent: #1F2392;
+  --accent-press: #161B78;
+  --accent-soft: #ECEEFF;
   --yellow: #FFD84D;
-  --navy:   #14142B;
-  --gray:   #6F7287;
-  --warm:   #F4F4F6;
-  --border: #E8E8F0;
-  --white:  #fff;
-  --red:    #E5484D;
-  --maxw:   1080px;
-  --form-w: 640px;
-  --rc:     16px;
-  --shadow: 0 8px 30px rgba(20,20,43,.08);
-  --pad-x:  clamp(20px,5vw,24px);
+  --ink: #14142B;
+  --ink-2: #5A5A6E;
+  --ink-3: #9E9EB0;
+  --line: #E8E8F0;
+  --line-2: #F2F2F6;
+  --bg: #F5F5F8;
+  --frame: #FFFFFF;
+  --danger: #E53E3E;
+  --success: #22C55E;
+  --radius-card: 16px;
+  --radius-btn: 14px;
+  --radius-input: 12px;
+  --radius-frame: 28px;
+  --shadow-frame: 0 8px 60px rgba(20,20,43,0.12), 0 1px 4px rgba(20,20,43,0.06);
+  --font: 'Pretendard', -apple-system, BlinkMacSystemFont, '맑은 고딕', sans-serif;
+  --transition-screen: 0.35s cubic-bezier(0.4,0,0.2,1);
 }
 
-*, *::before, *::after { margin:0; padding:0; box-sizing:border-box }
-html { scroll-behavior:smooth; -webkit-text-size-adjust:100% }
-body {
-  font-family:'Pretendard',-apple-system,sans-serif;
-  color:var(--navy); background:var(--warm);
-  font-weight:500; line-height:1.7;
-  -webkit-font-smoothing:antialiased;
-}
-a { color:inherit; text-decoration:none }
-img { display:block; max-width:100% }
-h1,h2,h3 { letter-spacing:-.03em }
-.wrap { max-width:var(--maxw); margin:0 auto; padding:0 var(--pad-x) }
-.form-wrap { max-width:var(--form-w); margin:0 auto; padding:0 var(--pad-x) }
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 
-/* ── 헤더 ── */
-header {
-  position:sticky; top:0; z-index:100;
-  background:rgba(255,255,255,.96);
-  backdrop-filter:blur(16px);
+html, body {
+  font-family: var(--font); background: var(--bg); color: var(--ink);
+  height: 100%; overflow: hidden; -webkit-font-smoothing: antialiased;
 }
-.nav {
-  display:flex; align-items:center; gap:16px; height:96px;
-  background:#fff;
-  border-radius:0 0 28px 28px;
-  box-shadow:0 4px 20px rgba(0,0,0,.08);
-  padding:0 clamp(20px,3vw,36px);
-  max-width:var(--maxw); margin:0 auto;
+
+/* ═══ App Frame ═══ */
+.app-frame {
+  width: 100%; max-width: 430px; height: 100vh; max-height: 100vh;
+  margin: 0 auto; background: var(--frame); position: relative;
+  display: flex; flex-direction: column; overflow: hidden;
 }
-.nav-logo { margin-right:auto; display:flex; align-items:center }
-.nav-links {
-  display:flex; align-items:center; gap:4px;
-  font-size:15px; font-weight:500; color:var(--gray);
-}
-.nav-links a { padding:7px 14px; border-radius:999px; transition:color .15s, background .15s; white-space:nowrap }
-.nav-links a:hover { color:var(--navy) }
-.nav-links a.nav-active { background:var(--navy); color:#fff; font-weight:700 }
-.nav-cta {
-  display:inline-flex; align-items:center; justify-content:center;
-  font-family:inherit; font-weight:700; font-size:14px; cursor:pointer;
-  background:var(--blue); color:#fff; padding:10px 20px;
-  border-radius:999px; border:none; white-space:nowrap;
-  transition:background .18s;
-}
-.nav-cta:hover { background:var(--blue-d) }
-.menu-toggle, .menu-btn { display:none }
-.menu-btn { font-size:22px; background:none; border:none; cursor:pointer; color:var(--navy); padding:4px }
-@media(max-width:860px) {
-  .menu-btn { display:block; order:3 }
-  .nav-cta { order:2 }
-  .nav-links {
-    position:absolute; top:96px; left:0; right:0;
-    flex-direction:column; align-items:flex-start; gap:0;
-    background:#fff; border-radius:24px;
-    box-shadow:0 8px 28px rgba(0,0,0,.12);
-    max-height:0; overflow:hidden; transition:max-height .28s; font-size:16px; z-index:200;
+@media (min-width: 500px) {
+  body { display: flex; align-items: center; justify-content: center; padding: 24px; }
+  .app-frame {
+    height: min(92vh, 860px); border-radius: var(--radius-frame);
+    box-shadow: var(--shadow-frame); border: 1px solid var(--line);
   }
-  .nav-links a { width:100%; padding:16px var(--pad-x); border-top:1px solid var(--border) }
-  .menu-toggle:checked ~ .nav-links { max-height:360px }
 }
 
-/* ── 히어로 ── */
-.hero {
-  text-align:center;
-  padding:clamp(48px,8vw,72px) 0 clamp(28px,4vw,40px);
+/* ═══ Top Bar ═══ */
+.top-bar {
+  position: relative; z-index: 10; padding: 16px 20px 0; flex-shrink: 0;
+  background: var(--frame);
 }
-.eyebrow {
-  display:inline-flex; align-items:center; gap:6px;
-  background:var(--yellow); color:var(--navy);
-  font-size:13px; font-weight:800; letter-spacing:.04em;
-  padding:8px 18px; border-radius:18px; margin-bottom:22px;
+.top-bar-row {
+  display: flex; align-items: center; justify-content: center;
+  position: relative; height: 36px;
 }
-.hero h1 {
-  font-size:clamp(26px,5.5vw,38px); font-weight:800;
-  line-height:1.22; margin-bottom:14px;
+.btn-back {
+  position: absolute; left: 0; top: 50%; transform: translateY(-50%);
+  background: none; border: none; cursor: pointer; padding: 6px;
+  color: var(--ink-2); display: flex; align-items: center; justify-content: center;
+  border-radius: 8px; transition: background 0.15s;
 }
-.hero h1 em { font-style:normal; color:var(--blue) }
-.hero p { font-size:clamp(15px,2.5vw,16.5px); color:var(--gray); max-width:36em; margin:0 auto; line-height:1.7 }
-
-/* ── 폼 카드 ── */
-.card {
-  background:#fff; border:1px solid var(--border);
-  border-radius:20px; padding:clamp(24px,5vw,36px);
-  margin-bottom:28px; box-shadow:var(--shadow);
+.btn-back:hover { background: var(--line-2); }
+.btn-back svg { width: 22px; height: 22px; }
+.step-counter { font-size: 14px; font-weight: 600; color: var(--ink-3); letter-spacing: -0.3px; font-variant-numeric: tabular-nums; }
+.progress-track {
+  margin-top: 12px; height: 3px; background: var(--line);
+  border-radius: 2px; overflow: hidden;
 }
-.field { margin-bottom:24px }
-.field:last-child { margin-bottom:0 }
-label.q { display:block; font-size:15px; font-weight:700; margin-bottom:7px; color:var(--navy) }
-.req { color:var(--red); font-size:12px; vertical-align:super; margin-left:2px }
-.note { font-size:13px; color:var(--gray); margin:0 0 10px; line-height:1.6 }
-.note.tight { margin-bottom:10px }
-
-select, input[type=text] {
-  width:100%; font-family:inherit; font-size:15px; color:var(--navy);
-  border:1.5px solid var(--border); border-radius:12px;
-  padding:13px 16px; background:#fff; transition:.15s; outline:none;
-}
-select {
-  appearance:none; -webkit-appearance:none;
-  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%236F7287' stroke-width='1.6' fill='none' stroke-linecap='round'/></svg>");
-  background-repeat:no-repeat; background-position:right 16px center;
-  padding-right:40px; cursor:pointer;
-}
-select:invalid { color:var(--gray) }
-select:focus, input[type=text]:focus { border-color:var(--blue); background:#fff; box-shadow:0 0 0 3px rgba(31,35,146,.08) }
-
-/* 연락처 */
-.phone { display:grid; grid-template-columns:1fr 20px 1fr 20px 1fr; align-items:center; gap:4px }
-.phone .dash { text-align:center; color:var(--gray); font-size:18px; font-weight:300 }
-
-/* 개인정보 박스 */
-.policy {
-  height:144px; overflow-y:auto; border:1.5px solid var(--border);
-  border-radius:12px; padding:16px; font-size:13px; color:var(--gray);
-  background:var(--warm); line-height:1.7;
-}
-.policy b { color:var(--navy) }
-.agree {
-  display:flex; align-items:center; gap:10px;
-  margin-top:14px; font-size:15px; cursor:pointer; user-select:none;
-}
-.agree input { width:18px; height:18px; accent-color:var(--blue); cursor:pointer; flex-shrink:0 }
-
-/* 구분선 */
-.divider {
-  border:none; border-top:1.5px solid var(--border);
-  margin:28px 0;
+.progress-fill {
+  height: 100%; background: var(--accent); border-radius: 2px;
+  transition: width 0.5s cubic-bezier(0.25,1,0.5,1); width: 0;
 }
 
-/* 제출 버튼 */
-.submit {
-  width:100%; font-family:inherit; font-weight:800; font-size:16px;
-  color:#fff; background:var(--blue); border:none; border-radius:14px;
-  padding:17px; cursor:pointer; transition:background .18s, transform .18s;
-  margin-top:6px; letter-spacing:.01em;
+.top-bar[data-hidden="true"] { opacity: 0; pointer-events: none; }
+
+/* ═══ Screen Area ═══ */
+.screen-area {
+  flex: 1; overflow-y: auto; overflow-x: hidden;
+  -webkit-overflow-scrolling: touch; position: relative;
 }
-.submit:hover { background:var(--blue-d); transform:translateY(-2px) }
-.hint { font-size:13px; color:var(--gray); text-align:center; margin-top:10px; line-height:1.6 }
+.screen {
+  position: absolute; inset: 0; padding: 28px 24px 120px;
+  opacity: 0; transform: translateY(18px);
+  pointer-events: none;
+  transition: opacity var(--transition-screen), transform var(--transition-screen);
+  overflow-y: auto;
+}
+.screen.active {
+  opacity: 1; transform: translateY(0); pointer-events: auto;
+  position: relative;
+}
+.screen.exit { opacity: 0; transform: translateY(-12px); }
 
-/* 하단 링크 */
-.alt { text-align:center; margin-bottom:60px; font-size:14px; color:var(--gray) }
-.alt a { color:var(--blue); font-weight:700 }
-.alt a:hover { text-decoration:underline }
+/* ═══ Bottom CTA ═══ */
+.bottom-cta {
+  position: absolute; bottom: 0; left: 0; right: 0; z-index: 10;
+  padding: 0 20px 24px;
+}
+.bottom-cta::before {
+  content: ''; position: absolute; top: -40px; left: 0; right: 0; height: 40px;
+  background: linear-gradient(transparent, var(--frame));
+  pointer-events: none;
+}
+.cta-btn {
+  width: 100%; padding: 17px; border: none; border-radius: var(--radius-btn);
+  font-family: var(--font); font-size: 16px; font-weight: 700;
+  cursor: pointer; transition: background 0.2s, transform 0.1s, opacity 0.2s;
+  letter-spacing: -0.3px;
+  background: var(--accent); color: #fff;
+}
+.cta-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+.cta-btn:not(:disabled):active { transform: scale(0.97); background: var(--accent-press); }
 
-/* ── 푸터 ── */
-.site-footer{background:#0C0A1E;padding:56px 0 28px}
-.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:40px}
-.ft-logo{height:34px;filter:invert(1);opacity:.82;display:block;margin-bottom:18px}
-.ft-tagline{font-size:14px;line-height:1.75;color:rgba(255,255,255,.6);margin-bottom:18px}
-.ft-biz{font-size:12.5px;line-height:1.9;color:rgba(255,255,255,.35)}
-.ft-col{display:flex;flex-direction:column}
-.ft-col-title{font-size:12px;font-weight:700;letter-spacing:.07em;color:rgba(255,255,255,.9);margin-bottom:14px}
-.ft-col a{color:rgba(255,255,255,.5);text-decoration:none;font-size:14px;margin-bottom:12px;transition:color .18s}
-.ft-col a:hover{color:#fff}
-.ft-contact-row{display:flex;align-items:flex-start;gap:10px;margin-bottom:14px}
-.ft-contact-icon{font-size:15px;flex-shrink:0;margin-top:2px}
-.ft-contact-val{font-size:14px;color:rgba(255,255,255,.72);font-weight:600;line-height:1.4}
-.ft-contact-sub{font-size:11.5px;color:rgba(255,255,255,.35);margin-top:3px}
-.ft-divider{border:none;border-top:1px solid rgba(255,255,255,.08);margin:0 0 22px}
-.ft-copy{font-size:12px;color:rgba(255,255,255,.22);text-align:center}
-@media(max-width:780px){.ft-grid{grid-template-columns:1fr 1fr;gap:32px 24px}.ft-brand{grid-column:1/-1}}
-@media(max-width:480px){.ft-grid{grid-template-columns:1fr}}
+/* ═══ Start Screen ═══ */
+.start-screen { text-align: center; padding-top: 48px !important; }
+.start-logo {
+  width: 48px; height: 48px; margin: 0 auto 28px;
+  background: var(--accent); border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 20px; font-weight: 900; letter-spacing: -1px;
+}
+.start-brand { font-size: 13px; font-weight: 700; color: var(--accent); letter-spacing: 1px; margin-bottom: 6px; }
+.start-title {
+  font-size: 26px; font-weight: 800; line-height: 1.35;
+  letter-spacing: -0.8px; word-break: keep-all; margin-bottom: 10px;
+}
+.start-sub { font-size: 14px; color: var(--ink-2); line-height: 1.55; margin-bottom: 36px; }
+
+.start-cards { display: flex; flex-direction: column; gap: 10px; text-align: left; }
+.start-card {
+  display: flex; align-items: center; gap: 14px;
+  padding: 20px; background: var(--frame);
+  border: 1.5px solid var(--line); border-radius: var(--radius-card);
+  cursor: pointer; transition: all 0.15s; user-select: none;
+}
+.start-card:active { transform: scale(0.97); }
+.start-card:hover { border-color: var(--accent); background: var(--accent-soft); }
+.start-card-icon {
+  width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+}
+.start-card-text .sc-title { font-size: 15px; font-weight: 700; color: var(--ink); }
+.start-card-text .sc-desc { font-size: 12px; color: var(--ink-2); margin-top: 2px; }
+
+.site-link {
+  display: inline-block; margin-top: 26px;
+  font-size: 13px; font-weight: 600; color: var(--ink-3);
+  text-decoration: none; padding: 8px;
+}
+.site-link:hover { color: var(--accent); }
+
+/* ═══ Question Title ═══ */
+.q-title {
+  font-size: 22px; font-weight: 800; line-height: 1.4;
+  letter-spacing: -0.6px; word-break: keep-all; margin-bottom: 6px;
+}
+.q-sub { font-size: 13px; color: var(--ink-2); line-height: 1.5; margin-bottom: 24px; }
+
+/* ═══ Selection Card ═══ */
+.sel-list { display: flex; flex-direction: column; gap: 8px; }
+.sel-card {
+  display: flex; align-items: center; gap: 12px;
+  padding: 16px 18px; background: var(--frame);
+  border: 1.5px solid var(--line); border-radius: var(--radius-card);
+  cursor: pointer; transition: all 0.15s; user-select: none;
+}
+.sel-card:active { transform: scale(0.97); }
+.sel-card.selected { border-color: var(--accent); background: var(--accent-soft); }
+
+.sel-label { flex: 1; font-size: 15px; font-weight: 600; color: var(--ink); line-height: 1.3; }
+.sel-desc { font-size: 12px; font-weight: 400; color: var(--ink-2); display: block; margin-top: 1px; }
+
+.sel-radio {
+  width: 22px; height: 22px; border-radius: 50%; flex-shrink: 0;
+  border: 2px solid var(--line); transition: all 0.15s;
+  display: flex; align-items: center; justify-content: center;
+}
+.sel-card.selected .sel-radio { border-color: var(--accent); background: var(--accent); }
+.sel-radio::after {
+  content: ''; width: 8px; height: 8px; border-radius: 50%;
+  background: #fff; opacity: 0; transition: opacity 0.15s;
+}
+.sel-card.selected .sel-radio::after { opacity: 1; }
+
+/* ═══ Multi Chip Grid ═══ */
+.chip-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip-item {
+  padding: 10px 16px; background: var(--frame);
+  border: 1.5px solid var(--line); border-radius: 50px;
+  cursor: pointer; font-size: 14px; font-weight: 600;
+  color: var(--ink); transition: all 0.15s; user-select: none;
+  white-space: nowrap;
+}
+.chip-item:active { transform: scale(0.95); }
+.chip-item.selected { border-color: var(--accent); background: var(--accent-soft); color: var(--accent); }
+
+.etc-input-wrap {
+  max-height: 0; overflow: hidden; transition: max-height 0.3s ease, margin 0.3s ease, opacity 0.3s ease;
+  opacity: 0; margin-top: 0;
+}
+.etc-input-wrap.open { max-height: 60px; opacity: 1; margin-top: 10px; }
+.etc-input {
+  width: 100%; padding: 13px 16px; font-size: 14px; font-family: var(--font);
+  border: 1.5px solid var(--line); border-radius: var(--radius-input);
+  background: var(--frame); color: var(--ink); outline: none; font-weight: 500;
+  transition: border-color 0.2s;
+}
+.etc-input:focus { border-color: var(--accent); }
+.etc-input::placeholder { color: var(--ink-3); font-weight: 400; }
+
+/* ═══ Program Cards ═══ */
+.prog-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.prog-card {
+  padding: 14px 14px; background: var(--frame);
+  border: 1.5px solid var(--line); border-radius: var(--radius-card);
+  cursor: pointer; transition: all 0.15s; user-select: none;
+  position: relative;
+}
+.prog-card:active { transform: scale(0.96); }
+.prog-card.selected { border-color: var(--accent); background: var(--accent-soft); }
+.prog-card .pc-name { font-size: 13px; font-weight: 700; color: var(--ink); line-height: 1.3; margin-bottom: 3px; padding-right: 22px; }
+.prog-card .pc-desc { font-size: 11px; color: var(--ink-2); line-height: 1.35; }
+.prog-card.selected .pc-name { color: var(--accent); }
+.prog-card-check {
+  position: absolute; top: 10px; right: 10px;
+  width: 18px; height: 18px; border-radius: 5px;
+  border: 1.5px solid var(--line); transition: all 0.15s;
+  display: flex; align-items: center; justify-content: center;
+}
+.prog-card.selected .prog-card-check { border-color: var(--accent); background: var(--accent); }
+.prog-card-check svg { width: 11px; height: 11px; color: #fff; opacity: 0; }
+.prog-card.selected .prog-card-check svg { opacity: 1; }
+
+.prog-card.full { grid-column: 1 / -1; text-align: center; }
+.prog-card.full .pc-name { color: var(--ink-2); padding-right: 0; }
+
+.prog-section { margin-bottom: 16px; }
+.prog-cat-label {
+  font-size: 13px; font-weight: 700; color: var(--ink-2);
+  margin-bottom: 8px; padding-left: 2px; letter-spacing: -0.2px;
+}
+
+/* ═══ Month Grid ═══ */
+.month-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.month-item {
+  padding: 13px 4px; text-align: center;
+  background: var(--frame); border: 1.5px solid var(--line);
+  border-radius: var(--radius-input); cursor: pointer;
+  font-size: 14px; font-weight: 600; color: var(--ink);
+  transition: all 0.15s; user-select: none;
+}
+.month-item:active { transform: scale(0.95); }
+.month-item.selected { border-color: var(--accent); background: var(--accent-soft); color: var(--accent); }
+
+/* ═══ Input Fields ═══ */
+.field-group { margin-bottom: 16px; }
+.field-label { font-size: 12px; font-weight: 700; color: var(--ink-2); margin-bottom: 7px; display: block; letter-spacing: 0.2px; }
+.field-input {
+  width: 100%; padding: 15px 16px; font-size: 15px; font-family: var(--font);
+  font-weight: 500; border: 1.5px solid var(--line); border-radius: var(--radius-input);
+  background: var(--frame); color: var(--ink); outline: none; transition: border-color 0.2s;
+}
+.field-input:focus { border-color: var(--accent); }
+.field-input::placeholder { color: var(--ink-3); font-weight: 400; }
+.field-row { display: flex; gap: 10px; }
+.field-row .field-group { flex: 1; }
+textarea.field-input { resize: none; height: 90px; line-height: 1.5; }
+
+/* ═══ Consent ═══ */
+.consent-box {
+  background: var(--line-2); border-radius: var(--radius-input);
+  padding: 14px 16px; font-size: 11.5px; color: var(--ink-2);
+  line-height: 1.7; margin-bottom: 12px;
+}
+.consent-row {
+  display: flex; align-items: flex-start; gap: 10px;
+  cursor: pointer; user-select: none; padding: 4px 2px;
+}
+.consent-row input { display: none; }
+.consent-mark {
+  width: 20px; height: 20px; border-radius: 6px; flex-shrink: 0; margin-top: 1px;
+  border: 2px solid var(--line); transition: all 0.15s;
+  display: flex; align-items: center; justify-content: center;
+}
+.consent-row input:checked + .consent-mark { border-color: var(--accent); background: var(--accent); }
+.consent-mark svg { width: 12px; height: 12px; color: #fff; opacity: 0; transition: opacity 0.15s; }
+.consent-row input:checked + .consent-mark svg { opacity: 1; }
+.consent-text { font-size: 13px; font-weight: 600; color: var(--ink); line-height: 1.45; }
+
+/* ═══ Loading Screen ═══ */
+.loading-screen { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; min-height: 100%; padding-top: 60px !important; }
+.loading-icon {
+  width: 72px; height: 72px; border-radius: 20px; background: var(--accent-soft);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 32px; margin-bottom: 8px;
+  animation: floatY 2.5s ease-in-out infinite;
+}
+.loading-shadow {
+  width: 48px; height: 6px; border-radius: 50%;
+  background: rgba(20,20,43,0.08); margin: 0 auto 28px;
+  animation: breathe 2.5s ease-in-out infinite;
+}
+.loading-title { font-size: 18px; font-weight: 700; margin-bottom: 24px; letter-spacing: -0.4px; }
+.loading-checks { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; width: 100%; max-width: 240px; }
+.loading-check-item {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 14px; font-weight: 500; color: var(--ink-3);
+  transition: color 0.3s;
+}
+.loading-check-item.done { color: var(--ink); }
+.lc-dot {
+  width: 20px; height: 20px; border-radius: 50%;
+  border: 2px solid var(--line); flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.3s;
+}
+.loading-check-item.done .lc-dot { border-color: var(--success); background: var(--success); }
+.lc-dot svg { width: 11px; height: 11px; color: #fff; opacity: 0; transition: opacity 0.2s; }
+.loading-check-item.done .lc-dot svg { opacity: 1; }
+
+@keyframes floatY { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+@keyframes breathe { 0%,100% { transform: scaleX(1); opacity: 0.6; } 50% { transform: scaleX(0.6); opacity: 0.3; } }
+
+/* ═══ Complete / Error Screen ═══ */
+.complete-screen { text-align: center; padding-top: 40px !important; }
+.complete-icon {
+  width: 64px; height: 64px; border-radius: 18px; margin: 0 auto 20px;
+  background: #E8FFE8; display: flex; align-items: center; justify-content: center;
+  font-size: 28px; animation: popIn 0.4s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+.complete-icon.warn { background: #FFF1E8; }
+@keyframes popIn { 0% { transform: scale(0.5); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+.complete-title { font-size: 22px; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.5px; }
+.complete-sub { font-size: 14px; color: var(--ink-2); line-height: 1.55; margin-bottom: 28px; }
+
+.summary-card {
+  background: var(--frame); border: 1.5px solid var(--line);
+  border-radius: var(--radius-card); padding: 18px; text-align: left;
+  margin-bottom: 20px;
+}
+.summary-row {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  padding: 9px 0; border-bottom: 1px solid var(--line-2);
+}
+.summary-row:last-child { border-bottom: none; }
+.summary-label { font-size: 13px; color: var(--ink-3); font-weight: 500; flex-shrink: 0; }
+.summary-value { font-size: 13px; font-weight: 600; color: var(--ink); text-align: right; max-width: 62%; word-break: keep-all; line-height: 1.4; }
+
+.action-btn {
+  display: block; width: 100%; padding: 16px; margin-bottom: 10px;
+  border: none; border-radius: var(--radius-btn);
+  font-family: var(--font); font-size: 15px; font-weight: 700;
+  background: var(--accent); color: #fff; cursor: pointer; text-decoration: none;
+  text-align: center; transition: background 0.2s;
+}
+.action-btn:active { background: var(--accent-press); }
+.action-btn.ghost { background: var(--line-2); color: var(--ink); }
+
+.btn-restart {
+  background: none; border: none; font-family: var(--font);
+  font-size: 14px; font-weight: 600; color: var(--ink-3);
+  cursor: pointer; padding: 10px; transition: color 0.15s;
+}
+.btn-restart:hover { color: var(--ink); }
+
+/* ═══ Reduced Motion ═══ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
 </style>
 </head>
 <body>
-<header>
-  <div class="nav">
-    <a href="/" class="nav-logo">
-      <img src="/assets/images/logo.webp" alt="아이덴티치" style="height:96px;display:block;">
-    </a>
-    <input type="checkbox" id="nav-toggle" class="menu-toggle">
-    <nav class="nav-links">
-      <a href="/together">학교폭력·리더십</a>
-      <a href="/career">진로교육·체험</a>
-      <a href="/events">학교행사</a>
-      <a href="/about">회사소개</a>
-    </nav>
-    <a href="/request" class="nav-cta nav-active" style="background:var(--navy)">학교 맞춤 제안받기</a>
-    <label for="nav-toggle" class="menu-btn" aria-label="메뉴">☰</label>
-  </div>
-</header>
 
-<main>
-  <section class="hero">
-    <div class="form-wrap">
-      <div class="eyebrow">✉️ 학교 맞춤 교육 상담</div>
-      <h1>우리 학교 맞춤 교육<br><em>프로그램 제안받기</em></h1>
-      <p>학교급, 학년, 인원, 교육목표와 희망 일정을 알려주시면<br>학교 상황에 맞는 프로그램 구성안과 견적을 안내합니다.</p>
-      <!-- [확인 필요] 실제 회신 소요 기간 확인 후 안내 문구 추가 (v2 §9) -->
+<div class="app-frame" id="app">
+  <!-- Top Bar -->
+  <div class="top-bar" id="topBar" data-hidden="true">
+    <div class="top-bar-row">
+      <button class="btn-back" id="btnBack" onclick="goBack()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <span class="step-counter" id="stepCounter">1 / 7</span>
     </div>
-  </section>
-
-  <div class="form-wrap">
-    <div class="card">
-
-      <div class="field">
-        <label class="q" for="program">진행 희망 프로그램</label>
-        <p class="note">희망 프로그램이나 교육 주제를 선택해 주세요. 없으시면 담당자가 추천해 드립니다.</p>
-        <select id="program">
-          <option value="" selected>(선택 안 함 · 추천받기)</option>
-          <optgroup label="학교폭력·리더십">
-            <option>학교폭력예방교육</option>
-            <option>관계형성·팀빌딩</option>
-            <option>학생 리더십교육</option>
-            <option>미션 퍼실리테이션</option>
-            <option>스쿨핑</option>
-            <option>도미노 챌린지</option>
-            <option>미니 스포츠데이</option>
-            <option>단합 레크리에이션</option>
-          </optgroup>
-          <optgroup label="진로교육·체험">
-            <option>진로교육·진로체험</option>
-            <option>터칭보이스</option>
-            <option>진로 토크쇼</option>
-            <option>내 인생의 CEO</option>
-            <option>미래직업연구소 (준비 중)</option>
-          </optgroup>
-          <optgroup label="주제별 교육">
-            <option>AI·디지털교육</option>
-            <option>놀이교육</option>
-            <option>문해력교육</option>
-            <option>예술교육</option>
-          </optgroup>
-          <optgroup label="학교행사">
-            <option>학교 레크리에이션</option>
-            <option>학교축제·체육대회</option>
-            <option>현장학습 대체 행사</option>
-            <option>골든벨 행사</option>
-          </optgroup>
-          <option>기타</option>
-        </select>
-      </div>
-
-      <div class="field">
-        <label class="q" for="when">진행 희망 시기 <span class="req">*</span></label>
-        <select id="when" required>
-          <option value="" selected disabled>(선택해 주세요)</option>
-          <option>신학기 (3월)</option>
-          <option>1학기 (3~7월)</option>
-          <option>2학기 (9~12월)</option>
-          <option>학기말</option>
-          <option>미정 · 협의 후 결정</option>
-        </select>
-      </div>
-
-      <div class="field">
-        <label class="q" for="school">학교 / 기관명 <span class="req">*</span></label>
-        <input type="text" id="school" placeholder="예: 아이덴티치중학교">
-      </div>
-
-      <div class="field">
-        <label class="q" for="region">지역 <span class="req">*</span></label>
-        <input type="text" id="region" placeholder="예: 인천 남동구">
-      </div>
-
-      <div class="field">
-        <label class="q" for="level">학교급 <span class="req">*</span></label>
-        <select id="level" required>
-          <option value="" selected disabled>(선택해 주세요)</option>
-          <option>초등학교</option>
-          <option>중학교</option>
-          <option>고등학교</option>
-          <option>기타 기관</option>
-        </select>
-      </div>
-
-      <div class="field">
-        <label class="q" for="grade">대상 학년</label>
-        <input type="text" id="grade" placeholder="예: 2학년 / 전학년">
-      </div>
-
-      <div class="field">
-        <label class="q" for="headcount">예상 참여 인원</label>
-        <input type="text" id="headcount" placeholder="예: 120명 / 5학급">
-      </div>
-
-      <div class="field">
-        <label class="q" for="purpose">교육 또는 행사의 목적</label>
-        <p class="note tight">목적을 알려주시면 구성안이 더 정확해집니다.</p>
-        <input type="text" id="purpose" placeholder="예: 신학기 학급 관계형성">
-      </div>
-
-      <hr class="divider">
-
-      <div class="field">
-        <label class="q" for="name">담당자 성함 <span class="req">*</span></label>
-        <input type="text" id="name" placeholder="담당 선생님 성함">
-      </div>
-
-      <div class="field">
-        <label class="q" for="email">이메일 <span class="req">*</span></label>
-        <p class="note tight">구성안과 견적을 이메일로 보내드립니다.</p>
-        <input type="text" id="email" placeholder="이메일 주소">
-      </div>
-
-      <div class="field">
-        <label class="q">연락처</label>
-        <p class="note tight">안내 연락 용도 외에 사용되지 않습니다.</p>
-        <div class="phone">
-          <input type="text" id="p1" inputmode="numeric" placeholder="010">
-          <span class="dash">-</span>
-          <input type="text" id="p2" inputmode="numeric" placeholder="0000">
-          <span class="dash">-</span>
-          <input type="text" id="p3" inputmode="numeric" placeholder="0000">
-        </div>
-      </div>
-
-      <div class="field">
-        <label class="q" for="etc">기타 요청사항</label>
-        <input type="text" id="etc" placeholder="일정·장소·준비물 등 자유롭게 적어주세요">
-      </div>
-
-      <div class="field">
-        <label class="q" for="route">어떻게 알게 되셨나요?</label>
-        <p class="note tight">선택 항목입니다.</p>
-        <select id="route">
-          <option value="" selected>(선택 안 함)</option>
-          <option>네이버·구글 검색</option>
-          <option>지인·동료 추천</option>
-          <option>SNS·블로그</option>
-          <option>공문·홍보물</option>
-          <option>기타</option>
-        </select>
-      </div>
-
-      <hr class="divider">
-
-      <div class="field">
-        <label class="q">개인정보 수집 및 이용 동의 <span class="req">*</span></label>
-        <div class="policy">
-          <b>아이덴티치는 '맞춤 요청' 접수 시 아래와 같이 개인정보를 수집·이용합니다.</b><br><br>
-          ① 수집 항목: 이름, 이메일, 연락처, 학교/기관명, 지역<br>
-          ② 수집 및 이용 목적: 문의 답변 및 프로그램 안내<br>
-          ③ 보유 및 이용 기간: 수집·이용 목적 관련 업무 완료 시까지<br><br>
-          동의를 거부할 권리가 있으며, 거부 시 문의 접수가 제한될 수 있습니다.
-        </div>
-        <label class="agree"><input type="checkbox" id="agree"> 개인정보 수집 및 이용에 동의합니다.</label>
-      </div>
-
-      <button class="submit" id="submit">학교 맞춤 제안 요청하기</button>
-      <p class="hint">버튼 클릭 시 이메일 앱이 열립니다 · idengroup@naver.com 으로 전달됩니다</p>
-    </div>
-
-    <p class="alt">제안서를 먼저 보고 싶다면 <a href="/assets/documents/proposal.pdf" download>제안서 다운로드 →</a></p>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
   </div>
-</main>
 
-<footer class="site-footer">
-  <div class="wrap">
-    <div class="ft-grid">
-      <div class="ft-brand">
-        <img src="/assets/images/logo.webp" alt="아이덴티치" class="ft-logo">
-        <p class="ft-tagline">학교로 찾아가는<br>교육 콘텐츠 기획·운영사</p>
-        <div class="ft-biz">
-          <div>대표 : 진성재</div>
-          <div>이메일 : idengroup@naver.com</div>
-        </div>
-      </div>
-      <div class="ft-col">
-        <div class="ft-col-title">프로그램</div>
-        <a href="/together">학교폭력·리더십</a>
-        <a href="/career">진로교육·체험</a>
-        <a href="/events">학교행사</a>
-      </div>
-      <div class="ft-col">
-        <div class="ft-col-title">바로가기</div>
-        <a href="/about">회사소개</a>
-        <a href="/request">문의하기</a>
-      </div>
-      <div class="ft-col">
-        <div class="ft-col-title">연락처</div>
-        <div class="ft-contact-row">
-          <span class="ft-contact-icon">📞</span>
-          <div>
-            <div class="ft-contact-val">010-4084-8962</div>
-            <div class="ft-contact-sub">평일 09:00 ~ 18:00</div>
-          </div>
-        </div>
-        <div class="ft-contact-row">
-          <span class="ft-contact-icon">✉️</span>
-          <div class="ft-contact-val">idengroup@naver.com</div>
-        </div>
-      </div>
-    </div>
-    <hr class="ft-divider">
-    <p class="ft-copy">© 2026 IDenTeach (아이덴티치). All rights reserved.</p>
+  <!-- Screen Area -->
+  <div class="screen-area" id="screenArea"></div>
+
+  <!-- Bottom CTA -->
+  <div class="bottom-cta" id="bottomCta" style="display:none">
+    <button class="cta-btn" id="ctaBtn" disabled onclick="goNext()">다음</button>
   </div>
-</footer>
+</div>
 
 <script>
-document.getElementById('submit').addEventListener('click', function(){
-  var v = function(id){ return (document.getElementById(id).value||'').trim(); };
-  if(!v('route')){ alert('어떻게 알게 되셨는지 선택해 주세요.'); return; }
-  if(!v('when')){ alert('진행 희망 시기를 선택해 주세요.'); return; }
-  if(!v('school')){ alert('학교 / 기관명을 입력해 주세요.'); return; }
-  if(!v('region')){ alert('지역을 입력해 주세요.'); return; }
-  if(!v('level')){ alert('학교급을 선택해 주세요.'); return; }
-  if(!v('name')){ alert('담당자 성함을 입력해 주세요.'); return; }
-  if(!v('email')){ alert('이메일을 입력해 주세요.'); return; }
-  if(!document.getElementById('agree').checked){ alert('개인정보 수집 및 이용에 동의해 주세요.'); return; }
-  var phone = [v('p1'),v('p2'),v('p3')].filter(Boolean).join('-');
-  var lines = [
-    '[학교 맞춤 교육 프로그램 제안 요청]','',
-    '희망 프로그램: ' + (v('program') || '추천 희망'),
-    '희망 시기: ' + v('when'),
-    '학교/기관명: ' + v('school'),
-    '지역: ' + v('region'),
-    '학교급: ' + v('level'),
-    '대상 학년: ' + (v('grade') || '-'),
-    '예상 인원: ' + (v('headcount') || '-'),
-    '목적: ' + (v('purpose') || '-'),
-    '','---',
-    '담당자 성함: ' + v('name'),
-    '이메일: ' + v('email'),
-    '연락처: ' + (phone || '-'),
-    '기타 요청사항: ' + (v('etc') || '-'),
-    '알게 된 경로: ' + (v('route') || '-')
+/* ═══ CONFIG ═══ */
+const CONFIG = {
+  emailTo: 'idengroup@naver.com',
+  phone: '010-4084-8962',
+  /* 폼 전송 백엔드. 비우면 메일 앱(mailto)으로만 동작합니다. */
+  formEndpoint: 'https://formspree.io/f/mlgondpj',
+};
+
+const CHECK_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+
+const CATEGORIES = ['학교폭력예방','진로교육','학생 리더십','관계형성·팀빌딩','AI·디지털','놀이교육','문해력','예술교육','학교행사','체육대회','기타'];
+
+/* 실제 운영 중인 프로그램만 표기합니다. */
+const PROGRAM_CATEGORIES = [
+  {
+    category: '학교폭력·리더십',
+    emoji: '🤝',
+    programs: [
+      { name: '미션 퍼실리테이션', desc: '학생 리더십·소통교육' },
+      { name: '스쿨핑', desc: '학급 공동체·팀빌딩' },
+      { name: '도미노 챌린지', desc: '협력 중심 관계형성' },
+      { name: '미니 스포츠데이', desc: '학생 리더십·단합 활동' },
+      { name: '단합 레크리에이션', desc: '전교생 관계형성' },
+    ]
+  },
+  {
+    category: '진로교육·체험',
+    emoji: '🧭',
+    programs: [
+      { name: '터칭보이스', desc: '찾아가는 자기이해 진로콘서트' },
+      { name: '진로 토크쇼', desc: '직업인과 함께하는 진로 탐색' },
+      { name: '내 인생의 CEO', desc: '주체성·리더십 진로 강연' },
+      { name: '미래직업연구소', desc: 'AI 시대 미래직업 탐색 (준비 중)' },
+    ]
+  },
+  {
+    category: '학교행사',
+    emoji: '🎉',
+    programs: [
+      { name: '레크리에이션 체육대회', desc: '전교생 참여형 체육대회' },
+      { name: '학교축제', desc: 'MC 진행·무대 연출' },
+      { name: '골든벨 행사', desc: '전교생 참여 퀴즈 대회' },
+      { name: '현장학습 대체 행사', desc: '학교로 찾아가는 체험' },
+    ]
+  },
+];
+
+const MONTHS = ['3월','4월','5월','6월','7월','9월','10월','11월','12월','1학기','2학기','미정'];
+
+/* ═══ STATE ═══ */
+let currentScreen = 'start';
+let answers = {};
+let multiSets = { category: new Set(), program: new Set() };
+let submitting = false;
+
+function esc(s) {
+  return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+function isEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test((v||'').trim()); }
+
+/* 유입 경로 : /request?src=blog 처럼 붙이면 문의 메일에 함께 표시됩니다 */
+const SRC_LABELS = {
+  blog: '블로그', proposal: '제안서', email: '이메일', kakao: '카카오톡',
+  sms: '문자', sns: 'SNS', qr: 'QR코드', card: '명함', doc: '공문'
+};
+function getSource() {
+  try {
+    const raw = (new URLSearchParams(location.search).get('src') || '').trim().toLowerCase();
+    if (!raw) return '홈페이지 직접 유입';
+    return SRC_LABELS[raw] || raw;
+  } catch (e) { return '홈페이지 직접 유입'; }
+}
+const INQUIRY_SOURCE = getSource();
+
+/* ═══ SCREENS ═══ */
+function renderStart() {
+  return `
+    <div class="screen start-screen active" id="scr-start">
+      <div class="start-logo">ID</div>
+      <div class="start-brand">IDENTEACH</div>
+      <div class="start-title">선생님, 프로그램 문의를<br>도와드릴게요</div>
+      <div class="start-sub">질문 7개, 1분이면 끝나요.<br>맞춤 프로그램을 빠르게 안내드릴게요.</div>
+      <div class="start-cards">
+        <div class="start-card" onclick="startFlow()">
+          <div class="start-card-icon" style="background:var(--accent-soft)">📋</div>
+          <div class="start-card-text">
+            <div class="sc-title">프로그램 문의하기</div>
+            <div class="sc-desc">관심 분야와 규모를 알려주시면 맞춤 안내 드려요</div>
+          </div>
+        </div>
+      </div>
+      <a class="site-link" href="/">← 아이덴티치 홈페이지</a>
+    </div>`;
+}
+
+function renderQ1() {
+  const opts = ['초등학교','중학교','고등학교','기타 기관'];
+  return `
+    <div class="screen" id="scr-q1">
+      <div class="q-title">어떤 학교에서<br>문의하시나요?</div>
+      <div class="q-sub"></div>
+      <div class="sel-list">
+        ${opts.map(o => `
+          <div class="sel-card${answers.school===o?' selected':''}" onclick="selectSingle('school','${o}',this)">
+            <span class="sel-label">${o}</span>
+            <div class="sel-radio"></div>
+          </div>`).join('')}
+      </div>
+    </div>`;
+}
+
+function renderQ2() {
+  return `
+    <div class="screen" id="scr-q2">
+      <div class="q-title">어떤 종류의 프로그램을<br>찾고 계신가요?</div>
+      <div class="q-sub">중복 선택 가능해요</div>
+      <div class="chip-grid" id="categoryGrid">
+        ${CATEGORIES.map(c => `
+          <div class="chip-item${multiSets.category.has(c)?' selected':''}" data-val="${c}" onclick="toggleChip('category','${c}',this)">${c}</div>
+        `).join('')}
+      </div>
+      <div class="etc-input-wrap${multiSets.category.has('기타')?' open':''}" id="etcWrap">
+        <input class="etc-input" id="etcInput" type="text" placeholder="어떤 프로그램을 찾으시나요?" value="${esc(answers.etcText||'')}" oninput="onEtcInput(this)">
+      </div>
+    </div>`;
+}
+
+function renderQ3() {
+  const opts = ['한 학급 (30명 이내)','여러 학급 (30~90명)','한 학년 (100명 이상)','전교생'];
+  return `
+    <div class="screen" id="scr-q3">
+      <div class="q-title">몇 명 정도가<br>참여하나요?</div>
+      <div class="q-sub">대략적인 규모면 충분해요</div>
+      <div class="sel-list">
+        ${opts.map(o => `
+          <div class="sel-card${answers.scale===o?' selected':''}" onclick="selectSingle('scale','${o}',this)">
+            <span class="sel-label">${o}</span>
+            <div class="sel-radio"></div>
+          </div>`).join('')}
+      </div>
+    </div>`;
+}
+
+function renderQ4() {
+  const sections = PROGRAM_CATEGORIES.map(cat => `
+    <div class="prog-section">
+      <div class="prog-cat-label">${cat.emoji} ${cat.category}</div>
+      <div class="prog-grid">
+        ${cat.programs.map(p => `
+          <div class="prog-card${multiSets.program.has(p.name)?' selected':''}" data-val="${p.name}" onclick="toggleProgram('${p.name}',this)">
+            <div class="prog-card-check">${CHECK_SVG}</div>
+            <div class="pc-name">${p.name}</div>
+            <div class="pc-desc">${p.desc}</div>
+          </div>`).join('')}
+      </div>
+    </div>`).join('');
+
+  return `
+    <div class="screen" id="scr-q4">
+      <div class="q-title">혹시 관심 있는<br>프로그램이 있나요?</div>
+      <div class="q-sub">중복 선택 가능 · 잘 모르시면 아래를 선택해주세요</div>
+      ${sections}
+      <div class="prog-grid" style="margin-top:12px">
+        <div class="prog-card full${multiSets.program.has('아직 모르겠어요')?' selected':''}" onclick="selectUnsure(this)">
+          <div class="pc-name">아직 잘 모르겠어요</div>
+          <div class="pc-desc">상담 시 자세히 안내드릴게요</div>
+        </div>
+      </div>
+    </div>`;
+}
+
+function renderQ5() {
+  return `
+    <div class="screen" id="scr-q5">
+      <div class="q-title">희망하는 시기가<br>있으신가요?</div>
+      <div class="q-sub">정해지지 않았으면 '미정'을 선택해주세요</div>
+      <div class="month-grid">
+        ${MONTHS.map(m => `
+          <div class="month-item${answers.month===m?' selected':''}" onclick="selectSingle('month','${m}',this,'month-item')">${m}</div>
+        `).join('')}
+      </div>
+    </div>`;
+}
+
+function renderQ6() {
+  return `
+    <div class="screen" id="scr-q6">
+      <div class="q-title">연락 받으실<br>정보를 알려주세요</div>
+      <div class="q-sub">확인 후 맞춤 안내를 드릴게요</div>
+      <div class="field-group">
+        <label class="field-label">학교명</label>
+        <input class="field-input" id="fSchool" type="text" placeholder="예) 서울 ○○초등학교" value="${esc(answers.schoolName||'')}" oninput="checkContact()">
+      </div>
+      <div class="field-row">
+        <div class="field-group">
+          <label class="field-label">성함</label>
+          <input class="field-input" id="fName" type="text" placeholder="예) 김○○ 선생님" value="${esc(answers.teacherName||'')}" oninput="checkContact()">
+        </div>
+        <div class="field-group">
+          <label class="field-label">연락처</label>
+          <input class="field-input" id="fPhone" type="tel" placeholder="010-0000-0000" value="${esc(answers.phone||'')}" oninput="checkContact()">
+        </div>
+      </div>
+      <div class="field-group">
+        <label class="field-label">이메일</label>
+        <input class="field-input" id="fEmail" type="email" placeholder="구성안·견적을 받으실 이메일" value="${esc(answers.email||'')}" oninput="checkContact()">
+      </div>
+
+      <div class="consent-box">
+        <b>개인정보 수집 및 이용 안내</b><br>
+        ① 수집 항목 : 이름, 연락처, 이메일, 학교명<br>
+        ② 이용 목적 : 문의 답변 및 프로그램 안내<br>
+        ③ 보유 기간 : 문의 처리 완료 시까지<br>
+        동의를 거부할 수 있으며, 거부 시 문의 접수가 제한됩니다.
+      </div>
+      <label class="consent-row">
+        <input type="checkbox" id="fAgree" ${answers.agree?'checked':''} onchange="onAgree(this)">
+        <span class="consent-mark">${CHECK_SVG}</span>
+        <span class="consent-text">개인정보 수집 및 이용에 동의합니다.</span>
+      </label>
+    </div>`;
+}
+
+function renderQ7() {
+  return `
+    <div class="screen" id="scr-q7">
+      <div class="q-title">추가로 전달하실<br>내용이 있으신가요?</div>
+      <div class="q-sub">없으시면 바로 제출하셔도 돼요</div>
+      <div class="field-group">
+        <textarea class="field-input" id="fMemo" placeholder="예) 2학기 체육대회와 연계하고 싶어요 / 예산이 ○○만원 정도예요">${esc(answers.memo||'')}</textarea>
+      </div>
+    </div>`;
+}
+
+function renderLoading() {
+  return `
+    <div class="screen loading-screen" id="scr-loading">
+      <div class="loading-icon">📨</div>
+      <div class="loading-shadow"></div>
+      <div class="loading-title">문의를 전송하고 있어요</div>
+      <div class="loading-checks">
+        <div class="loading-check-item" id="lc0"><div class="lc-dot">${CHECK_SVG}</div>입력 정보 확인</div>
+        <div class="loading-check-item" id="lc1"><div class="lc-dot">${CHECK_SVG}</div>프로그램 매칭</div>
+        <div class="loading-check-item" id="lc2"><div class="lc-dot">${CHECK_SVG}</div>담당자에게 전달</div>
+        <div class="loading-check-item" id="lc3"><div class="lc-dot">${CHECK_SVG}</div>접수 완료</div>
+      </div>
+    </div>`;
+}
+
+function summaryRows() {
+  const rows = [
+    ['학교급', answers.school],
+    ['관심 분야', [...multiSets.category].join(', ') + (answers.etcText ? ` (${answers.etcText})` : '')],
+    ['규모', answers.scale],
+    ['관심 프로그램', [...multiSets.program].join(', ') || '-'],
+    ['시기', answers.month],
+    ['학교', answers.schoolName],
+    ['성함', answers.teacherName],
+    ['연락처', answers.phone],
   ];
-  var subject = '[맞춤 제안 요청] ' + v('school') + ' / ' + v('region');
-  window.location.href = 'mailto:idengroup@naver.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(lines.join('\n'));
+  rows.push(['이메일', answers.email]);
+  if (answers.memo) rows.push(['요청사항', answers.memo]);
+  return rows;
+}
+
+function renderComplete() {
+  return `
+    <div class="screen complete-screen" id="scr-complete">
+      <div class="complete-icon">✓</div>
+      <div class="complete-title">문의가 접수되었어요!</div>
+      <div class="complete-sub">확인 후 맞춤 프로그램 안내를 드릴게요.<br>빠른 상담은 <strong>${CONFIG.phone}</strong>으로 연락 주세요.</div>
+      <div class="summary-card">
+        ${summaryRows().map(([l,v]) => `<div class="summary-row"><div class="summary-label">${esc(l)}</div><div class="summary-value">${esc(v||'-')}</div></div>`).join('')}
+      </div>
+      <a class="action-btn ghost" href="/">아이덴티치 홈페이지로</a>
+      <button class="btn-restart" onclick="resetAll()">처음으로 돌아가기</button>
+    </div>`;
+}
+
+function renderError() {
+  return `
+    <div class="screen complete-screen" id="scr-error">
+      <div class="complete-icon warn">!</div>
+      <div class="complete-title">전송이 완료되지 않았어요</div>
+      <div class="complete-sub">일시적인 문제로 자동 전송에 실패했습니다.<br>아래 버튼으로 메일을 보내주시거나<br><strong>${CONFIG.phone}</strong>으로 연락 주세요.</div>
+      <div class="summary-card">
+        ${summaryRows().map(([l,v]) => `<div class="summary-row"><div class="summary-label">${esc(l)}</div><div class="summary-value">${esc(v||'-')}</div></div>`).join('')}
+      </div>
+      <button class="action-btn" onclick="sendByMail()">메일 앱으로 보내기</button>
+      <button class="action-btn ghost" onclick="submitInquiry()">다시 시도하기</button>
+      <button class="btn-restart" onclick="resetAll()">처음으로 돌아가기</button>
+    </div>`;
+}
+
+/* ═══ FLOW ═══ */
+const FLOW = ['start','q1','q2','q3','q4','q5','q6','q7','loading','complete'];
+const TOTAL_Q = 7;
+
+function getRenderer(id) {
+  const map = { start: renderStart, q1: renderQ1, q2: renderQ2, q3: renderQ3, q4: renderQ4, q5: renderQ5, q6: renderQ6, q7: renderQ7, loading: renderLoading, complete: renderComplete, error: renderError };
+  return map[id];
+}
+
+function showScreen(id) {
+  const area = document.getElementById('screenArea');
+  const prev = area.querySelector('.screen.active');
+
+  const renderer = getRenderer(id);
+  const tmp = document.createElement('div');
+  tmp.innerHTML = renderer();
+  const newScr = tmp.firstElementChild;
+  area.appendChild(newScr);
+
+  if (prev) {
+    prev.classList.remove('active');
+    prev.classList.add('exit');
+    setTimeout(() => prev.remove(), 400);
+  }
+
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => { newScr.classList.add('active'); });
+  });
+
+  currentScreen = id;
+  updateChrome(id);
+
+  if (['q6','q7'].includes(id)) {
+    setTimeout(() => {
+      const inp = newScr.querySelector('.field-input');
+      if (inp) inp.focus();
+    }, 400);
+  }
+}
+
+function updateChrome(id) {
+  const topBar = document.getElementById('topBar');
+  const bottomCta = document.getElementById('bottomCta');
+  const ctaBtn = document.getElementById('ctaBtn');
+  const backBtn = document.getElementById('btnBack');
+  const isQ = /^q\d+$/.test(id);
+  const qNum = isQ ? parseInt(id.slice(1)) : 0;
+
+  topBar.dataset.hidden = isQ ? 'false' : 'true';
+  bottomCta.style.display = isQ ? '' : 'none';
+
+  if (isQ) {
+    document.getElementById('stepCounter').textContent = `${qNum} / ${TOTAL_Q}`;
+    document.getElementById('progressFill').style.width = `${(qNum / TOTAL_Q) * 100}%`;
+    backBtn.style.visibility = qNum > 1 ? 'visible' : 'hidden';
+    ctaBtn.textContent = qNum === TOTAL_Q ? '제출하기' : '다음';
+    validateCurrent();
+  }
+}
+
+function validateCurrent() {
+  const btn = document.getElementById('ctaBtn');
+  if (!btn) return;
+  let valid = false;
+
+  switch (currentScreen) {
+    case 'q1': valid = !!answers.school; break;
+    case 'q2':
+      valid = multiSets.category.has('기타')
+        ? (multiSets.category.size > 0 && !!(answers.etcText||'').trim())
+        : multiSets.category.size > 0;
+      break;
+    case 'q3': valid = !!answers.scale; break;
+    case 'q4': valid = multiSets.program.size > 0; break;
+    case 'q5': valid = !!answers.month; break;
+    case 'q6':
+      valid = !!(answers.schoolName||'').trim() && !!(answers.teacherName||'').trim()
+           && !!(answers.phone||'').trim() && isEmail(answers.email) && !!answers.agree;
+      break;
+    case 'q7': valid = true; break;
+  }
+  btn.disabled = !valid;
+}
+
+/* ═══ INTERACTIONS ═══ */
+function startFlow() { showScreen('q1'); }
+
+function selectSingle(key, value, el, cls) {
+  const parent = el.closest('.sel-list') || el.parentElement;
+  parent.querySelectorAll(cls ? '.'+cls : '.sel-card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  answers[key] = value;
+  validateCurrent();
+}
+
+function toggleChip(setKey, value, el) {
+  const set = multiSets[setKey];
+  if (set.has(value)) { set.delete(value); el.classList.remove('selected'); }
+  else { set.add(value); el.classList.add('selected'); }
+
+  if (value === '기타') {
+    const wrap = document.getElementById('etcWrap');
+    if (set.has('기타')) {
+      wrap.classList.add('open');
+      setTimeout(() => document.getElementById('etcInput')?.focus(), 300);
+    } else {
+      wrap.classList.remove('open');
+      answers.etcText = '';
+    }
+  }
+  validateCurrent();
+}
+
+function onEtcInput(el) { answers.etcText = el.value; validateCurrent(); }
+
+function toggleProgram(name, el) {
+  const set = multiSets.program;
+  if (set.has('아직 모르겠어요')) {
+    set.delete('아직 모르겠어요');
+    document.querySelector('.prog-card.full')?.classList.remove('selected');
+  }
+  if (set.has(name)) { set.delete(name); el.classList.remove('selected'); }
+  else { set.add(name); el.classList.add('selected'); }
+  validateCurrent();
+}
+
+function selectUnsure(el) {
+  document.querySelectorAll('.prog-card').forEach(c => c.classList.remove('selected'));
+  multiSets.program.clear();
+  multiSets.program.add('아직 모르겠어요');
+  el.classList.add('selected');
+  validateCurrent();
+}
+
+function checkContact() {
+  answers.schoolName = document.getElementById('fSchool')?.value || '';
+  answers.teacherName = document.getElementById('fName')?.value || '';
+  answers.phone = document.getElementById('fPhone')?.value || '';
+  answers.email = document.getElementById('fEmail')?.value || '';
+  validateCurrent();
+}
+
+function onAgree(el) { answers.agree = el.checked; validateCurrent(); }
+
+function goNext() {
+  if (document.getElementById('ctaBtn')?.disabled) return;
+  const idx = FLOW.indexOf(currentScreen);
+  if (idx < 0) return;
+
+  if (currentScreen === 'q6') checkContact();
+  if (currentScreen === 'q7') answers.memo = document.getElementById('fMemo')?.value?.trim() || '';
+
+  const next = FLOW[idx + 1];
+  if (!next) return;
+
+  if (next === 'loading') { submitInquiry(); return; }
+  showScreen(next);
+}
+
+function goBack() {
+  const idx = FLOW.indexOf(currentScreen);
+  if (idx <= 1) return;
+  showScreen(FLOW[idx - 1]);
+}
+
+/* ═══ SUBMIT ═══ */
+function buildPayload() {
+  return {
+    _subject: `[맞춤 제안 요청] ${answers.schoolName || ''} / ${answers.teacherName || ''}`,
+    '학교급': answers.school || '-',
+    '관심 분야': [...multiSets.category].join(', ') + (answers.etcText ? ` (${answers.etcText})` : ''),
+    '참여 규모': answers.scale || '-',
+    '관심 프로그램': [...multiSets.program].join(', ') || '-',
+    '희망 시기': answers.month || '-',
+    '학교명': answers.schoolName || '-',
+    '담당자 성함': answers.teacherName || '-',
+    '연락처': answers.phone || '-',
+    '이메일': answers.email || '-',
+    '요청사항': answers.memo || '-',
+    '개인정보 동의': answers.agree ? '동의함' : '미동의',
+    '유입 경로': INQUIRY_SOURCE,
+  };
+}
+
+function buildMailBody() {
+  const p = buildPayload();
+  const lines = ['[아이덴티치 프로그램 문의]', ''];
+  Object.keys(p).forEach(k => { if (k !== '_subject') lines.push(`${k}: ${p[k]}`); });
+  return lines.join('\n');
+}
+
+function sendByMail() {
+  const subject = encodeURIComponent(buildPayload()._subject);
+  const body = encodeURIComponent(buildMailBody());
+  window.location.href = `mailto:${CONFIG.emailTo}?subject=${subject}&body=${body}`;
+}
+
+async function submitInquiry() {
+  if (submitting) return;
+  submitting = true;
+
+  showScreen('loading');
+  const checks = ['lc0','lc1','lc2','lc3'];
+  const timers = checks.slice(0, 2).map((id, i) =>
+    setTimeout(() => document.getElementById(id)?.classList.add('done'), 500 + i * 600));
+
+  const started = Date.now();
+  let ok = false;
+
+  if (CONFIG.formEndpoint) {
+    try {
+      const res = await fetch(CONFIG.formEndpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(buildPayload()),
+      });
+      ok = res.ok;
+    } catch (e) { ok = false; }
+  }
+
+  /* 최소 1.8초는 로딩을 보여줘 화면이 튀지 않게 */
+  const wait = Math.max(0, 1800 - (Date.now() - started));
+  await new Promise(r => setTimeout(r, wait));
+  timers.forEach(clearTimeout);
+  submitting = false;
+
+  if (ok) {
+    document.getElementById('lc2')?.classList.add('done');
+    setTimeout(() => {
+      document.getElementById('lc3')?.classList.add('done');
+      setTimeout(() => showScreen('complete'), 500);
+    }, 400);
+  } else {
+    showScreen('error');
+  }
+}
+
+function resetAll() {
+  answers = {};
+  multiSets = { category: new Set(), program: new Set() };
+  showScreen('start');
+}
+
+/* ═══ KEYBOARD ═══ */
+document.addEventListener('keydown', e => {
+  if (e.key === 'Enter') {
+    if (currentScreen === 'start') { startFlow(); return; }
+    if (/^q\d+$/.test(currentScreen) && e.target.tagName !== 'TEXTAREA') {
+      e.preventDefault();
+      goNext();
+    }
+  }
 });
+
+/* ═══ INIT ═══ */
+showScreen('start');
 </script>
 </body>
 </html>
