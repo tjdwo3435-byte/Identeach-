@@ -1,3 +1,18 @@
+# 아이덴티치 https://identeach.co.kr
+#
+# 모든 검색엔진·AI 검색봇을 허용합니다.
+#   검색  : Googlebot, Yeti(네이버), bingbot, Daum
+#   AI    : OAI-SearchBot(ChatGPT 검색), PerplexityBot, ClaudeBot, Google-Extended
+# 아래 한 그룹으로 전부 적용됩니다. 봇별 그룹을 따로 만들면
+# 해당 봇이 이 그룹의 Disallow를 무시하므로 추가하지 않았습니다.
+
 User-agent: *
 Allow: /
+
+# 내부 관리 문서 — 검색 노출 제외
+Disallow: /SYSTEM.md
+Disallow: /identeach-brand-config.md
+Disallow: /%EB%AC%B8%EC%9D%98%EB%A7%81%ED%81%AC_%EC%95%88%EB%82%B4.md
+Disallow: /문의링크_안내.md
+
 Sitemap: https://identeach.co.kr/sitemap.xml
