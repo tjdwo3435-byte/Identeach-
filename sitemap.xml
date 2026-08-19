@@ -15,6 +15,7 @@
   <url><loc>https://identeach.co.kr/career/talkshow</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://identeach.co.kr/career/ceo-talk</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 
+  <url><loc>https://identeach.co.kr/faq</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://identeach.co.kr/about</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://identeach.co.kr/request</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>
