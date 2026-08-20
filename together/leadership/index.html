@@ -129,6 +129,50 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdr
 .flow-xp-action{font-size:13px;font-weight:700;color:var(--navy);line-height:1.45;margin-bottom:3px}
 .flow-xp-detail{font-size:12px;color:var(--gray)}
 @media(max-width:700px){.flow-right{grid-template-columns:1fr;gap:8px}.flow-timeline::before{left:28px}.flow-num-wrap{width:56px;height:56px}.flow-item{grid-template-columns:58px 1fr}}
+/* ===== 소개서 신청 모달 (공통) ===== */
+.gd-ov{position:fixed;inset:0;z-index:2000;background:rgba(20,20,43,.55);
+  display:flex;align-items:center;justify-content:center;padding:20px;
+  opacity:0;pointer-events:none;transition:opacity .2s}
+.gd-ov.open{opacity:1;pointer-events:auto}
+.gd{position:relative;width:100%;max-width:420px;background:#fff;border-radius:20px;
+  padding:32px 26px 26px;box-shadow:0 20px 60px rgba(20,20,43,.3);
+  transform:translateY(14px);transition:transform .22s;max-height:90vh;overflow-y:auto}
+.gd-ov.open .gd{transform:none}
+.gd-x{position:absolute;top:12px;right:14px;width:32px;height:32px;border:none;
+  background:none;font-size:24px;line-height:1;color:var(--gray);cursor:pointer;border-radius:8px}
+.gd-x:hover{background:var(--warm);color:var(--navy)}
+.gd-eyebrow{display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:.08em;
+  color:var(--navy);background:var(--yellow);padding:5px 11px;border-radius:999px;margin-bottom:14px}
+.gd h3{font-size:21px;font-weight:800;letter-spacing:-.02em;color:var(--navy);
+  margin:0 0 10px;line-height:1.35;word-break:keep-all}
+.gd-sub{font-size:14px;color:var(--gray);line-height:1.7;margin:0 0 22px;word-break:keep-all}
+.gd-f{margin-bottom:14px}
+.gd-f label{display:block;font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px}
+.gd-f input{width:100%;font-family:inherit;font-size:15px;color:var(--navy);
+  padding:13px 14px;border:1.5px solid var(--border);border-radius:11px;
+  background:#fff;outline:none;transition:border-color .15s}
+.gd-f input::placeholder{color:#A6A8BC;font-weight:400}
+.gd-f input:focus{border-color:var(--blue)}
+.gd-f input.bad{border-color:#C0392B}
+.gd-err{display:none;font-size:12px;color:#C0392B;margin-top:5px;font-weight:600}
+.gd-f.show-err .gd-err{display:block}
+.gd-go{width:100%;margin-top:8px;border:none;border-radius:999px;padding:15px;
+  font-family:inherit;font-size:15.5px;font-weight:700;background:var(--blue);color:#fff;
+  cursor:pointer;transition:opacity .15s,transform .08s}
+.gd-go:hover:not(:disabled){opacity:.9}
+.gd-go:active:not(:disabled){transform:scale(.99)}
+.gd-go:disabled{background:#C9CBD8;cursor:not-allowed}
+.gd-hint{font-size:11.5px;color:var(--gray);line-height:1.6;margin:12px 0 0;text-align:center;word-break:keep-all}
+.gd-done{text-align:center;padding:14px 0 6px}
+.gd-done .mk{width:56px;height:56px;margin:0 auto 18px;border-radius:50%;background:var(--blue);
+  color:#fff;font-size:26px;font-weight:800;display:flex;align-items:center;justify-content:center}
+.gd-done .mk.warn{background:#C0392B}
+.gd-done h3{margin-bottom:10px}
+.gd-done p{font-size:14px;color:var(--gray);line-height:1.7;margin:0 0 6px;word-break:keep-all}
+.gd-spin{width:38px;height:38px;margin:22px auto;border:3px solid var(--border);
+  border-top-color:var(--blue);border-radius:50%;animation:gdsp .8s linear infinite}
+@keyframes gdsp{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.gd-spin{animation:none}.gd-ov,.gd{transition:none}}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"https://identeach.co.kr/"},{"@type":"ListItem","position":2,"name":"학교폭력·리더십","item":"https://identeach.co.kr/together"},{"@type":"ListItem","position":3,"name":"미니 스포츠데이","item":"https://identeach.co.kr/together/leadership"}]}
@@ -369,9 +413,156 @@ function renderFlowSection(steps){const items=steps.map((s,i)=>`<div class="flow
 function renderStructures(d){const sec=d.structuresSection;return`<section class="sec sec--warm"><div class="wrap"><span class="sec-label">${sec.label}</span><h2 class="sec-h2">${sec.title}</h2><div class="struct-grid">${sec.items.map((s,i)=>`<div class="struct-card"><div class="struct-vis">${structVis(s.type,i)}</div><div class="struct-name">${s.name}</div><div class="struct-desc">${s.desc}</div></div>`).join('')}</div></div></section>`}
 function renderGallery(g){const imgs=g.images.map(img=>`<div class="g-frame"><img src="${img.src}" alt="${img.alt}" loading="lazy"></div>`).join("");return`<section class="sec sec--white"><div class="wrap"><span class="sec-label">활동 모습</span><h2 class="sec-h2" style="margin-bottom:0">현장 사진</h2></div><div class="gallery-marquee"><div class="g-track">${imgs}${imgs}</div></div></section>`}
 
-function renderCTA(){return`<div style="position:fixed;bottom:24px;right:24px;z-index:999;display:flex;flex-direction:column;align-items:flex-end"><a href="/assets/documents/identeach-program-guide.pdf" download style="display:inline-flex;align-items:center;gap:8px;background:var(--yellow);color:var(--navy);font-family:inherit;font-weight:800;font-size:14px;padding:13px 22px;border-radius:18px 18px 0 18px;text-decoration:none;box-shadow:0 6px 24px rgba(20,20,43,.28);white-space:nowrap">📄 프로그램 소개서 받기</a><div style="width:0;height:0;border-style:solid;border-width:12px 12px 0 0;border-color:var(--yellow) transparent transparent transparent"></div></div>`}
+function renderCTA(){return`<div style="position:fixed;bottom:24px;right:24px;z-index:999;display:flex;flex-direction:column;align-items:flex-end"><a href="#" onclick="openGuide(d.pageTitle||document.title);return false;" style="display:inline-flex;cursor:pointer;align-items:center;gap:8px;background:var(--yellow);color:var(--navy);font-family:inherit;font-weight:800;font-size:14px;padding:13px 22px;border-radius:18px 18px 0 18px;text-decoration:none;box-shadow:0 6px 24px rgba(20,20,43,.28);white-space:nowrap">📄 프로그램 소개서 받기</a><div style="width:0;height:0;border-style:solid;border-width:12px 12px 0 0;border-color:var(--yellow) transparent transparent transparent"></div></div>`}
 function renderPage(d){renderMeta(d);renderNav(d.navActive);renderCrumb(d.crumbs);document.getElementById('pg-root').innerHTML=renderHero(d)+renderActivity(d.activity)+renderUseCases(d.useCases)+renderFlowSection(d.flowSteps)+renderGallery(d.gallery)+renderCTA();initHeroSlider();}
 renderPage(programData);
+</script>
+<!-- 프로그램 소개서 신청 -->
+<div class="gd-ov" id="gdOv" onclick="gdBackdrop(event)">
+  <div class="gd" role="dialog" aria-modal="true" aria-labelledby="gdTitle">
+    <button type="button" class="gd-x" onclick="closeGuide()" aria-label="닫기">&times;</button>
+    <div id="gdBody">
+      <span class="gd-eyebrow">프로그램 소개서</span>
+      <h3 id="gdTitle">소개서를 바로 보내드리겠습니다</h3>
+      <p class="gd-sub">받으실 이메일과 담당자 성함만 남겨주세요.<br>확인 후 담당자가 소개서를 보내드립니다.</p>
+      <form id="gdForm" novalidate>
+        <div class="gd-f" id="gdf-school">
+          <label for="gd-school">학교명</label>
+          <input type="text" id="gd-school" placeholder="○○중학교" autocomplete="organization">
+          <div class="gd-err">학교명을 입력해 주세요.</div>
+        </div>
+        <div class="gd-f" id="gdf-name">
+          <label for="gd-name">담당자 성함</label>
+          <input type="text" id="gd-name" placeholder="김선생" autocomplete="name">
+          <div class="gd-err">성함을 입력해 주세요.</div>
+        </div>
+        <div class="gd-f" id="gdf-email">
+          <label for="gd-email">소개서 받으실 이메일</label>
+          <input type="email" id="gd-email" placeholder="teacher@school.kr" autocomplete="email">
+          <div class="gd-err">이메일 주소를 정확히 입력해 주세요.</div>
+        </div>
+        <button type="submit" class="gd-go" id="gdGo" disabled>소개서 받기</button>
+        <p class="gd-hint">입력하신 정보는 소개서 발송에만 사용하고 이후 파기합니다.</p>
+      </form>
+    </div>
+  </div>
+</div>
+<script>
+/* ===== 프로그램 소개서 신청 (공통) ===== */
+var GUIDE = {
+  endpoint: 'https://formspree.io/f/mlgondpj',
+  mailTo: 'idengroup@naver.com',
+  phone: '010-4084-8962'
+};
+var gdSending = false;
+
+function gdSrc() {
+  try {
+    var raw = (new URLSearchParams(location.search).get('src') || '').trim();
+    return raw || '홈페이지 직접 유입';
+  } catch (e) { return '홈페이지 직접 유입'; }
+}
+function gdEmailOk(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test((v || '').trim()); }
+function gdEl(id) { return document.getElementById(id); }
+
+function openGuide(where) {
+  var ov = gdEl('gdOv');
+  if (!ov) return;
+  ov.dataset.where = where || (document.title || '');
+  ov.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  setTimeout(function () { var f = gdEl('gd-school'); if (f) f.focus(); }, 120);
+}
+function closeGuide() {
+  var ov = gdEl('gdOv');
+  if (!ov) return;
+  ov.classList.remove('open');
+  document.body.style.overflow = '';
+}
+function gdBackdrop(e) { if (e.target === gdEl('gdOv')) closeGuide(); }
+
+function gdCheck() {
+  var ok = gdEl('gd-school').value.trim() && gdEl('gd-name').value.trim() && gdEmailOk(gdEl('gd-email').value);
+  gdEl('gdGo').disabled = !ok;
+}
+function gdMarkErrors() {
+  var rules = [
+    ['gdf-school', 'gd-school', function (v) { return v.trim().length > 0; }],
+    ['gdf-name',   'gd-name',   function (v) { return v.trim().length > 0; }],
+    ['gdf-email',  'gd-email',  gdEmailOk]
+  ];
+  var first = null;
+  rules.forEach(function (r) {
+    var bad = !r[2](gdEl(r[1]).value);
+    gdEl(r[0]).classList.toggle('show-err', bad);
+    gdEl(r[1]).classList.toggle('bad', bad);
+    if (bad && !first) first = gdEl(r[1]);
+  });
+  if (first) first.focus();
+  return !first;
+}
+
+function gdResult(ok) {
+  var body = gdEl('gdBody');
+  if (ok) {
+    body.innerHTML =
+      '<div class="gd-done"><div class="mk">&#10003;</div>' +
+      '<h3>신청이 접수되었습니다</h3>' +
+      '<p>담당자가 확인 후 <strong>소개서를 이메일로</strong> 보내드립니다.</p>' +
+      '<p>급하시면 <strong>' + GUIDE.phone + '</strong>으로 연락 주세요.</p></div>';
+  } else {
+    body.innerHTML =
+      '<div class="gd-done"><div class="mk warn">!</div>' +
+      '<h3>전송에 실패했습니다</h3>' +
+      '<p>잠시 후 다시 시도해 주시거나<br><strong>' + GUIDE.phone + '</strong>으로 연락 주세요.</p></div>';
+  }
+}
+
+function gdSubmit(e) {
+  e.preventDefault();
+  if (gdSending) return;
+  if (!gdMarkErrors()) return;
+
+  gdSending = true;
+  var payload = {
+    _subject: '[소개서 신청] ' + gdEl('gd-school').value.trim() + ' / ' + gdEl('gd-name').value.trim(),
+    '학교명': gdEl('gd-school').value.trim(),
+    '담당자 성함': gdEl('gd-name').value.trim(),
+    '받으실 이메일': gdEl('gd-email').value.trim(),
+    '신청한 페이지': gdEl('gdOv').dataset.where || '-',
+    '유입 경로': gdSrc(),
+    '신청 시각': new Date().toLocaleString('ko-KR')
+  };
+
+  gdEl('gdBody').innerHTML = '<div class="gd-done"><div class="gd-spin"></div><h3>보내는 중입니다</h3><p>잠시만 기다려 주세요.</p></div>';
+  var started = Date.now();
+
+  fetch(GUIDE.endpoint, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify(payload)
+  })
+    .then(function (r) { return r.ok; })
+    .catch(function () { return false; })
+    .then(function (ok) {
+      setTimeout(function () { gdSending = false; gdResult(ok); }, Math.max(0, 1000 - (Date.now() - started)));
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  var f = gdEl('gdForm');
+  if (!f) return;
+  f.addEventListener('submit', gdSubmit);
+  ['gd-school', 'gd-name', 'gd-email'].forEach(function (id) {
+    gdEl(id).addEventListener('input', function () {
+      gdCheck();
+      gdEl('gdf-' + id.slice(3)).classList.remove('show-err');
+      gdEl(id).classList.remove('bad');
+    });
+  });
+  gdCheck();
+});
+document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeGuide(); });
 </script>
 </body>
 </html>
