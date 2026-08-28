@@ -205,6 +205,10 @@ header {
   padding:2px 8px 4px; border-radius:8px;
 }
 
+.hero-sub {
+  font-size:clamp(15px,2vw,18px); color:rgba(255,255,255,.76);
+  line-height:1.9; margin-bottom:36px;
+}
 .hero-btns { display:flex; gap:12px; flex-wrap:wrap; justify-content:center }
 .hero-btns .btn-hw {
   background:#fff; color:var(--blue); font-size:15px; font-weight:700;
@@ -221,6 +225,7 @@ header {
 .hero-btns .btn-gw:hover { background:rgba(255,255,255,.1) }
 @media(max-width:480px) {
   .hero h1 { font-size:34px }
+    .hero-sub { font-size:15px }
   .hero-sub { font-size:15px }
 }
 
@@ -607,6 +612,7 @@ header {
     <div class="hero-copy">
       <div class="hero-label fade d1">찾아가는 교육 콘텐츠 전문</div>
       <h1 class="fade d2">놀이와 문화로 만드는<br>교육 콘텐츠</h1>
+      <p class="hero-sub fade d3">학교에 필요한 교육 콘텐츠를 개발합니다</p>
       <div class="hero-btns fade d4">
         <a href="#programs" class="btn-hw">교육 프로그램 보기</a>
         <a href="/request"  class="btn-gw">학교 맞춤 제안받기</a>
