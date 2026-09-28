@@ -135,6 +135,19 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdr
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"https://identeach.co.kr/"},{"@type":"ListItem","position":2,"name":"진로교육·체험","item":"https://identeach.co.kr/career"},{"@type":"ListItem","position":3,"name":"내 인생의 CEO","item":"https://identeach.co.kr/career/ceo-talk"}]}
 </script>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VBX1FGXLX9"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-VBX1FGXLX9');
+document.addEventListener('click', function (e) {
+  var a = e.target.closest && e.target.closest('a[href^="tel:"], a[href^="mailto:"]');
+  if (!a) return;
+  gtag('event', a.href.indexOf('tel:') === 0 ? 'phone_click' : 'email_click', { link_url: a.href, page_path: location.pathname });
+});
+</script>
 </head>
 <body>
 <header>
@@ -414,7 +427,7 @@ function gdSubmit(e) {
     headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
     body: JSON.stringify(payload)
   })
-    .then(function (r) { return r.ok; })
+    .then(function (r) { if (r.ok && window.gtag) gtag('event', 'guide_request', { page_path: location.pathname }); return r.ok; })
     .catch(function () { return false; })
     .then(function (ok) {
       setTimeout(function () { gdSending = false; gdResult(ok); }, Math.max(0, 1000 - (Date.now() - started)));

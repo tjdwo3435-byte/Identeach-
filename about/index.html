@@ -1011,6 +1011,19 @@ header{
 @keyframes gdsp{to{transform:rotate(360deg)}}
 @media(prefers-reduced-motion:reduce){.gd-spin{animation:none}.gd-ov,.gd{transition:none}}
 </style>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VBX1FGXLX9"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-VBX1FGXLX9');
+document.addEventListener('click', function (e) {
+  var a = e.target.closest && e.target.closest('a[href^="tel:"], a[href^="mailto:"]');
+  if (!a) return;
+  gtag('event', a.href.indexOf('tel:') === 0 ? 'phone_click' : 'email_click', { link_url: a.href, page_path: location.pathname });
+});
+</script>
 </head>
 <body>
 
@@ -1393,7 +1406,7 @@ function gdSubmit(e) {
     headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
     body: JSON.stringify(payload)
   })
-    .then(function (r) { return r.ok; })
+    .then(function (r) { if (r.ok && window.gtag) gtag('event', 'guide_request', { page_path: location.pathname }); return r.ok; })
     .catch(function () { return false; })
     .then(function (ok) {
       setTimeout(function () { gdSending = false; gdResult(ok); }, Math.max(0, 1000 - (Date.now() - started)));
