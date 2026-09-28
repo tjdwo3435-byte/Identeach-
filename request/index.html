@@ -232,6 +232,8 @@ header {
 .agree{display:flex;align-items:flex-start;gap:10px;margin:22px 0 0;padding-top:20px;border-top:1px solid var(--border)}
 .agree input{flex:0 0 auto;width:18px;height:18px;margin-top:2px;accent-color:var(--blue);cursor:pointer}
 .agree label{font-size:13.5px;color:var(--gray);line-height:1.6;cursor:pointer;font-weight:500}
+.agree-err{display:none;font-size:12.5px;color:#C0392B;margin-top:6px;font-weight:600}
+.agree-err.on{display:block}
 
 .rq-submit{
   width:100%;margin-top:22px;border:none;border-radius:999px;
@@ -416,12 +418,13 @@ header {
             <div class="err">문의 내용을 입력해 주세요.</div>
           </div>
 
-          <div class="agree">
+          <div class="agree" id="f-agree">
             <input type="checkbox" id="i-agree">
             <label for="i-agree">문의 답변을 위해 입력하신 정보를 수집·이용하는 데 동의합니다. 답변 후 목적이 끝나면 파기합니다.</label>
           </div>
+          <div class="agree-err" id="agreeErr">개인정보 수집·이용에 동의해 주세요.</div>
 
-          <button type="submit" class="rq-submit" id="btnSend" disabled>문의하기</button>
+          <button type="submit" class="rq-submit" id="btnSend">문의하기</button>
 
           <p class="rq-call">급하시면 바로 전화 주세요 · <a href="tel:01040848962">010-4084-8962</a></p>
         </form>
@@ -544,11 +547,6 @@ const REQUIRED = [
   { box: 'f-memo',   input: 'i-memo',   ok: v => v.trim().length > 0 },
 ];
 
-function formValid() {
-  return REQUIRED.every(r => r.ok($(r.input).value)) && $('i-agree').checked;
-}
-function refreshButton() { $('btnSend').disabled = !formValid(); }
-
 function markErrors() {
   let first = null;
   REQUIRED.forEach(r => {
@@ -557,6 +555,9 @@ function markErrors() {
     $(r.input).classList.toggle('bad', bad);
     if (bad && !first) first = $(r.input);
   });
+  const agreeBad = !$('i-agree').checked;
+  $('agreeErr').classList.toggle('on', agreeBad);
+  if (agreeBad && !first) first = $('i-agree');
   if (first) { first.focus(); first.scrollIntoView({ block: 'center', behavior: 'smooth' }); }
   return !first;
 }
@@ -605,7 +606,7 @@ function sendByMail() {
 async function submitInquiry(e) {
   e.preventDefault();
   if (submitting) return;
-  if (!markErrors() || !$('i-agree').checked) return;
+  if (!markErrors()) return;
 
   submitting = true;
   show('stLoad');
@@ -632,17 +633,16 @@ async function submitInquiry(e) {
 /* ---- 연결 ---- */
 document.addEventListener('DOMContentLoaded', () => {
   $('rqForm').addEventListener('submit', submitInquiry);
-  ['i-school', 'i-name', 'i-email', 'i-memo', 'i-phone', 'i-when'].forEach(id => {
-    $(id).addEventListener('input', () => {
-      refreshButton();
-      const r = REQUIRED.find(x => x.input === id);
-      if (r && r.ok($(id).value)) { $(r.box).classList.remove('show-err'); $(id).classList.remove('bad'); }
+  REQUIRED.forEach(r => {
+    $(r.input).addEventListener('input', () => {
+      if (r.ok($(r.input).value)) { $(r.box).classList.remove('show-err'); $(r.input).classList.remove('bad'); }
     });
   });
-  $('i-agree').addEventListener('change', refreshButton);
+  $('i-agree').addEventListener('change', () => {
+    if ($('i-agree').checked) $('agreeErr').classList.remove('on');
+  });
   document.querySelectorAll('.pick-box input').forEach(el =>
     el.addEventListener('change', refreshPicked));
-  refreshButton();
 });
 </script>
 </body>
