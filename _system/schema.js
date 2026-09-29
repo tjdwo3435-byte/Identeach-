@@ -213,7 +213,7 @@ function rowsToData(row, extra, warn = () => {}) {
   const d = {
     pageTitle: row.검색제목 || `${row.프로그램명} | 아이덴티치`,
     pageDesc: row.검색설명 || '',
-    canonicalUrl: `${SITE}/${slug}`,
+    canonicalUrl: `${SITE}/${slug}/`,
     navActive: parentPath,
     crumbs: [
       { label: '홈', href: '/' },

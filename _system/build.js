@@ -34,8 +34,8 @@ function readSheet(name) {
 function breadcrumbJson(d, slug) {
   const items = [
     { '@type': 'ListItem', position: 1, name: '홈', item: `${SITE}/` },
-    { '@type': 'ListItem', position: 2, name: d.crumbs[1].label, item: SITE + d.crumbs[1].href },
-    { '@type': 'ListItem', position: 3, name: d.title, item: `${SITE}/${slug}` },
+    { '@type': 'ListItem', position: 2, name: d.crumbs[1].label, item: `${SITE}${d.crumbs[1].href}/` },
+    { '@type': 'ListItem', position: 3, name: d.title, item: `${SITE}/${slug}/` },
   ];
   return JSON.stringify({ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: items });
 }
@@ -157,7 +157,7 @@ function buildSitemap(slugs) {
     { loc: '/about', freq: 'monthly', pri: '0.7' },
     { loc: '/request', freq: 'monthly', pri: '0.7' },
   ];
-  const line = (u) => `  <url><loc>${SITE}${u.loc === '/' ? '/' : u.loc}</loc><changefreq>${u.freq}</changefreq><priority>${u.pri}</priority></url>`;
+  const line = (u) => `  <url><loc>${SITE}${u.loc.endsWith('/') ? u.loc : u.loc + '/'}</loc><changefreq>${u.freq}</changefreq><priority>${u.pri}</priority></url>`;
 
   const progs = slugs.map((s) => ({ loc: `/${s}`, freq: 'monthly', pri: '0.8' }));
 
