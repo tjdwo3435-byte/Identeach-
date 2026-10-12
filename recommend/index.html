@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>4초 프로그램 추천 | 아이덴티치</title>
+<meta name="description" content="몇 번만 누르면 우리 학교에 맞는 아이덴티치 프로그램을 바로 추천해 드립니다." />
+<!-- 실험 페이지: 검색 노출 막음. 정식 오픈 때 index,follow + canonical + sitemap 추가 -->
+<meta name="robots" content="noindex,nofollow" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="ko_KR" />
+<meta property="og:site_name" content="아이덴티치" />
+<meta property="og:title" content="4초 프로그램 추천 | 아이덴티치" />
+<meta property="og:description" content="몇 번만 누르면 우리 학교에 맞는 프로그램을 바로 추천해 드립니다." />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@1.3.9/dist/web/static/pretendard.css" />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VBX1FGXLX9"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-VBX1FGXLX9');
+</script>
+<style>
+:root{
+    --accent:#1D2087;
+    --accent-press:#181A70;
+    --accent-soft:#F1F1FB;
+    --ink:#1A1A1A;
+    --ink-2:#484848;
+    --ink-3:#767676;
+    --line:#D1D1D1;
+    --line-2:#E8E8E8;
+    --bg:#FFFFFF;
+    --frame:#F1F1FB;
+    --radius:16px;
+    --radius-lg:16px;
+    --shadow:none;
+  }
+
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  html,body{margin:0;padding:0;height:100%;}
+  body{
+    font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+    letter-spacing:-.01em;
+    background:var(--frame);
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+    display:flex;
+    justify-content:center;
+    align-items:stretch;
+  }
+
+  /* 데스크톱: 가운데 모바일 앱 프레임 */
+  .app{
+    position:relative;
+    width:100%;
+    max-width:430px;
+    min-height:100vh;
+    background:var(--bg);
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+  }
+  @media (min-width:640px){
+    body{padding:32px 0;align-items:center;}
+    .app{
+      min-height:0;
+      height:844px;
+      max-height:calc(100vh - 64px);
+      border-radius:36px;
+      box-shadow:none;
+    }
+  }
+
+  /* ---------- 헤더 / 진행률 ---------- */
+  .topbar{
+    flex:0 0 auto;
+    padding:14px 20px 0;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+  .topbar-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    min-height:28px;
+  }
+  .backbtn{
+    width:32px;height:32px;margin-left:-6px;
+    border:none;background:transparent;padding:0;
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;border-radius:10px;color:var(--ink);
+  }
+  .backbtn:active{background:var(--line-2);}
+  .backbtn svg{width:22px;height:22px;}
+  .step-count{
+    font-size:14px;font-weight:600;color:var(--ink-3);
+    letter-spacing:.02em;
+  }
+  .progress-track{
+    height:4px;width:100%;background:var(--line-2);
+    border-radius:99px;overflow:hidden;
+  }
+  .progress-fill{
+    height:100%;width:0%;background:var(--accent);
+    border-radius:99px;transition:width .45s cubic-bezier(.22,1,.36,1);
+  }
+
+  /* ---------- 본문 ---------- */
+  .screen{
+    flex:1 1 auto;
+    display:flex;
+    flex-direction:column;
+    padding:34px 22px 0;
+    overflow-y:auto;
+    -webkit-overflow-scrolling:touch;
+    animation:fade .4s cubic-bezier(.22,1,.36,1);
+  }
+  @keyframes fade{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
+
+  .eyebrow{
+    font-size:14px;font-weight:700;color:var(--accent);
+    letter-spacing:.01em;margin:0 0 10px;
+  }
+  h1.q-title{
+    font-size:23px;line-height:1.4;font-weight:800;
+    letter-spacing:-.02em;margin:0;color:var(--ink);
+    word-break:keep-all;
+  }
+  p.q-desc{
+    font-size:15px;line-height:1.6;color:var(--ink-2);
+    margin:12px 0 0;word-break:keep-all;
+  }
+  p.q-sub{
+    font-size:13.5px;line-height:1.5;color:var(--ink-3);
+    margin:12px 0 0;word-break:keep-all;
+  }
+
+  /* 선택 카드 */
+  .options{margin-top:32px;display:flex;flex-direction:column;gap:12px;}
+  .opt{
+    width:100%;text-align:left;
+    background:#fff;border:1.5px solid var(--line);
+    border-radius:var(--radius);
+    padding:18px 18px;
+    font-size:16.5px;font-weight:600;color:var(--ink);
+    cursor:pointer;transition:border-color .15s,background .15s,transform .08s;
+    display:flex;align-items:center;justify-content:space-between;
+    gap:12px;
+  }
+  .opt .opt-main{display:flex;flex-direction:column;gap:4px;}
+  .opt .opt-desc{font-size:13.5px;font-weight:500;color:var(--ink-2);line-height:1.45;}
+  .opt:active{transform:scale(.99);}
+  .opt .check{
+    flex:0 0 auto;width:22px;height:22px;border-radius:50%;
+    border:2px solid var(--line);display:flex;align-items:center;justify-content:center;
+    transition:border-color .15s,background .15s;
+  }
+  .opt .check svg{width:13px;height:13px;opacity:0;transform:scale(.6);transition:all .15s;color:#fff;}
+  .opt.selected{border-color:var(--accent);background:var(--accent-soft);}
+  .opt.selected .check{border-color:var(--accent);background:var(--accent);}
+  .opt.selected .check svg{opacity:1;transform:scale(1);}
+
+  /* 입력 필드 */
+  .field-group{margin-top:26px;display:flex;flex-direction:column;gap:18px;}
+  .field label{
+    display:block;font-size:14px;font-weight:600;color:var(--ink-2);
+    margin-bottom:8px;
+  }
+  .field input{
+    width:100%;font-size:16.5px;color:var(--ink);
+    padding:16px 16px;border:1.5px solid var(--line);
+    border-radius:14px;background:#fff;outline:none;
+    transition:border-color .15s;font-family:inherit;
+  }
+  .field input::placeholder{color:var(--ink-3);font-weight:400;}
+  .field input:focus{border-color:var(--accent);}
+
+  .other-wrap{margin-top:12px;overflow:hidden;max-height:0;opacity:0;transition:max-height .28s ease,opacity .22s ease,margin-top .2s;}
+  .other-wrap.show{max-height:120px;opacity:1;margin-top:12px;}
+  .other-wrap input{
+    width:100%;font-size:15.5px;color:var(--ink);
+    padding:15px 16px;border:1.5px solid var(--accent);
+    border-radius:14px;background:#fff;outline:none;font-family:inherit;
+  }
+  .other-wrap input::placeholder{color:var(--ink-3);font-weight:400;}
+
+  /* ---------- 하단 CTA ---------- */
+  .footer{
+    flex:0 0 auto;
+    padding:14px 20px calc(16px + env(safe-area-inset-bottom,0px));
+    background:#fff;
+  }
+  .cta{
+    width:100%;border:none;border-radius:14px;
+    padding:17px;font-size:17px;font-weight:700;font-family:inherit;
+    background:var(--accent);color:#fff;cursor:pointer;
+    transition:background .15s,transform .08s,opacity .15s;
+  }
+  .cta:active{transform:scale(.99);background:var(--accent-press);}
+  .cta:disabled{background:#E8E8E8;color:#767676;cursor:not-allowed;}
+  .cta.ghost{background:var(--line-2);color:var(--ink-2);}
+  .cta.ghost:active{background:var(--line);}
+
+  /* ---------- 시작 화면 ---------- */
+  .start{padding:20px 20px 0;}
+  .hero-wrap{display:flex;justify-content:center;padding:6px 0 10px;}
+  .brand-name{font-size:30px;font-weight:800;letter-spacing:-.03em;margin:0;color:var(--ink);}
+  .brand-sub{font-size:14.5px;font-weight:600;color:var(--accent);margin:7px 0 0;letter-spacing:-.01em;}
+  .start-copy{margin:26px 0 2px;}
+  .start-copy h2{font-size:22px;line-height:1.42;font-weight:700;margin:0;color:var(--ink);letter-spacing:-.02em;word-break:keep-all;}
+  .start-copy p{font-size:15px;line-height:1.55;color:var(--ink-2);margin:10px 0 0;word-break:keep-all;}
+  .start-cards{margin-top:26px;display:flex;flex-direction:column;gap:12px;}
+  .start-card{
+    text-align:left;background:#fff;border:1.5px solid var(--line);
+    border-radius:var(--radius-lg);padding:18px 18px;cursor:pointer;
+    transition:border-color .18s,transform .1s;
+    display:flex;align-items:center;gap:14px;
+  }
+  .start-card:active{transform:scale(.985);}
+  .start-card:hover{border-color:var(--accent);box-shadow:none;}
+  .sc-icon{
+    flex:0 0 auto;width:48px;height:48px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .sc-text{display:flex;flex-direction:column;gap:4px;}
+  .sc-title{font-size:16.5px;font-weight:700;color:var(--ink);letter-spacing:-.02em;}
+  .sc-desc{font-size:13px;font-weight:500;line-height:1.45;color:var(--ink-2);word-break:keep-all;}
+  .sc-arrow{margin-left:auto;color:var(--ink-3);}
+  .sc-arrow svg{width:20px;height:20px;}
+
+  /* ---------- 3D 이미지 슬롯 ---------- */
+  .img3d{display:block;object-fit:contain;animation:float 3.6s ease-in-out infinite;}
+  .img-ph{
+    position:relative;border-radius:50%;
+    background:radial-gradient(120% 120% at 32% 26%, #EAFBF8 0%, #DDDEF5 46%, #B9E6DE 100%);
+    box-shadow:none;
+    display:flex;align-items:center;justify-content:center;
+    animation:float 3.6s ease-in-out infinite;
+  }
+  .img-ph.sq{border-radius:15px;box-shadow:none;}
+  .img-ph::after{
+    content:attr(data-label);font-size:10.5px;font-weight:800;
+    letter-spacing:.02em;color:var(--accent-press);opacity:.85;text-align:center;line-height:1.2;
+  }
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+
+  /* ---------- 로딩 화면 ---------- */
+  .loading{padding:0 24px;align-items:center;justify-content:center;text-align:center;}
+  .load-orb{position:relative;margin-bottom:34px;}
+  .load-orb .shadow{
+    position:absolute;left:50%;bottom:-16px;transform:translateX(-50%);
+    width:72px;height:13px;border-radius:50%;background:transparent;
+    filter:blur(5px);animation:breathe 3.6s ease-in-out infinite;
+  }
+  @keyframes breathe{0%,100%{transform:translateX(-50%) scale(1);opacity:.55}50%{transform:translateX(-50%) scale(.78);opacity:.32}}
+  .loading h2{font-size:21px;font-weight:700;line-height:1.4;margin:0;color:var(--ink);letter-spacing:-.02em;word-break:keep-all;}
+  .loading p{font-size:14.5px;line-height:1.6;color:var(--ink-2);margin:12px 0 0;max-width:320px;word-break:keep-all;}
+  .load-steps{margin-top:34px;width:100%;max-width:340px;display:flex;flex-direction:column;gap:14px;text-align:left;}
+  .load-step{
+    display:flex;align-items:center;gap:12px;font-size:14.5px;
+    color:var(--ink-3);font-weight:500;transition:color .3s;
+  }
+  .load-step .dot{
+    flex:0 0 auto;width:20px;height:20px;border-radius:50%;
+    border:2px solid var(--line);display:flex;align-items:center;justify-content:center;
+    transition:all .3s;
+  }
+  .load-step .dot svg{width:11px;height:11px;color:#fff;opacity:0;transition:opacity .25s;}
+  .load-step.active{color:var(--ink);font-weight:600;}
+  .load-step.active .dot{border-color:var(--accent);}
+  .load-step.done{color:var(--ink-2);}
+  .load-step.done .dot{border-color:var(--accent);background:var(--accent);}
+  .load-step.done .dot svg{opacity:1;}
+
+  /* ---------- 결과 화면 ---------- */
+  .result{padding:30px 20px 0;}
+  .result-hero{margin-bottom:20px;animation:pop .5s cubic-bezier(.34,1.56,.64,1);}
+  @keyframes pop{from{transform:scale(.5);opacity:0;}to{transform:scale(1);opacity:1;}}
+  .result h1{font-size:24px;line-height:1.35;font-weight:800;margin:0;color:var(--ink);letter-spacing:-.02em;word-break:keep-all;}
+  .result p.result-body{font-size:15px;line-height:1.6;color:var(--ink-2);margin:12px 0 0;word-break:keep-all;}
+  .summary-card{
+    margin-top:28px;background:#fff;border:1.5px solid var(--line);
+    border-radius:var(--radius-lg);padding:6px 20px;
+  }
+  .summary-title{
+    font-size:13px;font-weight:700;color:var(--ink-3);letter-spacing:.03em;
+    padding:16px 0 4px;
+  }
+  .summary-row{
+    display:flex;gap:14px;padding:13px 0;border-top:1px solid var(--line-2);
+    font-size:15px;
+  }
+  .summary-row:first-of-type{border-top:none;}
+  .summary-row .k{flex:0 0 96px;color:var(--ink-3);font-weight:500;}
+  .summary-row .v{flex:1 1 auto;color:var(--ink);font-weight:600;text-align:right;word-break:break-all;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;}
+  }
+
+  .hidden{display:none !important;}
+
+  /* ===== 추천 흐름 전용 ===== */
+  .brandbar{display:flex;align-items:center;gap:8px;padding:14px 20px 0;}
+  .brandbar .logo{width:26px;height:26px;border-radius:8px;background:var(--accent);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:13px;letter-spacing:-.03em;}
+  .brandbar .bname{font-size:15px;font-weight:800;letter-spacing:-.03em;color:var(--ink);}
+  .brandbar .bsub{font-size:11.5px;font-weight:600;color:var(--accent);margin-left:auto;letter-spacing:-.01em;}
+
+  .prog-hero{display:flex;justify-content:center;padding:0 0 2px;}
+
+  .chip-grid{margin-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .chip{
+    display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:8px;
+    min-height:86px;padding:15px 10px;background:#fff;border:1.5px solid var(--line);
+    border-radius:15px;font-size:14.5px;font-weight:700;color:var(--ink);letter-spacing:-.02em;
+    cursor:pointer;transition:border-color .15s,background .15s,transform .08s,color .15s;word-break:keep-all;line-height:1.3;
+  }
+  .chip .ci{color:var(--accent);display:flex;}
+  .chip.soon{cursor:default;background:var(--line-2);border-color:var(--line-2);color:var(--ink-3);}
+  .chip.soon .ci{color:var(--ink-3);}
+  .chip.soon:active{transform:none;}
+  .soon-tag{font-size:11px;font-weight:700;color:var(--ink-3);background:#fff;border-radius:99px;padding:3px 8px;margin-top:-2px;}
+  .chip .ci svg{width:26px;height:26px;}
+  .chip:active{transform:scale(.97);}
+  .chip.selected{border-color:var(--accent);background:var(--accent-soft);color:var(--accent-press);}
+  .chip.selected .ci{color:var(--accent-press);}
+  .other-panel{margin-top:14px;padding-top:16px;border-top:1px dashed var(--line);animation:fade .28s ease;}
+  .other-label{font-size:12.5px;font-weight:800;color:var(--ink-3);margin-bottom:10px;letter-spacing:-.01em;}
+  .other-panel .chip-grid{margin-top:0;}
+  .chip-grid.small{grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:10px;}
+  .chip-grid.small .chip{min-height:68px;padding:11px 6px;font-size:12px;gap:6px;border-radius:13px;line-height:1.25;}
+  .chip-grid.small .chip .ci svg{width:20px;height:20px;}
+
+  /* 예산 입력 */
+  .budget-wrap{margin-top:24px;display:flex;align-items:center;border:1.5px solid var(--line);border-radius:14px;padding:0 16px;background:#fff;transition:border-color .15s;}
+  .budget-wrap.focus{border-color:var(--accent);}
+  .budget-wrap input{flex:1 1 auto;min-width:0;border:none;outline:none;background:transparent;font-family:inherit;font-size:24px;font-weight:800;color:var(--ink);letter-spacing:-.02em;text-align:right;padding:16px 0;}
+  .budget-wrap input::placeholder{color:var(--ink-3);font-weight:700;}
+  .budget-wrap .unit{flex:0 0 auto;font-size:18px;font-weight:800;color:var(--ink-2);margin-left:8px;letter-spacing:-.02em;}
+  .budget-eq{margin-top:12px;min-height:20px;font-size:14.5px;font-weight:700;color:var(--accent-press);text-align:right;letter-spacing:-.02em;}
+  .budget-quick{margin-top:20px;display:flex;flex-wrap:wrap;gap:8px;}
+  .qbtn{border:1.5px solid var(--line);background:#fff;border-radius:99px;padding:9px 15px;font-size:14px;font-weight:700;color:var(--ink-2);cursor:pointer;transition:border-color .12s,background .12s,color .12s,transform .08s;letter-spacing:-.02em;font-family:inherit;}
+  .qbtn:active{transform:scale(.97);}
+  .p-row{display:flex;align-items:center;gap:8px;}
+  .p-rec{font-size:11.5px;font-weight:800;color:#fff;background:var(--accent);border-radius:99px;padding:4px 9px;}
+  .p-cs{font-size:12.5px;font-weight:700;color:var(--accent-press);background:var(--accent-soft);border-radius:99px;padding:4px 9px;}
+  .m-pitch{margin:12px 0 4px;padding:13px 15px;background:var(--accent-soft);border-radius:14px;font-size:14.5px;font-weight:700;line-height:1.5;color:var(--accent-press);letter-spacing:-.02em;word-break:keep-all;}
+  .seg-grid{margin-top:28px;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+  .seg{min-height:56px;border:1.5px solid var(--line);background:#fff;border-radius:14px;font-size:15px;font-weight:700;color:var(--ink);cursor:pointer;letter-spacing:-.02em;transition:border-color .15s,background .15s,color .15s;}
+  .seg.on{border-color:var(--accent);background:var(--accent-soft);color:var(--accent-press);}
+  .grade-label{margin-top:28px;}
+  .grade-err{margin-top:8px;font-size:12.5px;font-weight:600;color:#C2362B;min-height:16px;}
+  .qbtn.on{border-color:var(--accent);background:var(--accent-soft);color:var(--accent-press);}
+
+  /* 수업형태 16:4 배너 */
+  .fmt-opt{display:block;padding:0;overflow:hidden;}
+  .fmt-banner{display:block;width:100%;aspect-ratio:4/1;background:var(--accent-soft);position:relative;overflow:hidden;}
+  .fmt-banner img{width:100%;height:100%;object-fit:cover;display:block;}
+  .fmt-banner .ph-label{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:var(--accent-press);opacity:.8;letter-spacing:.03em;}
+  .fmt-body{display:flex;align-items:center;gap:12px;padding:14px 16px;}
+  .fmt-body .opt-main{flex:1 1 auto;}
+  .fmt-body .check{flex:0 0 auto;}
+
+  /* 추천 상세 팝업 */
+  .rec-card{cursor:pointer;}
+  .rec-more{display:flex;align-items:center;gap:3px;margin-top:12px;font-size:12.5px;font-weight:700;color:var(--accent);}
+  .rec-more svg{width:14px;height:14px;}
+  .modal-ov{position:absolute;inset:0;background:#0C0D36;display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity .22s;z-index:60;}
+  .modal-ov.open{opacity:1;pointer-events:auto;}
+  .modal{width:100%;max-height:82%;background:#fff;border-radius:22px 22px 0 0;padding:14px 20px calc(22px + env(safe-area-inset-bottom,0px));overflow-y:auto;transform:translateY(24px);transition:transform .28s cubic-bezier(.22,1,.36,1);}
+  .modal-ov.open .modal{transform:translateY(0);}
+  .modal .grip{width:40px;height:4px;border-radius:99px;background:var(--line);margin:0 auto 16px;}
+  .modal .m-img{width:100%;aspect-ratio:16/9;border-radius:16px;overflow:hidden;margin:0 0 16px;background:var(--accent-soft);position:relative;}
+  .modal .m-img img{width:100%;height:100%;object-fit:cover;display:block;}
+  .modal .m-img .ph-label{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:var(--accent-press);opacity:.8;letter-spacing:.02em;}
+  .modal .m-rank{display:inline-block;font-size:12px;font-weight:800;color:#fff;background:var(--accent);border-radius:99px;padding:3px 10px;margin-bottom:10px;}
+  .modal h3{font-size:20px;font-weight:800;color:var(--ink);letter-spacing:-.02em;margin:0 0 8px;word-break:keep-all;line-height:1.35;}
+  .modal .m-desc{font-size:14.5px;line-height:1.6;color:var(--ink-2);margin:0 0 6px;word-break:keep-all;}
+  .modal .m-sec{font-size:12.5px;font-weight:800;color:var(--ink-3);margin:18px 0 4px;letter-spacing:.01em;}
+  .modal .m-row{display:flex;gap:10px;padding:11px 0;border-top:1px solid var(--line-2);font-size:14.5px;}
+  .modal .m-row .k{flex:0 0 68px;color:var(--ink-3);font-weight:600;}
+  .modal .m-row .v{flex:1 1 auto;color:var(--ink);font-weight:700;text-align:right;word-break:keep-all;}
+  .modal .m-note{font-size:12.5px;color:var(--ink-3);line-height:1.55;margin-top:16px;word-break:keep-all;}
+  .modal .m-cta{width:100%;border:none;border-radius:12px;padding:15px;font-size:15.5px;font-weight:700;background:var(--accent);color:#fff;margin-top:18px;cursor:pointer;font-family:inherit;transition:background .15s,transform .08s;}
+  .modal .m-cta:active{background:var(--accent-press);transform:scale(.99);}
+
+  .opt.with-desc{align-items:center;}
+  .opt .opt-desc{font-size:13px;font-weight:500;color:var(--ink-2);line-height:1.45;margin-top:3px;}
+  .opt.icon-opt{justify-content:flex-start;gap:13px;}
+  .opt.icon-opt .check{margin-left:auto;}
+  .opt .lead{flex:0 0 auto;width:42px;height:42px;border-radius:12px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;color:var(--accent);}
+  .opt .lead svg{width:23px;height:23px;}
+
+  /* 결과: 추천 카드 */
+  .rec-head{display:flex;flex-direction:column;gap:8px;margin-bottom:4px;}
+  .rec-summary{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px;}
+  .sum-chip{font-size:12.5px;font-weight:700;color:var(--accent-press);background:var(--accent-soft);border-radius:99px;padding:6px 11px;letter-spacing:-.02em;}
+  .rec-empty{margin-top:22px;padding:18px;border-radius:16px;background:var(--accent-soft);color:var(--accent-press);font-size:14.5px;font-weight:700;line-height:1.55;word-break:keep-all;}
+  .rec-list{margin-top:22px;display:flex;flex-direction:column;gap:14px;}
+  .rec-card{position:relative;background:#fff;border:1.5px solid var(--line);border-radius:var(--radius-lg);padding:18px 18px 16px;transition:,border-color .18s;animation:fade .4s ease both;}
+  .rec-card:hover{border-color:var(--accent);box-shadow:none;}
+  .rec-card .rank{position:absolute;top:16px;right:16px;font-size:12px;font-weight:800;color:#fff;background:var(--accent);border-radius:99px;padding:3px 10px;letter-spacing:.02em;}
+  .rec-card .rtitle{font-size:17px;font-weight:800;color:var(--ink);letter-spacing:-.02em;padding-right:56px;line-height:1.35;word-break:keep-all;}
+  .rec-card .rdesc{font-size:13.5px;font-weight:500;color:var(--ink-2);line-height:1.5;margin-top:7px;word-break:keep-all;}
+  .rec-card .rmeta{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+  .rec-card .mchip{font-size:11.5px;font-weight:600;color:var(--ink-2);background:var(--line-2);border-radius:99px;padding:5px 10px;}
+  .rec-note{font-size:12px;color:var(--ink-3);text-align:center;margin-top:16px;line-height:1.5;word-break:keep-all;}
+
+  /* 결과 하단 이메일 받기 */
+  .getmail.hidden{display:none;}
+  .getmail textarea{width:100%;font-size:15.5px;color:var(--ink);padding:14px;border:1.5px solid var(--line);border-radius:12px;background:#fff;outline:none;font-family:inherit;resize:vertical;}
+  .getmail textarea:focus{border-color:var(--accent);}
+  .direct-tag{font-size:11px;font-weight:800;color:#fff;background:var(--accent);border-radius:99px;padding:3px 8px;margin-top:-2px;}
+  .direct-back{align-self:flex-start;width:fit-content;border:none;background:none;color:var(--ink-3);font-size:14px;font-weight:700;font-family:inherit;cursor:pointer;padding:4px 0;margin-bottom:10px;}
+  .direct-badge{align-self:flex-start;width:fit-content;display:inline-block;font-size:12px;font-weight:800;color:var(--accent-press);background:var(--accent-soft);border-radius:99px;padding:5px 11px;margin-bottom:10px;}
+  .direct-desc{font-size:14.5px;color:var(--ink-2);line-height:1.6;margin:10px 0 0;word-break:keep-all;}
+  .getmail .agree{display:flex;align-items:center;gap:8px;margin:4px 0 10px;font-size:13px;color:var(--ink-2);cursor:pointer;}
+  .getmail .agree input{width:18px;height:18px;padding:0;accent-color:var(--accent);flex:0 0 auto;}
+  .getmail .agree span{flex:1 1 auto;line-height:1.4;}
+  .getmail .agree-more{border:none;background:none;color:var(--ink-3);font-size:12.5px;font-weight:700;text-decoration:underline;cursor:pointer;font-family:inherit;padding:0;}
+  .getmail .agree-detail{background:var(--line-2);border-radius:10px;padding:10px 12px;margin:0 0 12px;}
+  .getmail .agree-detail p{font-size:12px;margin:0 0 4px;color:var(--ink-2);line-height:1.5;}
+  .getmail .agree-detail p:last-child{margin:0;}
+  .more-btn{display:block;width:100%;margin-top:14px;border:1.5px solid var(--accent);background:#fff;color:var(--accent-press);border-radius:14px;padding:15px;font-size:15.5px;font-weight:800;font-family:inherit;cursor:pointer;letter-spacing:-.02em;}
+  .more-btn:active{background:var(--accent-soft);}
+  .getmail{margin-top:22px;background:#fff;border:1.5px solid var(--line);border-radius:var(--radius-lg);padding:18px;}
+  .getmail h3{font-size:15.5px;font-weight:800;color:var(--ink);margin:0 0 4px;letter-spacing:-.02em;}
+  .getmail p{font-size:13px;color:var(--ink-2);margin:0 0 14px;line-height:1.5;word-break:keep-all;}
+  .getmail .field{margin-bottom:10px;}
+  .getmail input{width:100%;font-size:15.5px;color:var(--ink);padding:14px 14px;border:1.5px solid var(--line);border-radius:12px;background:#fff;outline:none;font-family:inherit;transition:border-color .15s;}
+  .getmail input::placeholder{color:var(--ink-3);font-weight:400;}
+  .getmail input:focus{border-color:var(--accent);}
+  .getmail .mini-cta{width:100%;border:none;border-radius:12px;padding:15px;font-size:15.5px;font-weight:700;font-family:inherit;background:var(--accent);color:#fff;cursor:pointer;transition:background .15s,transform .08s,opacity .15s;margin-top:4px;}
+  .getmail .mini-cta:active{transform:scale(.99);background:var(--accent-press);}
+  .getmail .mini-cta:disabled{background:#E8E8E8;color:#767676;cursor:not-allowed;}
+  .getmail .sent-msg{font-size:14px;font-weight:700;color:var(--accent-press);text-align:center;padding:8px 0;}
+  .getmail .g-sel{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--accent-soft);border:1px solid var(--accent);border-radius:12px;padding:11px 14px;margin-bottom:12px;}
+  .getmail .g-sel span{flex:0 0 auto;font-size:12px;font-weight:800;color:var(--accent-press);}
+  .getmail .g-sel b{flex:1 1 auto;font-size:14px;font-weight:800;color:var(--ink);text-align:right;word-break:keep-all;line-height:1.35;}
+
+  .p-rec,.rec-card .rank,.m-rank,.direct-tag{background:#FFD84D !important;color:#1A1A1A !important;}
+  .brandbar .blink{display:block;width:132px;height:38px;overflow:hidden;flex:0 0 auto;}
+  .brandbar .blogo{width:147px;height:auto;max-width:none;margin:-24px 0 0 -7px;display:block;}  /* logo.webp 여백 잘라 로고 가로 약 132px (BRAND 9-3 최소 120px) */
+  .brandbar .bsub{color:var(--ink-2) !important;}
+  .cta,.mini-cta,.more-btn{border-radius:999px !important;}
+</style>
+</head>
+<body>
+  <div class="app" id="app">
+    <div class="topbar hidden" id="topbar">
+      <div class="topbar-row">
+        <button class="backbtn" id="backBtn" aria-label="이전">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <span class="step-count" id="stepCount">1 / 4</span>
+        <span style="width:32px"></span>
+      </div>
+      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    </div>
+    <div id="body" style="flex:1 1 auto;display:flex;flex-direction:column;overflow:hidden;"></div>
+    <div class="footer hidden" id="footer"><button class="cta" id="ctaBtn" disabled>다음</button></div>
+  </div>
+
+<script>
+(function(){
+  "use strict";
+
+  var CONFIG = { cobraEmail:'idengroup@naver.com', formEndpoint:'https://formspree.io/f/mlgondpj', variant:'recommend-v2' };
+  var SRC=(location.search.match(/[?&]src=([^&]+)/)||[])[1]||'direct';
+  var GA_MEASUREMENT_ID = 'G-XXXXXXXXXX';               // ← GA4 측정 ID로 교체 (head에도 필요 시 추가)
+
+  var IMAGES = { hero:'', loading:'', done:'' };
+
+  var D = {"PROGRAM_KEYS": ["학생자치(리더십)", "진로", "금연·흡연예방", "학교폭력예방", "역사·독도교육", "체육대회·축제", "학예회", "현장학습 대체", "성교육", "AI 리터러시", "시민역량", "기타 창체"], "PROGRAMS": {"학생자치(리더십)": [["전지적 리더 시점", "보고 듣고 느끼며 배우는 스토리형 리더십 캠프"], ["미래직업연구소", "감정이해로 자신의 직무를 확인해야 찾아보는 직업 탐구 프로그램"], ["미니 스포츠데이", "팀 스포츠 미션으로 협력과 학생 리더십을 경험"]], "진로": [["미래직업연구소", "감정이해로 자신의 직무를 확인해야 찾아보는 직업 탐구 프로그램"]], "금연·흡연예방": [["예방 마술공연", ""]], "학교폭력예방": [["학교폭력예방 레크리에이션", "전교생이 함께하는 관계형성·공동체 레크리에이션"]], "역사·독도교육": [], "체육대회·축제": [["미니 스포츠데이", "팀 스포츠 미션으로 협력과 학생 리더십을 경험"]], "학예회": [], "현장학습 대체": [["스쿨핑, 텐트밖은 스쿨", "텐트 설치·꾸미기와 팀빌딩 게임을 교내에서"]], "성교육": [], "AI 리터러시": [], "시민역량": [], "기타 창체": []}, "BUDGETS": ["100만원 이하", "100~300만원", "300~500만원", "500만원 이상"], "SCALES": ["50명 이하", "50~100명", "100~200명", "200~300명", "직접 입력"], "FORMATS": [["강당 프로그램형", "공연·팀빌딩 등 대규모 강당 진행"], ["학급 교육형", "교육·강사 파견·체험 중심"], ["축제·행사형", "운동장·강당 체육대회·축제 등"]]};
+
+  var _appOpened=false;
+  function track(n,p){ try{ if(window.gtag) window.gtag('event',n,Object.assign({variant:CONFIG.variant,src:SRC},p||{})); }catch(e){} }
+  function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+  function comma(n){ return String(n).replace(/\B(?=(\d{3})+(?!\d))/g,','); }
+  function imgSlot(key,size,label){
+    var src=IMAGES[key];
+    if(src) return '<img class="img3d" src="'+src+'" alt="" style="width:'+size+'px;height:'+size+'px" />';
+    return '';
+  }
+
+  var ICON_CHK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>';
+
+  function _svg(i){ return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+i+'</svg>'; }
+  var PROG_ICONS={
+    '학생자치(리더십)': _svg('<path d="M4 21V4"/><path d="M4 4h11l-2 3 2 3H4"/>'),
+    '진로': _svg('<circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/>'),
+    '금연·흡연예방': _svg('<circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/><path d="M8 14h8"/>'),
+    '학교폭력예방': _svg('<path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z"/>'),
+    '역사·독도교육': _svg('<path d="M4 5a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2z"/><path d="M18 3v18"/>'),
+    '체육대회·축제': _svg('<path d="M8 4h8v4a4 4 0 0 1-8 0z"/><path d="M8 5H5v2a3 3 0 0 0 3 3M16 5h3v2a3 3 0 0 1-3 3"/><path d="M10 13h4M12 13v4M9 21h6"/>'),
+    '학예회': _svg('<circle cx="7" cy="18" r="2.3"/><circle cx="17" cy="16" r="2.3"/><path d="M9.3 18V6l10-2v10"/>'),
+    '현장학습 대체': _svg('<path d="M12 21s7-6 7-11a7 7 0 0 0-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.4"/>'),
+    '성교육': _svg('<path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/>'),
+    'AI 리터러시': _svg('<rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3"/>'),
+    '시민역량': _svg('<circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/>'),
+    '기타 창체': _svg('<path d="M12 4l1.6 4.4L18 10l-4.4 1.6L12 16l-1.6-4.4L6 10l4.4-1.6z"/><path d="M18 15l.7 2L21 18l-2.3.9L18 21l-.7-2L15 18l2.3-.9z"/>'),
+    '기타': _svg('<rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/>'),
+    '_default': _svg('<circle cx="12" cy="12" r="9"/>')
+  };
+  var FORMAT_ICONS={
+    '강당형': _svg('<rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M12 16v4M8 20h8"/>'),
+    '학급·교실형': _svg('<rect x="3" y="4" width="18" height="13" rx="1.5"/><path d="M7 9h10M7 12h6"/><path d="M9 21l3-4 3 4"/>'),
+    '축제·행사형': _svg('<path d="M4 4v16"/><path d="M4 5c3-1.5 6 1.5 9 0s5-1.5 7-.5V13c-2-1-4-1-7 .5s-6-1.5-9 0z"/>')
+  };
+  var PERIOD_ICON=_svg('<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>');
+  var FORMAT_IMG={ '강당 프로그램형':'', '학급 교육형':'', '축제·행사형':'' };  // ← 16:4 이미지 URL 넣으면 배너로 표시
+  // 추천 프로그램별 상세 이미지 (프로그램명 → 이미지 URL). 비우면 플레이스홀더가 뜸.
+  // 상세 화면 한 줄 소개 (프로그램명 → 문구)
+  var PROGRAM_PITCH={
+    "전지적 리더 시점": "학생들이 학교 문제를 찾고, 친구의 말을 듣고, 감정을 나누는 과정을 4개 에피소드로 경험합니다. 마지막에는 학생마다 학교에서 실천할 리더 행동 하나를 정해 발표합니다.",
+    "미래직업연구소": "직업의 기준이 흔들리는 미래 시대,<br>변하는 직업세계 속 변하지 않는 나만의 무기를 찾아<br>진로를 정해야 한다! <br><br>직업박사와 함께 떠나는 새로운 진로 탐험의 시간!<br>자기이해를 통해 나만의 직무를 이해하고 미래 직업을 선택해보는 시간!",
+    "학교폭력예방 레크리에이션": "레크리에이션 전공 청소년지도사가 진행해, 전교생이 즐기면서 관계를 배웁니다.",
+    "스쿨핑, 텐트밖은 스쿨": "이동 없이 학교에서 캠핑하듯, 현장학습 대체로 가장 인기 있는 공동체 프로그램입니다.",
+    "미니 스포츠데이": "몸으로 부딪히는 팀 미션으로, 학기 초 어색했던 관계가 한 팀으로 바뀝니다."
+  };
+  var PROGRAM_IMG={
+    "전지적 리더 시점": "https://tjdwo3435-byte.github.io/fortitcher-recommend/img/programs/leader-pov.webp",
+    "미래직업연구소": "https://identeach.co.kr/assets/images/programs/career/job-lab.png",
+    "학교폭력예방 레크리에이션": "https://identeach.co.kr/assets/images/programs/together/violence-prevention.webp",
+    "스쿨핑, 텐트밖은 스쿨": "https://identeach.co.kr/assets/images/programs/together/schoolping.webp",
+    "미니 스포츠데이": "https://identeach.co.kr/assets/images/programs/together/mini-sports.webp"
+  };  // 노션 프로그램DB에서 생성 (tools/apply_programs.py)
+  // 프로그램별 최저 예산(만원). 선생님 예산 ±BUDGET_RANGE 안이면 추천. 값이 없으면 예산과 무관하게 추천
+  var PROGRAM_MIN={
+    "전지적 리더 시점": 60
+  };
+  // 프로그램별 대상 학교급. 선생님이 고른 학교급·학년과 겹쳐야 추천. 값이 없으면 학년과 무관하게 추천
+  var PROGRAM_LEVEL={
+    "전지적 리더 시점": [
+        "중학교",
+        "고등학교",
+        "초등 고학년"
+    ],
+    "미래직업연구소": [
+        "중학교",
+        "고등학교"
+    ],
+    "학교폭력예방 레크리에이션": [
+        "초등 저학년",
+        "초등 고학년",
+        "중학교",
+        "고등학교"
+    ],
+    "스쿨핑, 텐트밖은 스쿨": [
+        "초등 저학년",
+        "초등 고학년"
+    ],
+    "미니 스포츠데이": [
+        "중학교",
+        "고등학교"
+    ]
+  };
+  var BUDGET_RANGE=50;
+  var REC_COUNT=1;   // 결과 화면에 보여줄 추천 개수
+  var PERIODS=[['1시간',60],['2시간',120],['3시간',180],['4시간',240],['잘 모르겠음',0]];  // [표시, 분]
+  var MAIN_KEYS=['학생자치(리더십)','진로','금연·흡연예방','학교폭력예방','현장학습 대체'];
+  var DIRECT_KEYS=['체육대회·축제'];  // 맞춤 진행: 질문 없이 바로 문의 폼으로
+  var SOON_KEYS=['AI 리터러시'];  // 준비중: 목록 맨 끝에 비활성으로 표시
+  var OTHER_KEYS=['기타 창체','성교육','역사·독도교육','시민역량','학예회'];
+
+  var STEPS=['program','budget','grade','scale','format','period'];
+  // 학교급별 학년 선택지
+  var SCHOOLS=[['초등학교','초등',6,40],['중학교','중',3,45],['고등학교','고',3,50]];  // [이름, 약칭, 최대 학년, 1차시 분]
+  var state={ step:0, answers:{}, otherOpen:false };
+
+  var elTopbar=document.getElementById('topbar'),elFooter=document.getElementById('footer'),
+      elBody=document.getElementById('body'),elStep=document.getElementById('stepCount'),
+      elProg=document.getElementById('progressFill'),elBack=document.getElementById('backBtn');
+
+  function setProgress(){
+    var i=state.step,total=STEPS.length;
+    elStep.textContent=(i+1)+' / '+total;
+    elProg.style.width=Math.floor((i+1)/total*100)+'%';
+  }
+
+  function autoNext(){ setTimeout(nextStep,340); }
+
+  function render(){
+    if(!_appOpened){ _appOpened=true; track('app_open',{}); }
+    var key=STEPS[state.step];
+    elTopbar.classList.remove('hidden');
+    var programOther = key==='program' && (state.otherOpen || (state.answers.program && MAIN_KEYS.indexOf(state.answers.program)<0));
+    var scaleAll = key==='scale' && state.scaleCustom;
+    elFooter.classList.toggle('hidden', !(key==='budget' || key==='grade' || programOther || scaleAll));
+    if(key==='budget' || key==='grade' || programOther || scaleAll){ var cta=document.getElementById('ctaBtn'); cta.textContent='다음'; }
+    elBack.style.visibility = state.step===0 ? 'hidden':'visible';
+    setProgress();
+    track('step_view',{step:state.step+1,name:key});
+
+    var html='<div class="brandbar"><a class="blink" href="/" aria-label="아이덴티치 홈"><img class="blogo" src="/assets/images/logo.webp" alt="아이덴티치" /></a><span class="bsub">4초 프로그램 추천</span></div>';
+    html+='<div class="screen">';
+
+    if(key==='program'){
+      html+='<div class="prog-hero">'+imgSlot('hero',76,'대표 3D')+'</div>';
+      html+='<h1 class="q-title">어떤 프로그램을 찾으세요?</h1>';
+      html+='<p class="q-desc">어떤 걸 찾으시는지 하나만 골라주세요.</p>';
+      var showOther = state.otherOpen || (state.answers.program && MAIN_KEYS.indexOf(state.answers.program)<0 && DIRECT_KEYS.indexOf(state.answers.program)<0);
+      html+='<div class="chip-grid">';
+      MAIN_KEYS.forEach(function(p){
+        var sel=state.answers.program===p?' selected':'';
+        html+='<button class="chip'+sel+'" data-val="'+esc(p)+'"><span class="ci">'+(PROG_ICONS[p]||PROG_ICONS._default)+'</span><span>'+esc(p)+'</span></button>';
+      });
+      html+='<button class="chip'+(showOther?' selected':'')+'" data-role="more"><span class="ci">'+PROG_ICONS['기타']+'</span><span>기타</span></button>';
+      DIRECT_KEYS.forEach(function(p){
+        html+='<button class="chip" data-role="direct" data-val="'+esc(p)+'"><span class="ci">'+(PROG_ICONS[p]||PROG_ICONS._default)+'</span><span>'+esc(p)+'</span><span class="direct-tag">맞춤 진행</span></button>';
+      });
+      SOON_KEYS.forEach(function(p){
+        html+='<button class="chip soon" disabled aria-disabled="true"><span class="ci">'+(PROG_ICONS[p]||PROG_ICONS._default)+'</span><span>'+esc(p)+'</span><span class="soon-tag">준비중</span></button>';
+      });
+      html+='</div>';
+      if(showOther){
+        var customVal = (OTHER_KEYS.indexOf(state.answers.program)<0) ? (state.answers.program||'') : '';
+        html+='<div class="other-panel">';
+        html+='<div class="other-label">진행할 프로그램을 직접 적어주세요</div>';
+        html+='<div class="field-group"><div class="field"><input type="text" id="inp_custom" autocomplete="off" placeholder="예: 성교육 | 역사교육 | 시민역량 | 학예회" value="'+esc(customVal)+'" /></div></div>';
+        html+='</div>';
+      }
+    } else if(key==='budget'){
+      html+='<h1 class="q-title">활용 가능한 예산을 알려주세요.</h1>';
+      html+='<p class="q-desc"><b>만원 단위</b>로 입력해주세요. (예: 300 → 300만원)</p>';
+      var bexist=(state.answers.budget||'').replace(/[^0-9]/g,'');
+      html+='<div class="budget-wrap" id="bwrap">'+
+              '<input type="text" id="inp_budget" inputmode="numeric" autocomplete="off" placeholder="0" value="'+(bexist?comma(parseInt(bexist,10)):'')+'" />'+
+              '<span class="unit">만원</span>'+
+            '</div>';
+      html+='<div class="budget-eq" id="bEq"></div>';
+      html+='<div class="budget-quick">'+[50,100,200,300].map(function(v){return '<button class="qbtn" data-amt="'+v+'">'+v+'만원</button>';}).join('')+'</div>';
+    } else if(key==='grade'){
+      html+='<h1 class="q-title">몇 학년인가요?</h1>';
+      html+='<div class="seg-grid">'+SCHOOLS.map(function(sc){
+        return '<button class="seg'+(state.answers.school===sc[0]?' on':'')+'" data-school="'+esc(sc[0])+'">'+esc(sc[0])+'</button>';
+      }).join('')+'</div>';
+      var cur=SCHOOLS.filter(function(sc){return sc[0]===state.answers.school;})[0];
+      if(cur){
+        html+='<div class="other-label grade-label">학년을 숫자로 입력해주세요 (1~'+cur[2]+')</div>'+
+              '<div class="budget-wrap" id="gwrap">'+
+                '<input type="text" id="inp_grade" inputmode="numeric" maxlength="1" autocomplete="off" placeholder="0" value="'+(state.answers.gradeNum||'')+'" />'+
+                '<span class="unit">학년</span>'+
+              '</div>'+
+              '<div class="grade-err" id="gErr"></div>'+
+              '<div class="budget-quick"><button class="qbtn'+(state.answers.gradeAll?' on':'')+'" id="gAll">전교생</button></div>';
+      }
+    } else if(key==='scale'){
+      html+='<h1 class="q-title">대상 인원은 어느 정도인가요?</h1>';
+      var isAll = !!state.scaleCustom;
+      html+='<div class="options">';
+      D.SCALES.forEach(function(sc){
+        if(sc==='직접 입력'){
+          html+='<button class="opt'+(isAll?' selected':'')+'" data-role="all"><span class="opt-main"><span>직접 입력</span></span><span class="check">'+ICON_CHK+'</span></button>';
+        } else {
+          var sel=(!isAll&&state.answers.scale===sc)?' selected':'';
+          html+=optRow(sc,sel);
+        }
+      });
+      html+='</div>';
+      if(isAll){
+        var nexist=(String(state.answers.scale).replace(/[^0-9]/g,''));
+        html+='<div class="other-panel"><div class="other-label">대상 인원을 숫자로 적어주세요</div>'+
+              '<div class="budget-wrap" id="swrap">'+
+                '<input type="text" id="inp_all" inputmode="numeric" autocomplete="off" placeholder="0" value="'+(nexist?comma(parseInt(nexist,10)):'')+'" />'+
+                '<span class="unit">명</span>'+
+              '</div></div>';
+      }
+    } else if(key==='format'){
+      html+='<h1 class="q-title">원하는 수업 형태가 있으신가요?</h1>';
+      html+='<div class="options">';
+      D.FORMATS.forEach(function(f){
+        var sel=state.answers.format===f[0]?' selected':'';
+        var img=FORMAT_IMG[f[0]]||'';
+        var banner = img ? '<img src="'+img+'" alt="" />' : '<span class="ph-label">이미지 16:4</span>';
+        html+='<button class="opt fmt-opt'+sel+'" data-val="'+esc(f[0])+'">'+
+                '<span class="fmt-banner">'+banner+'</span>'+
+                '<span class="fmt-body"><span class="opt-main"><span>'+esc(f[0])+'</span><span class="opt-desc">'+esc(f[1])+'</span></span><span class="check">'+ICON_CHK+'</span></span>'+
+              '</button>';
+      });
+      html+='</div>';
+    } else if(key==='period'){
+      html+='<h1 class="q-title">진행 시간은 어느 정도인가요?</h1>';
+      var psc=SCHOOLS.filter(function(sc){return sc[0]===state.answers.school;})[0];
+      var pmin=psc?psc[3]:45;
+      html+='<p class="q-desc">'+(psc?esc(psc[0])+' 한 차시 '+pmin+'분 기준으로 계산했어요.':'한 차시는 보통 40~50분 수업 한 타임이에요.')+'</p>';
+      html+='<div class="options">';
+      // 추천 시간: 체육대회·축제 → 4시간 / 예산 100만원 이하 → 2시간 / 그 이상 → 3시간
+      var bnum=parseInt(String(state.answers.budget||'').replace(/[^0-9]/g,''),10)||0;
+      var recMin = state.answers.program==='체육대회·축제' ? 240 : (bnum<=100 ? 120 : 180);
+      PERIODS.forEach(function(pd){
+        var label=pd[0], val=label, main;
+        if(pd[1]){
+          var x=pd[1]/pmin, rx=Math.max(1,Math.round(x));
+          var cs = x===rx ? rx+'차시' : Math.abs(x-rx)<=0.25 ? '약 '+rx+'차시' : Math.floor(x)+'~'+Math.ceil(x)+'차시';
+          val=label+' ('+cs+')';
+          main='<span class="p-row"><span>'+esc(label)+'</span><span class="p-cs">'+esc(cs)+'</span>'+(pd[1]===recMin?'<span class="p-rec">추천</span>':'')+'</span>';
+        } else {
+          main='<span>'+esc(label)+'</span><span class="opt-desc">담당 매니저가 함께 정해드려요</span>';
+        }
+        var sel=state.answers.period===val?' selected':'';
+        html+='<button class="opt icon-opt'+sel+'" data-val="'+esc(val)+'">'+
+                '<span class="lead">'+PERIOD_ICON+'</span>'+
+                '<span class="opt-main">'+main+'</span>'+
+                '<span class="check">'+ICON_CHK+'</span></button>';
+      });
+      html+='</div>';
+    }
+    html+='</div>';
+    elBody.innerHTML=html;
+    bind(key);
+  }
+
+  function optRow(label,sel){
+    return '<button class="opt'+sel+'" data-val="'+esc(label)+'">'+
+      '<span class="opt-main"><span>'+esc(label)+'</span></span>'+
+      '<span class="check">'+ICON_CHK+'</span></button>';
+  }
+
+  function bind(key){
+    if(key==='budget'){
+      var wrap=document.getElementById('bwrap'), inp=document.getElementById('inp_budget'),
+          cta=document.getElementById('ctaBtn'), eq=document.getElementById('bEq');
+      function num(){ var d=inp.value.replace(/[^0-9]/g,''); return d?parseInt(d,10):0; }
+      function refresh(){
+        var n=num();
+        inp.value = n?comma(n):'';
+        eq.textContent = n? '= '+comma(n*10)+'천원' : '';
+        Array.prototype.forEach.call(elBody.querySelectorAll('.qbtn'),function(b){ b.classList.toggle('on', parseInt(b.getAttribute('data-amt'),10)===n); });
+        cta.disabled = !(n>0);
+        state.answers.budget = n? (n+'만원') : '';
+      }
+      inp.addEventListener('focus',function(){ wrap.classList.add('focus'); });
+      inp.addEventListener('blur',function(){ wrap.classList.remove('focus'); });
+      inp.addEventListener('input',refresh);
+      inp.addEventListener('keydown',function(e){ if(e.key==='Enter' && !cta.disabled) nextStep(); });
+      Array.prototype.forEach.call(elBody.querySelectorAll('.qbtn'),function(b){
+        b.addEventListener('click',function(){ inp.value=b.getAttribute('data-amt'); refresh(); inp.focus(); });
+      });
+      cta.onclick=function(){ if(num()<=0) return; state.answers.budget=num()+'만원'; nextStep(); };
+      refresh();
+      return;
+    }
+    if(key==='program'){
+      Array.prototype.forEach.call(elBody.querySelectorAll('.chip'),function(btn){
+        btn.addEventListener('click',function(){
+          if(btn.getAttribute('data-role')==='more'){
+            state.otherOpen=!state.otherOpen;
+            if(!state.otherOpen && MAIN_KEYS.indexOf(state.answers.program)<0){ state.answers.program=null; }
+            render(); return;
+          }
+          var val=btn.getAttribute('data-val');
+          if(btn.getAttribute('data-role')==='direct'){
+            state.otherOpen=false; state.answers.program=val;
+            track('direct_open',{program:val}); renderDirect(); return;
+          }
+          if(MAIN_KEYS.indexOf(val)>=0){ state.otherOpen=false; }
+          state.answers.program=val;
+          autoNext();
+        });
+      });
+      var ci=document.getElementById('inp_custom');
+      if(ci){
+        var cta2=document.getElementById('ctaBtn');
+        function csync(){
+          var v=ci.value.trim();
+          if(v){ state.answers.program=v; }
+          else if(MAIN_KEYS.indexOf(state.answers.program)<0){ state.answers.program=null; }
+          Array.prototype.forEach.call(elBody.querySelectorAll('.subchip'),function(b){ b.classList.toggle('selected', b.getAttribute('data-val')===state.answers.program); });
+          if(cta2) cta2.disabled = !v;
+        }
+        ci.addEventListener('input',csync);
+        ci.addEventListener('keydown',function(e){ if(e.key==='Enter' && ci.value.trim()){ state.answers.program=ci.value.trim(); nextStep(); } });
+        if(cta2){ cta2.onclick=function(){ var v=ci.value.trim(); if(!v) return; state.answers.program=v; nextStep(); }; cta2.disabled=!ci.value.trim(); }
+      }
+      return;
+    }
+    if(key==='grade'){
+      var gcta=document.getElementById('ctaBtn'), gi=document.getElementById('inp_grade'), gerr=document.getElementById('gErr');
+      Array.prototype.forEach.call(elBody.querySelectorAll('.seg'),function(b){
+        b.addEventListener('click',function(){
+          var v=b.getAttribute('data-school');
+          if(state.answers.school!==v){ state.answers.school=v; state.answers.gradeNum=''; state.answers.grade=''; state.answers.gradeAll=false; }
+          render();
+          var ni=document.getElementById('inp_grade'); if(ni) ni.focus();
+        });
+      });
+      function gsync(){
+        var cur=SCHOOLS.filter(function(sc){return sc[0]===state.answers.school;})[0];
+        if(!cur||!gi){ state.answers.grade=''; gcta.disabled=true; return; }
+        var d=gi.value.replace(/[^0-9]/g,''); gi.value=d;
+        if(d){ state.answers.gradeAll=false; }
+        var ga=document.getElementById('gAll'); if(ga) ga.classList.toggle('on',!!state.answers.gradeAll);
+        if(state.answers.gradeAll){ state.answers.gradeNum=''; state.answers.grade=cur[1]+' 전교생'; gerr.textContent=''; gcta.disabled=false; return; }
+        var n=d?parseInt(d,10):0, ok=n>=1&&n<=cur[2];
+        state.answers.gradeNum=d;
+        state.answers.grade = ok ? (cur[1]+' '+n+'학년') : '';
+        gerr.textContent = (d&&!ok) ? cur[0]+'는 1~'+cur[2]+'학년까지 입력할 수 있어요.' : '';
+        gcta.disabled=!ok;
+      }
+      if(gi){
+        var gw=document.getElementById('gwrap');
+        gi.addEventListener('focus',function(){ gw.classList.add('focus'); });
+        gi.addEventListener('blur',function(){ gw.classList.remove('focus'); });
+        gi.addEventListener('input',gsync);
+        gi.addEventListener('keydown',function(e){ if(e.key==='Enter' && state.answers.grade) nextStep(); });
+        document.getElementById('gAll').addEventListener('click',function(){
+          state.answers.gradeAll=!state.answers.gradeAll;
+          if(state.answers.gradeAll){ gi.value=''; }
+          gsync();
+          if(state.answers.gradeAll) autoNext();
+        });
+      }
+      gcta.onclick=function(){ if(!state.answers.grade) return; nextStep(); };
+      gsync();
+      return;
+    }
+    if(key==='scale'){
+      Array.prototype.forEach.call(elBody.querySelectorAll('.opt'),function(btn){
+        btn.addEventListener('click',function(){
+          if(btn.getAttribute('data-role')==='all'){
+            if(!state.scaleCustom){ state.scaleCustom=true; state.answers.scale=''; }
+            render();
+            var si=document.getElementById('inp_all'); if(si){ si.focus(); si.scrollIntoView({block:'center',behavior:'smooth'}); }
+            return;
+          }
+          state.scaleCustom=false; state.answers.scale=btn.getAttribute('data-val');
+          autoNext();
+        });
+      });
+      var ai=document.getElementById('inp_all');
+      if(ai){
+        var cta3=document.getElementById('ctaBtn');
+        function refreshAll(){
+          var d=ai.value.replace(/[^0-9]/g,''); var n=d?parseInt(d,10):0;
+          ai.value=n?comma(n):'';
+          state.answers.scale = n? ('약 '+comma(n)+'명') : '';
+          if(cta3) cta3.disabled=!(n>0);
+        }
+        ai.addEventListener('input',refreshAll);
+        ai.addEventListener('keydown',function(e){ if(e.key==='Enter'){ var d=ai.value.replace(/[^0-9]/g,''); if(d&&parseInt(d,10)>0){ refreshAll(); nextStep(); } } });
+        if(cta3){ cta3.onclick=function(){ var d=ai.value.replace(/[^0-9]/g,''); if(!(d&&parseInt(d,10)>0)) return; refreshAll(); nextStep(); }; }
+        refreshAll();
+      }
+      return;
+    }
+    Array.prototype.forEach.call(elBody.querySelectorAll('.opt'),function(btn){
+      btn.addEventListener('click',function(){
+        Array.prototype.forEach.call(elBody.querySelectorAll('.opt'),function(b){b.classList.remove('selected');});
+        btn.classList.add('selected');
+        state.answers[key]=btn.getAttribute('data-val');
+        autoNext();
+      });
+    });
+  }
+
+  function nextStep(){
+    if(state.step<STEPS.length-1){ state.step++; render(); elBody.scrollTop=0; }
+    else { renderLoading(); }
+  }
+  function onBack(){ if(state.step>0){ state.step--; render(); elBody.scrollTop=0; } }
+
+  function renderLoading(){
+    elTopbar.classList.add('hidden'); elFooter.classList.add('hidden');
+    var steps=['프로그램 유형을 확인하고 있어요','예산·규모에 맞는 구성을 찾고 있어요','수업 형태에 맞는 프로그램을 고르고 있어요','추천 3개를 정리하고 있어요'];
+    var stepsHtml=steps.map(function(s,i){return '<div class="load-step" id="ls'+i+'"><span class="dot">'+ICON_CHK+'</span><span>'+esc(s)+'</span></div>';}).join('');
+    elBody.innerHTML='<div class="screen loading">'+
+      '<div class="load-orb">'+imgSlot('loading',112,'로딩 3D')+'<span class="shadow"></span></div>'+
+      '<h2>딱 맞는 프로그램을 찾고 있어요.</h2>'+
+      '<p>'+esc(state.answers.program)+' · '+esc(state.answers.format)+' 기준으로 추천을 정리하고 있습니다.</p>'+
+      '<div class="load-steps">'+stepsHtml+'</div></div>';
+    var per=520;
+    for(var i=0;i<steps.length;i++){(function(i){setTimeout(function(){
+      var c=document.getElementById('ls'+i); if(c)c.classList.add('active');
+      if(i>0){var p=document.getElementById('ls'+(i-1)); if(p){p.classList.remove('active');p.classList.add('done');}}
+    },i*per);})(i);}
+    setTimeout(function(){var l=document.getElementById('ls'+(steps.length-1)); if(l){l.classList.remove('active');l.classList.add('done');}},steps.length*per);
+    setTimeout(renderResult, steps.length*per+350);
+  }
+
+  // 선생님이 고른 학교급·학년 → 프로그램DB '대상 학교급' 값
+  function teacherLevels(){
+    var a=state.answers, n=parseInt(a.gradeNum,10)||0;
+    if(a.school==='초등학교'){
+      if(a.gradeAll||!n) return ['초등 저학년','초등 고학년'];
+      return [n<=3?'초등 저학년':'초등 고학년'];
+    }
+    if(a.school==='중학교') return ['중학교'];
+    if(a.school==='고등학교') return ['고등학교'];
+    return [];
+  }
+  function renderResult(){
+    elTopbar.classList.add('hidden'); elFooter.classList.add('hidden');
+    var a=state.answers;
+    var bud=parseInt(String(a.budget||'').replace(/[^0-9]/g,''),10)||0;
+    var lv=teacherLevels();
+    var recs=(D.PROGRAMS[a.program]||[]).filter(function(r){
+      var m=PROGRAM_MIN[r[0]], pl=PROGRAM_LEVEL[r[0]];
+      var okBudget = m==null || !bud || Math.abs(m-bud)<=BUDGET_RANGE;
+      var okLevel = !pl || !pl.length || !lv.length || lv.some(function(x){ return pl.indexOf(x)>=0; });
+      return okBudget && okLevel;
+    }).slice(0,REC_COUNT);
+    state.selectedRec=null;
+    track('recommend_view',{program:a.program});
+
+    var chev='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>';
+    var cards=recs.map(function(r,i){
+      return '<div class="rec-card" data-idx="'+i+'" style="animation-delay:'+(i*90)+'ms">'+
+        '<span class="rank">추천 '+(i+1)+'</span>'+
+        '<div class="rtitle">'+esc(r[0])+'</div>'+
+        '<div class="rdesc">'+esc(r[1])+'</div>'+
+        '<div class="rmeta">'+
+          '<span class="mchip">'+esc(a.format)+'</span>'+
+          (a.period?'<span class="mchip">'+esc(a.period)+'</span>':'')+
+          '<span class="mchip">'+esc(a.budget)+'</span>'+
+          '<span class="mchip">'+esc(a.scale)+'</span>'+
+        '</div>'+
+        '<div class="rec-more">자세히 보기'+chev+'</div></div>';
+    }).join('');
+
+    elBody.innerHTML='<div class="screen result">'+
+      '<div class="result-hero">'+imgSlot('done',104,'완료 3D')+'</div>'+
+      '<div class="rec-head">'+
+        '<h1>'+(recs.length?'선생님께 맞는 프로그램이에요.':'선생님 학교에 맞춰 찾아드릴게요.')+'</h1>'+
+        '<div class="rec-summary">'+
+          '<span class="sum-chip">'+esc(a.program)+'</span>'+
+          '<span class="sum-chip">'+esc(a.budget)+'</span>'+
+          '<span class="sum-chip">'+esc(a.grade)+'</span>'+
+          '<span class="sum-chip">'+esc(a.scale)+'</span>'+
+          '<span class="sum-chip">'+esc(a.format)+'</span>'+
+          (a.period?'<span class="sum-chip">'+esc(a.period)+'</span>':'')+
+        '</div>'+
+      '</div>'+
+      (recs.length?'<div class="rec-list">'+cards+'</div>':'<div class="rec-empty">이 분야는 지금 조건에 맞는 프로그램을 담당 매니저가 직접 찾아드려요.<br>아래에 이메일을 남겨주시면 업체와 견적을 정리해 보내드릴게요.</div>')+
+      (recs.length?'<button class="more-btn" id="moreBtn">다른 프로그램도 추천받기</button>':'')+
+      '<div class="getmail'+(recs.length?' hidden':'')+'" id="getmail">'+
+        '<h3 id="gTitle">'+(recs.length?'다른 프로그램도 추천받아 보세요':'맞는 프로그램을 찾아 보내드릴게요')+'</h3>'+
+        '<p>이메일과 연락처를 남겨주시면 담당 매니저가 조건에 맞는 프로그램과 견적을 정리해 보내드려요.</p>'+
+        '<div class="g-sel" id="gSel" style="display:none"></div>'+
+        '<div class="field"><input type="email" id="gEmail" placeholder="이메일 (예: teacher@school.com)" /></div>'+
+        '<div class="field"><input type="tel" id="gPhone" inputmode="tel" placeholder="연락처 (예: 010-1234-5678)" /></div>'+
+        '<div class="field"><input type="text" id="gSchool" placeholder="학교명 (선택)" /></div>'+
+        '<label class="agree"><input type="checkbox" id="gAgree" /><span>개인정보 수집·이용에 동의합니다. <b>(필수)</b></span><button type="button" class="agree-more" id="gAgreeMore">자세히</button></label>'+
+        '<div class="agree-detail" id="gAgreeDetail" hidden>'+
+          '<p><b>수집 항목</b> 이메일, 연락처, 학교명(선택), 선택하신 조건(프로그램 유형·예산·학년·인원·수업 형태·시간)</p>'+
+          '<p><b>수집 목적</b> 프로그램 추천 및 상담·견적 안내</p>'+
+          '<p><b>보유 기간</b> 상담 완료 후 3개월 이내 파기</p>'+
+          '<p>동의를 거부할 수 있으나, 거부 시 추천 요청을 보낼 수 없습니다.</p>'+
+        '</div>'+
+        '<button class="mini-cta" id="gSend" disabled>추천 요청 보내기</button>'+
+      '</div>'+
+      '<div style="padding:22px 0 20px;"><button class="cta ghost" id="resetBtn">처음부터 다시하기</button></div>'+
+    '</div>'+
+    '<div class="modal-ov" id="modalOv"><div class="modal" id="modalBox"></div></div>';
+
+    var em=document.getElementById('gEmail'),ph=document.getElementById('gPhone'),sc=document.getElementById('gSchool'),sd=document.getElementById('gSend'),ag=document.getElementById('gAgree');
+    function chk(){ sd.disabled=!(/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em.value.trim()) && ph.value.replace(/[^0-9]/g,'').length>=9 && ag.checked); }
+    em.addEventListener('input',chk); ph.addEventListener('input',chk); ag.addEventListener('change',chk);
+    document.getElementById('gAgreeMore').addEventListener('click',function(e){ e.preventDefault(); var d=document.getElementById('gAgreeDetail'); d.hidden=!d.hidden; });
+    sd.addEventListener('click',function(){ sendLead(em.value.trim(),ph.value.trim(),sc.value.trim(),recs,sd); });
+    function openForm(){
+      var g=document.getElementById('getmail'); g.classList.remove('hidden');
+      var mb=document.getElementById('moreBtn'); if(mb) mb.style.display='none';
+      g.scrollIntoView({behavior:'smooth',block:'center'});
+      setTimeout(function(){ em.focus(); },350);
+    }
+    var mb=document.getElementById('moreBtn');
+    if(mb) mb.addEventListener('click',function(){ state.selectedRec=null; track('more_click',{program:a.program}); openForm(); });
+    document.getElementById('resetBtn').addEventListener('click',reset);
+
+    // 추천 상세 팝업
+    var ov=document.getElementById('modalOv'), box=document.getElementById('modalBox');
+    function closeModal(){ ov.classList.remove('open'); }
+    function openModal(i){
+      var r=recs[i];
+      var pimg=PROGRAM_IMG[r[0]]||'';
+      var pbanner = pimg ? '<img src="'+pimg+'" alt="" />' : '<span class="ph-label">프로그램 이미지</span>';
+      box.innerHTML='<div class="grip"></div>'+
+        '<div class="m-img">'+pbanner+'</div>'+
+        '<span class="m-rank">추천 '+(i+1)+'</span>'+
+        '<h3>'+esc(r[0])+'</h3>'+
+        '<p class="m-desc">'+esc(r[1])+'</p>'+
+        (PROGRAM_PITCH[r[0]]?'<p class="m-pitch">'+esc(PROGRAM_PITCH[r[0]]).replace(/&lt;br\s*\/?&gt;/gi,'<br>')+'</p>':'')+
+        '<div class="m-sec">한눈에 보기</div>'+
+        '<div class="m-row"><span class="k">프로그램</span><span class="v">'+esc(a.program)+'</span></div>'+
+        '<div class="m-row"><span class="k">수업 형태</span><span class="v">'+esc(a.format)+'</span></div>'+
+        (a.period?'<div class="m-row"><span class="k">진행 시간</span><span class="v">'+esc(a.period)+'</span></div>':'')+
+        '<div class="m-row"><span class="k">학교급·학년</span><span class="v">'+esc(a.grade)+'</span></div>'+
+        '<div class="m-row"><span class="k">대상 인원</span><span class="v">'+esc(a.scale)+'</span></div>'+
+        '<div class="m-row"><span class="k">예산</span><span class="v">'+esc(a.budget)+'</span></div>'+
+        '<p class="m-note">학교 상황에 맞춰 세부 구성·강사·정확한 견적은 담당 매니저가 조정해 안내해드려요.</p>'+
+        '<button class="m-cta" id="mCta">이 프로그램으로 문의하기</button>';
+      ov.classList.add('open');
+      document.getElementById('mCta').addEventListener('click',function(){
+        state.selectedRec=i;
+        var gs=document.getElementById('gSel');
+        if(gs){ gs.style.display='flex'; gs.innerHTML='<span>문의할 프로그램</span><b>'+esc(recs[i][0])+'</b>'; }
+        var gt=document.getElementById('gTitle'); if(gt) gt.textContent='이 프로그램으로 문의하기';
+        track('recommend_pick',{program:a.program,pick:recs[i][0]});
+        closeModal();
+        openForm();
+      });
+    }
+    Array.prototype.forEach.call(elBody.querySelectorAll('.rec-card'),function(c){
+      c.addEventListener('click',function(){ openModal(parseInt(c.getAttribute('data-idx'),10)); track('recommend_detail',{program:a.program}); });
+    });
+    ov.addEventListener('click',function(e){ if(e.target===ov) closeModal(); });
+  }
+
+  function sendLead(email,phone,school,recs,btn){
+    var a=state.answers;
+    var picked = (state.selectedRec!=null && recs[state.selectedRec]) ? recs[state.selectedRec][0] : '';
+    var kind = picked ? '프로그램 문의' : (recs.length ? '다른 프로그램 추천 요청' : '맞춤 추천 요청 (추천 프로그램 없음)');
+    var payload={ _subject:'[추천받기] '+kind+' · '+a.program+(picked?' · '+picked:''), 
+      '요청 유형':kind,
+      '문의 프로그램':picked||'-',
+      '화면에 보여준 추천':recs[0]?recs[0][0]:'없음',
+      '프로그램 유형':a.program,'예산':a.budget,'학교급·학년':a.grade,'대상 인원':a.scale,'수업 형태':a.format,'진행 시간':a.period,
+      '이메일':email,'연락처':phone,'학교명':school||'-',
+      '실험 버전':CONFIG.variant,'유입':SRC,'개인정보 수집·이용 동의':'동의함 ('+new Date().toLocaleString('ko-KR')+')' };
+    track('lead_submit',{program:a.program});
+    btn.disabled=true; btn.textContent='보내는 중...';
+    var to=CONFIG.cobraEmail;
+    var done=function(ok){
+      var box=document.getElementById('getmail');
+      box.innerHTML='<div class="sent-msg">'+(ok?'신청이 접수되었어요. 담당 매니저가 이메일로 곧 연락드립니다.':'전송에 실패했어요. 잠시 후 다시 시도해주세요.')+'</div>';
+    };
+    if(!to||to.indexOf('@')<0||to==='cobra@example.com'){ console.warn('[아이덴티치] cobraEmail 미설정 — 미전송',payload); track('lead_sent',{demo:true}); done(true); return; }
+    fetch(CONFIG.formEndpoint,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)})
+      .then(function(r){return r.json();}).then(function(){track('lead_sent',{});track('generate_lead',{form:'recommend'});done(true);})
+      .catch(function(e){track('lead_failed',{});console.error(e);btn.disabled=false;btn.textContent='추천 요청 보내기';done(false);});
+  }
+
+  // 맞춤 진행(체육대회·축제 등): 질문 단계 없이 바로 문의
+  function renderDirect(){
+    elTopbar.classList.add('hidden'); elFooter.classList.add('hidden');
+    var p=state.answers.program;
+    elBody.innerHTML='<div class="screen result">'+
+      '<button class="direct-back" id="dBack">‹ 다른 프로그램 보기</button>'+
+      '<div class="rec-head">'+
+        '<span class="direct-badge">맞춤 진행</span>'+
+        '<h1>'+esc(p)+'는<br>학교에 맞춰 설계해 드려요.</h1>'+
+        '<p class="direct-desc">종목 구성·인원·장소·예산이 학교마다 달라서, 담당 매니저가 직접 구성안과 견적을 보내드려요.</p>'+
+      '</div>'+
+      '<div class="getmail" id="getmail">'+
+        '<div class="field"><input type="text" id="dSchool" placeholder="학교명 (필수)" /></div>'+
+        '<div class="field"><input type="text" id="dTarget" placeholder="대상 (예: 전교생 / 중1~3)" /></div>'+
+        '<div class="field"><input type="text" id="dScale" inputmode="numeric" placeholder="예상 인원 (예: 400명)" /></div>'+
+        '<div class="field"><input type="text" id="dWhen" placeholder="희망 시기 (예: 10월 중순)" /></div>'+
+        '<div class="field"><input type="text" id="dBudget" placeholder="예산 (예: 300만원 / 미정)" /></div>'+
+        '<div class="field"><textarea id="dMemo" rows="3" placeholder="원하시는 종목·분위기·장소 등 자유롭게 (선택)"></textarea></div>'+
+        '<div class="field"><input type="email" id="dEmail" placeholder="이메일 (필수)" /></div>'+
+        '<div class="field"><input type="tel" id="dPhone" inputmode="tel" placeholder="연락처 (필수, 예: 010-1234-5678)" /></div>'+
+        '<label class="agree"><input type="checkbox" id="dAgree" /><span>개인정보 수집·이용에 동의합니다. <b>(필수)</b></span><button type="button" class="agree-more" id="dAgreeMore">자세히</button></label>'+
+        '<div class="agree-detail" id="dAgreeDetail" hidden>'+
+          '<p><b>수집 항목</b> 학교명, 이메일, 연락처, 입력하신 행사 정보(대상·인원·시기·예산·요청 사항)</p>'+
+          '<p><b>수집 목적</b> 맞춤 프로그램 구성 및 상담·견적 안내</p>'+
+          '<p><b>보유 기간</b> 상담 완료 후 3개월 이내 파기</p>'+
+          '<p>동의를 거부할 수 있으나, 거부 시 문의를 보낼 수 없습니다.</p>'+
+        '</div>'+
+        '<button class="mini-cta" id="dSend" disabled>맞춤 문의 보내기</button>'+
+      '</div>'+
+    '</div>';
+    elBody.scrollTop=0;
+    function v(id){ return document.getElementById(id).value.trim(); }
+    var sd=document.getElementById('dSend'), ag=document.getElementById('dAgree');
+    function chk(){ sd.disabled=!(v('dSchool') && /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v('dEmail')) && v('dPhone').replace(/[^0-9]/g,'').length>=9 && ag.checked); }
+    ['dSchool','dEmail','dPhone'].forEach(function(id){ document.getElementById(id).addEventListener('input',chk); });
+    ag.addEventListener('change',chk);
+    document.getElementById('dAgreeMore').addEventListener('click',function(e){ e.preventDefault(); var d=document.getElementById('dAgreeDetail'); d.hidden=!d.hidden; });
+    document.getElementById('dBack').addEventListener('click',function(){ state.answers.program=null; state.step=0; render(); });
+    sd.addEventListener('click',function(){
+      var payload={ _subject:'[아이덴티치] 맞춤 진행 문의 · '+p+' · '+v('dSchool'), 
+        '요청 유형':'맞춤 진행 문의','프로그램 유형':p,'학교명':v('dSchool'),'대상':v('dTarget')||'-','예상 인원':v('dScale')||'-',
+        '희망 시기':v('dWhen')||'-','예산':v('dBudget')||'-','요청 사항':v('dMemo')||'-','이메일':v('dEmail'),'연락처':v('dPhone'),
+        '실험 버전':CONFIG.variant,'유입':SRC,'개인정보 수집·이용 동의':'동의함 ('+new Date().toLocaleString('ko-KR')+')' };
+      track('lead_submit',{program:p,direct:true});
+      sd.disabled=true; sd.textContent='보내는 중...';
+      var box=document.getElementById('getmail');
+      function done(ok){ box.innerHTML='<div class="sent-msg">'+(ok?'문의가 접수되었어요. 담당 매니저가 구성안과 견적을 곧 보내드립니다.':'전송에 실패했어요. 잠시 후 다시 시도해주세요.')+'</div>'; }
+      var to=CONFIG.cobraEmail;
+      if(!to||to.indexOf('@')<0||to==='cobra@example.com'){ console.warn('[아이덴티치] 수신 메일 미설정 — 미전송',payload); done(true); return; }
+      fetch(CONFIG.formEndpoint,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)})
+        .then(function(r){return r.json();}).then(function(){track('lead_sent',{direct:true});track('generate_lead',{form:'recommend-direct'});done(true);})
+        .catch(function(e){track('lead_failed',{direct:true});console.error(e);done(false);});
+    });
+  }
+
+  function reset(){ state={step:0,answers:{},otherOpen:false,selectedRec:null}; elProg.style.width='0%'; render(); }
+
+  elBack.addEventListener('click',onBack);
+  render();
+})();
+</script>
+</body>
+</html>
