@@ -216,6 +216,13 @@ header {
   display:inline-flex; align-items:center;
 }
 .hero-btns .btn-hw:hover { background:#f0f0ff; transform:translateY(-2px) }
+/* 메인 CTA: 맞춤 추천받기 (Iden Yellow + Ink) */
+.hero-btns .btn-hy {
+  background:#FFD84D; color:#1A1A1A; font-size:16px; font-weight:800;
+  padding:16px 30px; border-radius:999px; transition:.18s;
+  display:inline-flex; align-items:center;
+}
+.hero-btns .btn-hy:hover { background:#FFEDA6; transform:translateY(-2px) }
 .hero-btns .btn-gw {
   background:transparent; color:#fff;
   border:1.5px solid rgba(255,255,255,.45);
@@ -627,8 +634,8 @@ document.addEventListener('click', function (e) {
       <h1 class="fade d2">놀이와 문화로 만드는<br>교육 콘텐츠</h1>
       <p class="hero-sub fade d3">학교폭력예방 진로캠프 리더십캠프 문화행사 등<br>추억을 만드는 교육 콘텐츠를 개발합니다.</p>
       <div class="hero-btns fade d4">
-        <a href="#programs" class="btn-hw">교육 프로그램 보기</a>
-        <a href="/request/"  class="btn-gw">학교 맞춤 제안받기</a>
+        <a href="/recommend/?src=home" class="btn-hy" onclick="if(window.gtag)gtag('event','rec_entry_click',{from:'home_hero'})">딱 맞춤 프로그램 추천받기</a>
+        <a href="#programs" class="btn-gw">교육 프로그램 보기</a>
       </div>
     </div>
   </div>
