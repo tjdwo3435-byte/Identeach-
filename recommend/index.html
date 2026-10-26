@@ -467,7 +467,7 @@ gtag('config', 'G-VBX1FGXLX9');
 (function(){
   "use strict";
 
-  var CONFIG = { cobraEmail:'idengroup@naver.com', formEndpoint:'https://formspree.io/f/mlgondpj', variant:'recommend-v3' };
+  var CONFIG = { cobraEmail:'idengroup@naver.com', formEndpoint:'https://formspree.io/f/mlgondpj', variant:'recommend-v2' };
   var SRC=(location.search.match(/[?&]src=([^&]+)/)||[])[1]||'direct';
   var GA_MEASUREMENT_ID = 'G-XXXXXXXXXX';               // ← GA4 측정 ID로 교체 (head에도 필요 시 추가)
 
@@ -560,12 +560,12 @@ gtag('config', 'G-VBX1FGXLX9');
   var BUDGET_RANGE=50;
   var REC_COUNT=1;   // 결과 화면에 보여줄 추천 개수
   var PERIODS=[['1시간',60],['2시간',120],['3시간',180],['4시간',240],['잘 모르겠음',0]];  // [표시, 분]
-  var MAIN_KEYS=['학생자치(리더십)','진로','금연·흡연예방','학교폭력예방','현장학습 대체','체육대회·축제'];
-  var DIRECT_KEYS=[];  // (v3부터 모든 분야가 같은 질문 → 이메일 접수 흐름)
+  var MAIN_KEYS=['학생자치(리더십)','진로','금연·흡연예방','학교폭력예방','현장학습 대체'];
+  var DIRECT_KEYS=['체육대회·축제'];  // 맞춤 진행: 질문 없이 바로 문의 폼으로
   var SOON_KEYS=['AI 리터러시'];  // 준비중: 목록 맨 끝에 비활성으로 표시
   var OTHER_KEYS=['기타 창체','성교육','역사·독도교육','시민역량','학예회'];
 
-  var STEPS=['program','budget','grade','scale','period'];  // v3: 수업 형태(강당·교실·행사형) 질문 제외
+  var STEPS=['program','budget','grade','scale','format','period'];
   // 학교급별 학년 선택지
   var SCHOOLS=[['초등학교','초등',6,40],['중학교','중',3,45],['고등학교','고',3,50]];  // [이름, 약칭, 최대 학년, 1차시 분]
   var state={ step:0, answers:{}, otherOpen:false };
@@ -752,6 +752,10 @@ gtag('config', 'G-VBX1FGXLX9');
             render(); return;
           }
           var val=btn.getAttribute('data-val');
+          if(btn.getAttribute('data-role')==='direct'){
+            state.otherOpen=false; state.answers.program=val;
+            track('direct_open',{program:val}); renderDirect(); return;
+          }
           if(MAIN_KEYS.indexOf(val)>=0){ state.otherOpen=false; }
           state.answers.program=val;
           autoNext();
@@ -854,78 +858,237 @@ gtag('config', 'G-VBX1FGXLX9');
 
   function nextStep(){
     if(state.step<STEPS.length-1){ state.step++; render(); elBody.scrollTop=0; }
-    else { renderEmail(); }
+    else { renderLoading(); }
   }
   function onBack(){ if(state.step>0){ state.step--; render(); elBody.scrollTop=0; } }
 
-  // v3: 추천 결과를 바로 보여주지 않고, 이메일만 받아 담당자가 1시간 안에 직접 정리해 보낸다
-  function renderEmail(){
+  function renderLoading(){
+    elTopbar.classList.add('hidden'); elFooter.classList.add('hidden');
+    var steps=['프로그램 유형을 확인하고 있어요','예산·규모에 맞는 구성을 찾고 있어요','수업 형태에 맞는 프로그램을 고르고 있어요','추천 3개를 정리하고 있어요'];
+    var stepsHtml=steps.map(function(s,i){return '<div class="load-step" id="ls'+i+'"><span class="dot">'+ICON_CHK+'</span><span>'+esc(s)+'</span></div>';}).join('');
+    elBody.innerHTML='<div class="screen loading">'+
+      '<div class="load-orb">'+imgSlot('loading',112,'로딩 3D')+'<span class="shadow"></span></div>'+
+      '<h2>딱 맞는 프로그램을 찾고 있어요.</h2>'+
+      '<p>'+esc(state.answers.program)+' · '+esc(state.answers.format)+' 기준으로 추천을 정리하고 있습니다.</p>'+
+      '<div class="load-steps">'+stepsHtml+'</div></div>';
+    var per=520;
+    for(var i=0;i<steps.length;i++){(function(i){setTimeout(function(){
+      var c=document.getElementById('ls'+i); if(c)c.classList.add('active');
+      if(i>0){var p=document.getElementById('ls'+(i-1)); if(p){p.classList.remove('active');p.classList.add('done');}}
+    },i*per);})(i);}
+    setTimeout(function(){var l=document.getElementById('ls'+(steps.length-1)); if(l){l.classList.remove('active');l.classList.add('done');}},steps.length*per);
+    setTimeout(renderResult, steps.length*per+350);
+  }
+
+  // 선생님이 고른 학교급·학년 → 프로그램DB '대상 학교급' 값
+  function teacherLevels(){
+    var a=state.answers, n=parseInt(a.gradeNum,10)||0;
+    if(a.school==='초등학교'){
+      if(a.gradeAll||!n) return ['초등 저학년','초등 고학년'];
+      return [n<=3?'초등 저학년':'초등 고학년'];
+    }
+    if(a.school==='중학교') return ['중학교'];
+    if(a.school==='고등학교') return ['고등학교'];
+    return [];
+  }
+  function renderResult(){
     elTopbar.classList.add('hidden'); elFooter.classList.add('hidden');
     var a=state.answers;
-    track('email_view',{program:a.program});
-    var chips=[a.program,a.budget,a.grade,a.scale,a.period].filter(Boolean)
-      .map(function(x){ return '<span class="sum-chip">'+esc(x)+'</span>'; }).join('');
+    var bud=parseInt(String(a.budget||'').replace(/[^0-9]/g,''),10)||0;
+    var lv=teacherLevels();
+    var recs=(D.PROGRAMS[a.program]||[]).filter(function(r){
+      var m=PROGRAM_MIN[r[0]], pl=PROGRAM_LEVEL[r[0]];
+      var okBudget = m==null || !bud || Math.abs(m-bud)<=BUDGET_RANGE;
+      var okLevel = !pl || !pl.length || !lv.length || lv.some(function(x){ return pl.indexOf(x)>=0; });
+      return okBudget && okLevel;
+    }).slice(0,REC_COUNT);
+    state.selectedRec=null;
+    track('recommend_view',{program:a.program});
+
+    var chev='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>';
+    var cards=recs.map(function(r,i){
+      return '<div class="rec-card" data-idx="'+i+'" style="animation-delay:'+(i*90)+'ms">'+
+        '<span class="rank">추천 '+(i+1)+'</span>'+
+        '<div class="rtitle">'+esc(r[0])+'</div>'+
+        '<div class="rdesc">'+esc(r[1])+'</div>'+
+        '<div class="rmeta">'+
+          '<span class="mchip">'+esc(a.format)+'</span>'+
+          (a.period?'<span class="mchip">'+esc(a.period)+'</span>':'')+
+          '<span class="mchip">'+esc(a.budget)+'</span>'+
+          '<span class="mchip">'+esc(a.scale)+'</span>'+
+        '</div>'+
+        '<div class="rec-more">자세히 보기'+chev+'</div></div>';
+    }).join('');
+
     elBody.innerHTML='<div class="screen result">'+
       '<div class="result-hero">'+imgSlot('done',104,'완료 3D')+'</div>'+
       '<div class="rec-head">'+
-        '<h1>선생님께 딱 맞는 프로그램,<br>메일로 정리해 드릴게요.</h1>'+
-        '<p class="direct-desc">받으실 이메일 주소만 남겨주세요.</p>'+
-        '<div class="rec-summary">'+chips+'</div>'+
+        '<h1>'+(recs.length?'선생님께 맞는 프로그램이에요.':'선생님 학교에 맞춰 찾아드릴게요.')+'</h1>'+
+        '<div class="rec-summary">'+
+          '<span class="sum-chip">'+esc(a.program)+'</span>'+
+          '<span class="sum-chip">'+esc(a.budget)+'</span>'+
+          '<span class="sum-chip">'+esc(a.grade)+'</span>'+
+          '<span class="sum-chip">'+esc(a.scale)+'</span>'+
+          '<span class="sum-chip">'+esc(a.format)+'</span>'+
+          (a.period?'<span class="sum-chip">'+esc(a.period)+'</span>':'')+
+        '</div>'+
       '</div>'+
-      '<div class="getmail" id="getmail">'+
-        '<div class="field"><input type="email" id="gEmail" autocomplete="email" placeholder="이메일 (예: teacher@school.com)" /></div>'+
+      (recs.length?'<div class="rec-list">'+cards+'</div>':'<div class="rec-empty">이 분야는 지금 조건에 맞는 프로그램을 담당 매니저가 직접 찾아드려요.<br>아래에 이메일을 남겨주시면 업체와 견적을 정리해 보내드릴게요.</div>')+
+      (recs.length?'<button class="more-btn" id="moreBtn">다른 프로그램도 추천받기</button>':'')+
+      '<div class="getmail'+(recs.length?' hidden':'')+'" id="getmail">'+
+        '<h3 id="gTitle">'+(recs.length?'다른 프로그램도 추천받아 보세요':'맞는 프로그램을 찾아 보내드릴게요')+'</h3>'+
+        '<p>이메일과 연락처를 남겨주시면 담당 매니저가 조건에 맞는 프로그램과 견적을 정리해 보내드려요.</p>'+
+        '<div class="g-sel" id="gSel" style="display:none"></div>'+
+        '<div class="field"><input type="email" id="gEmail" placeholder="이메일 (예: teacher@school.com)" /></div>'+
+        '<div class="field"><input type="tel" id="gPhone" inputmode="tel" placeholder="연락처 (예: 010-1234-5678)" /></div>'+
+        '<div class="field"><input type="text" id="gSchool" placeholder="학교명 (선택)" /></div>'+
         '<label class="agree"><input type="checkbox" id="gAgree" /><span>개인정보 수집·이용에 동의합니다. <b>(필수)</b></span><button type="button" class="agree-more" id="gAgreeMore">자세히</button></label>'+
         '<div class="agree-detail" id="gAgreeDetail" hidden>'+
-          '<p><b>수집 항목</b> 이메일, 선택하신 조건(프로그램 분야·예산·학년·인원·시간)</p>'+
-          '<p><b>수집 목적</b> 프로그램 추천 및 상담 안내</p>'+
+          '<p><b>수집 항목</b> 이메일, 연락처, 학교명(선택), 선택하신 조건(프로그램 유형·예산·학년·인원·수업 형태·시간)</p>'+
+          '<p><b>수집 목적</b> 프로그램 추천 및 상담·견적 안내</p>'+
           '<p><b>보유 기간</b> 상담 완료 후 3개월 이내 파기</p>'+
-          '<p>동의를 거부할 수 있으나, 거부 시 추천을 받을 수 없습니다.</p>'+
+          '<p>동의를 거부할 수 있으나, 거부 시 추천 요청을 보낼 수 없습니다.</p>'+
         '</div>'+
-        '<button class="mini-cta" id="gSend" disabled>추천 받기</button>'+
+        '<button class="mini-cta" id="gSend" disabled>추천 요청 보내기</button>'+
       '</div>'+
       '<div style="padding:22px 0 20px;"><button class="cta ghost" id="resetBtn">처음부터 다시하기</button></div>'+
-    '</div>';
-    elBody.scrollTop=0;
-    var em=document.getElementById('gEmail'),ag=document.getElementById('gAgree'),sd=document.getElementById('gSend');
-    function ok(){ return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em.value.trim()) && ag.checked; }
-    function chk(){ sd.disabled=!ok(); }
-    em.addEventListener('input',chk); ag.addEventListener('change',chk);
-    em.addEventListener('keydown',function(e){ if(e.key==='Enter' && ok()) sendLead(em.value.trim(),sd); });
+    '</div>'+
+    '<div class="modal-ov" id="modalOv"><div class="modal" id="modalBox"></div></div>';
+
+    var em=document.getElementById('gEmail'),ph=document.getElementById('gPhone'),sc=document.getElementById('gSchool'),sd=document.getElementById('gSend'),ag=document.getElementById('gAgree');
+    function chk(){ sd.disabled=!(/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em.value.trim()) && ph.value.replace(/[^0-9]/g,'').length>=9 && ag.checked); }
+    em.addEventListener('input',chk); ph.addEventListener('input',chk); ag.addEventListener('change',chk);
     document.getElementById('gAgreeMore').addEventListener('click',function(e){ e.preventDefault(); var d=document.getElementById('gAgreeDetail'); d.hidden=!d.hidden; });
-    sd.addEventListener('click',function(){ if(ok()) sendLead(em.value.trim(),sd); });
+    sd.addEventListener('click',function(){ sendLead(em.value.trim(),ph.value.trim(),sc.value.trim(),recs,sd); });
+    function openForm(){
+      var g=document.getElementById('getmail'); g.classList.remove('hidden');
+      var mb=document.getElementById('moreBtn'); if(mb) mb.style.display='none';
+      g.scrollIntoView({behavior:'smooth',block:'center'});
+      setTimeout(function(){ em.focus(); },350);
+    }
+    var mb=document.getElementById('moreBtn');
+    if(mb) mb.addEventListener('click',function(){ state.selectedRec=null; track('more_click',{program:a.program}); openForm(); });
     document.getElementById('resetBtn').addEventListener('click',reset);
-    setTimeout(function(){ em.focus(); },300);
+
+    // 추천 상세 팝업
+    var ov=document.getElementById('modalOv'), box=document.getElementById('modalBox');
+    function closeModal(){ ov.classList.remove('open'); }
+    function openModal(i){
+      var r=recs[i];
+      var pimg=PROGRAM_IMG[r[0]]||'';
+      var pbanner = pimg ? '<img src="'+pimg+'" alt="" />' : '<span class="ph-label">프로그램 이미지</span>';
+      box.innerHTML='<div class="grip"></div>'+
+        '<div class="m-img">'+pbanner+'</div>'+
+        '<span class="m-rank">추천 '+(i+1)+'</span>'+
+        '<h3>'+esc(r[0])+'</h3>'+
+        '<p class="m-desc">'+esc(r[1])+'</p>'+
+        (PROGRAM_PITCH[r[0]]?'<p class="m-pitch">'+esc(PROGRAM_PITCH[r[0]]).replace(/&lt;br\s*\/?&gt;/gi,'<br>')+'</p>':'')+
+        '<div class="m-sec">한눈에 보기</div>'+
+        '<div class="m-row"><span class="k">프로그램</span><span class="v">'+esc(a.program)+'</span></div>'+
+        '<div class="m-row"><span class="k">수업 형태</span><span class="v">'+esc(a.format)+'</span></div>'+
+        (a.period?'<div class="m-row"><span class="k">진행 시간</span><span class="v">'+esc(a.period)+'</span></div>':'')+
+        '<div class="m-row"><span class="k">학교급·학년</span><span class="v">'+esc(a.grade)+'</span></div>'+
+        '<div class="m-row"><span class="k">대상 인원</span><span class="v">'+esc(a.scale)+'</span></div>'+
+        '<div class="m-row"><span class="k">예산</span><span class="v">'+esc(a.budget)+'</span></div>'+
+        '<p class="m-note">학교 상황에 맞춰 세부 구성·강사·정확한 견적은 담당 매니저가 조정해 안내해드려요.</p>'+
+        '<button class="m-cta" id="mCta">이 프로그램으로 문의하기</button>';
+      ov.classList.add('open');
+      document.getElementById('mCta').addEventListener('click',function(){
+        state.selectedRec=i;
+        var gs=document.getElementById('gSel');
+        if(gs){ gs.style.display='flex'; gs.innerHTML='<span>문의할 프로그램</span><b>'+esc(recs[i][0])+'</b>'; }
+        var gt=document.getElementById('gTitle'); if(gt) gt.textContent='이 프로그램으로 문의하기';
+        track('recommend_pick',{program:a.program,pick:recs[i][0]});
+        closeModal();
+        openForm();
+      });
+    }
+    Array.prototype.forEach.call(elBody.querySelectorAll('.rec-card'),function(c){
+      c.addEventListener('click',function(){ openModal(parseInt(c.getAttribute('data-idx'),10)); track('recommend_detail',{program:a.program}); });
+    });
+    ov.addEventListener('click',function(e){ if(e.target===ov) closeModal(); });
   }
 
-  function sendLead(email,btn){
+  function sendLead(email,phone,school,recs,btn){
     var a=state.answers;
-    var payload={ _subject:'[맞춤 추천 요청] '+a.program+' · '+(a.grade||'')+' · '+email,
-      _replyto:email,
-      '요청 유형':'맞춤 프로그램 추천 (1시간 내 메일 회신 약속)',
-      '이메일':email,
-      '프로그램 분야':a.program,'예산':a.budget,'학교급·학년':a.grade,'대상 인원':a.scale,'진행 시간':a.period,
-      '실험 버전':CONFIG.variant,'유입':SRC,'접수 시각':new Date().toLocaleString('ko-KR'),
-      '개인정보 수집·이용 동의':'동의함' };
+    var picked = (state.selectedRec!=null && recs[state.selectedRec]) ? recs[state.selectedRec][0] : '';
+    var kind = picked ? '프로그램 문의' : (recs.length ? '다른 프로그램 추천 요청' : '맞춤 추천 요청 (추천 프로그램 없음)');
+    var payload={ _subject:'[추천받기] '+kind+' · '+a.program+(picked?' · '+picked:''), 
+      '요청 유형':kind,
+      '문의 프로그램':picked||'-',
+      '화면에 보여준 추천':recs[0]?recs[0][0]:'없음',
+      '프로그램 유형':a.program,'예산':a.budget,'학교급·학년':a.grade,'대상 인원':a.scale,'수업 형태':a.format,'진행 시간':a.period,
+      '이메일':email,'연락처':phone,'학교명':school||'-',
+      '실험 버전':CONFIG.variant,'유입':SRC,'개인정보 수집·이용 동의':'동의함 ('+new Date().toLocaleString('ko-KR')+')' };
     track('lead_submit',{program:a.program});
     btn.disabled=true; btn.textContent='보내는 중...';
-    function done(){
-      var h=elBody.querySelector('.rec-head h1'), d=elBody.querySelector('.rec-head .direct-desc');
-      if(h) h.innerHTML='추천 요청이<br>접수되었어요.';
-      if(d) d.textContent=email+' 로 보내드릴게요.';
-      document.getElementById('getmail').innerHTML='<div class="sent-msg">선생님에게 딱 맞는 프로그램을<br>1시간 내로 메일로 정리하여 보내드립니다 :)</div>';
-    }
-    function fail(){
-      btn.disabled=false; btn.textContent='추천 받기';
-      var box=document.getElementById('getmail'), m=box.querySelector('.send-err');
-      if(!m){ m=document.createElement('p'); m.className='send-err'; m.style.cssText='color:#C2362B;font-size:13px;font-weight:700;margin:10px 0 0;'; box.appendChild(m); }
-      m.textContent='전송에 실패했어요. 잠시 후 다시 시도하시거나 010-4084-8962로 연락 주세요.';
-    }
+    var to=CONFIG.cobraEmail;
+    var done=function(ok){
+      var box=document.getElementById('getmail');
+      box.innerHTML='<div class="sent-msg">'+(ok?'신청이 접수되었어요. 담당 매니저가 이메일로 곧 연락드립니다.':'전송에 실패했어요. 잠시 후 다시 시도해주세요.')+'</div>';
+    };
+    if(!to||to.indexOf('@')<0||to==='cobra@example.com'){ console.warn('[아이덴티치] cobraEmail 미설정 — 미전송',payload); track('lead_sent',{demo:true}); done(true); return; }
     fetch(CONFIG.formEndpoint,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)})
-      .then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status); track('lead_sent',{}); track('generate_lead',{form:'recommend'}); done(); })
-      .catch(function(e){ track('lead_failed',{}); console.error(e); fail(); });
+      .then(function(r){return r.json();}).then(function(){track('lead_sent',{});track('generate_lead',{form:'recommend'});done(true);})
+      .catch(function(e){track('lead_failed',{});console.error(e);btn.disabled=false;btn.textContent='추천 요청 보내기';done(false);});
   }
 
-  function reset(){ state={step:0,answers:{},otherOpen:false}; elProg.style.width='0%'; render(); }
+  // 맞춤 진행(체육대회·축제 등): 질문 단계 없이 바로 문의
+  function renderDirect(){
+    elTopbar.classList.add('hidden'); elFooter.classList.add('hidden');
+    var p=state.answers.program;
+    elBody.innerHTML='<div class="screen result">'+
+      '<button class="direct-back" id="dBack">‹ 다른 프로그램 보기</button>'+
+      '<div class="rec-head">'+
+        '<span class="direct-badge">맞춤 진행</span>'+
+        '<h1>'+esc(p)+'는<br>학교에 맞춰 설계해 드려요.</h1>'+
+        '<p class="direct-desc">종목 구성·인원·장소·예산이 학교마다 달라서, 담당 매니저가 직접 구성안과 견적을 보내드려요.</p>'+
+      '</div>'+
+      '<div class="getmail" id="getmail">'+
+        '<div class="field"><input type="text" id="dSchool" placeholder="학교명 (필수)" /></div>'+
+        '<div class="field"><input type="text" id="dTarget" placeholder="대상 (예: 전교생 / 중1~3)" /></div>'+
+        '<div class="field"><input type="text" id="dScale" inputmode="numeric" placeholder="예상 인원 (예: 400명)" /></div>'+
+        '<div class="field"><input type="text" id="dWhen" placeholder="희망 시기 (예: 10월 중순)" /></div>'+
+        '<div class="field"><input type="text" id="dBudget" placeholder="예산 (예: 300만원 / 미정)" /></div>'+
+        '<div class="field"><textarea id="dMemo" rows="3" placeholder="원하시는 종목·분위기·장소 등 자유롭게 (선택)"></textarea></div>'+
+        '<div class="field"><input type="email" id="dEmail" placeholder="이메일 (필수)" /></div>'+
+        '<div class="field"><input type="tel" id="dPhone" inputmode="tel" placeholder="연락처 (필수, 예: 010-1234-5678)" /></div>'+
+        '<label class="agree"><input type="checkbox" id="dAgree" /><span>개인정보 수집·이용에 동의합니다. <b>(필수)</b></span><button type="button" class="agree-more" id="dAgreeMore">자세히</button></label>'+
+        '<div class="agree-detail" id="dAgreeDetail" hidden>'+
+          '<p><b>수집 항목</b> 학교명, 이메일, 연락처, 입력하신 행사 정보(대상·인원·시기·예산·요청 사항)</p>'+
+          '<p><b>수집 목적</b> 맞춤 프로그램 구성 및 상담·견적 안내</p>'+
+          '<p><b>보유 기간</b> 상담 완료 후 3개월 이내 파기</p>'+
+          '<p>동의를 거부할 수 있으나, 거부 시 문의를 보낼 수 없습니다.</p>'+
+        '</div>'+
+        '<button class="mini-cta" id="dSend" disabled>맞춤 문의 보내기</button>'+
+      '</div>'+
+    '</div>';
+    elBody.scrollTop=0;
+    function v(id){ return document.getElementById(id).value.trim(); }
+    var sd=document.getElementById('dSend'), ag=document.getElementById('dAgree');
+    function chk(){ sd.disabled=!(v('dSchool') && /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v('dEmail')) && v('dPhone').replace(/[^0-9]/g,'').length>=9 && ag.checked); }
+    ['dSchool','dEmail','dPhone'].forEach(function(id){ document.getElementById(id).addEventListener('input',chk); });
+    ag.addEventListener('change',chk);
+    document.getElementById('dAgreeMore').addEventListener('click',function(e){ e.preventDefault(); var d=document.getElementById('dAgreeDetail'); d.hidden=!d.hidden; });
+    document.getElementById('dBack').addEventListener('click',function(){ state.answers.program=null; state.step=0; render(); });
+    sd.addEventListener('click',function(){
+      var payload={ _subject:'[아이덴티치] 맞춤 진행 문의 · '+p+' · '+v('dSchool'), 
+        '요청 유형':'맞춤 진행 문의','프로그램 유형':p,'학교명':v('dSchool'),'대상':v('dTarget')||'-','예상 인원':v('dScale')||'-',
+        '희망 시기':v('dWhen')||'-','예산':v('dBudget')||'-','요청 사항':v('dMemo')||'-','이메일':v('dEmail'),'연락처':v('dPhone'),
+        '실험 버전':CONFIG.variant,'유입':SRC,'개인정보 수집·이용 동의':'동의함 ('+new Date().toLocaleString('ko-KR')+')' };
+      track('lead_submit',{program:p,direct:true});
+      sd.disabled=true; sd.textContent='보내는 중...';
+      var box=document.getElementById('getmail');
+      function done(ok){ box.innerHTML='<div class="sent-msg">'+(ok?'문의가 접수되었어요. 담당 매니저가 구성안과 견적을 곧 보내드립니다.':'전송에 실패했어요. 잠시 후 다시 시도해주세요.')+'</div>'; }
+      var to=CONFIG.cobraEmail;
+      if(!to||to.indexOf('@')<0||to==='cobra@example.com'){ console.warn('[아이덴티치] 수신 메일 미설정 — 미전송',payload); done(true); return; }
+      fetch(CONFIG.formEndpoint,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)})
+        .then(function(r){return r.json();}).then(function(){track('lead_sent',{direct:true});track('generate_lead',{form:'recommend-direct'});done(true);})
+        .catch(function(e){track('lead_failed',{direct:true});console.error(e);done(false);});
+    });
+  }
+
+  function reset(){ state={step:0,answers:{},otherOpen:false,selectedRec:null}; elProg.style.width='0%'; render(); }
 
   elBack.addEventListener('click',onBack);
   render();
