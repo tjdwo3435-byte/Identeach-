@@ -97,8 +97,8 @@ function renderCard(slug, card) {
     ? `\n            <span style="position:absolute;top:10px;right:10px;background:var(--blue);color:#fff;font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;letter-spacing:.04em;">준비 중</span>`
     : '';
   const openTag = card.준비중
-    ? `<a href="/${slug}" class="card" style="position:relative;">`
-    : `<a href="/${slug}" class="card">`;
+    ? `<a href="/${slug}/" class="card" style="position:relative;">`
+    : `<a href="/${slug}/" class="card">`;
 
   const title = escHtml(card.카드제목).split('|').map((x) => x.trim()).join('<br>');
 
@@ -154,6 +154,7 @@ function buildSitemap(slugs) {
     { loc: '/events', freq: 'weekly', pri: '0.9' },
   ];
   const tail = [
+    { loc: '/faq', freq: 'monthly', pri: '0.7' },
     { loc: '/about', freq: 'monthly', pri: '0.7' },
     { loc: '/request', freq: 'monthly', pri: '0.7' },
   ];
