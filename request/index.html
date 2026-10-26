@@ -208,13 +208,6 @@ header {
 .rq-hd h1{font-size:clamp(26px,4vw,38px);font-weight:800;line-height:1.3;letter-spacing:-.03em;margin:10px 0 12px}
 .rq-hd p{color:var(--gray);font-size:clamp(14px,1.7vw,16px);line-height:1.8}
 
-.rq-reco{display:flex;align-items:center;gap:14px;margin:0 0 18px;padding:16px 20px;text-align:left;background:#F1F1FB;border:1px solid #BABCE9;border-radius:16px;color:#1A1A1A;text-decoration:none}
-.rq-reco:hover{border-color:#1D2087}
-.rq-reco-badge{flex:0 0 auto;font-size:12px;font-weight:700;letter-spacing:.02em;background:#FFD84D;color:#1A1A1A;border-radius:999px;padding:5px 11px}
-.rq-reco-txt{flex:1 1 auto;font-size:14px;line-height:1.5;color:#484848}
-.rq-reco-txt b{display:block;font-size:15px;font-weight:700;color:#1A1A1A}
-.rq-reco-go{flex:0 0 auto;font-size:14px;font-weight:700;color:#1D2087;white-space:nowrap}
-@media (max-width:560px){.rq-reco{flex-wrap:wrap;gap:8px}.rq-reco-txt{flex-basis:100%;order:2}.rq-reco-go{margin-left:auto;order:1}}
 .rq-card{background:#fff;border:1px solid var(--border);border-radius:var(--rc,16px);padding:clamp(24px,4vw,38px)}
 .fld{margin-bottom:20px}
 .fld:last-of-type{margin-bottom:0}
@@ -362,13 +355,6 @@ document.addEventListener('click', function (e) {
           <h1>학교 프로그램 문의</h1>
           <p>기본 정보만 남겨주시면 담당자가 확인 후 연락드립니다.<br>어떤 프로그램인지 모르셔도 괜찮습니다.</p>
         </div>
-
-        <!-- 4초 추천받기 진입 (실험: /recommend/ ?src=request) -->
-        <a class="rq-reco" href="/recommend/?src=request" onclick="if(window.gtag)gtag('event','rec_entry_click',{from:'request'})">
-          <span class="rq-reco-badge">4초 추천</span>
-          <span class="rq-reco-txt"><b>어떤 프로그램이 맞을지 고민되시나요?</b>몇 번만 누르면 학교에 맞는 프로그램을 바로 보여드려요</span>
-          <span class="rq-reco-go">추천받기 ›</span>
-        </a>
 
         <form class="rq-card" id="rqForm" novalidate>
           <div class="fld" id="f-school">
