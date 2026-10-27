@@ -41,3 +41,8 @@ events/school-festival,1,💬,축제 구성 협의,학교 일정·장소·인원
 events/school-festival,2,🎤,오프닝 · MC 진행,MC가 축제의 시작을 열고 하루의 흐름을 이끕니다.
 events/school-festival,3,🎪,무대 · 게임 코너,무대 프로그램과 학생 참여 게임 코너를 운영합니다.
 events/school-festival,4,🎉,피날레,전교생이 함께하는 마지막 무대로 축제를 마무리합니다.
+career/talkshow,1,📝,사전 준비,궁금한 직업을 살펴보고 직업인에게 할 질문을 미리 준비합니다.
+career/talkshow,2,🎤,강연자 소개,오늘 만날 직업인의 배경을 소개합니다.
+career/talkshow,3,💬,토크쇼 진행,직업인의 이야기와 경험을 토크쇼 형식으로 나눕니다.
+career/talkshow,4,🙋,Q&A,학생들이 직접 질문하고 답을 듣습니다.
+career/talkshow,5,✍️,소감 나누기,느낀 점을 정리하고 함께 나눕니다.

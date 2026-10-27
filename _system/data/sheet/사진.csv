@@ -21,9 +21,6 @@ together/schoolping,개요,/assets/images/programs/together/schoolping/스쿨핑
 together/schoolping,대표,/assets/images/programs/together/schoolping/스쿨핑사진1.jpg,스쿨핑 활동 전체 장면,
 together/schoolping,대표,/assets/images/programs/together/schoolping/스쿨핑사진2.jpg,학생들이 스쿨핑 게임에 참여하는 모습,
 together/schoolping,대표,/assets/images/programs/together/schoolping/스쿨핑사진3.jpg,스쿨핑 팀별 활동 장면,
-together/schoolping,갤러리,/assets/images/programs/together/schoolping/스쿨핑사진1.jpg,스쿨핑 활동 전체,전체 활동
-together/schoolping,갤러리,/assets/images/programs/together/schoolping/스쿨핑사진2.jpg,게임 진행 장면,게임 진행
-together/schoolping,갤러리,/assets/images/programs/together/schoolping/스쿨핑사진3.jpg,팀 전략 장면,팀 전략 타임
 together/facilitation,개요,/assets/images/programs/together/facilitation/퍼실리테이션사진2.jpg,팀이 함께 미션을 논의하는 장면,
 together/facilitation,대표,/assets/images/programs/together/facilitation/퍼실리테이션사진1.webp,미션 퍼실리테이션 활동 전체 장면,
 together/facilitation,대표,/assets/images/programs/together/facilitation/퍼실리테이션사진2.webp,팀이 함께 미션을 논의하는 장면,
@@ -51,11 +48,6 @@ career/job-lab,갤러리,/assets/images/programs/career/job-lab.png,미래직업
 career/job-lab,갤러리,/assets/images/programs/career/job-lab.png,미래직업연구소 활동 2,강점 연결
 career/job-lab,갤러리,/assets/images/programs/career/job-lab.png,미래직업연구소 활동 3,직업 설계
 career/job-lab,갤러리,/assets/images/programs/career/job-lab.png,미래직업연구소 활동 4,결과 발표
-career/talkshow,대표,/assets/images/programs/career/career-talkshow.webp,진로 토크쇼 강연 장면,
-career/talkshow,갤러리,,진로 토크쇼 활동 장면 1,토크쇼 진행
-career/talkshow,갤러리,,진로 토크쇼 활동 장면 2,Q&A 시간
-career/talkshow,갤러리,,진로 토크쇼 활동 장면 3,강연자 이야기
-career/talkshow,갤러리,,진로 토크쇼 활동 장면 4,소감 나누기
 career/ceo-talk,개요,/assets/images/programs/career/ceo-life-vertical.png,내 인생의 CEO 강연 활동,
 career/ceo-talk,대표,/assets/images/programs/career/ceo-life.png,내 인생의 CEO 강연 장면,
 career/ceo-talk,갤러리,/assets/images/programs/career/ceo-life.png,내 인생의 CEO 강연 1,강연 시작
@@ -84,3 +76,35 @@ events/smart-goldenbell,갤러리,/assets/images/programs/events/smart-goldenbel
 events/school-festival,개요,/assets/images/events/festival.webp,학교축제 무대,
 events/school-festival,대표,/assets/images/events/festival.webp,학교축제 현장,
 events/school-festival,갤러리,/assets/images/events/festival.webp,학교축제 현장,축제 현장
+together/schoolping,갤러리,/assets/images/programs/together/schoolping/field-1.webp,텐트 안에서 함께 미션을 푸는 학생들,텐트 미션
+together/schoolping,갤러리,/assets/images/programs/together/schoolping/field-2.webp,텐트 속 조별 활동,조별 활동
+together/schoolping,갤러리,/assets/images/programs/together/schoolping/field-3.webp,텐트 안 꾸미기 활동,텐트 꾸미기
+together/schoolping,갤러리,/assets/images/programs/together/schoolping/field-4.webp,대형 낙하산 협동 게임,낙하산 게임
+together/schoolping,갤러리,/assets/images/programs/together/schoolping/field-5.webp,파도 천 협동 게임,협동 게임
+together/schoolping,갤러리,/assets/images/programs/together/schoolping/field-6.webp,짝 미션 활동,짝 미션
+together/schoolping,갤러리,/assets/images/programs/together/schoolping/field-7.webp,텐트를 꾸미는 학생들,텐트 꾸미기
+together/schoolping,갤러리,/assets/images/programs/together/schoolping/field-8.webp,조별 텐트 꾸미기,팀 아지트
+together/schoolping,갤러리,/assets/images/programs/together/schoolping/field-9.webp,대형 공 굴리기 게임,공 굴리기
+together/facilitation,갤러리,/assets/images/programs/together/facilitation/field-1.webp,조별 토의 장면,조별 토의
+together/facilitation,갤러리,/assets/images/programs/together/facilitation/field-2.webp,포스트잇으로 의견을 모으는 모습,의견 모으기
+together/facilitation,갤러리,/assets/images/programs/together/facilitation/field-3.webp,함께 결과물을 정리하는 학생들,함께 정리
+together/facilitation,갤러리,/assets/images/programs/together/facilitation/field-4.webp,벽면에 아이디어를 붙이는 활동,아이디어 벽
+together/facilitation,갤러리,/assets/images/programs/together/facilitation/field-5.webp,완성한 내용을 살펴보는 학생들,결과 살펴보기
+together/facilitation,갤러리,/assets/images/programs/together/facilitation/field-6.webp,팀별 미션 활동,팀 미션
+events/smart-goldenbell,갤러리,/assets/images/programs/events/smart-goldenbell/goldenbell-7.webp,태블릿으로 문제를 푸는 학생들,문제 풀이
+events/smart-goldenbell,갤러리,/assets/images/programs/events/smart-goldenbell/goldenbell-8.webp,시상식 장면,시상
+events/smart-goldenbell,갤러리,/assets/images/programs/events/smart-goldenbell/goldenbell-9.webp,상장을 받는 학생들,수상
+events/smart-goldenbell,갤러리,/assets/images/programs/events/smart-goldenbell/goldenbell-10.webp,수상 기념 촬영,기념 촬영
+events/school-festival,대표,/assets/images/programs/events/school-festival/festival-1.webp,강당에서 함께 춤추는 학생들,
+events/school-festival,갤러리,/assets/images/programs/events/school-festival/festival-1.webp,강당에서 함께 춤추는 학생들,다 함께 댄스
+events/school-festival,갤러리,/assets/images/programs/events/school-festival/festival-2.webp,레크리에이션 게임 장면,레크리에이션
+events/school-festival,갤러리,/assets/images/programs/events/school-festival/festival-3.webp,장기자랑 무대,장기자랑
+career/talkshow,개요,/assets/images/programs/career/talkshow/field-2.webp,직업인 게스트와 진행자가 이야기를 나누는 무대,
+career/talkshow,대표,/assets/images/programs/career/talkshow/field-1.webp,진로 토크쇼 무대와 학생들,
+career/talkshow,대표,/assets/images/programs/career/talkshow/field-3.webp,게스트의 이야기를 듣는 학생들,
+career/talkshow,대표,/assets/images/programs/career/talkshow/field-5.webp,진로 토크쇼 진행 장면,
+career/talkshow,갤러리,/assets/images/programs/career/talkshow/field-1.webp,토크쇼 무대 전경,무대 전경
+career/talkshow,갤러리,/assets/images/programs/career/talkshow/field-2.webp,게스트 인터뷰,게스트 인터뷰
+career/talkshow,갤러리,/assets/images/programs/career/talkshow/field-3.webp,직업 이야기를 듣는 학생들,직업 이야기
+career/talkshow,갤러리,/assets/images/programs/career/talkshow/field-4.webp,질문과 답변 시간,질문과 답변
+career/talkshow,갤러리,/assets/images/programs/career/talkshow/field-5.webp,마무리 토크,마무리
